@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+        
+    <head>
+
+        <!-- Adapt screen to any mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Adapt special characteres -->
+        <meta charset="UTF-8">
+        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="./css/canvas.css" rel="stylesheet" />
+
+        <!-- interact.js library-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.6/interact.min.js"></script>
+        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+        <!-- html2canvas-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+
+        <!-- anime.js library-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+        <title>Canvas</title>
+        
+    </head>
+        
+    <body>
+
+        <div class="v268_32">
+
+            <header>
+                    
+                <div id="header" class="v104_15"></div>
+                <div id="headerimg"class="v190_34"></div>
+                <div id="saveCancas" class="saveicon" onclick="printCriation()"></div>
+
+            </header>
+
+            
+
+            <div id="capture"></div>
+
+            <div class="v238_0" id="alertdelete">
+                <div class="v278_0">
+                    <div class="v278_1"></div>
+                    <span class="v278_3">Tens a certeza?</span>
+                    <div class="v278_2">Queres apagar a tua criação?</div>
+                    <div class="v278_4" id="yesAlertD">Sim</div>
+                    <div class="v278_5" id="noAlertD">Não</div>
+                </div>
+            </div>
+
+            <div class="v238_0" id="alertsave">
+                <div class="v278_0">
+                    <div class="sucess_image"></div>
+                    <span class="v278_3">Guardada</span>
+                    <div class="v278_2">A tua criação foi guardada!</div>
+                    <div class="okAlertS" id="okAlertS">Ok</div>
+                </div>
+            </div>
+
+            <div class="v238_0" id="alertleave">
+                <div class="v278_0">
+                    <div class="v278_1"></div>
+                    <span class="v278_3">Sair?</span>
+                    <div class="v278_2">Queres sair ou continuar a editar?</div>
+                    <div class="v278_4" id="yesAlertL">Sair</div>
+                    <div class="v278_5" id="noAlertL">Editar</div>
+                </div>
+            </div>
+
+            <canvas id="canvas" class="canvas"></canvas>
+
+        </div>
+
+            <div class="v272_84" id="toolsbar"></div>
+
+            <div class="colors" id="colors">
+                <div class="colorswrap">
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(221, 10, 126);" id="cpink"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: red;" id="cred"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: #f86b0e;" id="corange"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: yellow;" cid="cyellow"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(6, 141, 6);" id="cgreen"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(3, 173, 240);" id="clblue"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(0, 65, 185);" id="cdblue"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(143, 2, 172);" id="cpurple"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(0, 0, 0);" id="cblack"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: rgb(255, 255, 255);" id="cwhite"></div>
+                </div>
+            </div>
+
+            <div class="stickers" id="stickers">
+                <div class="stickerswrap">
+                    <div class="placesticker1" id="placesticker1"></div>
+                    <div class="placesticker2" id="placesticker2"></div>
+                    <div class="placesticker3" id="placesticker3"></div>
+                    <div class="placesticker4" id="placesticker4"></div>
+                    <div class="placesticker5" id="placesticker5"></div>
+                    <div  class="placesticker6" id="placesticker6"></div>
+                    <div class="placesticker7" id="placesticker7"></div>
+                    <div class="placesticker8" id="placesticker8"></div>
+                    <div class="placesticker9" id="placesticker9"></div>
+                    <div class="placesticker10" id="placesticker10"></div>
+                </div>
+            </div>
+
+            <input type="range" min="1" max="30" id="pen_range" class="pen-range" value="2" onInput="draw_width = this.value"></input>
+
+            <div class="v270_4" id="tools">
+
+                <div class="v368_2" id="showcolors"></div>
+
+                <div class="v368_3" id="pen_pencil"></div>
+
+                <div class="v368_4" id="rubber"></div>
+
+                <div class="v368_5" id="showStickers"></div>
+
+                <div class="v368_6" id="trash"></div>
+            </div>
+
+                
+            <!-- footer -->
+            <div id="app-footer">
+                <ul>
+                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
+                </ul>
+            </div>
+
+        <script src="js/canvas.js"></script>
+        
+        
+    </body>    
+</html>

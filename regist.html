@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+        <link href="./css/regist.css" rel="stylesheet" />
+
+        <!-- Adapt screen to any mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- special characters -->
+        <meta charset="UTF-8">
+
+        <!-- Vendor CSS -->
+        <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+        
+        <title>Registar</title>
+    
+    </head>
+    
+    <body>
+        <form>
+            <div class="v121_13">
+
+                <label class="costum-field">
+                    <input class="v121_14" type="text" id="inputName" required></input>
+                    <span class="v121_79">Nome Completo</span>
+                </label>
+
+                <label class="costum-field">
+                    <input class="v121_16" type="text" id="inputEmail" required></input>
+                    <span class="v121_15">Endereço Eletrónico</span>
+                </label>
+
+                <label class="costum-field">
+                    <input class="v121_76 js-datepicker" type="text" id="inputBirth" required></input>
+                    <span class="v121_78">Data de Nascimento</span>
+                    <div class="v137_3 js-btn-calendar"></div>
+                </label>
+
+                <label class="costum-field">
+                    <input class="v121_73" type="password" id="inputPassword" required></input>
+                    <span class="v121_75">Palavra-Passe</span>
+                    <div class="v121_74" onclick="toggle()"></div>
+                </label>
+
+                <span class="v121_21">Registar</span>
+
+                <div class="v121_24"></div>
+
+                <span class="v121_25">Regista-te com o Google</span>
+
+                <div class="v121_26"></div>
+
+                <span class="v121_40" id="goToLogin">Login</span>
+
+                <span class="v121_41">Precisas de Ajuda?</span>
+
+                <span class="v121_80">OU</span>
+
+                <div class="v190_6"></div>
+
+                <div class="v121_18" id="btnRegistar">Registar</div>
+
+
+                <!-- alert verification of data -->
+                <div class="alertAge" id="alert">
+        
+                    <div class="v237_20"></div>
+                    <div class="v237_21"></div>
+                    <div class="v237_22" id="alertAge">Tens que ter mais de 4 anos e menos de 18 para te registares.</div>
+                    <div class="v237_232" id="alertAgeNC">Diz-nos a tua data de nascimento!</div>
+                    <div class="v237_242" id="alertEmail">Escreve um email válido por favor.</div>
+                    <div class="v237_252" id="alertName">Escreve o teu nome por favor.</div>
+                    <div class="v237_262" id="alertPass">Não te esqueças da palavra-passe!</div>
+                    <div class="v237_272" id="alertEmailNC">Escreve o teu email por favor.</div>
+                    <span class="v237_23">Erro!</span>
+                    <div class="v237_24" id="okAlert">OK</div>
+                </div>
+
+                <!-- alert regist done-->
+                <div class="v238_0" id="alertRegistD">
+                    <div class="v254_0"></div>
+                    <span class="v254_1">Enviamos-te um email de confirmação. Carrega no link que lá está, dentro de 48h, e estás pronto para começar!</span>
+                    <span class="v254_2">Registo Feito!</span>
+                    <div class="v254_3" id="okRegist">OK</div>
+                    <div class="v254_5"></div>
+                    <span class="v254_6">Pede ajuda aos teus pais!</span>
+                </div>
+
+            </div>
+
+        </form>
+
+        <!-- Jquery JS-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+
+        <!-- Vendor JS-->
+        <script src="vendor/datepicker/moment.min.js"></script>
+        <script src="vendor/datepicker/daterangepicker.js"></script>
+
+        <!-- Main JS-->
+        <script src="js/regist.js"></script>
+        <script src="js/dateChooser.js"></script>
+        
+    </body>
+
+</html>

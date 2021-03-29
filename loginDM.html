@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    
+<head>
+
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta charset="UTF-8">
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+    <link href="./css/loginDM.css" rel="stylesheet" />
+
+    
+    
+    <title>Document</title>
+
+</head>
+
+<body>
+    
+    <div class="v103_155">
+
+        <label class="costum-field">
+            <input class="v103_161" type="text" id="inputEmail" required></input>
+            <span class="v103_162">Endereço Eletrónico</span>
+        </label>
+
+        <label class="costum-field">
+            <input class="v103_163" type="password" id="inputPassword" required></input>
+            <span class="v121_2">Palavra-Passe</span>
+            <div class="v103_168" onclick="toggle()"></div>
+        </label>
+       
+        
+        <span class="v103_165">Esqueceu-se da palavra-passe?</span>
+        <div class="v103_166" id="LogIn">Entrar</div>
+        <span class="v103_169">LOGIN</span>
+        <span class="v104_23">OU</span>
+        <div class="v104_22">Entra com o Google</div>
+        <div class="v104_25"></div>
+        <span class="v106_6" id="createAccount">Criar Conta</span>
+        <span class="v106_7">Precisas de Ajuda?</span>
+        <div class="v190_6"></div>
+
+        <div class="v238_0" id="alert">
+            <div class="v278_0"></div>
+            <div class="v278_1"></div>
+            <div class="v278_2" id="alertEmail">Escreve um email válido por favor.</div>
+            <div class="v278_2" id="alertPass">Não te esqueças da palavra-passe!</div>
+            <div class="v278_2" id="alertEmailNC">Escreve o teu email por favor.</div>
+            <div class="v278_2" id="alertPassNR">A palavra-passe está errada.<br>Tens mais 2 tentativas...</div>
+            <span class="v278_3">Erro!</span>
+            <div class="v278_4" id="okAlert">OK</div>
+        </div>
+        
+    </div>
+
+    <!-- Main JS-->
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>
