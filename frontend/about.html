@@ -13,25 +13,19 @@
         <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
         <link href="./css/about.css" rel="stylesheet" />
+        <link href="./css/global.css" rel="stylesheet" />
         
         <title>About</title>
     
     </head>
     
     <body>
-        
-        <div class="v132_101">
 
-            <!-- head bar-->
-            <div class="v104_15"></div>
-            <div class="v190_34"></div>
-            
-            <!-- footer bar-->
-            <div class="v124_13"></div>
-            <a class="v124_17" href="inicialPage.html"></a>
-            <a class="v294_0" href="settings.html"></a>
-            <a class="v124_22" href="perfil.html"></a>
-            <div class="v294_3"></div>
+            <header>
+                    
+                <div id="header" class="v104_15"><div id="headerimg"class="v190_34"></div></div>
+    
+            </header>
             
             <div class="v132_120" onclick="goBack()"></div>
             <span class="v132_121">Sobre</span>
@@ -41,7 +35,16 @@
             <div class="v168_4"></div>
             <span class="v314_2">Política de Dados</span>
             <div class="v314_3"></div>
-        </div>
+    
+            <!-- footer -->
+            <div id="app-footer">
+                <ul>
+                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
+                </ul>
+            </div>
 
         <script src="js/about.js"></script>
 

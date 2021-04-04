@@ -13,6 +13,12 @@ let trash = document.getElementById("trash");
 let showStickers = document.getElementById("showStickers");
 let stickers = document.getElementById("stickers");
 
+let hide1 = document.getElementsByClassName("rotation-handle");
+let hide2 = document.getElementsByClassName("resizer_tl");
+let hide3 = document.getElementsByClassName("resizer_tr");
+let hide4 = document.getElementsByClassName("resizer_bl");
+let hide5 = document.getElementsByClassName("resizer_br");
+
 
 if(screen.availHeight > screen.availWidth){
 
@@ -133,6 +139,24 @@ let is_drawing = false;
 let restore_array = [];
 let index = -1;
 
+window.onload = function(){
+
+    let dataURL = localStorage.getItem("takenpicture");
+
+    if(dataURL != null){
+
+        var img = new Image;
+        img.src = dataURL;
+        img.onload = function () {
+            context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+        };
+
+        localStorage.removeItem('takenpicture');
+        
+    }
+
+}
+
 //change pencil's color
 function change_color(element){
     draw_color = element.style.background;
@@ -233,10 +257,8 @@ pen_pencil.addEventListener("click", function() {
         }
         event.preventDefault();
 
-        if(event.type != 'mouseout'){
-            restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
-            index += 1;
-        }
+        restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+        index += 1;
         
     }
 
@@ -290,38 +312,48 @@ trash.addEventListener("click", function(){
         
     }
 
-    document.getElementById("alertdelete").style.display = "block";
-
-    let yesAlert = document.getElementById("yesAlertD");
-
-    let noAlert = document.getElementById("noAlertD");
-
-    yesAlert.addEventListener("click", function() {
-
-        clear_canvas();
-        location.reload();
-        document.getElementById("alertdelete").style.display = "none";
-
-    });
-
-    noAlert.addEventListener("click", function() {
-
-        document.getElementById("alertdelete").style.display = "none";
-        showresize();
-
+    swal({
+        icon: 'images/Usure_icon.png',
+        title: 'Tens a certeza?',
+        text: 'Queres apagar a tua criação?',
+        className: "swalAlert",
+        buttons: {
+        catch: {
+          text: "Sim",
+          value: "catch",
+        },
+        cancel: "Não",
+      },
+    })
+    .then((value) => {
+        switch (value) {
+     
+            case "catch":
+                clear_canvas();
+                location.reload();
+                break;
+        
+            default:
+                showresize();
+        }
     });
 
 });
 
+let i=0;
 
 rubber.addEventListener("click", function() {
+
+    i = i + 1;
+    console.log("click = " + i);
+    console.log("index = " + index);
 
     if(index <= 0){
         clear_canvas();
     }else{
-        index -= 1;
+        context.putImageData(restore_array[index-1], 0, 0);
         restore_array.pop();
-        context.putImageData(restore_array[index], 0, 0);
+        index-- ;
     }
 
 });
@@ -566,6 +598,7 @@ sticker10.addEventListener("click", function(){
 
 let angleNow = 0;
 
+
 interact('.item')
   .draggable({
     onmove: window.dragMoveListener
@@ -666,17 +699,11 @@ function getDragAngle(event) {
     return angle - startAngle;
 }
 
-
 //SAVE BUTTON - ITS WORKING EHEHEHEH
 let drawings_array = [];
 
 function hideresize() {
 
-    let hide1 = document.getElementsByClassName("rotation-handle");
-    let hide2 = document.getElementsByClassName("resizer_tl");
-    let hide3 = document.getElementsByClassName("resizer_tr");
-    let hide4 = document.getElementsByClassName("resizer_bl");
-    let hide5 = document.getElementsByClassName("resizer_br");
     
     if(hide1 != null){
         for(let i =0; i<hide1.length; i++){
@@ -701,12 +728,6 @@ function hideresize() {
 }
 
 function showresize() {
-
-    let hide1 = document.getElementsByClassName("rotation-handle");
-    let hide2 = document.getElementsByClassName("resizer_tl");
-    let hide3 = document.getElementsByClassName("resizer_tr");
-    let hide4 = document.getElementsByClassName("resizer_bl");
-    let hide5 = document.getElementsByClassName("resizer_br");
     
     if(hide1 != null){
         for(let i =0; i<hide1.length; i++){
@@ -734,36 +755,41 @@ function printCriation(){
 
     hideresize();
     closeAll();
-    let alert = document.getElementById("alertsave");
-    alert.style.display = "block";
 
-    let okAlert = document.getElementById("okAlertS");
-
-    okAlert.addEventListener("click", function() {
-
-        alert.style.display = "none";
-
-        let alertL = document.getElementById("alertleave");
-        alertL.style.display = "block";
-
-        let yesAlert = document.getElementById("yesAlertL");
-        let noAlert = document.getElementById("noAlertL");
-
-        yesAlert.addEventListener("click", function() {
-
-            window.location.replace("mydrawings.html");
-            alertL.style.display = "none";
-
-        });
-
-        noAlert.addEventListener("click", function() {
-
-            alertL.style.display = "none";
-            showresize();
-
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Guardada',
+        text: 'A tua criação foi guardada!',
+        className: "swalAlert",
+        button: 'Ok',
+    }).then((value) => {
+        
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Sair?',
+            text: 'Queres sair ou continuar a editar?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Editar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("mydrawings.html");
+            
+                default:
+                    showresize();
+            }
+    
         });
 
     });
+
 
     html2canvas([document.getElementById('capture')], {
         onrendered: function (canvasprint) {

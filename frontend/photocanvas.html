@@ -12,14 +12,20 @@
         
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="./css/global.css" rel="stylesheet" />
+        <link href="./css/canvas.css" rel="stylesheet" />
         <link href="./css/photocanvas.css" rel="stylesheet" />
 
         <!-- html2canvas-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
-
+        
+        <!-- interact.js library-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.6/interact.min.js"></script>
         <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+        <!-- sweetAlert-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
         <title>Document</title>
         
@@ -27,52 +33,13 @@
         
     <body id="body">
 
-        <div class="v268_32">
-
             <header>
                     
-                <div id="header" class="v104_15"></div>
-                <div id="headerimg"class="v190_34"></div>
-                <div id="saveCancas" class="saveicon" onclick="printCriation()"></div>
+                <div id="header" class="v104_15"><div id="headerimg"class="v190_34"></div><div id="saveCancas" class="saveicon" onclick="printCriation()"></div></div> 
 
             </header>
-
-            <div id="capture"></div>
-
-            <div class="v238_0" id="alert">
-                <div class="v278_0">
-                    <div class="v278_1"></div>
-                    <span class="v278_3">Tens a certeza?</span>
-                    <div class="v278_2">Queres apagar a tua criação?</div>
-                    <div class="v278_4" id="yesAlert">Sim</div>
-                    <div class="v278_5" id="noAlert">Não</div>
-                </div>
-            </div>
-
-            <div class="v238_0" id="alertsave">
-                <div class="v278_0">
-                    <div class="sucess_image"></div>
-                    <span class="v278_3">Guardada</span>
-                    <div class="v278_2">A tua criação foi guardada!</div>
-                    <div class="okAlertS" id="okAlertS">Ok</div>
-                </div>
-            </div>
-
-            <div class="v238_0" id="alertleave">
-                <div class="v278_0">
-                    <div class="v278_1"></div>
-                    <span class="v278_3">Sair?</span>
-                    <div class="v278_2">Queres sair ou continuar a editar?</div>
-                    <div class="v278_4" id="yesAlertL">Sair</div>
-                    <div class="v278_5" id="noAlertL">Editar</div>
-                </div>
-            </div>
-
-            <div class="row" id="row">
-
-                <label id="inputLabel" class="v377_35">Escolher fotografia<input class="inputfile" id="inputfile" type="file" accept="image/*"></input></label>
             
-            </div>
+            <div id="capture"></div>
 
             <canvas id="canvas" class="canvas"></canvas>
 
@@ -122,6 +89,10 @@
 
                 <div class="v368_6" id="trash"></div>
             </div>
+
+            <div class="v140_12" id="goBack" onclick="goBack()"></div>
+
+            <label id="inputLabel" class="v377_35">Escolher fotografia<input class="inputfile" id="inputfile" type="file" accept="image/*"></input></label>
                 
             <!-- footer -->
             <div id="app-footer">
@@ -132,8 +103,6 @@
                     <li><a id="logout" class="button"><svg class="v294_3"></svg></a></li>
                 </ul>
             </div>
-
-        </div>
 
         <script src="js/photocanvas.js"></script>
         

@@ -13,36 +13,42 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
         <link href="./css/map.css" rel="stylesheet" />
 
-        <script src="https://maps.googleapis.com/maps/api/js?/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw&callback=initMap"
-        type="text/javascript"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw"></script>
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <title>Map</title>
         
     </head>
         
     <body>
-
-        <div class="v268_32">
-
-            <header>
+        <header>
                     
-                <div id="header" class="v104_15"></div>
+            <div id="header" class="v104_15">
                 <div id="headerimg"class="v190_34"></div>
-
-            </header>
-
-            <div id="map"></div>
-                
-            <!-- footer -->
-            <div id="app-footer">
-                <ul>
-                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
-                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
-                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
-                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
-                </ul>
+                <a id="takePicture" class="tkpicture" href="camera.html"></a>
+                <div id="favorites" class="favorites"></div>
             </div>
 
+        </header>
+        
+        <div class="v268_32">
+
+            <div id="map"></div>
+            
+        </div>
+
+        <!-- footer -->
+        <div id="app-footer">
+            <ul>
+                <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
+            </ul>
+        </div>
+
+        
         <script src="js/map.js"></script>
         
     </body>    

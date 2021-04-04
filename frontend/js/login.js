@@ -36,30 +36,47 @@ let btnLogin = document.getElementById("LogIn");
 
 btnLogin.addEventListener("click", function() {
 
-    let email = document.getElementById("inputEmail").value;
-    let password = document.getElementById("inputPassword").value;
+    let email = document.getElementById("inputEmail");
+    let password = document.getElementById("inputPassword");
 
-    let alert = document.getElementById("alert");
-
-    let alertEmail = document.getElementById("alertEmail");
-    let alertPass = document.getElementById("alertPass");
-    let alertEmailNC = document.getElementById("alertEmailNC");
-    let alertPassNR = document.getElementById("alertPassNR");
-
-    if(email == ""){
-        alertEmailNC.style.display = "block";
-        alert.style.display = "block";
+    if(email.value == ""){
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Preenche o teu Email!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            email.focus();
+        });
     }
 
-    else if(password == ""){
-        alertPass.style.display = "block";
-        alert.style.display = "block";
+    else if(password.value == ""){
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Preenche a tua Palavra-Passe!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            password.focus();
+        });
     }
 
     /* FAZER CODIGO PARA O EMAIL QND O EMAIL NAO ESTÁ REGISTADO */
-    else if(validateEmail(email) == false){
-        alertEmail.style.display = "block";
-        alert.style.display = "block";
+    else if(validateEmail(email.value) == false){
+        swal({
+            icon: 'images/v237_21.png',
+            title: 'Atenção',
+            text: 'O email não é válido.',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            email.focus();
+        });
     }
 
     /* CODIGO PARA A PASS ERRADA
@@ -72,40 +89,6 @@ btnLogin.addEventListener("click", function() {
         
         //codigo de fazer login na base de dados
         window.location.replace("inicialPage.html");
-    }
-
-});
-
-let btnOkAlert = document.getElementById("okAlert");
-
-btnOkAlert.addEventListener("click", function() {
-
-    let alert = document.getElementById("alert");
-
-    let alertEmail = document.getElementById("alertEmail");
-    let alertPass = document.getElementById("alertPass");
-    let alertEmailNC = document.getElementById("alertEmailNC");
-    let alertPassNR = document.getElementById("alertPassNR");
-
-
-    if(alertEmail.style.display == "block"){
-        alertEmail.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertEmailNC.style.display == "block"){
-        alertEmailNC.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertPass.style.display == "block"){
-        alertPass.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if (alertPassNR.style.display == "block"){
-        alertPass.style.display = "none";
-        alert.style.display = "none";
     }
 
 });

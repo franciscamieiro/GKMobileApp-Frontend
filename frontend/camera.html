@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+        
+    <head>
+
+        <!-- Adapt screen to any mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Adapt special characteres -->
+        <meta charset="UTF-8">
+        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="./css/camera.css" rel="stylesheet" />
+        <link href="./css/global.css" rel="stylesheet" />
+
+
+        <title>Camera</title>
+        
+    </head>
+        
+    <body>
+        
+        <div class="video-wrap">
+            <video id="video" playsinline autoplay></video>
+        </div>
+
+        <div class="controller">
+            <div id="snap">Tirar fotografia</div>
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <div id="download">Guardar fotografia</div>
+        
+        <div id="draw">Desenhar na foto</div>
+        
+        
+        <script src="js/camera.js"></script>
+        
+    </body>    
+</html>

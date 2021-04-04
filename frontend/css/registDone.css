@@ -2,20 +2,14 @@
   overflow-x: hidden;
 }
 
+html,
 body{
-  background: rgba(255,255,255,1);
+    background: rgba(255,255,255,1);
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.v122_223 {
-  width: 360px;
-  height: 640px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
 .v122_311 {
   width: 160px;
   height: 34px;
@@ -139,7 +133,7 @@ body{
 .v190_21 {
   width: 240px;
   height: 47px;
-  background: url("../images/v190_21.png");
+  background: url("../images/v190_34.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

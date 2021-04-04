@@ -12,12 +12,12 @@ let rubber = document.getElementById("rubber");
 let trash = document.getElementById("trash");
 let showStickers = document.getElementById("showStickers");
 let stickers = document.getElementById("stickers");
-let row = document.getElementById("row");
 let inputLabel = document.getElementById("inputLabel");
+let back = document.getElementById("goBack");
 
 toolsbar.addEventListener("click", function() {
 
-    if(tools.style.transform == "translate(-55px)"){
+    if(tools.style.transform == "translate(-62px)"){
 
         tools.style.transform = "translate(0px)";
         toolsbar.style.transform = "translate(0px)";
@@ -29,8 +29,8 @@ toolsbar.addEventListener("click", function() {
 
     }else{
 
-        tools.style.transform = "translate(-55px)";
-        toolsbar.style.transform = "translate(-55px)";
+        tools.style.transform = "translate(-62px)";
+        toolsbar.style.transform = "translate(-62px)";
         header.style.transform = "translate(0px,-55px)";
         headerimg.style.transform = "translate(0px,-55px)";
         saveCancas.style.transform = "translate(0px,-55px)";
@@ -77,8 +77,6 @@ function loadCanvasWithInputFile(cns){
 	cns.height = window.innerHeight;
     var fileinput = document.getElementById('inputfile'); // input file
     var img = new Image();
-    cns.width = window.innerWidth;
-    cns.height = window.innerHeight;
 
     fileinput.onchange = function(evt) {
         var files = evt.target.files; // FileList object
@@ -96,16 +94,16 @@ function loadCanvasWithInputFile(cns){
                         toolsbar.style.display = "block";
                         tools.style.display = "block";
                         saveCancas.style.display = "block";
-                        row.style.display = "none";
                         inputLabel.style.display = "none";
+                        back.style.display = "none";
                     }else{
                         img.onload = () => context.drawImage(img, 0, 0, img.width, img.height, 0, 0, cns.width, cns.height);
                         cns.style.display = "block";
                         toolsbar.style.display = "block";
                         tools.style.display = "block";
                         saveCancas.style.display = "block";
-                        row.style.display = "none";
                         inputLabel.style.display = "none";
+                        back.style.display = "none";
                     }
                 }
             }   
@@ -211,8 +209,8 @@ pen_pencil.addEventListener("click", function() {
             headerimg.style.transform = "translate(0px,-55px)";
             saveCancas.style.transform = "translate(0px,-55px)";
             app_footer.style.transform = "translate(0px,55px)";
-            tools.style.transform = "translate(-55px)";
-            toolsbar.style.transform = "translate(-55px)"
+            tools.style.transform = "translate(-62px)";
+            toolsbar.style.transform = "translate(-62px)"
 
             if(colors.style.display == "block"){
                 colors.style.display = "none";
@@ -241,10 +239,8 @@ pen_pencil.addEventListener("click", function() {
         }
         event.preventDefault();
 
-        if(event.type != 'mouseout'){
-            restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
-            index += 1;
-        }
+        restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+        index += 1;
         
     }
 
@@ -289,8 +285,8 @@ trash.addEventListener("click", function(){
 
     }else{
 
-        tools.style.transform = "translate(-55px)";
-        toolsbar.style.transform = "translate(-55px)";
+        tools.style.transform = "translate(-62px)";
+        toolsbar.style.transform = "translate(-62px)";
         header.style.transform = "translate(0px,-55px)";
         headerimg.style.transform = "translate(0px,-55px)";
         saveCancas.style.transform = "translate(0px,-55px)";
@@ -298,38 +294,47 @@ trash.addEventListener("click", function(){
         
     }
 
-    document.getElementById("alert").style.display = "block";
-
-    let yesAlert = document.getElementById("yesAlert");
-
-    let noAlert = document.getElementById("noAlert");
-
-    yesAlert.addEventListener("click", function() {
-
-        clear_canvas();
-        location.reload();
-
-    });
-
-    noAlert.addEventListener("click", function() {
-
-        document.getElementById("alert").style.display = "none";
-        showresize();
-
+    swal({
+        icon: 'images/Usure_icon.png',
+        title: 'Tens a certeza?',
+        text: 'Queres apagar a tua criação?',
+        className: "swalAlert",
+        buttons: {
+        catch: {
+          text: "Sim",
+          value: "catch",
+        },
+        cancel: "Não",
+      },
+    })
+    .then((value) => {
+        switch (value) {
+     
+            case "catch":
+                clear_canvas();
+                location.reload();
+                break;
+        
+            default:
+                showresize();
+        }
     });
 
 });
 
-
-
+let i=0;
 
 rubber.addEventListener("click", function() {
 
+    i = i + 1;
+    console.log("click = " + i);
+    console.log("index = " + index);
+
     if(index <= 0){
     }else{
-        index -= 1;
+        context.putImageData(restore_array[index-1], 0, 0);
         restore_array.pop();
-        context.putImageData(restore_array[index], 0, 0);
+        index-- ;
     }
 
 });
@@ -348,8 +353,8 @@ function closeAll() {
 
     }else{
 
-        tools.style.transform = "translate(-55px)";
-        toolsbar.style.transform = "translate(-55px)";
+        tools.style.transform = "translate(-62px)";
+        toolsbar.style.transform = "translate(-62px)";
         header.style.transform = "translate(0px,-55px)";
         headerimg.style.transform = "translate(0px,-55px)";
         saveCancas.style.transform = "translate(0px,-55px)";
@@ -733,33 +738,37 @@ function printCriation(){
 
     hideresize();
     closeAll();
-    let alert = document.getElementById("alertsave");
-    alert.style.display = "block";
-
-    let okAlert = document.getElementById("okAlertS");
-
-    okAlert.addEventListener("click", function() {
-
-        alert.style.display = "none";
-
-        let alertL = document.getElementById("alertleave");
-        alertL.style.display = "block";
-
-        let yesAlert = document.getElementById("yesAlertL");
-        let noAlert = document.getElementById("noAlertL");
-
-        yesAlert.addEventListener("click", function() {
-
-            window.location.replace("mydrawings.html");
-            alertL.style.display = "none";
-
-        });
-
-        noAlert.addEventListener("click", function() {
-
-            alertL.style.display = "none";
-            showresize();
-
+    
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Guardada',
+        text: 'A tua criação foi guardada!',
+        className: "swalAlert",
+        button: 'Ok',
+    }).then((value) => {
+        
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Sair?',
+            text: 'Queres sair ou continuar a editar?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Editar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("mydrawings.html");
+            
+                default:
+                    showresize();
+            }
+    
         });
 
     });
@@ -776,3 +785,8 @@ function printCriation(){
         
     });
 }
+
+function goBack() {
+    window.history.back();
+}
+  

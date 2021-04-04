@@ -1,0 +1,97 @@
+#canvas{
+    display: none;
+    position: absolute;
+    top:0;
+    bottom: 0;
+}
+
+#snap{
+    position: absolute;
+    bottom: 0px;
+    background-color: #127D9E;
+    border: 1px solid #2C0F08;
+    height: 34px;
+    width: 140px;
+    left: 50%;
+    margin-left: -70px;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 14px;
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+}
+
+
+#download{
+    left: 50%;
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    background-color: #127D9E;
+    border: 1px solid #2C0F08;
+    height: 34px;
+    width: 140px;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 14px;
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    margin-left: 15px;
+    display: none;
+}
+
+#draw{
+    left: 50%;
+    margin-left: -160px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    background-color: #127D9E;
+    border: 1px solid #2C0F08;
+    height: 34px;
+    width: 140px;
+    margin-bottom: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 14px;
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    display: none;
+}
+
+.video-wrap{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width:359px) {
+    #draw{
+        width: 120px;
+        margin-left: -130px;
+    }
+
+    #download{
+        width: 120px;
+        margin-left: 10px;
+    }
+}

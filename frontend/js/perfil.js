@@ -18,8 +18,6 @@ let avatar6 = document.getElementById("avatar6");
 let avatar7 = document.getElementById("avatar7");
 let avatar8 = document.getElementById("avatar8");
 let avatar9 = document.getElementById("avatar9");
-let backicon = document.getElementById("backicon");
-let nexticon = document.getElementById("nexticon");
 let avatarsrow1 = document.getElementById("avatarsrow1");
 let avatarsrow2 = document.getElementById("avatarsrow2");
 let avatarsrow3 = document.getElementById("avatarsrow3");
@@ -41,13 +39,107 @@ btnEdit.addEventListener("click", function() {
 
     }else{
 
-        btnEdit.innerHTML = 'Editar';
-        username.disabled = true;
-        fullname.disabled = true;
-        birth.disabled = true;
-        email.disabled = true;
-        pass.disabled = true;
-        allowphotoEdit.style.display = "none";
+        if(avatars.style.display == "block"){
+            avatars.style.display = "none";
+        }
+
+        if(username.value == ""){
+        
+            swal({
+                icon: 'images/warning.png',
+                title: 'Atenção',
+                text: 'Preenche o teu username!',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                username.focus();
+            });
+        }
+
+        else if(fullname.value == ""){
+
+            swal({
+                icon: 'images/warning.png',
+                title: 'Atenção',
+                text: 'Preenche o teu Nome!',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                fullname.focus();
+            });
+            
+        }
+
+        else if(birth.value == ""){
+
+            swal({
+                icon: 'images/warning.png',
+                title: 'Atenção',
+                text: 'Preenche a tua data de nascimento!',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                birth.focus();
+            });
+            
+        }
+
+        else if(email.value == ""){
+
+            swal({
+                icon: 'images/warning.png',
+                title: 'Atenção',
+                text: 'Preenche o teu email!',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                email.focus();
+            });
+            
+        }
+
+        else if(pass.value == ""){
+
+            swal({
+                icon: 'images/warning.png',
+                title: 'Atenção',
+                text: 'Preenche a tua palavra passe!',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                pass.focus();
+            });
+            
+        }
+        
+        else{
+
+            swal({
+                icon: 'images/v254_5.png',
+                title: 'Sucesso',
+                text: 'Dados Guardados!',
+                buttons: false,
+                className: "swalAlertSucess"
+                
+            }).then(function(isConfirm) {
+
+                btnEdit.innerHTML = 'Editar';
+                username.disabled = true;
+                fullname.disabled = true;
+                birth.disabled = true;
+                email.disabled = true;
+                pass.disabled = true;
+                allowphotoEdit.style.display = "none";
+
+            });
+
+            
+        }
     }
     
 });

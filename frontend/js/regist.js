@@ -50,114 +50,119 @@ let btnSubmit = document.getElementById("btnRegistar");
 
 btnSubmit.addEventListener("click", function() {
 
-    let name = document.getElementById("inputName").value;
-    let email = document.getElementById("inputEmail").value;
-    let birth = document.getElementById("inputBirth").value;
-    let password = document.getElementById("inputPassword").value;
+    let name = document.getElementById("inputName");
+    let email = document.getElementById("inputEmail");
+    let birth = document.getElementById("inputBirth");
+    let password = document.getElementById("inputPassword");
 
     let age = getAge(birth);
 
-    let alert = document.getElementById("alert");
+    if(name.value == ""){
 
-    let alertAge = document.getElementById("alertAge");
-    let alertAgeNC = document.getElementById("alertAgeNC");
-    let alertName = document.getElementById("alertName");
-    let alertEmail = document.getElementById("alertEmail");
-    let alertPass = document.getElementById("alertPass");
-    let alertEmailNC = document.getElementById("alertEmailNC");
-    let alertRegistD = document.getElementById("alertRegistD");
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Preenche o teu Nome!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            name.focus();
+        });
 
-    if(name == ""){
-        alertName.style.display = "block";
-        alert.style.display = "block";
     }
 
-    else if(email == ""){
-        alertEmailNC.style.display = "block";
-        alert.style.display = "block";
+    else if(birth.value == ""){
+
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Preenche a data de nascimento!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            birth.focus();
+        });
+
     }
 
-    else if(birth == ""){
-        alertAgeNC.style.display = "block";
-        alert.style.display = "block";
+    else if(email.value == ""){
+
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Preenche o teu Email!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            email.focus();
+        });
+
     }
 
-    else if(password == ""){
-        alertPass.style.display = "block";
-        alert.style.display = "block";
+    else if(password.value == ""){
+
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Preenche a tua Palavra-Passe!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            password.focus();
+        });
+
     }
 
     else if(age < 4 || age > 18){
-        alertAge.style.display = "block";
-        alert.style.display = "block";
+
+        swal({
+            icon: 'images/warning.png',
+            title: 'Atenção',
+            text: 'Tens que ter entre 4 e 18 anos!',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            birth.focus();
+        });
+
     }
 
-    else if(validateEmail(email) == false){
-        alertEmail.style.display = "block";
-        alert.style.display = "block";
+    else if(validateEmail(email.value) == false){
+
+        swal({
+            icon: 'images/v237_21.png',
+            title: 'Atenção',
+            text: 'O email não é válido.',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            email.focus();
+        });
+
     }
 
     else{
         
+        
+        swal({
+            icon: 'images/v254_5.png',
+            title: 'Sucesso',
+            text: 'Registo feito com sucesso.',
+            button: 'OK',
+            className: "swalAlert"
+            
+        }).then(function(isConfirm) {
+            window.location.replace("registDone.html");
+        });
+
         //codigo de pôr users na base de dados e criar login
-        alertRegistD.style.display = "block";
 
     }
-
-});
-
-let btnOkAlert = document.getElementById("okAlert");
-
-btnOkAlert.addEventListener("click", function() {
-
-    let alert = document.getElementById("alert");
-
-    let alertAge = document.getElementById("alertAge");
-    let alertAgeNC = document.getElementById("alertAgeNC");
-    let alertName = document.getElementById("alertName");
-    let alertEmail = document.getElementById("alertEmail");
-    let alertPass = document.getElementById("alertPass");
-    let alertEmailNC = document.getElementById("alertEmailNC");
-
-    if(alertName.style.display == "block"){
-        alertName.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertEmail.style.display == "block"){
-        alertEmail.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertEmailNC.style.display == "block"){
-        alertEmailNC.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertAge.style.display == "block"){
-        alertAge.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertAgeNC.style.display == "block"){
-        alertAgeNC.style.display = "none";
-        alert.style.display = "none";
-    }
-
-    else if(alertPass.style.display == "block"){
-        alertPass.style.display = "none";
-        alert.style.display = "none";
-    }
-
-});
-
-let btnOkRegist = document.getElementById("okRegist");
-
-btnOkRegist.addEventListener("click", function() {
-
-    let alertRegistD = document.getElementById("alertRegistD");
-
-    window.location.replace("registDone.html");
-    
 
 });
