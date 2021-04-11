@@ -1,0 +1,99 @@
+* {
+    overflow-x: hidden;
+}
+
+.container {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+body {
+    font-size: 14px;
+}
+
+.v549_66 {
+    width: 133px;
+    color: rgba(72, 72, 72, 1);
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 13px;
+    opacity: 1;
+    text-align: center;
+}
+
+.v549_69 {
+    width: 100%;
+    color: rgba(72, 72, 72, 1);
+    position: absolute;
+    top: 536px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 13px;
+    opacity: 1;
+    text-align: center;
+    float: right;
+}
+
+.v549_94 {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(167, 114, 190, 1);
+    border-color: black;
+    border-radius: 10px;
+    color: white;
+    /* hover: rgba(85, 31, 110, 1); */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.v549_95 {
+    width: 20px;
+    height: 20px;
+    background: url("../images/v549_95.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 492px;
+    left: 170px;
+    overflow: hidden;
+}
+
+.imgtn {
+    display: block;
+    left: 0;
+    position: absolute;
+    top: -2%;
+    z-index: 1;
+}
+
+.v272_438 {
+    margin-top: 100px;
+    width: 100%;
+    color: rgba(167, 114, 190, 1);
+    font-family: Londrina Solid;
+    font-weight: Black;
+    font-size: 27px;
+    opacity: 1;
+    text-align: center;
+    float: right;
+}
+
+
+/* novo */
+
+.criacoesimg {
+    object-fit: cover;
+    max-width: 100%;
+    pointer-events: none;
+}
+
+.v549_186 {
+    width: 26px;
+    height: 26px;
+}

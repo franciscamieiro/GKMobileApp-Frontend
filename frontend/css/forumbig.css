@@ -1,0 +1,383 @@
+.body2 {
+    height: 600px;
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+main {
+    padding-top: 80px;
+}
+
+.row {
+    padding-top: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.75rem;
+    margin-left: -0.75rem;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(68, 99, 178, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.smallkidimg {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    -ms-transform: translateZ(0);
+    /* IE 9 */
+    -webkit-transform: translateZ(0);
+    /* Chrome, Safari, Opera */
+    transform: translateZ(0);
+    pointer-events: none;
+}
+
+.criacoesimg {
+    object-fit: cover;
+    max-width: 100%;
+    pointer-events: none;
+}
+
+.v549_186 {
+    width: 26px;
+    height: 26px;
+}
+
+
+/* responsive media queries*/
+
+@media screen and (max-width:1000px) {
+    .v124_42 {
+        width: 40%;
+    }
+    .v124_43 {
+        width: 40%;
+    }
+    .v114_0 {
+        width: 40%;
+    }
+    .v115_2 {
+        width: 40%;
+    }
+    .v122_435 {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:620px) {
+    .v103_280 {
+        width: 100%;
+    }
+    .v124_42 {
+        width: 80%;
+    }
+    .v124_43 {
+        width: 80%;
+    }
+    .v114_0 {
+        width: 80%;
+    }
+    .v115_2 {
+        width: 80%;
+    }
+    .v122_435 {
+        width: 80%;
+    }
+}
+
+.v103_280 {
+    max-width: 100%;
+    min-width: 190px;
+    min-height: 850px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+
+/* SISTEMA DE AVALIAÇÃO DE ESTRELAS */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #c59b08;
+}
+
+
+/* FIM DA AVALIAÇÃO ESTRELAS */
+
+
+/* COMENTÁRIOS */
+
+.comment-section {
+    list-style: none;
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.comment {
+    display: flex;
+    border-radius: 3px;
+    margin-bottom: 45px;
+    flex-wrap: wrap;
+}
+
+.comment.user-comment {
+    color: #808080;
+    overflow: hidden;
+}
+
+.comment.author-comment {
+    color: #60686d;
+    justify-content: flex-end;
+}
+
+
+/* User and time info */
+
+.comment .info {
+    width: 17%;
+}
+
+.comment.user-comment .info {
+    text-align: right;
+}
+
+.comment.author-comment .info {
+    order: 3;
+}
+
+.comment .info a {
+    /* User name */
+    display: block;
+    text-decoration: none;
+    color: #656c71;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0 3px 0;
+}
+
+.comment .info span {
+    /* Time */
+    font-size: 11px;
+    color: #9ca7af;
+}
+
+
+/* The user avatar */
+
+.comment .avatar {
+    width: 8%;
+}
+
+.comment.user-comment .avatar {
+    padding: 10px 18px 0 3px;
+}
+
+.comment.author-comment .avatar {
+    order: 2;
+    padding: 10px 3px 0 18px;
+}
+
+.comment .avatar img {
+    display: block;
+    border-radius: 50%;
+}
+
+.comment.user-comment .avatar img {
+    float: right;
+}
+
+
+/* The comment text */
+
+.comment p {
+    line-height: 1.5;
+    padding: 18px 22px;
+    width: 50%;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.comment.user-comment p {
+    background-color: rgba(0, 0, 0, .03);
+}
+
+.comment.author-comment p {
+    background-color: #e2f8ff;
+    order: 1;
+}
+
+.user-comment p:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 2px solid #f3f3f3;
+    left: -8px;
+    top: 18px;
+}
+
+.author-comment p:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 2px solid #e2f8ff;
+    right: -8px;
+    top: 18px;
+}
+
+
+/* Comment form */
+
+.write-new {
+    width: 50%;
+}
+
+.write-new textarea {
+    color: #444;
+    font: inherit;
+    outline: 0;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    background-color: #fefefe;
+    box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+    overflow: auto;
+    width: 100%;
+    min-height: 80px;
+    padding: 15px 20px;
+}
+
+.write-new img {
+    border-radius: 50%;
+    margin-top: 15px;
+}
+
+.write-new button {
+    float: right;
+    background-color: #87bae1;
+    box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    border: 0;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 25px;
+    margin-top: 18px;
+}
+
+
+/* Responsive styles */
+
+@media (max-width: 800px) {
+    /* Make the paragraph in the comments take up the whole width,
+    forcing the avatar and user info to wrap to the next line*/
+    .comment p {
+        width: 100%;
+    }
+    /* Reverse the order of elements in the user comments,
+    so that the avatar and info appear after the text. */
+    .comment.user-comment .info {
+        order: 3;
+        text-align: left;
+    }
+    .comment.user-comment .avatar {
+        order: 2;
+    }
+    .comment.user-comment p {
+        order: 1;
+    }
+    /* Align toward the beginning of the container (to the left)
+    all the elements inside the author comments. */
+    .comment.author-comment {
+        justify-content: flex-start;
+    }
+    .comment-section {
+        margin-top: 1px;
+    }
+    .comment .info {
+        width: auto;
+    }
+    .comment .info a {
+        padding-top: 1px;
+    }
+    .comment.user-comment .avatar,
+    .comment.author-comment .avatar {
+        padding: 15px 10px 0 18px;
+        width: auto;
+    }
+    .comment.user-comment p:after,
+    .comment.author-comment p:after {
+        width: 12px;
+        height: 12px;
+        top: initial;
+        left: 28px;
+        bottom: -6px;
+    }
+    .write-new {
+        width: 100%;
+    }
+}
+
+.imagemredonda {
+    border-radius: 50%;
+}
