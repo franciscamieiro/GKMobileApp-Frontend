@@ -1,4 +1,3 @@
-
 let state= false;
 
 //function reveal password
