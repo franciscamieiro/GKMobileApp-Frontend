@@ -166,3 +166,44 @@ btnSubmit.addEventListener("click", function() {
     }
 
 });
+
+btnSubmit.addEventListener ("click", function() {
+
+    let data = {};
+    data.name = document.getElementById("inputName").value;
+    data.email = document.getElementById("inputEmail").value;
+    data.password = document.getElementById("inputPassword").value;
+    data.dateOfBirth = document.getElementById("inputBirth").value.split('-').reverse().join('-');
+    data.role = "CHILD";
+
+    console.log(data);
+    alert("é aqui");
+    fetch("https://gokids-dai.herokuapp.com/" + "api/registration", {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(data),
+        mode: 'no-cors'
+    }).then(function(response) {
+
+        if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            console.log(response.url); //=> String
+            if (response.status === 409) {
+                alert("Duplicado!");
+            }
+            else {
+                throw Error(response.statusText);
+            }
+        }
+        else {
+            alert("Submetido com sucesso");
+        }
+    }).then(function(result) {
+        console.log(result);
+    }).catch(function(err) {
+        alert("Erro de submissão");
+        console.error(err);
+    });
+});
