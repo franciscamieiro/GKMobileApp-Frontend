@@ -44,20 +44,26 @@ function goBack() {
             }
 
         }
-    }
+        else if(actions[0].style.display !== "block"){
+            if(title.innerHTML !== "Os meus desenhos"){
+                title.innerHTML = "Os meus desenhos";
+            }
 
-    else if(EditPlane.style.display == "block"){
-        EditPlane.style.display = "none";
-        buttonsPlane.style.display = "block";
-    }
-    else if(PublishPlane.style.display == "block"){
-        PublishPlane.style.display = "none";
-        buttonsPlane.style.display = "block";
+            if(EditPlane.style.display == "block"){
+                EditPlane.style.display = "none";
+                buttonsPlane.style.display = "block";
+            }
+            else if(PublishPlane.style.display == "block"){
+                PublishPlane.style.display = "none";
+                buttonsPlane.style.display = "block";
+            }
+        }
+        else{
+            window.history.back();
+        }
     }
     
-    else{
-        window.history.back();
-    }
+   
     
 }
 
