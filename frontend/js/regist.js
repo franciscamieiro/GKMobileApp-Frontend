@@ -55,7 +55,7 @@ btnSubmit.addEventListener("click", function() {
     let birth = document.getElementById("inputBirth");
     let password = document.getElementById("inputPassword");
 
-    let age = getAge(birth);
+    let age = getAge(birth.value);
 
     if(name.value == ""){
 
