@@ -1,7 +1,6 @@
 let selectall = document.getElementById("checkboxAll");
 let btnDelete = document.getElementById("btnDelete");
 let actions = document.getElementsByClassName("action");
-let checkbox = document.getElementsByClassName("checkbox");
 
 window.onload = function(){
     for(let i=0; i<actions.length; i++){
@@ -22,6 +21,8 @@ function isOdd(n) {
 let nclick = 0;
 
 selectall.addEventListener("click", function() {
+
+    let checkbox = document.getElementsByClassName("checkbox");
     
     nclick++;
 
@@ -39,6 +40,8 @@ selectall.addEventListener("click", function() {
 });
 
 btnDelete.addEventListener("click", function() {
+
+    let checkbox = document.getElementsByClassName("checkbox");
     
     let count = 0;
 
@@ -49,7 +52,7 @@ btnDelete.addEventListener("click", function() {
             if(checkbox[i].checked == true){
                 count++;
 
-                if(count == checkbox.length){
+                if(isOdd(nclick)){
                     document.getElementById("drawingswrapper").innerHTML = "";
                 }
 
@@ -57,16 +60,13 @@ btnDelete.addEventListener("click", function() {
                     for(let i=0; i<checkbox.length; i++){
                         if(checkbox[i].checked == true){
                             checkbox[i].parentElement.parentElement.remove();
+                            checkbox = document.getElementsByClassName("checkbox");
                         }
                     }
 
                 }
             }
-        }
-
-        //IF CHEBOXALL ESTÁ SELECIONADA DO LINHA 135 , ELSE DO CHECKBOX[i].REMOVE();
-
-        
+        }  
    
     }
 
