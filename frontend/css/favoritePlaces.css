@@ -1,0 +1,306 @@
+body{
+    overflow-y: visible;
+    background: rgba(255,255,255,1);
+    margin: 0;
+    padding: 0;
+}
+
+
+.body2 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnMarkFP {
+    margin-top: 140px;
+    position: relative;
+    width: 75%;
+    height: 43px;
+    background: #6DC0C0;
+    opacity: 1;
+    border: 1px solid #406969;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: rgba(255,255,255,1);
+    font-family: 'Open Sans';
+    font-weight: Medium;
+    font-size: 16px;
+    opacity: 1;
+    text-align: center;
+    padding-top: 7.5px;
+    padding-bottom: 6px;
+    text-shadow: -1px 1px #406969, 1px 1px #406969, 1px 1px #406969, 1px -1px #406969;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 75px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.v132_121 {
+    width: 160px;
+    color: rgba(142,80,168,1);
+    position: absolute;
+    top: 67px;
+    left: 76px;
+    font-family: Londrina Solid;
+    font-weight: Regular;
+    font-size: 25px;
+    opacity: 1;
+    text-align: center;
+}
+
+
+.v132_120 {
+    width: 32px;
+    height: 32px;
+    background: url(../images/v124_339.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 64px;
+    left: 19px;
+}
+
+.line{
+    position: relative;
+    width: 100%;
+    border-top: 1.5px solid #CCCCCC;
+}
+
+.favorites{
+    position: relative;
+    width: 113px;
+    height: 33px;
+    background: #F15B6C;
+    border: 1px solid #8E8E8E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #fff;
+    padding-top: 2px;
+    margin-top: -18px;
+}
+
+.nfavorites{
+    position: relative;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    color: #979797;
+    margin-top: 3px;
+}
+
+table{
+    position: relative;
+    font-family: Open Sans;
+    font-style:normal;
+    font-weight:lighter;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    overflow-y: visible;
+    margin-top: 30px;
+    margin-bottom: 85px;
+}
+
+td{
+    padding-bottom: 10px;
+}
+
+.place{
+    padding-right: 10px;
+}
+
+.marker{
+    width: 30px;
+    height: 33px;
+    background: url(../images/icon_marker.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 69% 80%;
+    padding-right: 20px;
+}
+
+.trash{
+    width: 33px;
+    height: 33px;
+    background: url(../images/icon_trash.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 80%;
+}
+
+
+/* Alteração do estilo do footer */
+#app-footer {
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    left: 0px;
+    overflow: hidden;
+    border-top: 2.4px solid #D7D7D7;
+    z-index: 12;
+    bottom: 0;
+}
+
+#app-footer ul {
+    padding: 0px;
+    margin:7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+
+#app-footer ul a {
+    color: var(--font-color);
+}
+
+.v104_15 {
+    width: 100%;
+    height: 46px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    z-index: 12;
+}
+
+.v190_34 {
+    width: 140px;
+    height: 25px;
+    background: url("../images/v190_34.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    margin-top: 11px;
+    margin-left: 13px;
+    overflow: hidden;
+    z-index: 12;
+}
+
+@media screen and (max-width:340px) {
+    .v190_34{
+      width: 131px;
+      height: 25px;
+      margin-top: 11px;
+    }
+}
+  
+@media screen and (max-width:320px) {
+    .v190_34{
+      width: 115px;
+      height: 22px;
+      margin-top: 13px;
+    }
+}
+
+.v294_0 {
+    width: 31px;
+    height: 31px;
+    background: url("../images/v294_0.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+  
+.v294_3 {
+    width: 32px;
+    height: 29px;
+    background: url("../images/v294_3.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.v124_17 {
+    width: 24px;
+    height: 31px;
+    background: url("../images/v124_17.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+  
+.v124_22 {
+    width: 24px;
+    height: 31px;
+    background: url("../images/v124_22.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.swalAlert1 {
+    background-color: #fff;
+    font-family: 'Open Sans';
+    height: 245px;
+    width: 70%;
+    overflow-y: hidden;
+    border-radius: 12px;
+}
+
+.swalAlert {
+    background-color: #fff;
+    font-family: 'Open Sans';
+    height: 240px;
+    width: 70%;
+    overflow-y: hidden;
+    border-radius: 12px;
+}
+
+.swal-button {
+    background: rgba(167,114,190,1);
+    opacity: 1;
+    border-top-left-radius: 29px;
+    border-top-right-radius: 29px;
+    border-bottom-left-radius: 29px;
+    border-bottom-right-radius: 29px;
+    color: rgba(255,255,255,1);
+    font-family: 'Open Sans';
+    font-weight: Bold;
+    font-size: 14px;
+    margin-right: 40%;
+    border-collapse: collapse;
+    appearance: none;
+    outline: none;
+}
+
+.swal-footer {
+    text-align: center;
+    margin-top: -3px;
+}
+
+.swal-title {
+    text-align: center;
+    margin-top: -25px;
+}
+
+.swal-text {
+    font-family: 'Open Sans';
+    font-weight: 14px;
+    margin-top: -10px;
+    text-align: center;
+  }
+  
