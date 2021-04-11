@@ -1,4 +1,10 @@
-#canvas{
+#canvas1{
+    position: absolute;
+    top:0;
+    bottom: 0;
+}
+
+#canvas2{
     display: none;
     position: absolute;
     top:0;
@@ -80,7 +86,13 @@
 }
 
 .video-wrap{
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
     width: 100%;
+}
+
+video { 
     height: 100%;
 }
 
