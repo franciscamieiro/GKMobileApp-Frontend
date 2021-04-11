@@ -1,0 +1,243 @@
+.v132_120 {
+    width: 32px;
+    height: 32px;
+    background: url("../images/v124_339.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: fixed;
+    top: 64px;
+    left: 19px;
+    overflow: hidden;
+}
+
+.v132_121 {
+    width: 172px;
+    color: rgba(142,80,168,1);
+    position: fixed;
+    top: 67px;
+    left: 68px;
+    font-family: Londrina Solid;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+    overflow: hidden;
+}
+
+#buttonsPlane{
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    left: 0px;
+    overflow: hidden;
+    border-bottom: 2px solid #D7D7D7;
+    z-index: 12;
+    margin-top: 150px;
+}
+
+#DeletePlane{
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    left: 0px;
+    overflow: hidden;
+    border-bottom: 2px solid #D7D7D7;
+    z-index: 12;
+    margin-top: 150px;
+}
+
+#EditPlane{
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    left: 0px;
+    overflow: hidden;
+    border-bottom: 2px solid #D7D7D7;
+    z-index: 12;
+    margin-top: 150px;
+}
+#PublishPlane{
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    left: 0px;
+    overflow: hidden;
+    border-bottom: 2px solid #D7D7D7;
+    z-index: 12;
+    margin-top: 150px;
+}
+
+ul {
+    padding: 0px;
+    margin:7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+
+li {
+    color: #FA6B48;
+    font-family: "Londrina Solid";
+    text-align: center;
+    float: right;
+    margin-right: 9px;
+}
+
+.selectall{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
+
+}
+
+#btnEditicon{
+    height: 20px;
+    width: 20px;
+    background-image: url("../images/edit_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    float: left;
+    margin-right: 5px;
+}
+
+#btnDelicon{
+    height: 22px;
+    width: 22px;
+    background-image: url("../images/delete_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    float: left;
+    margin-right: 5px;
+}
+#checkboxAll{
+    height: 19px;
+    width: 18.5px;
+    float: left;
+    margin-right: 5px;
+    border-radius: 100%;
+    border: 1px solid #949494;
+    margin-right: 6px;
+    margin-top: 1px;
+}
+
+#btnPubliicon{
+    height: 19px;
+    width: 19px;
+    background-image: url("../images/add_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    float: left;
+    margin-right: 5px;
+}
+
+.drawings{
+    top: 210px;
+    display: block;
+    position: fixed;
+    width: 100%;
+    max-height: 65%;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    opacity: 1;
+    margin-bottom: 100px;
+    margin: 0 auto;
+  }
+
+.drawingswrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    flex-flow: wrap;
+    background-color:#fff;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.border{
+    width: 100px;
+    height: 135px;
+    margin: 0 auto;
+    opacity: 1;
+    border: 1px solid #8A8A8A;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.drawing{
+    width: 92px;
+    height: 127px;
+    opacity: 1;
+    border: 1px solid #8A8A8A;
+    overflow: hidden;
+    position: relative;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    background-size: cover;
+}
+
+.date{
+    height: 40px;
+    bottom: 0;
+    position: relative;
+    background-color:#fff;
+}
+
+@media screen and (max-width:340px) {
+    .border{
+        margin-left: 27px;
+    }
+}
+
+
+.action{
+    width: 100px;
+    height: 139px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.52);
+    overflow: hidden;
+    position: absolute;
+    margin-top: -141px;
+    display: none;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    outline:none;
+    border-radius: 60px;
+    width: 15px;
+    height: 15px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    background-image:none;
+    margin-left:6px;
+    margin-top: 7px;
+}
+
+input[type="checkbox"]:checked {
+	background-color: #fff;
+    background-image: url("../images/checked_icon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

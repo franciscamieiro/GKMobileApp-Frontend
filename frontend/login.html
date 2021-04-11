@@ -27,7 +27,7 @@
 
         <span class="v103_169">LOGIN</span>
 
-        <div class="row">
+        <form class="row" method="POST" id="login_form">
 
             <label class="costum-field">
                 <input class="v103_161" type="text" id="inputEmail" required><span class="v103_162">Endereço Eletrónico</span></input>
@@ -37,11 +37,12 @@
             <label class="costum-field">
                     <input class="v103_163" type="password" id="inputPassword" required><span class="v121_2">Palavra-passe</span><div class="v103_168" onclick="toggle()"></div></input>
             </label>
+            
+            <span class="v103_165">Esqueceu-se da palavra-passe?</span>
+            
+            <input class="v103_166" id="LogIn" type="button" value="Entrar"></input>
 
-        </div>
-        
-        <span class="v103_165">Esqueceu-se da palavra-passe?</span>
-        <div class="v103_166" id="LogIn">Entrar</div>
+        </form>
         
         <span class="v104_23">OU</span>
         <div class="v104_22">Entra com o Google</div>

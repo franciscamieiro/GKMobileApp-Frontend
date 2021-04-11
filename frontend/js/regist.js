@@ -55,7 +55,7 @@ btnSubmit.addEventListener("click", function() {
     let birth = document.getElementById("inputBirth");
     let password = document.getElementById("inputPassword");
 
-    let age = getAge(birth);
+    let age = getAge(birth.value);
 
     if(name.value == ""){
 
@@ -149,19 +149,68 @@ btnSubmit.addEventListener("click", function() {
 
     else{
         
-        
-        swal({
-            icon: 'images/v254_5.png',
-            title: 'Sucesso',
-            text: 'Registo feito com sucesso.',
-            button: 'OK',
-            className: "swalAlert"
-            
-        }).then(function(isConfirm) {
-            window.location.replace("registDone.html");
-        });
+        let data = {};
+        data.name = document.getElementById("inputName").value;
+        data.email = document.getElementById("inputEmail").value;
+        data.password = document.getElementById("inputPassword").value;
+        data.dateOfBirth = document.getElementById("inputBirth").value.split('-').reverse().join('-');
+        data.role = "CHILD";
 
-        //codigo de pôr users na base de dados e criar login
+        fetch("https://gokids-dai.herokuapp.com/" + "api/registration", {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(function(response) {
+
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                console.log(response.url); //=> String
+                if (response.status === 409) {
+                    swal({
+                        icon: 'images/v237_21.png',
+                        title: 'Erro',
+                        text: 'Esse utilizador já está registado!',
+                        button: 'OK',
+                        className: "swalAlert"
+                        
+                    });
+                }
+                else {
+                    throw Error(response.statusText);
+                }
+            }
+            else {
+                swal({
+                    icon: 'images/v254_5.png',
+                    title: 'Sucesso',
+                    text: 'Registo feito com sucesso.',
+                    button: 'OK',
+                    className: "swalAlert"
+                    
+                }).then(function(isConfirm) {
+                    window.location.replace("registDone.html");
+                });
+            }
+        }).then(function(result) {
+            console.log(result);
+        }).catch(function(err) {
+            swal({
+                icon: 'images/v237_21.png',
+                title: 'Erro',
+                text: 'Erro de submissão.',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                name.focus();
+            });
+            console.error(err);
+        });
+            
+
+        
 
     }
 

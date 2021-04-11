@@ -110,9 +110,8 @@ input:focus{
   font-weight: Regular;
   font-size: 20px;
   text-align: center;
-  padding-left: 4px;
-  padding-top: 7px;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .v104_22 {
@@ -226,8 +225,8 @@ input:focus{
   opacity: 1;
   text-align: center;
   float:right;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 20px;
+  margin-bottom: 24px;
 }
 
 .v106_6 {

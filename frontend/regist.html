@@ -19,7 +19,7 @@
     <!-- Vendor CSS -->
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     
-    <title>Login</title>
+    <title>Registo</title>
 
 </head>
 
@@ -29,31 +29,33 @@
 
         <span class="v103_169">Registo</span>
 
-        <div class="row">
+            <form class="row" method="POST" id="regist_form">
 
-            <label class="costum-field">
-                    <input class="v103_163" type="text" id="inputName" required><span class="v103_162">Nome Completo</span></input>
-            </label>
+                <label class="costum-field">
+                        <input class="v103_163" type="text" id="inputName" required><span class="v103_162">Nome Completo</span></input>
+                </label>
 
-            <label class="costum-field">
-                    <input class="v103_163 js-datepicker" type="text" id="inputBirth" required><span class="v121_75">Data de Nascimento</span></input>
-                    <div class="v137_3 js-btn-calendar"></div>
-            </label>
+                <label class="costum-field">
+                        <input class="v103_163 js-datepicker" type="text" id="inputBirth" required><span class="v121_75">Data de Nascimento</span></input>
+                        <div class="v137_3 js-btn-calendar"></div>
+                </label>
 
-            <label class="costum-field">
-                <input class="v103_163" type="text" id="inputEmail" required><span class="v121_78">Endereço Eletrónico</span></input>
-                
-            </label>
+                <label class="costum-field">
+                    <input class="v103_163" type="text" id="inputEmail" required><span class="v121_78">Endereço Eletrónico</span></input>
+                    
+                </label>
 
-            <label class="costum-field">
-                    <input class="v103_163" type="password" id="inputPassword" required><span class="v121_2">Palavra-Passe</span><div class="v103_168" onclick="toggle()"></div></input>
-            </label>
+                <label class="costum-field">
+                        <input class="v103_163" type="password" id="inputPassword" required><span class="v121_2">Palavra-Passe</span><div class="v103_168" onclick="toggle()"></div></input>
+                </label>
 
-        </div>
+                <input class="v103_166" type="button" id="btnRegistar" value="Registar"></input>
 
-        <div class="v103_166" id="btnRegistar">Registar</div>
+            </form>
+        
         
         <span class="v104_23">OU</span>
+
         <div class="v104_22">Regista-te com o Google</div>
         
         
