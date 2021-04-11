@@ -43,28 +43,13 @@ btnDelete.addEventListener("click", function() {
 
     let checkbox = document.getElementsByClassName("checkbox");
     
-    let count = 0;
 
     if(actions.length !== 0){
        
         for(let i=0; i<checkbox.length; i++){
                 
             if(checkbox[i].checked == true){
-                count++;
-
-                if(isOdd(nclick)){
-                    document.getElementById("drawingswrapper").innerHTML = "";
-                }
-
-                else{
-                    for(let i=0; i<checkbox.length; i++){
-                        if(checkbox[i].checked == true){
-                            checkbox[i].parentElement.parentElement.remove();
-                            checkbox = document.getElementsByClassName("checkbox");
-                        }
-                    }
-
-                }
+                checkbox[i].parentElement.parentElement.remove();
             }
         }  
    
