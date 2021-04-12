@@ -67,7 +67,7 @@ btnLogin.addEventListener("click", function() {
     /* FAZER CODIGO PARA O EMAIL QND O EMAIL NAO ESTÁ REGISTADO */
     else if(validateEmail(email.value) == false){
         swal({
-            icon: 'images/v237_21.png',
+            icon: 'images/warning.png',
             title: 'Atenção',
             text: 'O email não é válido.',
             button: 'OK',
