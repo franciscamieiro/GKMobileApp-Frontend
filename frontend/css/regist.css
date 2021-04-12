@@ -258,20 +258,6 @@ input:focus{
   left: 0px;
   z-index: 12;
 }
-.v106_7 {
-  width: 133px;
-  color: rgba(167,114,190,1);
-  font-family: Londrina Solid;
-  font-weight: Light;
-  font-size: 16px;
-  opacity: 1;
-  text-align: center;
-  position: fixed;
-  bottom: 20px;
-  z-index: 12;
-  right: 20px;
-
-}
 
 /* Alteração do estilo do footer */
 #app-footer {
@@ -518,11 +504,6 @@ input:focus{
   .v106_6{
     font-size: 14px;
     margin-left: -15px;
-  }
-
-  .v106_7{
-    font-size: 14px;
-    margin-right: -15px;
   }
 
   .v104_23{
