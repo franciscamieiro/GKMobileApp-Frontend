@@ -396,3 +396,53 @@ main {
 .imagemredonda {
     border-radius: 50%;
 }
+
+.orange{
+    width: 228px;
+    height: 45px;
+    color: #fff;
+    font-weight: normal;
+    background-color: #FC803A;
+    border: 1px solid #C96046;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.blue{
+    width: 228px;
+    height: 45px;
+    background-color: #55B6CC;
+    border: 1px solid #5A94A0;
+    font-weight: normal;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-image: url("../images/camera.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 50px 50px;
+    background-position-x: 20px;
+    padding-left: 55px;
+}
+
+.green{
+    width: 228px;
+    height: 45px;
+    background-color:#A8C55C;
+    border: 1px solid #8DA54C;
+    font-weight: normal;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    background-image: url("../images/microphone.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 40px 40px;
+    background-position-x: 40px;
+    padding-left: 45px;
+}
+
+.swal-button {
+    font-family: Roboto;
+    appearance: none;
+    outline: none;
+  }

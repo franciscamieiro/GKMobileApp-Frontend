@@ -9,6 +9,22 @@ body{
     margin: 0;
     padding: 0;
 }
+.swal-button {
+  background: rgba(167,114,190,1);
+  opacity: 1;
+  border-top-left-radius: 29px;
+  border-top-right-radius: 29px;
+  border-bottom-left-radius: 29px;
+  border-bottom-right-radius: 29px;
+  color: rgba(255,255,255,1);
+  font-family: 'Open Sans';
+  font-weight: Bold;
+  font-size: 14px;
+  margin-right: 40%;
+  border-collapse: collapse;
+  appearance: none;
+  outline: none;
+}
 
 .v122_311 {
   width: 160px;
