@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>Directions Service (Complex)</title>
+
+        <!-- Adapt screen to any mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Adapt special characteres -->
+        <meta charset="UTF-8">
+
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/whereTo.css" />
+    
+    </head>
+  
+    <body>
+
+        <header>
+
+            <div class="v104_15">
+                <div class="v190_34"></div>
+            </div>
+
+
+        </header>
+
+        <div id="floating-panel">
+            <b>Ponto de partida: </b>
+            <input id="start" type="text"></input>
+            <b>Destino: </b>
+            <input id="end" type="text"></input>
+        </div>
+
+        <div id="map"></div>
+
+        &nbsp;
+
+        <div id="warnings-panel"></div>
+
+        <footer>
+
+            <div id="app-footer">
+                <ul>
+                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                    <li><a id="logout" class="button"><svg class="v294_3"></svg></a></li>
+                </ul>
+            </div>
+
+        </footer>
+
+        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw&callback=initMap&libraries=&v=weekly" async></script>
+    
+        <script src="js/whereTo.js"></script>
+  
+    </body>
+
+</html>

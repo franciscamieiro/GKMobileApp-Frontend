@@ -1,0 +1,148 @@
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+
+html,
+body{
+    background: rgba(255,255,255,1);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*GPS*/
+#map{
+    margin-top: -50px;
+    position:absolute;
+    height:100%;
+    width:100%;
+}
+      
+#floating-panel {
+    position: absolute;
+    top: 55px;
+    left:50%;
+    width: 200px;
+    height: 140px;
+    margin-left: -100px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: "Roboto", "sans-serif";
+    line-height: 30px;
+    padding-left: 10px;
+}
+      
+    #warnings-panel {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    }
+    .v104_15 {
+    width: 100%;
+    height: 46px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    z-index: 12;
+    align-items: center;
+}
+
+.v190_34 {
+    width: 140px;
+    height: 25px;
+    background: url("../images/v190_34.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    margin-top: 11px;
+    margin-left: 13px;
+    overflow: hidden;
+    z-index: 12;
+}
+
+    /* Alteração do estilo do footer */
+#app-footer {
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: fixed;
+    left: 0px;
+    overflow:hidden;
+    border-top: 2.4px solid #D7D7D7;
+    z-index: 12;
+    bottom: 0;
+    transition: 0.3s;
+}
+    
+#app-footer ul {
+    padding: 0px;
+    margin:7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    overflow: hidden;
+}
+    
+#app-footer ul a {
+    color: var(--font-color);
+}
+
+.v124_17 {
+    width: 24px;
+    height: 31px;
+    background: url("../images/v124_17.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+    
+.v124_22 {
+    width: 24px;
+    height: 31px;
+    background: url("../images/v124_22.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+    
+.v294_0 {
+    width: 31px;
+    height: 31px;
+    background: url("../images/v294_0.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+    
+.v294_3 {
+    width: 32px;
+    height: 29px;
+    background: url("../images/v294_3.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+    
+@media screen and (max-width:320px) {
+    .v190_34{
+        width: 115px;
+        height: 22px;
+    }
+}
+
+@media screen and (max-width:340px) {
+    .v190_34{
+        width: 131px;
+        height: 25px;
+        margin-top: 13px;
+    }
+}
