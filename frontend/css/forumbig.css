@@ -36,7 +36,6 @@ main {
 .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
-    background-color: rgba(68, 99, 178, 1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -156,7 +155,7 @@ main {
 
 .rate:not(:checked)>label:hover,
 .rate:not(:checked)>label:hover~label {
-    color: #deb217;
+    color: #ffc700;
 }
 
 .rate>input:checked+label:hover,
@@ -164,7 +163,7 @@ main {
 .rate>input:checked~label:hover,
 .rate>input:checked~label:hover~label,
 .rate>label:hover~input:checked~label {
-    color: #c59b08;
+    color: #ffc700;
 }
 
 
@@ -445,4 +444,284 @@ main {
     font-family: Roboto;
     appearance: none;
     outline: none;
+}
+
+.titleaudio{
+    position: absolute;
+    top:35px;
+    left: 45%;
+    margin-left: -75px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    height:40px;
+    text-align: center;
+    color: #000000;
+    background-image: url("../images/microphone.png");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: left;
+    background-position-x: -10px;
+    padding-top: 9px;
+    padding-left:25px;
+}
+
+
+
+.title{
+    position: absolute;
+    top:40px;
+    left: 45%;
+    margin-left: -76.75px;
+    font-family: Roboto;
+    font-style: normal;
+    height:40px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #000000;
+    background-image: url("../images/writing.png");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: left;
+    background-position-x: -7px;
+    background-position-y: -3px;
+    padding-left:40px;
+    padding-top: 7px;
+}
+
+#Progress_Status {
+    position: absolute;
+    left: 50%;
+    width: 216px;
+    margin-left: -108px;
+    height: 13px;
+    background-color: #F4F4F4;
+    border: 1px solid #C8C8C8;
+    position: absolute;
+    margin-top: -65px;
+    border-radius: 12px;
+}
+
+#myprogressBar {
+    width: 0%;
+    height: 13px;
+    background-color: #1E84E2;
+    border-radius: 12px;
+}
+
+
+.audio{
+    margin-top: 70px;
+    width: 100%;
+    height: 53px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+audio{
+    outline: none;
+}
+
+
+#btnRecord{
+    width: 93px;
+    height: 35px;
+    background: #7A8ED8;
+    border: 1px solid #4659A0;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    display: inline-block;
+    margin-right: 5px;
+    background-image: url("../images/icon_record.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: left;
+    background-position-x: 9px;
+    padding-left:17px;
+}
+
+#btnStop{
+    width: 93px;
+    height: 35px;
+    background: #5BC3DA;
+    border: 1px solid #2E8092;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    display: inline-block;
+    margin-left: 5px;
+    background-image: url("../images/icon_stopAudio.png");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: left;
+    background-position-x: 15px;
+    padding-left:17px;
+}
+
+#btnDelete{
+    width: 93px;
+    height: 35px;
+    background: #A8C55C;
+    border: 1px solid #758B39;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    margin-right: 5px;
+    background-image: url("../images/icon_deleteAudio.png");
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: left;
+    background-position-x: 9px;
+    padding-left:17px;
+    display: none;
+    }
+
+#btnSend{
+    width: 93px;
+    height: 35px;
+    background: #FECB01;
+    border: 1px solid #C6A009;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    margin-left: 5px;
+    background-image: url("../images/icon_sendRecord.png");
+    background-repeat: no-repeat;
+    background-size: 14px 13px;
+    background-position: left;
+    background-position-x: 15px;
+    padding-left:19px;
+    display: none;
+}
+
+.wrapperWritten{
+    height: 200px;
+}
+
+#btnDeleteT{
+    position: relative;
+    width: 103px;
+    height: 35px;
+    background: #A8C55C;
+    border: 1px solid #758B39;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    margin-right: 5px;
+    background-image: url("../images/icon_deleteAudio.png");
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: left;
+    background-position-x: 9px;
+    padding-left:17px;
+    display: inline-block;
+}
+
+#btnPubliT{
+    position: relative;
+    width: 103px;
+    height: 35px;
+    background: #FECB01;
+    border: 1px solid #C6A009;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    margin-left: 5px;
+    background-image: url("../images/icon_sendRecord.png");
+    background-repeat: no-repeat;
+    background-size: 14px 13px;
+    background-position: left;
+    background-position-x: 15px;
+    padding-left:19px;
+    display: inline-block;
+    margin-top: 150px;
+}
+
+
+input{
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+#input{
+    position: relative;
+    margin-top:80px;
+    position: absolute;
+    width: 226px;
+    height: 41px;
+    background: #F4F4F4;
+    border: 1px solid #BEBEBE;
+    box-sizing: border-box;
+    border-radius: 2px;
+    left:50%;
+    margin-left:-113px;
+    padding-left: 15px;
+    font-family: Roboto;
+    font-style:normal;
+    font-weight:lighter;
+    font-size: 16px;
+    line-height: 19px;
+    color: #797979;
+}
+
+.swalAlert1{
+    height: 200px;
+    overflow: hidden;
 }

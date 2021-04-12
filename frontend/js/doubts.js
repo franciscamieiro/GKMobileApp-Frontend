@@ -125,10 +125,10 @@ function sendAudio() {
     buttons: false,
     className: "swalAlertSucess"
     
-}).then(function(isConfirm) {
-  window.location.reload();
-
-});
+  }).then(function(isConfirm) {
+    window.location.reload();
+  });
+  
 }
 
 function deleteText() {
