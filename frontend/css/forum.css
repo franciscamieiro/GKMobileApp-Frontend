@@ -41,14 +41,16 @@ body {
 .v549_94 {
     width: 40px;
     height: 40px;
-    background-color: rgba(167, 114, 190, 1);
-    border-color: black;
+    background-color: #551F6F;
+    border: 2.5px solid #B09FBD;
     border-radius: 10px;
     color: white;
     /* hover: rgba(85, 31, 110, 1); */
     border-radius: 50%;
     overflow: hidden;
 }
+.v549_94:focus {outline:0;}
+
 
 .v549_95 {
     width: 20px;
@@ -83,7 +85,6 @@ body {
     text-align: center;
     float: right;
 }
-
 
 /* novo */
 

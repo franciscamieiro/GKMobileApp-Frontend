@@ -1,4 +1,8 @@
-function failure() {
+function goBack() {
+    window.history.back();
+}
+
+function coment() {
 
     swal({
         text: "Escolhe um",

@@ -2,6 +2,21 @@
     height: 600px;
 }
 
+.v132_120 {
+    width: 32px;
+    height: 32px;
+    background: url("../images/v124_339.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: relative;
+    margin-top: -13px;
+    margin-bottom: 10px;
+    left: 19px;
+    overflow: hidden;
+}
+
 .noscroll {
     overflow: hidden;
 }
