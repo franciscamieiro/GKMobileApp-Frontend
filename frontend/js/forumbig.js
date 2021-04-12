@@ -6,11 +6,13 @@ const wrapperFile = document.createElement('div');
 
 wrapperWritten.className = "wrapperWritten";
 
+wrapperFile.className = "wrapperFile";
+
 wrapperAudio.innerHTML = '<span class="titleaudio">Gravar comentário</span><div class="audio" id="audio"></div><div id="Progress_Status"><div id="myprogressBar"></div></div><div id="btnRecord" onclick="record();">Gravar</div><div id="btnStop" onclick="stop();">Parar</div><div id="btnDelete" onclick="deleteAudio();">Apagar</div><div id="btnSend" onclick="sendAudio();">Publicar</div>';
 
 wrapperWritten.innerHTML = '<span class="title">Escrever comentário</span><input id="input" type="text" placeholder="Escreve o teu comentário..."></input><div id="btnDeleteT" onclick="deleteText();">Apagar</div><div id="btnPubliT" onclick="publishText();">Publicar</div>';
 
-wrapperFile.innerHTML = '<span class="titleF">Escolher ficheiro</span><div id="btnCancel" onclick="cancel();">Cancelar</div><div id="btnPubliF" onclick="publishFile();">Publicar</div>';
+wrapperFile.innerHTML = '<span class="titleF">Escolher uma imagem ou vídeo</span><label id="inputLabel" class="v377_35">Escolher ficheiro<input class="inputfile" id="inputfile" type="file" accept="image/x-png,image/gif,image/jpeg,video/mp4,video/x-m4v,video/*"></input></label><div id="btnPubliF" onclick="publishFile();">Publicar</div>';
 
 window.onload = function() {
     let reloaded = localStorage.getItem("reloaded");

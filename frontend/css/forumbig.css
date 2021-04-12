@@ -493,6 +493,29 @@ main {
     padding-top: 7px;
 }
 
+.titleF{
+    position: absolute;
+    top:40px;
+    left: 32%;
+    margin-left: -76.75px;
+    font-family: Roboto;
+    font-style: normal;
+    height:40px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #000000;
+    background-image: url("../images/icon_imageFile.png");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: left;
+    background-position-x: -7px;
+    background-position-y: -3px;
+    padding-left:40px;
+    padding-top: 7px;
+}
+
 #Progress_Status {
     position: absolute;
     left: 50%;
@@ -635,6 +658,11 @@ audio{
     height: 200px;
 }
 
+.wrapperFile{
+    height: 220px;
+    overflow: hidden;
+}
+
 #btnDeleteT{
     position: relative;
     width: 103px;
@@ -724,4 +752,60 @@ input{
 .swalAlert1{
     height: 200px;
     overflow: hidden;
+}
+
+.v377_35 {
+    position: relative;
+    width: 90%;
+    height: 52px;
+    background: rgba(250,107,72,1);
+    opacity: 1;
+    border: 1px solid rgba(182,86,63,1);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    overflow: hidden;
+    color: rgba(255,255,255,1);
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 17px;
+    opacity: 1;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 5px;
+    margin-top:80px;
+    margin-bottom:30px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#btnPubliF{
+    position: relative;
+    width: 103px;
+    height: 35px;
+    background: #242424;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 29px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color:#fff;
+    text-align: center;
+    padding-top: 7px;
+    margin-left: 5px;
+    background-image: url("../images/icon_sendRecord.png");
+    background-repeat: no-repeat;
+    background-size: 14px 13px;
+    background-position: left;
+    background-position-x: 15px;
+    padding-left:19px;
+    left:50%;
+    margin-left: -51.5px;
 }
