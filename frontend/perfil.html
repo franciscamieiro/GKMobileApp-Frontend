@@ -46,14 +46,9 @@
             
             <div class="row">
 
-                <span class="v138_35">Username</span>
-                <label class="costum-field">
-                    <input class="v103_161" type="text" id="inputUsername" disabled required></input>
-                </label>
-
                 <span class="v138_35">Nome Completo</span>
                 <label class="costum-field">
-                    <input class="v103_161" type="text" id="inputFullName" disabled required></input>
+                    <input class="v103_161" type="text" id="inputFullName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" disabled required></input>
                 </label>
 
                 <span class="v138_35">Data de Nascimento</span>

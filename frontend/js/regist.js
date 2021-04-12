@@ -44,7 +44,6 @@ function validateEmail(email) {
 
 }
 
-
 //function regist user
 let btnSubmit = document.getElementById("btnRegistar");
 
@@ -56,6 +55,7 @@ btnSubmit.addEventListener("click", function() {
     let password = document.getElementById("inputPassword");
 
     let age = getAge(birth.value);
+    
 
     if(name.value == ""){
 

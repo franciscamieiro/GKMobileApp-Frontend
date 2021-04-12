@@ -32,11 +32,11 @@
             <form class="row" method="POST" id="regist_form">
 
                 <label class="costum-field">
-                        <input class="v103_163" type="text" id="inputName" required><span class="v103_162">Nome Completo</span></input>
+                        <input class="v103_163" type="text" id="inputName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required><span class="v103_162">Nome Completo</span></input>
                 </label>
 
                 <label class="costum-field">
-                        <input class="v103_163 js-datepicker" type="text" id="inputBirth" required><span class="v121_75">Data de Nascimento</span></input>
+                        <input class="v103_163 js-datepicker" type="text" id="inputBirth" onKeyDown="return false"required><span class="v121_75">Data de Nascimento</span></input>
                         <div class="v137_3 js-btn-calendar"></div>
                 </label>
 

@@ -1,6 +1,5 @@
 let btnEdit = document.getElementById("btnEdit");
 
-let username = document.getElementById("inputUsername");
 let fullname = document.getElementById("inputFullName");
 let birth = document.getElementById("inputBirth");
 let email = document.getElementById("inputEmail");
@@ -22,17 +21,24 @@ let avatarsrow1 = document.getElementById("avatarsrow1");
 let avatarsrow2 = document.getElementById("avatarsrow2");
 let avatarsrow3 = document.getElementById("avatarsrow3");
 
+
+//validate Email
+function validateEmail(email) {
+    
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+
+}
+
 //edit profile
 
 //make's inputs editables
 btnEdit.addEventListener("click", function() {
 
-    if(username.disabled == true){
+    if(fullname.disabled == true){
     
         btnEdit.innerHTML = 'Guardar';
-        username.disabled = false;
         fullname.disabled = false;
-        birth.disabled = false;
         email.disabled = false;
         pass.disabled = false;
         allowphotoEdit.style.display = "block";
@@ -43,21 +49,7 @@ btnEdit.addEventListener("click", function() {
             avatars.style.display = "none";
         }
 
-        if(username.value == ""){
-        
-            swal({
-                icon: 'images/warning.png',
-                title: 'Atenção',
-                text: 'Preenche o teu username!',
-                button: 'OK',
-                className: "swalAlert"
-                
-            }).then(function(isConfirm) {
-                username.focus();
-            });
-        }
-
-        else if(fullname.value == ""){
+        if(fullname.value == ""){
 
             swal({
                 icon: 'images/warning.png',
@@ -68,21 +60,6 @@ btnEdit.addEventListener("click", function() {
                 
             }).then(function(isConfirm) {
                 fullname.focus();
-            });
-            
-        }
-
-        else if(birth.value == ""){
-
-            swal({
-                icon: 'images/warning.png',
-                title: 'Atenção',
-                text: 'Preenche a tua data de nascimento!',
-                button: 'OK',
-                className: "swalAlert"
-                
-            }).then(function(isConfirm) {
-                birth.focus();
             });
             
         }
@@ -116,6 +93,21 @@ btnEdit.addEventListener("click", function() {
             });
             
         }
+
+        else if(validateEmail(email.value) == false){
+
+            swal({
+                icon: 'images/v237_21.png',
+                title: 'Atenção',
+                text: 'O email não é válido.',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                email.focus();
+            });
+    
+        }
         
         else{
 
@@ -129,9 +121,7 @@ btnEdit.addEventListener("click", function() {
             }).then(function(isConfirm) {
 
                 btnEdit.innerHTML = 'Editar';
-                username.disabled = true;
                 fullname.disabled = true;
-                birth.disabled = true;
                 email.disabled = true;
                 pass.disabled = true;
                 allowphotoEdit.style.display = "none";
