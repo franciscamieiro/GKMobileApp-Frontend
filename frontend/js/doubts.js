@@ -8,7 +8,7 @@ const wrapperWritten = document.createElement('div');
 
 wrapperWritten.className = "wrapperWritten";
 
-wrapperAudio.innerHTML = '<span class="titleaudio">Gravar dúvida por voz</span><div class="audio" id="audio"></div><div id="Progress_Status"><div id="myprogressBar"></div></div><div id="btnRecord" onclick="record();">Gravar</div><div id="btnStop" onclick="stop();">Parar</div><div id="btnDelete" onclick="deleteAudio();">Apagar</div><div id="btnSend" onclick="sendAudio();">Enviar</div>';
+wrapperAudio.innerHTML = '<span class="titleaudio">Gravar dúvida por voz</span><div class="audio" id="audio"></div><div id="Progress_Status"><div id="myprogressBar"></div></div><div id="btnRecord" onclick="record();">Gravar</div><div id="btnStop" onclick="stopRecording();">Parar</div><div id="btnDelete" onclick="deleteAudio();">Apagar</div><div id="btnSend" onclick="sendAudio();">Enviar</div>';
 
 wrapperWritten.innerHTML = '<span class="title">Escrever dúvida</span><input id="input" type="text" placeholder="Escreve a tua dúvida..."></input><div id="btnDeleteT" onclick="deleteText();">Apagar</div><div id="btnSendT" onclick="sendText();">Enviar</div>';
 
@@ -45,9 +45,12 @@ writtenQuestion.addEventListener("click", function(){
 
 let mainRecorder = null;
 let interval = null;
+let recorded = false;
 
 function record() {
 
+recorded = true;
+console.log(recorded);
 var i = 0;
 function move() {
   if (i == 0) {
@@ -92,7 +95,11 @@ move();
 
 }
 
-
+function stopRecording(){
+    if(recorded){
+      stop();
+    }
+}
 
 function stop(){
   let btnRecord = document.getElementById("btnRecord");

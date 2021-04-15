@@ -8,7 +8,7 @@ wrapperWritten.className = "wrapperWritten";
 
 wrapperFile.className = "wrapperFile";
 
-wrapperAudio.innerHTML = '<span class="titleaudio">Gravar comentário</span><div class="audio" id="audio"></div><div id="Progress_Status"><div id="myprogressBar"></div></div><div id="btnRecord" onclick="record();">Gravar</div><div id="btnStop" onclick="stop();">Parar</div><div id="btnDelete" onclick="deleteAudio();">Apagar</div><div id="btnSend" onclick="sendAudio();">Publicar</div>';
+wrapperAudio.innerHTML = '<span class="titleaudio">Gravar comentário</span><div class="audio" id="audio"></div><div id="Progress_Status"><div id="myprogressBar"></div></div><div id="btnRecord" onclick="record();">Gravar</div><div id="btnStop" onclick="stopRecording();">Parar</div><div id="btnDelete" onclick="deleteAudio();">Apagar</div><div id="btnSend" onclick="sendAudio();">Publicar</div>';
 
 wrapperWritten.innerHTML = '<span class="title">Escrever comentário</span><input id="input" type="text" placeholder="Escreve o teu comentário..."></input><div id="btnDeleteT" onclick="deleteText();">Apagar</div><div id="btnPubliT" onclick="publishText();">Publicar</div>';
 
@@ -32,7 +32,11 @@ function goBack() {
     window.history.back();
 }
 
+let recorded = false;
+
 function record() {
+
+    recorded = true;
 
     var i = 0;
         function move() {
@@ -82,6 +86,12 @@ function record() {
         }, 60000);
     });
 
+}
+
+function stopRecording(){
+    if(recorded){
+      stop();
+    }
 }
 
 function stop(){

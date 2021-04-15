@@ -12,6 +12,10 @@
   display: none;
 }
 
+.saveicon{
+  display:none;
+}
+
 input[type="file"] {
   display: none;
 }
