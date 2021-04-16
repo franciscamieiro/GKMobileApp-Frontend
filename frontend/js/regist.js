@@ -149,17 +149,17 @@ btnSubmit.addEventListener("click", function() {
 
     else{
         
-       
-        const name = document.getElementById("inputName").value;
-        const email = document.getElementById("inputEmail").value;
-        const password = document.getElementById("inputPassword").value;
-        const dateOfBirth = document.getElementById("inputBirth").value.split('-').reverse().join('-');
-        const role = "CHILD";
+        let data = {};
+        data.name = name.value;
+        data.email = email.value;
+        data.password = password.value;
+        data.dateOfBirth = birth.value.split('-').reverse().join('-');
+        data.role = "CHILD";
 
         fetch("https://gokids-dai.herokuapp.com/" + "api/registration", {
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            headers: { 'Content-Type': 'application/json' },
             method: 'POST',
-            body: `name=${name}&email=${email}&password=${password}&dateOfBirth=${dateOfBirth}&role=${role}`
+            body: JSON.stringify(data)
         }).then(function(response) {
 
             if (!response.ok) {
@@ -204,7 +204,7 @@ btnSubmit.addEventListener("click", function() {
                 className: "swalAlert"
                 
             }).then(function(isConfirm) {
-                document.getElementById("inputName").focus();
+                name.focus();
             });
             console.error(err);
         });
