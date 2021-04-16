@@ -149,17 +149,17 @@ btnSubmit.addEventListener("click", function() {
 
     else{
         
-        let data = {};
-        data.name = document.getElementById("inputName").value;
-        data.email = document.getElementById("inputEmail").value;
-        data.password = document.getElementById("inputPassword").value;
-        data.dateOfBirth = document.getElementById("inputBirth").value.split('-').reverse().join('-');
-        data.role = "CHILD";
+       
+        const name = document.getElementById("inputName").value;
+        const email = document.getElementById("inputEmail").value;
+        const password = document.getElementById("inputPassword").value;
+        const dateOfBirth = document.getElementById("inputBirth").value.split('-').reverse().join('-');
+        const role = "CHILD";
 
         fetch("https://gokids-dai.herokuapp.com/" + "api/registration", {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
             method: 'POST',
-            body: JSON.stringify(data)
+            body: `name=${name}&email=${email}&password=${password}&dateOfBirth=${dateOfBirth}&role=${role}`
         }).then(function(response) {
 
             if (!response.ok) {
@@ -204,7 +204,7 @@ btnSubmit.addEventListener("click", function() {
                 className: "swalAlert"
                 
             }).then(function(isConfirm) {
-                name.focus();
+                document.getElementById("inputName").focus();
             });
             console.error(err);
         });
