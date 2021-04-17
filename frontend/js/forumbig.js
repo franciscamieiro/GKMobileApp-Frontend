@@ -16,8 +16,8 @@ wrapperFile.innerHTML = '<span class="titleF">Escolher uma imagem ou vídeo</spa
 
 window.onload = function() {
     let reloaded = localStorage.getItem("reloaded");
-    
-    if(reloaded == "sim"){
+
+    if (reloaded == "sim") {
         swal({
             content: wrapperAudio,
             buttons: false
@@ -39,20 +39,21 @@ function record() {
     recorded = true;
 
     var i = 0;
-        function move() {
-            if (i == 0) {
 
-                i = 1;
-                var elem = document.getElementById("myprogressBar");
-                var width = 1;
-                var id = setInterval(frame, 900);
-                interval = id;
+    function move() {
+        if (i == 0) {
 
-                function frame() {
-                    if (width >= 100) {
+            i = 1;
+            var elem = document.getElementById("myprogressBar");
+            var width = 1;
+            var id = setInterval(frame, 900);
+            interval = id;
+
+            function frame() {
+                if (width >= 100) {
                     clearInterval(id);
                     i = 0;
-                    } else {
+                } else {
                     width++;
                     elem.style.width = width + "%";
                 }
@@ -62,39 +63,39 @@ function record() {
 
     move();
 
-    var device = navigator.mediaDevices.getUserMedia({audio: true});
+    var device = navigator.mediaDevices.getUserMedia({ audio: true });
     var items = [];
     device.then(stream => {
         var recorder = new MediaRecorder(stream);
         mainRecorder = recorder;
 
-        recorder.ondataavailable = e=>{
+        recorder.ondataavailable = e => {
             items.push(e.data);
-            if(recorder.state == 'inactive'){
-            var blob = new Blob(items, {type: 'audio/webm'});
-            var audio = document.getElementById("audio");
-            var mainaudio = document.createElement("audio");
-            mainaudio.setAttribute('controls', 'controls');
-            audio.appendChild(mainaudio);
-            mainaudio.innerHTML = '<source src="'+ URL.createObjectURL(blob)+'" type="video/webm"/>';
+            if (recorder.state == 'inactive') {
+                var blob = new Blob(items, { type: 'audio/webm' });
+                var audio = document.getElementById("audio");
+                var mainaudio = document.createElement("audio");
+                mainaudio.setAttribute('controls', 'controls');
+                audio.appendChild(mainaudio);
+                mainaudio.innerHTML = '<source src="' + URL.createObjectURL(blob) + '" type="video/webm"/>';
             }
         }
-        
+
         recorder.start();
-        setTimeout(()=> {
+        setTimeout(() => {
             recorder.stop();
         }, 60000);
     });
 
 }
 
-function stopRecording(){
-    if(recorded){
-      stop();
+function stopRecording() {
+    if (recorded) {
+        stop();
     }
 }
 
-function stop(){
+function stop() {
     let btnRecord = document.getElementById("btnRecord");
     let btnStop = document.getElementById("btnStop");
     let btnDelete = document.getElementById("btnDelete");
@@ -115,19 +116,19 @@ function deleteAudio() {
     window.location.reload();
     localStorage.setItem("reloaded", "sim");
 }
-  
+
 function sendAudio() {
     swal({
-      icon: 'images/v254_5.png',
-      title: 'Sucesso',
-      text: 'Áudio publicado!',
-      buttons: false,
-      className: "swalAlertSucess"
-      
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Áudio publicado!',
+        buttons: false,
+        className: "swalAlertSucess"
+
     }).then(function(isConfirm) {
-      window.location.reload();
+        window.location.reload();
     });
-    
+
 }
 
 function coment() {
@@ -135,37 +136,37 @@ function coment() {
     swal({
         text: "Escolhe um",
         buttons: {
-            cancel:{
+            cancel: {
                 text: "Escrever um comentário",
                 value: "coment",
                 visible: true,
                 className: "orange",
                 closeModal: true
             },
-            confirm:{
+            confirm: {
                 text: "Escolher ficheiro",
                 value: "chooseFile",
                 visible: true,
                 className: "blue",
                 closeModal: true
             },
-            hello:{
+            hello: {
                 text: "Gravar aúdio",
                 value: "recordAudio",
                 visible: true,
                 className: "green",
                 closeModal: true
             },
-            
+
         },
     }).then((value) => {
         switch (value) {
-     
+
             case "coment":
                 swal({
                     content: wrapperWritten,
                     buttons: false
-                    });
+                });
                 break;
 
             case "recordAudio":
@@ -191,38 +192,38 @@ function deleteText() {
     input.value = "";
     input.focus();
 }
-  
+
 function publishText() {
-    
+
     let input = document.getElementById("input");
-    
-    if(input.value == ""){
+
+    if (input.value == "") {
         swal({
             icon: 'images/warning.png',
             title: 'Atenção',
             text: 'Escreve o comentário primeiro!',
-            button:false,
+            button: false,
             className: "swalAlert1"
         }).then(function(isConfirm) {
-  
+
             input.focus();
-            
+
             swal({
                 content: wrapperWritten,
                 buttons: false
             });
         });
-  
-    }else{
+
+    } else {
         swal({
             icon: 'images/v254_5.png',
             title: 'Sucesso',
             text: 'Comentário Publicado!',
             buttons: false,
             className: "swalAlert1"
-          
+
         }).then(function(isConfirm) {
-        
+
             input.value = "";
 
         });

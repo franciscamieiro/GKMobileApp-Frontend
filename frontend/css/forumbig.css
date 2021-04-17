@@ -396,7 +396,7 @@ main {
     border-radius: 50%;
 }
 
-.orange{
+.orange {
     width: 228px;
     height: 45px;
     color: #fff;
@@ -407,7 +407,7 @@ main {
     border-radius: 3px;
 }
 
-.blue{
+.blue {
     width: 228px;
     height: 45px;
     background-color: #55B6CC;
@@ -423,10 +423,10 @@ main {
     padding-left: 65px;
 }
 
-.green{
+.green {
     width: 228px;
     height: 45px;
-    background-color:#A8C55C;
+    background-color: #A8C55C;
     border: 1px solid #8DA54C;
     font-weight: normal;
     box-sizing: border-box;
@@ -446,9 +446,9 @@ main {
     outline: none;
 }
 
-.titleaudio{
+.titleaudio {
     position: absolute;
-    top:35px;
+    top: 35px;
     left: 45%;
     margin-left: -75px;
     font-family: Roboto;
@@ -456,7 +456,7 @@ main {
     font-weight: 800;
     font-size: 16px;
     line-height: 19px;
-    height:40px;
+    height: 40px;
     text-align: center;
     color: #000000;
     background-image: url("../images/microphone.png");
@@ -465,19 +465,17 @@ main {
     background-position: left;
     background-position-x: -10px;
     padding-top: 9px;
-    padding-left:25px;
+    padding-left: 25px;
 }
 
-
-
-.title{
+.title {
     position: absolute;
-    top:40px;
+    top: 40px;
     left: 45%;
     margin-left: -76.75px;
     font-family: Roboto;
     font-style: normal;
-    height:40px;
+    height: 40px;
     font-weight: 800;
     font-size: 16px;
     line-height: 19px;
@@ -489,18 +487,18 @@ main {
     background-position: left;
     background-position-x: -7px;
     background-position-y: -3px;
-    padding-left:40px;
+    padding-left: 40px;
     padding-top: 7px;
 }
 
-.titleF{
+.titleF {
     position: absolute;
-    top:40px;
+    top: 40px;
     left: 32%;
     margin-left: -76.75px;
     font-family: Roboto;
     font-style: normal;
-    height:40px;
+    height: 40px;
     font-weight: 800;
     font-size: 16px;
     line-height: 19px;
@@ -512,7 +510,7 @@ main {
     background-position: left;
     background-position-x: -7px;
     background-position-y: -3px;
-    padding-left:40px;
+    padding-left: 40px;
     padding-top: 7px;
 }
 
@@ -536,8 +534,7 @@ main {
     border-radius: 12px;
 }
 
-
-.audio{
+.audio {
     margin-top: 70px;
     width: 100%;
     height: 53px;
@@ -545,12 +542,11 @@ main {
     margin-bottom: 30px;
 }
 
-audio{
+audio {
     outline: none;
 }
 
-
-#btnRecord{
+#btnRecord {
     width: 93px;
     height: 35px;
     background: #7A8ED8;
@@ -563,7 +559,7 @@ audio{
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     display: inline-block;
@@ -573,10 +569,10 @@ audio{
     background-size: 18px 18px;
     background-position: left;
     background-position-x: 9px;
-    padding-left:17px;
+    padding-left: 17px;
 }
 
-#btnStop{
+#btnStop {
     width: 93px;
     height: 35px;
     background: #5BC3DA;
@@ -589,7 +585,7 @@ audio{
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     display: inline-block;
@@ -599,10 +595,10 @@ audio{
     background-size: 18px 18px;
     background-position: left;
     background-position-x: 15px;
-    padding-left:17px;
+    padding-left: 17px;
 }
 
-#btnDelete{
+#btnDelete {
     width: 93px;
     height: 35px;
     background: #A8C55C;
@@ -615,7 +611,7 @@ audio{
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     margin-right: 5px;
@@ -624,11 +620,11 @@ audio{
     background-size: 16px 16px;
     background-position: left;
     background-position-x: 9px;
-    padding-left:17px;
+    padding-left: 17px;
     display: none;
-    }
+}
 
-#btnSend{
+#btnSend {
     width: 93px;
     height: 35px;
     background: #FECB01;
@@ -641,7 +637,7 @@ audio{
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     margin-left: 5px;
@@ -650,20 +646,20 @@ audio{
     background-size: 14px 13px;
     background-position: left;
     background-position-x: 15px;
-    padding-left:19px;
+    padding-left: 19px;
     display: none;
 }
 
-.wrapperWritten{
+.wrapperWritten {
     height: 200px;
 }
 
-.wrapperFile{
+.wrapperFile {
     height: 220px;
     overflow: hidden;
 }
 
-#btnDeleteT{
+#btnDeleteT {
     position: relative;
     width: 103px;
     height: 35px;
@@ -677,7 +673,7 @@ audio{
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     margin-right: 5px;
@@ -686,11 +682,11 @@ audio{
     background-size: 16px 16px;
     background-position: left;
     background-position-x: 9px;
-    padding-left:17px;
+    padding-left: 17px;
     display: inline-block;
 }
 
-#btnPubliT{
+#btnPubliT {
     position: relative;
     width: 103px;
     height: 35px;
@@ -704,7 +700,7 @@ audio{
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     margin-left: 5px;
@@ -713,13 +709,12 @@ audio{
     background-size: 14px 13px;
     background-position: left;
     background-position-x: 15px;
-    padding-left:19px;
+    padding-left: 19px;
     display: inline-block;
     margin-top: 150px;
 }
 
-
-input{
+input {
     border: none;
     -webkit-appearance: none;
     -ms-appearance: none;
@@ -728,9 +723,9 @@ input{
     outline: none;
 }
 
-#input{
+#input {
     position: relative;
-    margin-top:80px;
+    margin-top: 80px;
     position: absolute;
     width: 226px;
     height: 41px;
@@ -738,18 +733,18 @@ input{
     border: 1px solid #BEBEBE;
     box-sizing: border-box;
     border-radius: 2px;
-    left:50%;
-    margin-left:-113px;
+    left: 50%;
+    margin-left: -113px;
     padding-left: 15px;
     font-family: Roboto;
-    font-style:normal;
-    font-weight:lighter;
+    font-style: normal;
+    font-weight: lighter;
     font-size: 16px;
     line-height: 19px;
     color: #797979;
 }
 
-.swalAlert1{
+.swalAlert1 {
     height: 200px;
     overflow: hidden;
 }
@@ -758,15 +753,15 @@ input{
     position: relative;
     width: 90%;
     height: 52px;
-    background: rgba(250,107,72,1);
+    background: rgba(250, 107, 72, 1);
     opacity: 1;
-    border: 1px solid rgba(182,86,63,1);
+    border: 1px solid rgba(182, 86, 63, 1);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     overflow: hidden;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     font-family: Roboto;
     font-weight: Medium;
     font-size: 17px;
@@ -774,15 +769,15 @@ input{
     text-align: center;
     padding-top: 12px;
     padding-bottom: 5px;
-    margin-top:80px;
-    margin-bottom:30px;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
 
 input[type="file"] {
     display: none;
 }
 
-#btnPubliF{
+#btnPubliF {
     position: relative;
     width: 103px;
     height: 35px;
@@ -796,7 +791,7 @@ input[type="file"] {
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color:#fff;
+    color: #fff;
     text-align: center;
     padding-top: 7px;
     margin-left: 5px;
@@ -805,7 +800,7 @@ input[type="file"] {
     background-size: 14px 13px;
     background-position: left;
     background-position-x: 15px;
-    padding-left:19px;
-    left:50%;
+    padding-left: 19px;
+    left: 50%;
     margin-left: -51.5px;
 }
