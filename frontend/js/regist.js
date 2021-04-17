@@ -150,10 +150,10 @@ btnSubmit.addEventListener("click", function() {
     else{
         
         let data = {};
-        data.name = document.getElementById("inputName").value;
-        data.email = document.getElementById("inputEmail").value;
-        data.password = document.getElementById("inputPassword").value;
-        data.dateOfBirth = document.getElementById("inputBirth").value.split('-').reverse().join('-');
+        data.name = name.value;
+        data.email = email.value;
+        data.password = password.value;
+        data.dateOfBirth = birth.value.split('-').reverse().join('-');
         data.role = "CHILD";
 
         fetch("https://gokids-dai.herokuapp.com/" + "api/registration", {
