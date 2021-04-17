@@ -1,52 +1,77 @@
 <!DOCTYPE html>
 
 <html>
-    
-    <head>
 
-        <!-- Adapt screen to any mobile device -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <!-- Adapt special characteres -->
-        <meta charset="UTF-8">
-        
-        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link href="./css/about.css" rel="stylesheet" />
-        <link href="./css/global.css" rel="stylesheet" />
-        
-        <title>About</title>
-    
-    </head>
-    
-    <body>
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <header>
-                    
-                <div id="header" class="v104_15"><div id="headerimg"class="v190_34"></div></div>
-    
-            </header>
-            
-            <div class="v132_120" onclick="goBack()"></div>
-            <span class="v132_121">Sobre</span>
-            <span class="v168_0">Quem Somos</span>
-            <span class="v168_1">Termos de Utilização</span>
-            <div class="v168_3"></div>
-            <div class="v168_4"></div>
-            <span class="v314_2">Política de Dados</span>
-            <div class="v314_3"></div>
-    
-            <!-- footer -->
-            <div id="app-footer">
-                <ul>
-                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
-                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
-                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
-                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
-                </ul>
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/about.css" rel="stylesheet" />
+    <link href="./css/global.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>About</title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div id="header" class="v104_15">
+            <div id="headerimg" class="v190_34"></div>
+        </div>
+
+    </header>
+
+    <div class="v132_120" onclick="goBack()"></div>
+    <div id="title" class="v132_121">Sobre</div>
+
+    <div class="container ">
+        <div class="row">
+            <div class="v168_0"><a class="v168_0bold" onclick="showdiv()">Quem Somos<i class="fa fa-angle-down fa-lg v168_02"></i></a>
+                <div class="v168_03" id="myDIV">
+                    Sed sed dignissim erat. Mauris sit amet lobortis sem. Quisque facilisis, justo quis tincidunt finibus, neque eros volutpat neque, quis semper magna velit sed sem. Donec viverra mattis leo, eu cursus lorem molestie faucibus. Aenean sit amet velit eget
+                    leo suscipit dapibus eget quis diam. Vivamus vel quam quis tellus laoreet luctus eu eu ex. In hac habitasse platea dictumst.
+                </div>
+                <div class="v168_1"><a class="v168_0bold" onclick="showdiv2()">Termos de Utilização<i class="fa fa-angle-down fa-lg v168_02"></i></a>
+                    <div class="v168_13" id="myDIV2">
+                        Sed sed dignissim erat. Mauris sit amet lobortis sem. Quisque facilisis, justo quis tincidunt finibus, neque eros volutpat neque, quis semper magna velit sed sem. Donec viverra mattis leo, eu cursus lorem molestie faucibus. Aenean sit amet velit eget
+                        leo suscipit dapibus eget quis diam. Vivamus vel quam quis tellus laoreet luctus eu eu ex. In hac habitasse platea dictumst.
+                    </div>
+                </div>
+                <div class="v168_1"><a class="v168_0bold" onclick="showdiv3()">Política de Dados<i class="fa fa-angle-down fa-lg v168_02"></i></a>
+                    <div class="v168_13" id="myDIV3">
+                        Sed sed dignissim erat. Mauris sit amet lobortis sem. Quisque facilisis, justo quis tincidunt finibus, neque eros volutpat neque, quis semper magna velit sed sem. Donec viverra mattis leo, eu cursus lorem molestie faucibus. Aenean sit amet velit eget
+                        leo suscipit dapibus eget quis diam. Vivamus vel quam quis tellus laoreet luctus eu eu ex. In hac habitasse platea dictumst.
+                    </div>
+                </div>
+
             </div>
+        </div>
+
+
+        <!-- footer -->
+        <div id="app-footer">
+            <ul>
+                <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                <li>
+                    <div id="logout" class="button"><svg class="v294_3"></svg></div>
+                </li>
+            </ul>
+        </div>
 
         <script src="js/about.js"></script>
 
-    </body>
+</body>
+
 </html>

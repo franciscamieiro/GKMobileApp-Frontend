@@ -59,6 +59,33 @@ main {
     pointer-events: none;
 }
 
+.criacoesimgbackground {
+    object-fit: cover;
+    max-width: 100%;
+    pointer-events: none;
+    opacity: 0.30;
+    display: none;
+}
+
+.denunciarbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.something {
+    background-color: black;
+}
+
 .v549_186 {
     width: 26px;
     height: 26px;
@@ -397,7 +424,7 @@ main {
     border-radius: 50%;
 }
 
-.orange{
+.orange {
     width: 228px;
     height: 45px;
     color: #fff;
@@ -408,7 +435,7 @@ main {
     border-radius: 3px;
 }
 
-.blue{
+.blue {
     width: 228px;
     height: 45px;
     background-color: #55B6CC;
@@ -424,10 +451,10 @@ main {
     padding-left: 65px;
 }
 
-.green{
+.green {
     width: 228px;
     height: 45px;
-    background-color:#A8C55C;
+    background-color: #A8C55C;
     border: 1px solid #8DA54C;
     font-weight: normal;
     box-sizing: border-box;
