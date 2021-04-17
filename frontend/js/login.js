@@ -78,7 +78,7 @@ btnLogin.addEventListener("click", function() {
         });
     }
 
-    /* CODIGO PARA A PASS ERRADA
+    /* CODIGO PARA A PASS ERRADA e email n existente na bd
     else if(validateEmail(email) == false){
         alertEmail.style.display = "block";
         alert.style.display = "block";
