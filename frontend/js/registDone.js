@@ -20,7 +20,8 @@ window.onload = function() {
 
         if(minutes == 0){
 
-            document.getElementById("btnDisabled").style.display = "none";
+            btnSendEmail.style.backgroundColor = "rgba(167,114,190,1)";
+            btnSendEmail.style.color = "white";
             countdownEl.innerHTML = "0:00";
             clearInterval(timer);
         }
@@ -32,35 +33,39 @@ let btnSendEmail = document.getElementById("btnSendEmail");
 
 btnSendEmail.addEventListener("click", function() {
 
-    //codigo para mandar um email
-
-    document.getElementById("btnDisabled").style.display = "block";
-
-    const startingMinutes = 5;
-
-    let time = startingMinutes * 60;
-
     const countdownEl = document.getElementById("countDown");
 
-    let timer = setInterval(updateCountdown, 1000);
+    if(btnSendEmail.style.color == "white"){
 
-    function updateCountdown() {
+        //codigo para mandar um email
 
-        const minutes = Math.floor(time / 60);
-        let seconds = time % 60;
+        btnSendEmail.style.backgroundColor = "rgba(108,80,120,0.550000011920929)";
+        btnSendEmail.style.color = "rgb(197, 197, 197)";
 
-        seconds = seconds < 10 ? '0'+ seconds : seconds; 
+        const startingMinutes = 5;
 
-        countdownEl.innerHTML = `${minutes}:${seconds}`;
-        time--;
+        let time = startingMinutes * 60;
 
-        if(minutes == 0){
+        let timer = setInterval(updateCountdown, 1000);
 
-            document.getElementById("btnDisabled").style.display = "none";
-            countdownEl.innerHTML = "0:00";
-            clearInterval(timer);
-        }
-    } 
-        
+        function updateCountdown() {
+
+            const minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            seconds = seconds < 10 ? '0'+ seconds : seconds; 
+
+            countdownEl.innerHTML = `${minutes}:${seconds}`;
+            time--;
+
+            if(minutes == 0){
+
+                btnSendEmail.style.backgroundColor = "rgba(167,114,190,1)";
+                btnSendEmail.style.color = "white";
+                countdownEl.innerHTML = "0:00";
+                clearInterval(timer);
+            }
+        } 
+    }    
 });
 

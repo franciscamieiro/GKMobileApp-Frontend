@@ -1,14 +1,13 @@
-* {
-  overflow-x: hidden;
+.body2{
+  height: 100%;
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center;
+  align-items: center;
+  overflow: hidden;
 }
 
-html,
-body{
-    background: rgba(255,255,255,1);
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+
 .swal-button {
   background: rgba(167,114,190,1);
   opacity: 1;
@@ -29,23 +28,22 @@ body{
 .v122_311 {
   width: 160px;
   height: 34px;
-  background: rgba(167,114,190,1);
+  background: rgba(108, 80, 120, 0.61);
   opacity: 1;
-  position: absolute;
-  top: 402px;
-  left: 100px;
+  position: relative;
   border-top-left-radius: 95px;
   border-top-right-radius: 95px;
   border-bottom-left-radius: 95px;
   border-bottom-right-radius: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  color: rgba(255,255,255,1);
+  color: rgb(197, 197, 197);
   font-family: Londrina Solid;
   font-weight: Regular;
   font-size: 20px;
   text-align: center;
   padding-top: 8px;
+  margin-top: 20px;
 }
 .v122_312 {
   width: 96px;
@@ -74,9 +72,7 @@ body{
 .v122_314 {
   width: 247px;
   color: rgba(53,53,53,1);
-  position: absolute;
-  top: 230px;
-  left: 56px;
+  position: relative;
   font-family: Open Sans;
   font-weight: Regular;
   font-size: 16px;
@@ -86,65 +82,47 @@ body{
 .v122_315 {
   width: 255px;
   color: rgba(53,53,53,1);
-  position: absolute;
-  top: 303px;
-  left: 52px;
+  position: relative;
   font-family: Open Sans;
   font-weight: Regular;
   font-size: 16px;
   opacity: 1;
   text-align: center;
+  margin-top: 20px;
 }
 .v122_316 {
   width: 255px;
   color: rgba(53,53,53,1);
-  position: absolute;
-  top: 508px;
-  left: 52px;
+  position: relative;
   font-family: Open Sans;
   font-weight: Regular;
   font-size: 16px;
   opacity: 1;
   text-align: center;
+  margin-top: 20px;
 }
 .v122_317 {
   width: 67px;
   color: rgba(252,46,46,1);
-  position: absolute;
-  top: 457px;
-  left: 146px;
+  position: relative;
   font-family: Open Sans;
   font-weight: Regular;
   font-size: 16px;
   opacity: 1;
   text-align: center;
+  margin-top: 5px;
 }
 .v122_318 {
   width: 305px;
-  color: rgba(167,114,190,1);
-  position: absolute;
-  top: 146px;
-  left: 27px;
+  color: rgba(141,86,166,1);
+  position: relative;
   font-family: Londrina Solid;
   font-weight: Regular;
   font-size: 40px;
   opacity: 1;
   text-align: center;
-}
-.v122_342 {
-  width: 160px;
-  height: 44px;
-  background: rgba(108,80,120,0.550000011920929);
-  opacity: 1;
-  position: absolute;
-  top: 402px;
-  left: 100px;
-  border-top-left-radius: 95px;
-  border-top-right-radius: 95px;
-  border-bottom-left-radius: 95px;
-  border-bottom-right-radius: 95px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 .v190_21 {
   width: 240px;
@@ -154,8 +132,6 @@ body{
   background-position: center center;
   background-size: cover;
   opacity: 1;
-  position: absolute;
-  top: 52px;
-  left: 60px;
+  position: relative;
   overflow: hidden;
 }
