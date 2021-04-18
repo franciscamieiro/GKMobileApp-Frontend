@@ -497,41 +497,6 @@ a{
   margin-left: 7px;
 }
 
-@media screen and (orientation: landscape) {
-  #tools {
-    top:50px;
-    width: 258px;
-    height: 50px;
-    margin-left: 45%
-  }
-
-  #showcolors{
-    border-bottom: none;
-    border-right: 2px solid rgb(214, 214, 214);
-  }
-
-  #pen_pencil{
-    border-bottom: none;
-    border-right: 2px solid rgb(214, 214, 214);
-  }
-  #rubber{
-    border-bottom: none;
-  }
-  #showStickers{
-    border-bottom: none;
-    border-top: none;
-    border-left: 2px solid rgb(214, 214, 214);
-    border-right: 2px solid rgb(214, 214, 214);
-  }
-  #trash{
-    border-bottom: none;
-  }
-  #toolsbar{
-    top:81.5px;
-    transform: rotate(-270deg);
-    margin-left: 56.9%;
-  }
-}
 .v368_2 {
   border-bottom: 2px solid rgb(214, 214, 214);
   width: 50px;

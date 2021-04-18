@@ -136,7 +136,7 @@ function coment() {
     swal({
         text: "Escolhe um",
         buttons: {
-            cancel: {
+            text: {
                 text: "Escrever um comentário",
                 value: "coment",
                 visible: true,
@@ -243,14 +243,16 @@ function reportpub() {
                 closeModal: true
             },
         },
-    }).then((result) => {
-        swal({
-            icon: 'images/v254_5.png',
-            title: 'Sucesso',
-            text: 'Publicação reportada!',
-            buttons: false,
-            className: "swalAlertSucess"
+    }).then((value) => {
+        if(value == "report"){
+            swal({
+                icon: 'images/v254_5.png',
+                title: 'Sucesso',
+                text: 'Publicação reportada!',
+                buttons: false,
+                className: "swalAlertSucess"
 
-        });
+            });
+        }
     });
 };

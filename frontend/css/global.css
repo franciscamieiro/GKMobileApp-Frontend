@@ -131,32 +131,53 @@ body{
     border-radius: 12px;
 }
   
-  .swal-footer {
+.swal-footer {
     text-align: center;
     margin-top: -3px;
-  }
+}
   
   
-  .swal-text {
+.swal-text {
     font-family: 'Open Sans';
     font-weight: 14px;
     margin-top: -5px;
     text-align: center;
-  }
+}
   
-  .swal-title {
+.swal-title {
     margin-top: -20px;
     font-family: 'Open Sans';
     font-size: 18px;
     font-weight: SemiBold;
-  }
+}
   
-  .swalAlertSucess{
+.swalAlertSucess{
     background-color: #fff;
     font-family: 'Open Sans';
     height: 190px;
     width: 70%;
     overflow-y: hidden;
     border-radius: 12px;
-  }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(182, 182, 182);
+    border-radius: 15px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
   

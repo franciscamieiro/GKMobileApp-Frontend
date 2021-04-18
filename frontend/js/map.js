@@ -35,40 +35,108 @@ window.onload = function start() {
 
     }else{
 
+        fetch("http://localhost:80/api/users/" + "2")
+            .then((response) => response.json())
+            .then((user) => {
+                    
+                let city = user.city;
+                
+                console.log(user.city);
+
+                if(city == null){
+                    swal({
+                        icon: 'images/Usure_icon.png',
+                        text: 'Qual é a tua cidade?',
+                        content: {
+                            element: "input",
+                        },
+                        button: 'OK',
+                        className: "swalAlert1",
+                        closeOnClickOutside: false,
+                        closeOnClick: false,
+                    }).then(function(inputValue) {
+                        if (inputValue === false) return false;
+                    
+                        else if (inputValue === "") {
+                            
+                            swal({
+                                icon: 'images/warning.png',
+                                text: 'Escreve uma cidade!',
+                            }).then(function(isConfirm) {
+                                start();
+                            });
+                        
+                            
+                        }else{
+
+                            chosenCity = inputValue;
+                            
+                            initMap(chosenCity);
+
+                            let data = {};
+                            data.city = chosenCity;
+
+                            console.log(data);
+
+                            fetch("http://localhost:80/api/users/" + "2", {
+                                headers: { 'Content-Type': 'application/json' },
+                                method: 'PUT',
+                                body: JSON.stringify(data)
+                            }).then(function(response) {
+
+                                if (!response.ok) {
+                                    console.log(response.status); //=> number 100–599
+                                    console.log(response.statusText); //=> String
+                                    console.log(response.headers); //=> Headers
+                                    console.log(response.url); //=> String
+                                    if (response.status === 409) {
+                                        swal({
+                                            icon: 'images/v237_21.png',
+                                            title: 'Erro',
+                                            text: 'Dados incorretos!',
+                                            button: 'OK',
+                                            className: "swalAlert"
+                                        });
+                                    }
+                                    else {
+                                        throw Error(response.statusText);
+                                    }
+                                }
+                                else {
+                                    swal({
+                                        icon: 'images/v254_5.png',
+                                        title: 'Sucesso',
+                                        text: 'Cidade Guardada!',
+                                        buttons: false,
+                                        className: "swalAlertSucess"
+                                        
+                                    });
+                                }
+                            }).then(function(result) {
+                                console.log(result);
+                            }).catch(function(err) {
+                                swal({
+                                    icon: 'images/v237_21.png',
+                                    title: 'Erro',
+                                    text: 'Ocorreu um Erro!',
+                                    button: 'OK',
+                                    className: "swalAlert"
+                                });
+                                console.error(err);
+                            });
+                        }
+                    });
+                }else{
+                            
+                    initMap(city);
+                }
+                    
+            });
+
         //fetch à base de dados para ver se o puto tem cidade registada,
         //if cidadeDaBasedeDados != null => diz-se que a chosenCity é igual a essa
         //e depois chama-se a função initMap(chosenCity);
         //else{ } => código a baixo
-
-        swal({
-            icon: 'images/Usure_icon.png',
-            text: 'Qual é a tua cidade?',
-            content: {
-                element: "input",
-            },
-            button: 'OK',
-            className: "swalAlert1",
-            closeOnClickOutside: false,
-            closeOnClick: false,
-        }).then(function(inputValue) {
-            if (inputValue === false) return false;
-        
-            else if (inputValue === "") {
-                
-                swal({
-                    icon: 'images/warning.png',
-                    text: 'Escreve uma cidade!',
-                }).then(function(isConfirm) {
-                    start();
-                });
-            
-                
-            }else{
-                chosenCity = inputValue;
-                
-                initMap(chosenCity);
-            }
-        });
     }
 }
 
