@@ -208,5 +208,28 @@ avatar9.addEventListener("click", function(){
     avatars.style.display = "none";
 
 });
+
+window.onload =
+    async() => {
+        const id = localStorage.idlogado;
+        const response = await fetch("http://localhost:80/api/users/" + "2");
+        const user = await response.json()
+
+            let name = user.name;
+            let email = user.email;
+            let birthDate = user.birthDate.split('-').reverse().join('-');
+
+            console.log(name, email, birthDate);
+
+            document.getElementById('inputFullName').value = name;
+            document.getElementById('inputEmail').value = email;
+            document.getElementById('inputBirth').value = birthDate;
+    };           
+
+btnEdit.addEventListener("click", function() {
+    if(btnEdit.innerHTML.value == "Guardar"){
+        console.log("está certo!!!!!")
+    }
+});
         
             

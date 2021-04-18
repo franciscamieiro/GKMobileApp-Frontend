@@ -156,7 +156,7 @@ btnSubmit.addEventListener("click", function() {
         data.dateOfBirth = birth.value.split('-').reverse().join('-');
         data.role = "CHILD";
 
-        fetch("https://gokids-dai.herokuapp.com/" + "api/registration", {
+        fetch("http://localhost:80/api/registration", {
             headers: { 'Content-Type': 'application/json' },
             method: 'POST',
             body: JSON.stringify(data)
