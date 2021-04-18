@@ -11,12 +11,15 @@
         <!-- Adapt special characteres -->
         <meta charset="UTF-8">
 
-
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        
+        <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="css/whereTo.css" />
-    
+
+        <!-- Sweetalert-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
     </head>
   
     <body>
@@ -32,25 +35,29 @@
 
         <form class="form-horizontal">
             <div class="form-group">
-                <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
+                <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle icon"></i></label>
                 <div class="col-xs-4">
                     <input type="text" id="from" placeholder="Ponto de Partida" class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
+                <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt icon"></i></label>
                 <div class="col-xs-4">
                     <input type="text" id="to" placeholder="Ponto de Chegada" class="form-control">
                 </div>
             </div>
         </form>
-        
+
         <div class="col-xs-offset-2 col-xs-10">
-            <button class="btn btn-info btn-lg"><i class="fas fa-directions"></i></button>
+            <button class="btn btn-info btn-lg" onclick="calcRoute();"><i class="fas fa-directions"></i></button>
         </div>
 
-        <div class="container-fluid"></div>
+        <div class="container-fluid">
+            <div id="googleMap">
+                
+            </div>
+        </div>
 
         <footer>
 
@@ -66,7 +73,7 @@
         </footer>
 
         <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw&callback=initMap&libraries=&v=weekly" async></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw&libraries=places"></script>
     
         <script src="js/whereTo.js"></script>
   
