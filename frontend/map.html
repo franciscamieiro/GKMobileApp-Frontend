@@ -1,58 +1,70 @@
 <!DOCTYPE html>
 
 <html>
-        
-    <head>
 
-        <!-- Adapt screen to any mobile device -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <!-- Adapt special characteres -->
-        <meta charset="UTF-8">
-        
-        <!-- CSS -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link href="./css/map.css" rel="stylesheet" />
-        
-        <!-- Google Maps API -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw"></script>
+    <link rel="manifest" href="manifest.json">
 
-        <!-- Sweetalert-->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Map</title>
-        
-    </head>
-        
-    <body>
-        <header>
-                    
-            <div id="header" class="v104_15">
-                <div id="headerimg"class="v190_34"></div>
-                <a id="takePicture" class="tkpicture" href="camera.html"></a>
-                <a id="favorites" class="favorites" href="favoritePlaces.html"></a>
-            </div>
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
 
-        </header>
-        
-        <div class="v268_32">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/map.css" rel="stylesheet" />
 
-            <div id="map"></div>
-            
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw"></script>
+
+    <!-- Sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <title>Map</title>
+
+</head>
+
+<body>
+    <header>
+
+        <div id="header" class="v104_15">
+            <div id="headerimg" class="v190_34"></div>
+            <a id="takePicture" class="tkpicture" href="camera.html"></a>
+            <a id="favorites" class="favorites" href="favoritePlaces.html"></a>
         </div>
 
-        <!-- footer -->
-        <div id="app-footer">
-            <ul>
-                <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
-                <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
-                <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
-                <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
-            </ul>
-        </div>
+    </header>
 
-        
-        <script src="js/map.js"></script>
-        
-    </body>    
+    <div class="v268_32">
+
+        <div id="map"></div>
+
+    </div>
+
+    <!-- footer -->
+    <div id="app-footer">
+        <ul>
+            <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+            <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+            <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+            <li>
+                <div id="logout" class="button"><svg class="v294_3"></svg></div>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="js/map.js"></script>
+
+</body>
+
 </html>

@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 
 <html>
-    
+
 <head>
 
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <!-- Adapt screen to any mobile device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <meta charset="UTF-8">
 
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
-    
+
     <link href="./css/global.css" rel="stylesheet" />
     <link href="./css/regist.css" rel="stylesheet" />
-    
+
     <!-- Vendor CSS -->
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-    
+
     <title>Registo</title>
 
 </head>
@@ -29,31 +38,31 @@
 
         <span class="v103_169">Registo</span>
 
-            <form class="row" method="POST" id="regist_form">
+        <form class="row" method="POST" id="regist_form">
 
-                <label class="costum-field">
+            <label class="costum-field">
                         <input class="v103_163" type="text" id="inputName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required><span class="v103_162">Nome Completo</span></input>
                 </label>
 
-                <label class="costum-field">
+            <label class="costum-field">
                         <input class="v103_163 js-datepicker" type="text" id="inputBirth" onKeyDown="return false"required><span class="v121_75">Data de Nascimento</span></input>
                         <div class="v137_3 js-btn-calendar"></div>
                 </label>
 
-                <label class="costum-field">
+            <label class="costum-field">
                     <input class="v103_163" type="text" id="inputEmail" required><span class="v121_78">Endereço Eletrónico</span></input>
                     
                 </label>
 
-                <label class="costum-field">
+            <label class="costum-field">
                         <input class="v103_163" type="password" id="inputPassword" required><span class="v121_2">Palavra-Passe</span><div class="v103_168" onclick="toggle()"></div></input>
                 </label>
 
-                <input class="v103_166" type="button" id="btnRegistar" value="Registar"></input>
+            <input class="v103_166" type="button" id="btnRegistar" value="Registar"></input>
 
-            </form>
-        
-        
+        </form>
+
+
         <div id="app-footer">
             <span class="v106_6" id="goToLogin">Login</span>
         </div>
@@ -69,7 +78,7 @@
     <!-- Main JS-->
     <script src="js/regist.js"></script>
     <script src="js/dateChooser.js"></script>
-    
+
     <!-- SweetAlert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

@@ -1,68 +1,109 @@
 <!DOCTYPE html>
 
 <html>
-    
-    <head>
 
-        <!-- Adapt screen to any mobile device -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <!-- Adapt special characteres -->
-        <meta charset="UTF-8">
-        
-        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link href="./css/savedDrawings.css" rel="stylesheet" />
-        <link href="./css/global.css" rel="stylesheet" />
-        
-        <title>Publish Drawing</title>
-    
-    </head>
-    
-    <body>
+    <link rel="manifest" href="manifest.json">
 
-            <header>
-                    
-                <div id="header" class="v104_15"><div id="headerimg"class="v190_34"></div></div>
-    
-            </header>
-                
-            <div class="v132_120" onclick="goBack()"></div>
-            <span id="title" class="v132_121">Publicar desenho</span>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <div id="PublishPlane">
-                <ul>
-                    <li id="btnPubfinal"><div id="btnPubliicon"></div><div>Publicar</div></li>
-                </ul>
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/savedDrawings.css" rel="stylesheet" />
+    <link href="./css/global.css" rel="stylesheet" />
+
+    <title>Publish Drawing</title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div id="header" class="v104_15">
+            <div id="headerimg" class="v190_34"></div>
+        </div>
+
+    </header>
+
+    <div class="v132_120" onclick="goBack()"></div>
+    <span id="title" class="v132_121">Publicar desenho</span>
+
+    <div id="PublishPlane">
+        <ul>
+            <li id="btnPubfinal">
+                <div id="btnPubliicon"></div>
+                <div>Publicar</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="drawings">
+        <div id="drawingswrapper" class="drawingswrapper">
+            <div id="1" class="border"><img class="drawing" src="../frontend/images/avatar6.png">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
             </div>
-
-            <div class="drawings">
-                <div id="drawingswrapper" class="drawingswrapper">
-                    <div id="1" class="border"><img class="drawing" src="../frontend/images/avatar6.png"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="2" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="3" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="4" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="5" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="6" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="7" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="8" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="9" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="10" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="11" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                    <div id="12" class="border"><img class="drawing" src="../frontend/images/tryout.jpg"><div class="action"><input class="checkbox" type="checkbox"></div></div>
-                </div>
+            <div id="2" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
             </div>
-            <!-- footer -->
-            <div id="app-footer">
-                <ul>
-                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
-                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
-                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
-                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
-                </ul>
+            <div id="3" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
             </div>
+            <div id="4" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="5" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="6" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="7" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="8" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="9" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="10" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="11" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+            <div id="12" class="border"><img class="drawing" src="../frontend/images/tryout.jpg">
+                <div class="action"><input class="checkbox" type="checkbox"></div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div id="app-footer">
+        <ul>
+            <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+            <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+            <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+            <li>
+                <div id="logout" class="button"><svg class="v294_3"></svg></div>
+            </li>
+        </ul>
+    </div>
 
-        <script src="js/publishDrawing.js"></script>
+    <script src="js/publishDrawing.js"></script>
 
-    </body>
+</body>
+
 </html>

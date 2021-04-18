@@ -1,68 +1,82 @@
 <!DOCTYPE html>
 
 <html>
-    
-    <head>
 
-        <!-- Adapt screen to any mobile device -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <!-- Adapt special characteres -->
-        <meta charset="UTF-8">
-        
-        <!-- CSS -->
-        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link href="./css/favoritePlaces.css" rel="stylesheet" />
+    <link rel="manifest" href="manifest.json">
 
-        <!-- Google Maps API -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw"></script>
-        <!-- Sweetalert-->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
-        
-        <title>Favorite Places</title>
-    
-    </head>
-    
-    <body>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <header>
-                    
-                <div id="header" class="v104_15"><div id="headerimg"class="v190_34"></div></div>
-    
-            </header>
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
 
-            <div class="v132_120" onclick="goBack()"></div>
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/favoritePlaces.css" rel="stylesheet" />
 
-            <div class="v132_121">Locais Favoritos</div>
-            
-            <div class="body2">
-                <div class="btnMarkFP" id="btnMarkFP">Marcar local onde estou<br>como favorito</div>
-                
-                <div class="line"></div>
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXOTMRQAY0oJMsutgMcfkAMcBo5H_Stkw"></script>
+    <!-- Sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-                <div class="favorites">Favoritos</div>
 
-                <div class="nfavorites" id="nfavorites">0 locais marcados</div>
+    <title>Favorite Places</title>
 
-                <table class="favPlaces" id="favPlaces">
-                    
-                </table>
-            </div>
+</head>
 
-    
-            <!-- footer -->
-            <div id="app-footer">
-                <ul>
-                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
-                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
-                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
-                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
-                </ul>
-            </div>
+<body>
 
-        <script src="js/favoritePlaces.js"></script>
+    <header>
 
-    </body>
+        <div id="header" class="v104_15">
+            <div id="headerimg" class="v190_34"></div>
+        </div>
+
+    </header>
+
+    <div class="v132_120" onclick="goBack()"></div>
+
+    <div class="v132_121">Locais Favoritos</div>
+
+    <div class="body2">
+        <div class="btnMarkFP" id="btnMarkFP">Marcar local onde estou<br>como favorito</div>
+
+        <div class="line"></div>
+
+        <div class="favorites">Favoritos</div>
+
+        <div class="nfavorites" id="nfavorites">0 locais marcados</div>
+
+        <table class="favPlaces" id="favPlaces">
+
+        </table>
+    </div>
+
+
+    <!-- footer -->
+    <div id="app-footer">
+        <ul>
+            <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+            <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+            <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+            <li>
+                <div id="logout" class="button"><svg class="v294_3"></svg></div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="js/favoritePlaces.js"></script>
+
+</body>
+
 </html>

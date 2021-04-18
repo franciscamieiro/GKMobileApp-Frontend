@@ -1,74 +1,87 @@
 <!DOCTYPE html>
 
 <html>
-    
-    <head>
 
-        <!-- Adapt screen to any mobile device -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <link rel="manifest" href="manifest.json">
 
-        <!-- Adapt special characteres -->
-        <meta charset="UTF-8">
-        
-        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link id="theme" href="./css/theme.css" rel="stylesheet" />
-        <link id="theme" href="./css/global.css" rel="stylesheet" />
-        
-        <title>Tema</title>
-    
-    </head>
-    
-    <body>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <div class="body2">
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
 
-            <header>
-                        
-                <div id="header" class="v104_15"><div id="headerimg"class="v190_34"></div></div>
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link id="theme" href="./css/theme.css" rel="stylesheet" />
+    <link id="theme" href="./css/global.css" rel="stylesheet" />
 
-            </header>
-                
-            <div class="v124_339" onclick="goBack()"></div>
-            <span class="v124_340">Definir tema</span>
-            <span class="v124_341">Modo escuro</span>
-            <span class="v124_346">Pré-visualização do modo escuro</span>
-            <div class="v124_342" id="btnThemecolor"></div>
-            <div class="v124_343" id="btnTheme"></div>
-            <div class="v124_449"></div>
-            <div class="v124_450"></div>
-            <div class="v124_452"></div>
-            <span class="v124_453">Tens dúvidas?</span>
-            <div class="v124_454"></div>
-            <div class="v124_455"></div>
-            <div class="v124_456"></div>
-            <span class="v124_457">As minhas atividades</span>
-            <span class="v124_458">A tua cidade</span>
-            <div class="v124_459"></div>
-            <span class="v124_460">Fórum</span>
-            <div class="v124_461"></div>
-            <span class="v124_462">Os meus desenhos</span>
-            <div class="v124_463"></div>
-            <span class="v124_464">Para onde queres ir?</span>
-            <div class="logo"></div>
-            <div class="v124_465"></div>
-            <div class="v138_57"></div>
-            <div class="v138_56"></div>
-            <div class="v177_8"></div>
-            <div class="v169_1"></div>
-            <div class="v177_51"></div>
+    <title>Tema</title>
 
-            <!-- footer -->
-            <div id="app-footer">
-                <ul>
-                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
-                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
-                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
-                    <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
-                </ul>
+</head>
+
+<body>
+
+    <div class="body2">
+
+        <header>
+
+            <div id="header" class="v104_15">
+                <div id="headerimg" class="v190_34"></div>
             </div>
 
-            <script src="js/theme.js"></script>
+        </header>
+
+        <div class="v124_339" onclick="goBack()"></div>
+        <span class="v124_340">Definir tema</span>
+        <span class="v124_341">Modo escuro</span>
+        <span class="v124_346">Pré-visualização do modo escuro</span>
+        <div class="v124_342" id="btnThemecolor"></div>
+        <div class="v124_343" id="btnTheme"></div>
+        <div class="v124_449"></div>
+        <div class="v124_450"></div>
+        <div class="v124_452"></div>
+        <span class="v124_453">Tens dúvidas?</span>
+        <div class="v124_454"></div>
+        <div class="v124_455"></div>
+        <div class="v124_456"></div>
+        <span class="v124_457">As minhas atividades</span>
+        <span class="v124_458">A tua cidade</span>
+        <div class="v124_459"></div>
+        <span class="v124_460">Fórum</span>
+        <div class="v124_461"></div>
+        <span class="v124_462">Os meus desenhos</span>
+        <div class="v124_463"></div>
+        <span class="v124_464">Para onde queres ir?</span>
+        <div class="logo"></div>
+        <div class="v124_465"></div>
+        <div class="v138_57"></div>
+        <div class="v138_56"></div>
+        <div class="v177_8"></div>
+        <div class="v169_1"></div>
+        <div class="v177_51"></div>
+
+        <!-- footer -->
+        <div id="app-footer">
+            <ul>
+                <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                <li>
+                    <div id="logout" class="button"><svg class="v294_3"></svg></div>
+                </li>
+            </ul>
         </div>
-    </body>
+
+        <script src="js/theme.js"></script>
+    </div>
+</body>
+
 </html>

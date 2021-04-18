@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 
 <html>
-        
-    <head>
 
-        <!-- Adapt screen to any mobile device -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <!-- Adapt special characteres -->
-        <meta charset="UTF-8">
-        
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link href="./css/camera.css" rel="stylesheet" />
-        <link href="./css/global.css" rel="stylesheet" />
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/camera.css" rel="stylesheet" />
+    <link href="./css/global.css" rel="stylesheet" />
 
 
-        <title>Camera</title>
-        
-    </head>
-        
-    <body>
-        
-        <div class="video-wrap">
-            <video id="video" playsinline autoplay></video>
-        </div>
+    <title>Camera</title>
 
-        <div class="controller">
-            <div id="snap">Tirar fotografia</div>
-        </div>
+</head>
 
-        <canvas id="canvas"></canvas>
+<body>
 
-        <div id="download">Guardar fotografia</div>
-        
-        <div id="draw">Desenhar na foto</div>
-        
-        
-        <script src="js/camera.js"></script>
-        
-    </body>    
+    <div class="video-wrap">
+        <video id="video" playsinline autoplay></video>
+    </div>
+
+    <div class="controller">
+        <div id="snap">Tirar fotografia</div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <div id="download">Guardar fotografia</div>
+
+    <div id="draw">Desenhar na foto</div>
+
+
+    <script src="js/camera.js"></script>
+
+</body>
+
 </html>
