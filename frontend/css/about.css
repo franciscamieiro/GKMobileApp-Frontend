@@ -65,12 +65,13 @@ a {
     opacity: 1;
     position: relative;
     overflow: hidden;
-    text-align: center;
+    text-align: left;
 }
 
 .v168_0bold {
     font-weight: Bold;
     color: rgba(28, 28, 28, 1);
+    margin-left: 40px;
 }
 
 .v168_02 {
@@ -95,8 +96,7 @@ a {
     opacity: 1;
     position: relative;
     overflow: hidden;
-    text-align: center;
-    display: none;
+    text-align: justify;
 }
 
 .v168_1 {
@@ -106,7 +106,7 @@ a {
     font-size: 16px;
     opacity: 1;
     position: relative;
-    text-align: center;
+    text-align: left;
 }
 
 .v168_13 {
@@ -119,8 +119,7 @@ a {
     opacity: 1;
     position: relative;
     overflow: hidden;
-    text-align: center;
-    display: none;
+    text-align: justify;
 }
 
 .v168_3 {
