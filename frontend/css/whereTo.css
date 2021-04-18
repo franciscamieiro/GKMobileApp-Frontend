@@ -271,3 +271,51 @@ body{
     height:58%;
     width:100%;
 }
+
+.swalAlert {
+  background-color: #fff;
+  font-family: 'Open Sans';
+  height: 225px;
+  width: 70%;
+  overflow-y: hidden;
+  border-radius: 12px;
+}
+
+.swalAlert2 {
+  background-color: #fff;
+  font-family: 'Open Sans';
+  height: 255px;
+  width: 70%;
+  overflow-y: hidden;
+  border-radius: 12px;
+}
+
+.swal-footer {
+  text-align: center;
+  margin-top: -3px;
+}
+
+
+.swal-text {
+  font-family: 'Open Sans';
+  font-weight: 14px;
+  margin-top: -5px;
+  text-align: center;
+}
+
+.swal-button {
+  background: rgba(167,114,190,1);
+  opacity: 1;
+  border-top-left-radius: 29px;
+  border-top-right-radius: 29px;
+  border-bottom-left-radius: 29px;
+  border-bottom-right-radius: 29px;
+  color: rgba(255,255,255,1);
+  font-family: 'Open Sans';
+  font-weight: Bold;
+  font-size: 14px;
+  margin-right: 40%;
+  border-collapse: collapse;
+  appearance: none;
+  outline: none;
+}
