@@ -14,6 +14,7 @@
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/whereTo.css" />
     
     </head>
@@ -29,18 +30,27 @@
 
         </header>
 
-        <div id="floating-panel">
-            <b>Ponto de partida: </b>
-            <input id="start" type="text"></input>
-            <b>Destino: </b>
-            <input id="end" type="text"></input>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
+                <div class="col-xs-4">
+                    <input type="text" id="from" placeholder="Ponto de Partida" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
+                <div class="col-xs-4">
+                    <input type="text" id="to" placeholder="Ponto de Chegada" class="form-control">
+                </div>
+            </div>
+        </form>
+        
+        <div class="col-xs-offset-2 col-xs-10">
+            <button class="btn btn-info btn-lg"><i class="fas fa-directions"></i></button>
         </div>
 
-        <div id="map"></div>
-
-        &nbsp;
-
-        <div id="warnings-panel"></div>
+        <div class="container-fluid"></div>
 
         <footer>
 
