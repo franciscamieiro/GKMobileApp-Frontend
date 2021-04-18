@@ -22,13 +22,11 @@ btnTheme.addEventListener("click", function() {
 
   if(color.style.backgroundColor !== 'grey'){
     color.style.backgroundColor = 'grey';
-    document.getElementById('theme').setAttribute('href', './css/theme.css');
     localStorage.setItem("theme", "lightmode");
   }
   
   else{
   color.style.backgroundColor = '#07B82E';
-  document.getElementById('theme').setAttribute('href', './css/themeDM.css');
   localStorage.setItem("theme", "darkmode");
 }
 

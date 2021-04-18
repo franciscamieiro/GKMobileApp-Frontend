@@ -1,10 +1,4 @@
-#canvas1{
-    position: absolute;
-    top:0;
-    bottom: 0;
-}
-
-#canvas2{
+#canvas{
     display: none;
     position: absolute;
     top:0;
