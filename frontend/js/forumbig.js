@@ -229,3 +229,28 @@ function publishText() {
         });
     }
 }
+
+function reportpub() {
+
+    swal({
+        text: "Reportar Publicação",
+        buttons: {
+            confirm: {
+                text: "Reportar",
+                value: "report",
+                visible: true,
+                className: "red",
+                closeModal: true
+            },
+        },
+    }).then((result) => {
+        swal({
+            icon: 'images/v254_5.png',
+            title: 'Sucesso',
+            text: 'Publicação reportada!',
+            buttons: false,
+            className: "swalAlertSucess"
+
+        });
+    });
+};

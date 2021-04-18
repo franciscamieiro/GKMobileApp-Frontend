@@ -49,16 +49,19 @@ body {
     border-radius: 50%;
     overflow: hidden;
 }
-.v549_94:focus {outline:0;}
+
+.v549_94:focus {
+    outline: 0;
+}
 
 .swal-button {
-    background: rgba(167,114,190,1);
+    background: rgba(167, 114, 190, 1);
     opacity: 1;
     border-top-left-radius: 29px;
     border-top-right-radius: 29px;
     border-bottom-left-radius: 29px;
     border-bottom-right-radius: 29px;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     font-family: 'Open Sans';
     font-weight: Bold;
     font-size: 14px;
@@ -66,7 +69,7 @@ body {
     border-collapse: collapse;
     appearance: none;
     outline: none;
-  }
+}
 
 .v549_95 {
     width: 20px;
@@ -102,6 +105,7 @@ body {
     float: right;
 }
 
+
 /* novo */
 
 .criacoesimg {
@@ -113,4 +117,16 @@ body {
 .v549_186 {
     width: 26px;
     height: 26px;
+}
+
+.tkpubli {
+    background: url("../images/v624_466.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 37px;
+    height: 32.38px;
+    float: right;
+    margin-top: -27.5px;
+    margin-right: 10px;
 }

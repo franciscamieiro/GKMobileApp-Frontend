@@ -407,6 +407,18 @@ main {
     border-radius: 3px;
 }
 
+.red {
+    width: 228px;
+    height: 45px;
+    color: #fff;
+    font-weight: normal;
+    background-color: #FF0000;
+    border: 1px solid #C96046;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}
+
 .blue {
     width: 228px;
     height: 45px;
