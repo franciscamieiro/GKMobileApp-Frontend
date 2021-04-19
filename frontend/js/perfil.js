@@ -281,19 +281,19 @@ avatar9.addEventListener("click", function(){
 
 avatar10.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar10.jpg");
     avatars.style.display = "none";
 
 });
 avatar11.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar11.jpg");
     avatars.style.display = "none";
 
 });
 avatar12.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar12.jpg");
     avatars.style.display = "none";
 
 });
