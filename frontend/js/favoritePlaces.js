@@ -80,7 +80,7 @@ function geocodeLatLng(geocoder) {
                     data.latitude = lat;
                     data.longitude = long;
 
-                    fetch("http://localhost:80/api/favorite_places", {
+                    /* fetch("http://localhost:80/api/favorite_places", {
                         headers: { 'Content-Type': 'application/json' },
                         method: 'POST',
                         body: JSON.stringify(data)
@@ -127,6 +127,15 @@ function geocodeLatLng(geocoder) {
                             
                         })
                         console.error(err);
+                    }); */
+
+                    swal({
+                        icon: 'images/v254_5.png',
+                        title: 'Sucesso',
+                        text: 'Local guardado!',
+                        button: 'OK',
+                        className: "swalAlert"
+                        
                     });
     
                 } else {

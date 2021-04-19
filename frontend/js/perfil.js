@@ -133,7 +133,6 @@ btnEdit.addEventListener("click", function() {
         }
         
         else{
-            alert("hi");
 
             fetch("http://localhost:80/api/users/" + "2")
             .then((response) => response.json())

@@ -93,7 +93,7 @@ btnLogin.addEventListener("click", function() {
         data.email = email.value;
         data.password = password.value;
 
-        fetch("http://localhost:80/api/auth/signin", {
+        /*fetch("http://localhost:80/api/auth/signin", {
             headers: { 'Content-Type': 'application/json' },
             method: 'POST',
             body: JSON.stringify(data)
@@ -129,7 +129,8 @@ btnLogin.addEventListener("click", function() {
             console.error(err);
         });
         
-        
+        */
+        window.location.replace("inicialPage.html");
     }
 
 });
