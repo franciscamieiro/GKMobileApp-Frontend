@@ -306,24 +306,23 @@ avatar12.addEventListener("click", function(){
 
 });
 
-window.onload =
-    async() => {
-        const id = localStorage.idlogado;
-        const response = await fetch("http://localhost:80/api/users/" + "2");
-        const user = await response.json();
+window.onload = async() => {
+    const id = localStorage.idlogado;
+    const response = await fetch("http://localhost:80/api/users/" + "2");
+    const user = await response.json();
 
-            let name = user.name;
-            let email = user.email;
-            let city = user.city;
-            let birthDate = user.birthDate.split('-').reverse().join('-');
+    let name = user.name;
+    let email = user.email;
+    let city = user.city;
+    let birthDate = user.birthDate.split('-').reverse().join('-');
 
-            console.log(name, email, birthDate);
+    console.log(name, email, birthDate);
 
-            document.getElementById('inputFullName').value = name;
-            document.getElementById('inputEmail').value = email;
-            document.getElementById('inputBirth').value = birthDate;
-            document.getElementById('inputCity').value = city;
-    };           
+    document.getElementById('inputFullName').value = name;
+    document.getElementById('inputEmail').value = email;
+    document.getElementById('inputBirth').value = birthDate;
+    document.getElementById('inputCity').value = city;
+};           
 
 
         
