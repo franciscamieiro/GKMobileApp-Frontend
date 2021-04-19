@@ -3,7 +3,11 @@ let btnEdit = document.getElementById("btnEdit");
 let fullname = document.getElementById("inputFullName");
 let birth = document.getElementById("inputBirth");
 let email = document.getElementById("inputEmail");
+let city = document.getElementById("inputCity");
 let pass = document.getElementById("inputPass");
+let label = document.getElementById("label");
+let label1 = document.getElementById("label1");
+let body2 = document.getElementById("body2");
 let allowphotoEdit = document.getElementById("allowphotoEdit");
 let changephoto = document.getElementById("changephoto");
 let profilePhoto = document.getElementById("profilePhoto");
@@ -41,6 +45,10 @@ btnEdit.addEventListener("click", function() {
         fullname.disabled = false;
         email.disabled = false;
         pass.disabled = false;
+        label.style.display = "block";
+        label1.style.display = "block";
+        body2.style.height = "810px";
+        city.disabled = false;
         allowphotoEdit.style.display = "block";
 
     }else{
@@ -75,6 +83,21 @@ btnEdit.addEventListener("click", function() {
                 
             }).then(function(isConfirm) {
                 email.focus();
+            });
+            
+        }
+        
+        else if(city.value == ""){
+
+            swal({
+                icon: 'images/warning.png',
+                title: 'Atenção',
+                text: 'Preenche a tua cidade!',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                city.focus();
             });
             
         }
@@ -114,6 +137,7 @@ btnEdit.addEventListener("click", function() {
             let data = {};
             data.name = fullname.value;
             data.email = email.value;
+            data.city = city.value;
             data.password = pass.value;
 
             console.log(data);
@@ -156,6 +180,7 @@ btnEdit.addEventListener("click", function() {
                         fullname.disabled = true;
                         email.disabled = true;
                         pass.disabled = true;
+                        city.disabled = true;
                         allowphotoEdit.style.display = "none";
         
                     });
@@ -254,6 +279,25 @@ avatar9.addEventListener("click", function(){
 
 });
 
+avatar10.addEventListener("click", function(){
+
+    profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
+    avatars.style.display = "none";
+
+});
+avatar11.addEventListener("click", function(){
+
+    profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
+    avatars.style.display = "none";
+
+});
+avatar12.addEventListener("click", function(){
+
+    profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
+    avatars.style.display = "none";
+
+});
+
 window.onload =
     async() => {
         const id = localStorage.idlogado;
@@ -262,6 +306,7 @@ window.onload =
 
             let name = user.name;
             let email = user.email;
+            let city = user.city;
             let birthDate = user.birthDate.split('-').reverse().join('-');
 
             console.log(name, email, birthDate);
@@ -269,6 +314,7 @@ window.onload =
             document.getElementById('inputFullName').value = name;
             document.getElementById('inputEmail').value = email;
             document.getElementById('inputBirth').value = birthDate;
+            document.getElementById('inputCity').value = city;
     };           
 
 btnEdit.addEventListener("click", function() {

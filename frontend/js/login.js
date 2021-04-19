@@ -65,7 +65,7 @@ btnLogin.addEventListener("click", function() {
     }
 
     /* FAZER CODIGO PARA O EMAIL QND O EMAIL NAO ESTÁ REGISTADO */
-    else if(validateEmail(email.value) == false){
+    /*else if(validateEmail(email.value) == false){
         swal({
             icon: 'images/warning.png',
             title: 'Atenção',
@@ -76,8 +76,9 @@ btnLogin.addEventListener("click", function() {
         }).then(function(isConfirm) {
             email.focus();
         });
-    }
+    }*/
 
+    
     /* CODIGO PARA A PASS ERRADA e email n existente na bd
     else if(validateEmail(email) == false){
         alertEmail.style.display = "block";
@@ -85,9 +86,50 @@ btnLogin.addEventListener("click", function() {
     } */
 
     else{
+
+        // /api/auth/signin POST
+
+        let data = {};
+        data.email = email.value;
+        data.password = password.value;
+
+        fetch("http://localhost:80/api/auth/signin", {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(function(response) {
+
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                console.log(response.url); //=> String
+                if (response.status === 409) {
+                }
+                else {
+                    throw Error(response.statusText);
+                }
+            }
+            else {
+                window.location.replace("inicialPage.html");
+            }
+        }).then(function(result) {
+            console.log(result);
+        }).catch(function(err) {
+            swal({
+                icon: 'images/v237_21.png',
+                title: 'Erro',
+                text: 'Dados incorretos',
+                button: 'OK',
+                className: "swalAlert"
+                
+            }).then(function(isConfirm) {
+                email.focus();
+            });
+            console.error(err);
+        });
         
-        //codigo de fazer login na base de dados
-        window.location.replace("inicialPage.html");
+        
     }
 
 });
