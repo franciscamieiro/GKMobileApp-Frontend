@@ -1,3 +1,26 @@
+window.onload = function(){
+    fetch("http://localhost:80/api/favorite_places/users/" + "3")
+    .then((response) => response.json())
+    .then((out) => {
+        
+        for(let i = 0; i<out.length; i++){
+        console.log(out[i]);
+        var row = document.getElementById("favPlaces").insertRow(i);
+        
+        row.innerHTML =
+            `
+                <td class="place">${out[i].coordinates}</td>
+                <td id="${out[i].coordinates}" class="marker" onclick="showMarker(this)"></td>
+                <td class="trash" onclick="deleteMarker(this)"></td>
+            
+            `
+        }
+
+        document.getElementById("nfavorites").innerHTML = out.length + " locais marcados";
+    });
+
+}
+
 x = navigator.geolocation;
 const geocoder = new google.maps.Geocoder();
 
@@ -34,7 +57,7 @@ function geocodeLatLng(geocoder) {
                     //var cell3 = row.insertCell(2);
 
                     let cells = row.getElementsByTagName("td");
-                    
+
                     //fazer o POST aqui, POST da adress, lat e long
                     let lat = position.coords.latitude;
                     let long = position.coords.longitude;
@@ -49,6 +72,62 @@ function geocodeLatLng(geocoder) {
                     }
                     
                     nFavs(favplacesTable);
+                    
+                    // /api//api/favorite_places
+                    let data = {};
+                    data.address = results[0].formatted_address;
+                    data.coordinates = lat + ',' + long;
+                    data.latitude = lat;
+                    data.longitude = long;
+
+                    fetch("http://localhost:80/api/favorite_places", {
+                        headers: { 'Content-Type': 'application/json' },
+                        method: 'POST',
+                        body: JSON.stringify(data)
+                    }).then(function(response) {
+
+                        if (!response.ok) {
+                            console.log(response.status); //=> number 100–599
+                            console.log(response.statusText); //=> String
+                            console.log(response.headers); //=> Headers
+                            console.log(response.url); //=> String
+                            if (response.status === 409) {
+                                swal({
+                                    icon: 'images/v237_21.png',
+                                    title: 'Erro',
+                                    text: 'Esse local favorito já está registado!',
+                                    button: 'OK',
+                                    className: "swalAlert"
+                                    
+                                });
+                            }
+                            else {
+                                throw Error(response.statusText);
+                            }
+                        }
+                        else {
+                            swal({
+                                icon: 'images/v254_5.png',
+                                title: 'Sucesso',
+                                text: 'Local guardado!',
+                                button: 'OK',
+                                className: "swalAlert"
+                                
+                            });
+                        }
+                    }).then(function(result) {
+                        console.log(result);
+                    }).catch(function(err) {
+                        swal({
+                            icon: 'images/v237_21.png',
+                            title: 'Erro',
+                            text: 'Erro ao guardar.',
+                            button: 'OK',
+                            className: "swalAlert"
+                            
+                        })
+                        console.error(err);
+                    });
     
                 } else {
                     swal({
@@ -137,7 +216,8 @@ function showMarker(element) {
 
 function deleteMarker(element) {
     element.closest('tr').remove();
-    nFavs(favplacesTable);
+    let table = document.getElementById("favPlaces");
+    nFavs(table);
 }
 
 
@@ -149,12 +229,13 @@ for(var i = 0; i < placefavMarkers.length; i++) {
 }
 
 function nFavs(table){
+    let number = document.getElementById("nfavorites");
     var Rows = table.getElementsByTagName('tr');
     var nRows = Rows.length;
 
     if(nRows == 1){
-        nfav.innerHTML = nRows + " local marcado";
+        number.innerHTML = nRows + " local marcado";
     }else{
-        nfav.innerHTML = nRows + " locais marcados";
+        number.innerHTML = nRows + " locais marcados";
     }
 }

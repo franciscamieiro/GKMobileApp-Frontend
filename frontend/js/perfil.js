@@ -143,7 +143,7 @@ btnEdit.addEventListener("click", function() {
                 data.name = fullname.value;
                 data.email = email.value;
                 data.password = pass.value;
-                data.birthDate = user.birth;
+                data.birthDate = user.birthDate;
                 data.city = user.city;
                 data.avatarid = user.avatarid;
                 data.userid = user.userid;
@@ -198,7 +198,7 @@ btnEdit.addEventListener("click", function() {
                     swal({
                         icon: 'images/v237_21.png',
                         title: 'Erro',
-                        text: 'Dados incorretos!',
+                        text: 'Ocorreu um erro',
                         button: 'OK',
                         className: "swalAlert"
                     });
