@@ -261,6 +261,7 @@ function reportpub() {
 window.onload = () => {
 
     const forumcreations = document.getElementById("forum");
+    const forumComments = document.getElementById("comment");
 
     const renderCreations = async() => {
 
@@ -289,5 +290,41 @@ window.onload = () => {
 
     }
 
-    renderCreations()
+    const renderComments = async() => {
+
+        let strHtml = ``;
+
+        const creationID = localStorage.getItem("id");
+        const response = await fetch(`http://localhost:80/api/comments/creations/` + creationID)
+        const comments = await response.json()
+        let i = 1;
+        console.log(comments);
+        for (const comment of comments) {
+
+            strHtml += `
+            <li class="comment user-comment">
+
+            <div class="info">
+                <a href="#">${comment.userID.name}</a>
+                <span>${comment.date}</span>
+            </div>
+
+            <a class="avatar" href="#">
+                <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
+            </a>
+
+            <p class="noscroll">${comment.description}</p>
+
+            </li>
+            `;
+            i++
+        }
+        forumComments.innerHTML = strHtml;
+
+    }
+
+
+
+    renderCreations();
+    renderComments();
 }
