@@ -1,5 +1,7 @@
-const staticAssets = [];
-
+const staticAssets = [
+    './',
+    './start.html'
+];
 self.addEventListener('install', async event => {
     console.log('install event')
     const cache = await caches.open('smth');

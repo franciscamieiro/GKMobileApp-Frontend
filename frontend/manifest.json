@@ -2,7 +2,7 @@
     "name": "GoKids Mobile",
     "short_name": "Gokids",
     "lang": "pt-PT",
-    "start_url": "start.html",
+    "start_url": "./start.html",
     "display": "standalone",
     "theme_color": "#a772be",
     "background_color": "#FFFFFF",
