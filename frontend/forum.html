@@ -46,22 +46,8 @@
         <div class="col">
             <p class="v549_66">Publicações Recentes</p>
         </div>
-        <div class="col">
-            <div class="card mb-4">
-                <a href="forumbig.html"><img src="./images/v549_72.png" class="criacoesimg img-responsive" id="popupimg"></a>
-                <div class="card-footer text-left">
-                    <img src="./images/v549_68.png" class="img-fluid v549_186" alt="">
-                    <i class="mr-1"></i> Guimarães, Quintã
-                </div>
-            </div>
 
-            <div class="card mb-4">
-                <a href="forumbig.html"><img src="./images/v549_72.png" class="criacoesimg img-responsive" id="popupimg"></a>
-                <div class="card-footer text-left">
-                    <img src="./images/v549_68.png" class="img-fluid v549_186" alt="">
-                    <i class="mr-1"></i> Guimarães, Quintã
-                </div>
-            </div>
+        <div class="col" id="forum">
         </div>
 
     </div>
@@ -71,7 +57,7 @@
             <p>Ver mais publicações</p>
 
             <div class="col-md-12 text-center">
-                <button class="v549_94 noscroll"><i class="fa fa-angle-down fa-lg"></i></button>
+                <button class="v549_94 noscroll"><i class="fa fa-angle-down fa-lg noscroll"></i></button>
 
             </div>
 
@@ -94,6 +80,12 @@
 
     </footer>
 
+    <script type="text/javascript">
+        function reply_click(clicked_id) {
+            localStorage.setItem("id", clicked_id);
+        }
+    </script>
+    <script src="js/forum.js"></script>
 </body>
 </div>
 
