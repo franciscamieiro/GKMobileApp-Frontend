@@ -133,69 +133,78 @@ btnEdit.addEventListener("click", function() {
         }
         
         else{
+            alert("hi");
 
-            let data = {};
-            data.name = fullname.value;
-            data.email = email.value;
-            data.city = city.value;
-            data.password = pass.value;
+            fetch("http://localhost:80/api/users/" + "2")
+            .then((response) => response.json())
+            .then((user) => {
+                   
+                let data = {};
+                data.name = fullname.value;
+                data.email = email.value;
+                data.password = pass.value;
+                data.birthDate = user.birth;
+                data.city = user.city;
+                data.avatarid = user.avatarid;
+                data.userid = user.userid;
+                console.log(data);
+                
+                   
+                fetch("http://localhost:80/api/users/" + "2", {
+                    headers: { 'Content-Type': 'application/json' },
+                    method: 'PUT',
+                    body: JSON.stringify(data)
+                }).then(function(response) {
 
-            console.log(data);
-
-            fetch("http://localhost:80/api/users/" + "2", {
-                headers: { 'Content-Type': 'application/json' },
-                method: 'PUT',
-                body: JSON.stringify(data)
-            }).then(function(response) {
-
-                if (!response.ok) {
-                    console.log(response.status); //=> number 100–599
-                    console.log(response.statusText); //=> String
-                    console.log(response.headers); //=> Headers
-                    console.log(response.url); //=> String
-                    if (response.status === 409) {
-                        swal({
-                            icon: 'images/v237_21.png',
-                            title: 'Erro',
-                            text: 'Dados incorretos!',
-                            button: 'OK',
-                            className: "swalAlert"
-                        });
+                    if (!response.ok) {
+                        console.log(response.status); //=> number 100–599
+                        console.log(response.statusText); //=> String
+                        console.log(response.headers); //=> Headers
+                        console.log(response.url); //=> String
+                        if (response.status === 409) {
+                            swal({
+                                icon: 'images/v237_21.png',
+                                title: 'Erro',
+                                text: 'Dados incorretos!',
+                                button: 'OK',
+                                className: "swalAlert"
+                            });
+                        }
+                        else {
+                            throw Error(response.statusText);
+                        }
                     }
                     else {
-                        throw Error(response.statusText);
+                        swal({
+                            icon: 'images/v254_5.png',
+                            title: 'Sucesso',
+                            text: 'Dados Guardados!',
+                            buttons: false,
+                            className: "swalAlertSucess"
+                            
+                        }).then(function(isConfirm) {
+            
+                            btnEdit.innerHTML = 'Editar';
+                            fullname.disabled = true;
+                            email.disabled = true;
+                            pass.disabled = true;
+                            allowphotoEdit.style.display = "none";
+            
+                        });
                     }
-                }
-                else {
+                }).then(function(result) {
+                    console.log(result);
+                }).catch(function(err) {
                     swal({
-                        icon: 'images/v254_5.png',
-                        title: 'Sucesso',
-                        text: 'Dados Guardados!',
-                        buttons: false,
-                        className: "swalAlertSucess"
-                        
-                    }).then(function(isConfirm) {
-        
-                        btnEdit.innerHTML = 'Editar';
-                        fullname.disabled = true;
-                        email.disabled = true;
-                        pass.disabled = true;
-                        city.disabled = true;
-                        allowphotoEdit.style.display = "none";
-        
+                        icon: 'images/v237_21.png',
+                        title: 'Erro',
+                        text: 'Dados incorretos!',
+                        button: 'OK',
+                        className: "swalAlert"
                     });
-                }
-            }).then(function(result) {
-                console.log(result);
-            }).catch(function(err) {
-                swal({
-                    icon: 'images/v237_21.png',
-                    title: 'Erro',
-                    text: 'Dados incorretos!',
-                    button: 'OK',
-                    className: "swalAlert"
+                    console.error(err);
                 });
-                console.error(err);
+                  
             });
 
             
@@ -317,10 +326,6 @@ window.onload =
             document.getElementById('inputCity').value = city;
     };           
 
-btnEdit.addEventListener("click", function() {
-    if(btnEdit.innerHTML.value == "Guardar"){
-        console.log("está certo!!!!!")
-    }
-});
+
         
             
