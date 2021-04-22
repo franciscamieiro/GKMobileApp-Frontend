@@ -52,20 +52,13 @@ function geocodeLatLng(geocoder) {
                     var row = favplacesTable.insertRow(0);
 
                     row.innerHTML = '<td class="place"></td><td class="marker" onclick="showMarker(this)"></td><td class="trash" onclick="deleteMarker(this)"></td>'
-                    //var cell1 = row.insertCell(0);
-                    //var cell2 = row.insertCell(1);
-                    //var cell3 = row.insertCell(2);
 
                     let cells = row.getElementsByTagName("td");
 
                     //fazer o POST aqui, POST da adress, lat e long
                     let lat = position.coords.latitude;
                     let long = position.coords.longitude;
-                    //cell1.innerHTML = results[0].formatted_address;
-                    //cell1.classList.add("place");
-                    //cell2.classList.add("marker");
-                    //cell3.classList.add("trash");
-                    //cell2.id= lat + ',' + long; 
+                    
                     for(var i=0;i<cells.length;i++) {
                         cells[0].innerHTML = results[0].formatted_address;
                         cells[1].id= lat + ',' + long;
@@ -73,14 +66,14 @@ function geocodeLatLng(geocoder) {
                     
                     nFavs(favplacesTable);
                     
-                    // /api//api/favorite_places
+                    // /api/favorite_places
                     let data = {};
                     data.address = results[0].formatted_address;
                     data.coordinates = lat + ',' + long;
                     data.latitude = lat;
                     data.longitude = long;
 
-                    /* fetch("http://localhost:80/api/favorite_places", {
+                    fetch("http://localhost:80/api/favorite_places", {
                         headers: { 'Content-Type': 'application/json' },
                         method: 'POST',
                         body: JSON.stringify(data)
@@ -127,15 +120,6 @@ function geocodeLatLng(geocoder) {
                             
                         })
                         console.error(err);
-                    }); */
-
-                    swal({
-                        icon: 'images/v254_5.png',
-                        title: 'Sucesso',
-                        text: 'Local guardado!',
-                        button: 'OK',
-                        className: "swalAlert"
-                        
                     });
     
                 } else {
@@ -211,7 +195,6 @@ function failure() {
     });
 }
 
-
 //see favorite place in map
 function showMarker(element) {
    let latlong = element.id.toString();
@@ -228,8 +211,6 @@ function deleteMarker(element) {
     let table = document.getElementById("favPlaces");
     nFavs(table);
 }
-
-
 
 for(var i = 0; i < placefavMarkers.length; i++) {
     (function(index) {
