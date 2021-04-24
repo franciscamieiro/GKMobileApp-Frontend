@@ -171,7 +171,7 @@ btnSubmit.addEventListener("click", function() {
                     swal({
                         icon: 'images/v237_21.png',
                         title: 'Erro',
-                        text: 'Esse utilizador já está registado!',
+                        text: 'Esse email já está registado!',
                         button: 'OK',
                         className: "swalAlert"
                         

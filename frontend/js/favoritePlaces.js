@@ -70,8 +70,7 @@ function geocodeLatLng(geocoder) {
                     let data = {};
                     data.address = results[0].formatted_address;
                     data.coordinates = lat + ',' + long;
-                    data.latitude = lat;
-                    data.longitude = long;
+                    data.userID = "3";
 
                     fetch("http://localhost:80/api/favorite_places", {
                         headers: { 'Content-Type': 'application/json' },
@@ -207,6 +206,12 @@ function showMarker(element) {
 }
 
 function deleteMarker(element) {
+    /*fetch('http://localhost:80/api/favorite_places/users/' + '3', {
+        method: 'DELETE',
+        })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))*/
+
     element.closest('tr').remove();
     let table = document.getElementById("favPlaces");
     nFavs(table);

@@ -132,11 +132,6 @@ window.onload = function start() {
                 }
                     
             });
-
-        //fetch à base de dados para ver se o puto tem cidade registada,
-        //if cidadeDaBasedeDados != null => diz-se que a chosenCity é igual a essa
-        //e depois chama-se a função initMap(chosenCity);
-        //else{ } => código a baixo
     }
 }
 

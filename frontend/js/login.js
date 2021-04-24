@@ -94,6 +94,7 @@ btnLogin.addEventListener("click", function() {
         data.password = password.value;
 
         fetch("http://localhost:80/api/auth/signin", {
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             method: 'POST',
             body: JSON.stringify(data)

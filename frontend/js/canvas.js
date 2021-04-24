@@ -12,6 +12,10 @@ let rubber = document.getElementById("rubber");
 let trash = document.getElementById("trash");
 let showStickers = document.getElementById("showStickers");
 let stickers = document.getElementById("stickers");
+let saved = false;
+let initialPage = document.getElementById("initialPage");
+let settings = document.getElementById("settings");
+let profile = document.getElementById("profile");
 
 let hide1 = document.getElementsByClassName("rotation-handle");
 let hide2 = document.getElementsByClassName("resizer_tl");
@@ -756,49 +760,180 @@ function printCriation(){
     hideresize();
     closeAll();
 
-    swal({
-        icon: 'images/v254_5.png',
-        title: 'Guardada',
-        text: 'A tua criação foi guardada!',
-        className: "swalAlert",
-        button: 'Ok',
-    }).then((value) => {
+    html2canvas([document.getElementById('capture')], {
+        onrendered: function (canvasprint) {
+            document.getElementById('canvas').appendChild(canvasprint);
+            drawings_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+            
+            let data = {};
+            data.city = null;
+            data.coordinates = null;
+            data.userID = "2"; //buscar o id do user q está logged in
+            data.dateCreation = new Date();
+            data.datePublished = null;
+            data.evaluation = 0;
+            data.published = 0;
+            data.image = context.getImageData(0, 0, canvas.width, canvas.height);
+
+            if(saved == false){
+            
+                fetch("http://localhost:80/api/creations", {
+                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                }).then(function(response) {
+                    console.log(data);
+                    if (!response.ok) {
+                        console.log(response.status); //=> number 100–599
+                        console.log(response.statusText); //=> String
+                        console.log(response.headers); //=> Headers
+                        console.log(response.url); //=> String
+                        if (response.status === 409) {
+                        }
+                        else {
+                            throw Error(response.statusText);
+                        }
+                    }
+                    else {
+                        saved = true;
+                        swal({
+                            icon: 'images/v254_5.png',
+                            title: 'Guardada',
+                            text: 'A tua criação foi guardada!',
+                            className: "swalAlert",
+                            button: 'Ok',
+                        }).then((value) => {
+                            
+                            swal({
+                                icon: 'images/Usure_icon.png',
+                                title: 'Sair?',
+                                text: 'Queres sair ou continuar a editar?',
+                                className: "swalAlert",
+                                buttons: {
+                                catch: {
+                                text: "Sair",
+                                value: "catch",
+                                },
+                                cancel: "Editar",
+                            },
+                            }).then((value) => {
+                                switch (value) {
+                            
+                                    case "catch":
+                                        window.location.replace("mydrawings.html");
+                                
+                                    default:
+                                        showresize();
+                                }
+                        
+                            });
+                    
+                        });
+                    }
+                }).then(function(result) {
+                    console.log(result);
+                }).catch(function(err) {
+                    swal({
+                        icon: 'images/v237_21.png',
+                        title: 'Erro',
+                        text: 'Erro ao guardar.',
+                        button: 'OK',
+                        className: "swalAlert"
+                        
+                    })
+                    console.error(err);
+                    showresize();
+                });
+            }else{
+                //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
+            }
+
+        }
         
+    });
+}
+
+
+initialPage.addEventListener("click", function(){
+    if(saved == false){
         swal({
             icon: 'images/Usure_icon.png',
-            title: 'Sair?',
-            text: 'Queres sair ou continuar a editar?',
+            title: 'Não guardaste o desenho!',
+            text: 'Queres sair na mesma?',
             className: "swalAlert",
             buttons: {
             catch: {
               text: "Sair",
               value: "catch",
             },
-            cancel: "Editar",
+            cancel: "Cancelar",
           },
         }).then((value) => {
             switch (value) {
          
                 case "catch":
-                    window.location.replace("mydrawings.html");
+                    window.location.replace("inicialPage.html");
             
                 default:
                     showresize();
             }
     
         });
+    }
+});
 
-    });
+settings.addEventListener("click", function(){
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o desenho!',
+            text: 'Queres sair na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("settings.html");
+            
+                default:
+                    showresize();
+            }
+    
+        });
+    }
+});
 
-
-    html2canvas([document.getElementById('capture')], {
-        onrendered: function (canvasprint) {
-            document.getElementById('canvas').appendChild(canvasprint);
-            drawings_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
-            //DEPOIS TENHO QUE PÔR AS IMAGENS NESTE ARRAY NA BASE DE DADOS, ASSIM QUE ELE GUARDA, TECNICAMENTE NEM PRECISO DO ARRAY, SÓ DO CONTEXT.GETIMAGE, MAS AINDA
-            //N SEI FAZER ISSO
-            //FAZER IF'S PARA O CASO DE ELE TENTAR SAIR DA PAGINA COM UMA CRIAÇÃO A MEIO
-        }
-        
-    });
-}
+profile.addEventListener("click", function(){
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o desenho!',
+            text: 'Queres sair na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("perfil.html");
+            
+                default:
+                    showresize();
+            }
+    
+        });
+    }
+});

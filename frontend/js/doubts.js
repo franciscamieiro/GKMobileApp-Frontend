@@ -46,6 +46,7 @@ writtenQuestion.addEventListener("click", function(){
 let mainRecorder = null;
 let interval = null;
 let recorded = false;
+let audiosrc = null;
 
 function record() {
 
@@ -85,6 +86,7 @@ move();
         mainaudio.setAttribute('controls', 'controls');
         audio.appendChild(mainaudio);
         mainaudio.innerHTML = '<source src="'+ URL.createObjectURL(blob)+'" type="video/webm"/>';
+        audiosrc = URL.createObjectURL(blob);
       }
     }
     recorder.start();
@@ -125,15 +127,55 @@ function deleteAudio() {
 }
 
 function sendAudio() {
-  swal({
-    icon: 'images/v254_5.png',
-    title: 'Sucesso',
-    text: 'Dúvida Enviada!',
-    buttons: false,
-    className: "swalAlertSucess"
-    
-  }).then(function(isConfirm) {
-    window.location.reload();
+
+  // api/doubts/DoubtAudio
+  
+  let data = {};
+  data.userID = "2"; //buscar o id do user q está logged in
+  data.audio = new Audio();
+  data.audio.src = audiosrc;
+
+  fetch("http://localhost:80/api/doubts/DoubtAudio", {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(data)
+  }).then(function(response) {
+      console.log(data);
+      if (!response.ok) {
+          console.log(response.status); //=> number 100–599
+          console.log(response.statusText); //=> String
+          console.log(response.headers); //=> Headers
+          console.log(response.url); //=> String
+          if (response.status === 409) {
+          }
+          else {
+              throw Error(response.statusText);
+          }
+      }
+      else {
+        swal({
+          icon: 'images/v254_5.png',
+          title: 'Sucesso',
+          text: 'Dúvida Enviada!',
+          buttons: false,
+          className: "swalAlertSucess"
+          
+        }).then(function(isConfirm) {
+          window.location.reload();
+        });
+      }
+  }).then(function(result) {
+      console.log(result);
+  }).catch(function(err) {
+      swal({
+          icon: 'images/v237_21.png',
+          title: 'Erro',
+          text: 'Erro ao enviar.',
+          button: 'OK',
+          className: "swalAlert"
+          
+      })
+      console.error(err);
   });
   
 }
@@ -163,16 +205,55 @@ function sendText() {
     });
 
   }else{
-      swal({
-        icon: 'images/v254_5.png',
-        title: 'Sucesso',
-        text: 'Dúvida Enviada!',
-        buttons: false,
-        className: "swalAlertSucess"
-        
-      }).then(function(isConfirm) {
+
+    // api/doubts/DoubtTxt
+    let data = {};
+    data.userID = "2"; //buscar o id do user q está logged in
+    data.description = input.value;
+
+    fetch("http://localhost:80/api/doubts/DoubtTxt", {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(function(response) {
+        console.log(data);
+        if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            console.log(response.url); //=> String
+            if (response.status === 409) {
+            }
+            else {
+                throw Error(response.statusText);
+            }
+        }
+        else {
+          swal({
+            icon: 'images/v254_5.png',
+            title: 'Sucesso',
+            text: 'Dúvida Enviada!',
+            buttons: false,
+            className: "swalAlertSucess"
+            
+          }).then(function(isConfirm) {
+          
+            input.value = "";
+          });
+        }
+    }).then(function(result) {
+        console.log(result);
+    }).catch(function(err) {
+        swal({
+            icon: 'images/v237_21.png',
+            title: 'Erro',
+            text: 'Erro ao enviar.',
+            button: 'OK',
+            className: "swalAlert"
+            
+        })
+        console.error(err);
+    });
       
-        input.value = "";
-      });
     }
 }

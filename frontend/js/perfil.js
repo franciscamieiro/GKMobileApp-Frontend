@@ -117,7 +117,7 @@ btnEdit.addEventListener("click", function() {
             
         }
 
-        else if(validateEmail(email.value) == false){
+       else if(validateEmail(email.value) == false){
 
             swal({
                 icon: 'images/v237_21.png',
@@ -141,16 +141,15 @@ btnEdit.addEventListener("click", function() {
                 let data = {};
                 data.name = fullname.value;
                 data.email = email.value;
-                data.password = pass.value;
                 data.birthDate = user.birthDate;
                 data.city = user.city;
-                data.avatarid = user.avatarid;
-                data.userid = user.userid;
+                data.id_avatar = user.id_avatar;
+                data.userID = "2";
                 console.log(data);
                 
                    
                 fetch("http://localhost:80/api/users/" + "2", {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { Accept: "application/json","Content-type": "application/json; charset=UTF-8" },
                     method: 'PUT',
                     body: JSON.stringify(data)
                 }).then(function(response) {

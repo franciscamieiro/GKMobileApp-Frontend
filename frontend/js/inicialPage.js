@@ -3,8 +3,9 @@ let logout = document.getElementById("logout");
 
 logout.addEventListener("click", function(){
 
-    fetch("http://localhost:80/api/auth/logout")
-    .then((response) => response.json())
+    fetch("http://localhost:80/api/auth/logout", {
+        credentials: 'include'
+    }).then((response) => response.json())
     .then((user) => {
 
         if (!response.ok) {
