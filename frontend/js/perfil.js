@@ -143,7 +143,7 @@ btnEdit.addEventListener("click", function() {
                 data.email = email.value;
                 data.birthDate = user.birthDate;
                 data.city = city.value;
-                data.id_avatar = parseFloat(navatar);
+                data.avatarID = parseFloat(navatar);
                 data.userID = parseFloat(2);
                 data.password = pass.value;
                 console.log(data);
@@ -309,41 +309,41 @@ window.onload = async() => {
     let email = user.email;
     let city = user.city;
     let birthDate = user.birthDate.split('-').reverse().join('-');
-    let avatar = user.id_avatar;
+    let avatar = user.avatar;
     navatar = avatar;
 
-    console.log(name, email, birthDate);
+    console.log(name, email, birthDate, avatar);
 
     document.getElementById('inputFullName').value = name;
     document.getElementById('inputEmail').value = email;
     document.getElementById('inputBirth').value = birthDate;
     document.getElementById('inputCity').value = city;
 
-    if(avatar = 0){
+    if(avatar == 0){
         document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";
-    }else if(avatar = 1){
+    }else if(avatar == 1){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar1.png";
-    }else if(avatar = 2){
+    }else if(avatar == 2){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar2.jpg";
-    }else if(avatar = 3){
+    }else if(avatar == 3){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar3.jpg";
-    }else if(avatar = 4){
+    }else if(avatar == 4){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar4.jpeg";
-    }else if(avatar = 5){
+    }else if(avatar == 5){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar5.jpg";
-    }else if(avatar = 6){
+    }else if(avatar == 6){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar6.png";
-    }else if(avatar = 7){
+    }else if(avatar == 7){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar7.jpg";
-    }else if(avatar = 8){
+    }else if(avatar == 8){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar8.jpg";
-    }else if(avatar = 9){
+    }else if(avatar == 9){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar9.png";
-    }else if(avatar = 10){
+    }else if(avatar == 10){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar10.jpg";
-    }else if(avatar = 11){
+    }else if(avatar == 11){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar11.jpg";
-    }else if(avatar = 12){
+    }else if(avatar == 12){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar12.jpg";
     }else{
         document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";

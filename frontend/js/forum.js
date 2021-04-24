@@ -9,6 +9,8 @@ window.onload = () => {
         const response = await fetch(`http://localhost:80/api/creations/published`)
         const creations = await response.json()
         let i = 1;
+
+        if(creations.length != 0){
         for (const creation of creations) {
             console.log(creations);
             strHtml += `
@@ -24,7 +26,7 @@ window.onload = () => {
             i++;
         }
         forumcreations.innerHTML = strHtml;
-
+    }
     }
 
     renderCreations()

@@ -155,6 +155,7 @@ btnSubmit.addEventListener("click", function() {
         data.password = password.value;
         data.dateOfBirth = birth.value.split('-').reverse().join('-');
         data.role = "CHILD";
+        console.log(data);
 
         fetch("http://localhost:80/api/registration", {
             headers: { 'Content-Type': 'application/json' },

@@ -703,9 +703,6 @@ function getDragAngle(event) {
     return angle - startAngle;
 }
 
-//SAVE BUTTON - ITS WORKING EHEHEHEH
-let drawings_array = [];
-
 function hideresize() {
 
     
@@ -763,8 +760,12 @@ function printCriation(){
     html2canvas([document.getElementById('capture')], {
         onrendered: function (canvasprint) {
             document.getElementById('canvas').appendChild(canvasprint);
-            drawings_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
-            
+
+            let drawing_array = [];
+            drawing_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+
+            console.log(drawing_array);
+
             let data = {};
             data.city = null;
             data.coordinates = null;
@@ -773,7 +774,7 @@ function printCriation(){
             data.datePublished = null;
             data.evaluation = 0;
             data.published = 0;
-            data.image = context.getImageData(0, 0, canvas.width, canvas.height);
+            data.image = drawing_array;
 
             if(saved == false){
             
