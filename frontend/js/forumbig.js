@@ -553,23 +553,75 @@ window.onload = () => {
         let i = 1;
         console.log(comments);
         for (const comment of comments) {
+            if(comment.description !== null){
+                strHtml += `
+                <li class="comment user-comment">
+    
+                <div class="info">
+                    <a href="#">${comment.userID.name}</a>
+                    <span>${comment.date}</span>
+                </div>
+    
+                <a class="avatar" href="#">
+                    <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
+                </a>
+    
+                <p class="noscroll">${comment.description}</p>
+    
+                </li>
+                `;
+            }else if (comment.audio !== null){
+              /*  strHtml += `
+                <li class="comment user-comment">
 
-            strHtml += `
-            <li class="comment user-comment">
+                <div class="info">
+                    <a href="#">${comment.userID.name}</a>
+                    <span>${comment.date}</span>
+                </div>
 
-            <div class="info">
-                <a href="#">${comment.userID.name}</a>
-                <span>${comment.date}</span>
-            </div>
+                <a class="avatar" href="#">
+                    <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
+                </a>
 
-            <a class="avatar" href="#">
-                <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
-            </a>
+                <p class="noscroll">${comment.description}</p>
 
-            <p class="noscroll">${comment.description}</p>
+                </li>
+                `;*/
+            }else if (comment.image !== null){
+               /* strHtml += `
+                <li class="comment user-comment">
 
-            </li>
-            `;
+                <div class="info">
+                    <a href="#">${comment.userID.name}</a>
+                    <span>${comment.date}</span>
+                </div>
+
+                <a class="avatar" href="#">
+                    <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
+                </a>
+
+                <p class="noscroll">${comment.description}</p>
+
+                </li>
+                `;*/
+            }else if (comment.video !== null){
+               /* strHtml += `
+                <li class="comment user-comment">
+
+                <div class="info">
+                    <a href="#">${comment.userID.name}</a>
+                    <span>${comment.date}</span>
+                </div>
+
+                <a class="avatar" href="#">
+                    <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
+                </a>
+
+                <p class="noscroll">${comment.description}</p>
+
+                </li>
+                `;*/
+            }
             i++
         }
         forumComments.innerHTML = strHtml;
