@@ -142,9 +142,10 @@ btnEdit.addEventListener("click", function() {
                 data.name = fullname.value;
                 data.email = email.value;
                 data.birthDate = user.birthDate;
-                data.city = user.city;
+                data.city = city.value;
                 data.id_avatar = user.id_avatar;
-                data.userID = "2";
+                data.userID = parseFloat(2);
+                data.password = pass.value;
                 console.log(data);
                 
                    
@@ -306,8 +307,8 @@ avatar12.addEventListener("click", function(){
 });
 
 window.onload = async() => {
-    const id = localStorage.idlogado;
-    const response = await fetch("http://localhost:80/api/users/" + "2");
+    const id = localStorage.userloggedin;
+    const response = await fetch("http://localhost:80/api/users/" + id);
     const user = await response.json();
 
     let name = user.name;

@@ -35,7 +35,7 @@ window.onload = function start() {
 
     }else{
 
-        fetch("http://localhost:80/api/users/" + "2")
+        fetch("http://localhost:80/api/users/" + "15")
             .then((response) => response.json())
             .then((user) => {
                     
@@ -78,7 +78,7 @@ window.onload = function start() {
 
                             console.log(data);
 
-                            fetch("http://localhost:80/api/users/" + "2", {
+                            fetch("http://localhost:80/api/users/" + "15" + "/city", {
                                 headers: { 'Content-Type': 'application/json' },
                                 method: 'PUT',
                                 body: JSON.stringify(data)

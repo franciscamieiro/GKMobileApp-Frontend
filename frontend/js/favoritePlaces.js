@@ -9,9 +9,9 @@ window.onload = function(){
         
         row.innerHTML =
             `
-                <td class="place">${out[i].coordinates}</td>
+                <td class="place">${out[i].address}</td>
                 <td id="${out[i].coordinates}" class="marker" onclick="showMarker(this)"></td>
-                <td class="trash" onclick="deleteMarker(this)"></td>
+                <td id="${out[i].placeID}" class="trash" onclick="deleteMarker(this)"></td>
             
             `
         }
@@ -48,23 +48,6 @@ function geocodeLatLng(geocoder) {
         geocoder.geocode({ location: pos }, (results, status) => {
             if (status === "OK") {
                 if (results[0]) {
-
-                    var row = favplacesTable.insertRow(0);
-
-                    row.innerHTML = '<td class="place"></td><td class="marker" onclick="showMarker(this)"></td><td class="trash" onclick="deleteMarker(this)"></td>'
-
-                    let cells = row.getElementsByTagName("td");
-
-                    //fazer o POST aqui, POST da adress, lat e long
-                    let lat = position.coords.latitude;
-                    let long = position.coords.longitude;
-                    
-                    for(var i=0;i<cells.length;i++) {
-                        cells[0].innerHTML = results[0].formatted_address;
-                        cells[1].id= lat + ',' + long;
-                    }
-                    
-                    nFavs(favplacesTable);
                     
                     // /api/favorite_places
                     let data = {};
@@ -98,6 +81,27 @@ function geocodeLatLng(geocoder) {
                             }
                         }
                         else {
+
+                            fetch("http://localhost:80/api/favorite_places/users/" + "3")
+                            .then((response) => response.json())
+                            .then((out) => {
+                                
+                                for(let i = 0; i<out.length; i++){
+                                console.log(out[i]);
+                                var row = document.getElementById("favPlaces").insertRow(i);
+                                
+                                row.innerHTML =
+                                    `
+                                        <td class="place">${out[i].address}</td>
+                                        <td id="${out[i].coordinates}" class="marker" onclick="showMarker(this)"></td>
+                                        <td id="${out[i].placeID}" class="trash" onclick="deleteMarker(this)"></td>
+                                    
+                                    `
+                                }
+
+                                document.getElementById("nfavorites").innerHTML = out.length + " locais marcados";
+                            });
+
                             swal({
                                 icon: 'images/v254_5.png',
                                 title: 'Sucesso',
@@ -107,6 +111,7 @@ function geocodeLatLng(geocoder) {
                                 
                             });
                         }
+
                     }).then(function(result) {
                         console.log(result);
                     }).catch(function(err) {
@@ -206,12 +211,15 @@ function showMarker(element) {
 }
 
 function deleteMarker(element) {
-    /*fetch('http://localhost:80/api/favorite_places/users/' + '3', {
+    
+    let placeid = element.id;
+    fetch('http://localhost:80/api/favorite_places/' + placeid, {
         method: 'DELETE',
         })
         .then(res => res.text()) // or res.json()
-        .then(res => console.log(res))*/
-
+        .then(res => console.log(res))
+    
+    
     element.closest('tr').remove();
     let table = document.getElementById("favPlaces");
     nFavs(table);

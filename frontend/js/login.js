@@ -64,27 +64,6 @@ btnLogin.addEventListener("click", function() {
         });
     }
 
-    /* FAZER CODIGO PARA O EMAIL QND O EMAIL NAO ESTÁ REGISTADO */
-    /*else if(validateEmail(email.value) == false){
-        swal({
-            icon: 'images/warning.png',
-            title: 'Atenção',
-            text: 'O email não é válido.',
-            button: 'OK',
-            className: "swalAlert"
-            
-        }).then(function(isConfirm) {
-            email.focus();
-        });
-    }*/
-
-    
-    /* CODIGO PARA A PASS ERRADA e email n existente na bd
-    else if(validateEmail(email) == false){
-        alertEmail.style.display = "block";
-        alert.style.display = "block";
-    } */
-
     else{
 
         // /api/auth/signin POST
@@ -112,6 +91,9 @@ btnLogin.addEventListener("click", function() {
                 }
             }
             else {
+                /* GET DO USERID POR EMAIL 
+                DECLARAR ID = USER.USERID
+                localStorage.setItem("userloggedin", id); */
                 window.location.replace("inicialPage.html");
             }
         }).then(function(result) {

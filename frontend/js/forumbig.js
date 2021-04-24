@@ -352,6 +352,7 @@ function publishText() {
 
 function publishFile(){
     var fileinput = document.getElementById('inputfile'); // input file
+    
     var img = new Image();
 
     fileinput.onchange = function(evt) {
@@ -448,9 +449,9 @@ function reportpub() {
 
             let data = {};
             data.userC = "4";
-            data.userD = "2"; //buscar o user à publicação
+            data.userD = creationID; //buscar o user à publicação
             data.date =  today;
-            data.state = null;
+            data.state = 0;
             data.type = null;
 
             fetch("http://localhost:80/api/complaints/complaint", {
@@ -657,9 +658,9 @@ function evaluate(star){
     // api/evaluation
 
     let data = {};
-    data.creationID = IDcreation;
-    data.userID = "2"; //buscar o id do user q está logged in
     data.evaluation = nstar;
+    data.creationID = Number(IDcreation);
+    data.userID = 2; //buscar o id do user q está logged in
 
     fetch("http://localhost:80/api/evaluation/" + IDcreation + "/users/" + "2", {
         headers: { 'Content-Type': 'application/json' },
