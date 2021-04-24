@@ -24,7 +24,7 @@ let avatar9 = document.getElementById("avatar9");
 let avatarsrow1 = document.getElementById("avatarsrow1");
 let avatarsrow2 = document.getElementById("avatarsrow2");
 let avatarsrow3 = document.getElementById("avatarsrow3");
-
+let navatar = null;
 
 //validate Email
 function validateEmail(email) {
@@ -143,7 +143,7 @@ btnEdit.addEventListener("click", function() {
                 data.email = email.value;
                 data.birthDate = user.birthDate;
                 data.city = city.value;
-                data.id_avatar = user.id_avatar;
+                data.id_avatar = parseFloat(navatar);
                 data.userID = parseFloat(2);
                 data.password = pass.value;
                 console.log(data);
@@ -218,103 +218,99 @@ changephoto.addEventListener("click", function() {
 
 });
 
-nexticon.addEventListener("click", function(){
-
-    profilePhoto.setAttribute('src', "../frontend/images/avatar1.png");
-
-});
-
-backicon.addEventListener("click", function(){
-
-    
-
-});
-
-
 avatar1.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar1.png");
     avatars.style.display = "none";
-
+    navatar = 1;
 });
 
 avatar2.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar2.jpg");
     avatars.style.display = "none";
-
+    navatar = 2;
 });
 avatar3.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar3.jpg");
     avatars.style.display = "none";
-
+    navatar = 3;
 });
 avatar4.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar4.jpeg");
     avatars.style.display = "none";
-
+    navatar = 4;
 });
 avatar5.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar5.jpg");
     avatars.style.display = "none";
-
+    navatar = 5;
 });
 avatar6.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar6.png");
     avatars.style.display = "none";
-
+    navatar = 6;
 });
 avatar7.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar7.jpg");
     avatars.style.display = "none";
-
+    navatar = 7;
 });
 avatar8.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar8.jpg");
     avatars.style.display = "none";
-
+    navatar = 8;
 });
 avatar9.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
     avatars.style.display = "none";
-
+    navatar = 9;
 });
 
 avatar10.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar10.jpg");
     avatars.style.display = "none";
-
+    navatar = 10;
 });
 avatar11.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar11.jpg");
     avatars.style.display = "none";
-
+    navatar = 11;
 });
 avatar12.addEventListener("click", function(){
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar12.jpg");
     avatars.style.display = "none";
+    navatar = 12;
+});
+avatar0.addEventListener("click", function(){
 
+    profilePhoto.setAttribute('src', "../frontend/images/default-user-image.png");
+    avatars.style.display = "none";
+    navatar = 0;
 });
 
 window.onload = async() => {
     const id = localStorage.userloggedin;
-    const response = await fetch("http://localhost:80/api/users/" + id);
+    const response = await fetch("http://localhost:80/api/users/" + "2");
     const user = await response.json();
 
+    console.log(user);
     let name = user.name;
     let email = user.email;
     let city = user.city;
     let birthDate = user.birthDate.split('-').reverse().join('-');
+    let avatar = user.id_avatar;
+    navatar = avatar;
 
     console.log(name, email, birthDate);
 
@@ -322,6 +318,38 @@ window.onload = async() => {
     document.getElementById('inputEmail').value = email;
     document.getElementById('inputBirth').value = birthDate;
     document.getElementById('inputCity').value = city;
+
+    if(avatar = 0){
+        document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";
+    }else if(avatar = 1){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar1.png";
+    }else if(avatar = 2){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar2.jpg";
+    }else if(avatar = 3){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar3.jpg";
+    }else if(avatar = 4){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar4.jpeg";
+    }else if(avatar = 5){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar5.jpg";
+    }else if(avatar = 6){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar6.png";
+    }else if(avatar = 7){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar7.jpg";
+    }else if(avatar = 8){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar8.jpg";
+    }else if(avatar = 9){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar9.png";
+    }else if(avatar = 10){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar10.jpg";
+    }else if(avatar = 11){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar11.jpg";
+    }else if(avatar = 12){
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar12.jpg";
+    }else{
+        document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";
+    }
+    
+    
 };           
 
 
