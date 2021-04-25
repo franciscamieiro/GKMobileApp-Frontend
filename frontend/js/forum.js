@@ -31,3 +31,7 @@ window.onload = () => {
 
     renderCreations()
 }
+
+function reply_click(clicked_id) {
+    localStorage.setItem("idClickedPub", clicked_id);
+}

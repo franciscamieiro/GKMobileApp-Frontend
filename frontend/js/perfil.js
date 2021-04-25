@@ -25,6 +25,7 @@ let avatarsrow1 = document.getElementById("avatarsrow1");
 let avatarsrow2 = document.getElementById("avatarsrow2");
 let avatarsrow3 = document.getElementById("avatarsrow3");
 let navatar = null;
+let changepass = true;
 
 //validate Email
 function validateEmail(email) {
@@ -101,23 +102,7 @@ btnEdit.addEventListener("click", function() {
             });
             
         }
-
-        else if(pass.value == ""){
-
-            swal({
-                icon: 'images/warning.png',
-                title: 'Atenção',
-                text: 'Preenche a tua palavra passe!',
-                button: 'OK',
-                className: "swalAlert"
-                
-            }).then(function(isConfirm) {
-                pass.focus();
-            });
-            
-        }
-
-       else if(validateEmail(email.value) == false){
+        else if(validateEmail(email.value) == false){
 
             swal({
                 icon: 'images/v237_21.png',
@@ -134,6 +119,11 @@ btnEdit.addEventListener("click", function() {
         
         else{
 
+            if(pass.value == ""){
+
+                changepass = false;
+                
+            }
             fetch("http://localhost:80/api/users/" + "2")
             .then((response) => response.json())
             .then((user) => {
@@ -145,7 +135,13 @@ btnEdit.addEventListener("click", function() {
                 data.city = city.value;
                 data.avatarID = parseFloat(navatar);
                 data.userID = parseFloat(2);
-                data.password = pass.value;
+
+                if(changepass == false){
+                    data.password = user.password;
+                }else{
+                    data.password = pass.value;
+                }
+                
                 console.log(data);
                 
                    

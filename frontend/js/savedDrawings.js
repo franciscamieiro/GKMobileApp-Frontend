@@ -9,7 +9,7 @@ function goBack() {
 }
 
 function edit(element){
-    let drawingsEditid = element.parent.id;
+    let drawingsEditid = element.getAttribute("name");
     localStorage.setItem("editDrawingid", drawingsEditid);
 }
 

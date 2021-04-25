@@ -301,7 +301,7 @@ function publishText() {
 
                             let strHtml = ``;
                     
-                            const creationID = localStorage.getItem("id");
+                            const creationID = localStorage.getItem("idClickedPub");
                             const response = await fetch(`http://localhost:80/api/comments/creations/` + creationID)
                             const comments = await response.json()
                             let i = 1;
@@ -444,7 +444,7 @@ function reportpub() {
 
             // /api/complaints/complaint
 
-            const creationID = localStorage.getItem("id");
+            const creationID = localStorage.getItem("idClickedPub");
             var today = new Date();
 
             let data = {};
@@ -519,7 +519,7 @@ window.onload = () => {
 
         let strHtml = ``;
 
-        const creationID = localStorage.getItem("id");
+        const creationID = localStorage.getItem("idClickedPub");
         const response = await fetch(`http://localhost:80/api/creations/` + creationID)
         const creation = await response.json()
         let i = 1;
@@ -547,7 +547,7 @@ window.onload = () => {
 
         let strHtml = ``;
 
-        const creationID = localStorage.getItem("id");
+        const creationID = localStorage.getItem("idClickedPub");
         const response = await fetch(`http://localhost:80/api/comments/creations/` + creationID)
         const comments = await response.json()
         let i = 1;
@@ -632,7 +632,7 @@ window.onload = () => {
 
         let strHtml = ``;
 
-        const creationID = localStorage.getItem("id");
+        const creationID = localStorage.getItem("idClickedPub");
         const response = await fetch(`http://localhost:80/api/evaluation/evaluationUser/` + "2")
         const comments = await response.json()
         let i = 1;
