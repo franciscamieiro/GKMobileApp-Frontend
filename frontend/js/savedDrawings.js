@@ -27,8 +27,9 @@ function pub(element){
     let drawingid = element.getAttribute("name");
 
     let data = {};
-    data.published = 1;
+    data.published = parseInt(1);
     data.datePublished = new Date();
+    data.creationID = parseFloat(drawingid);
 
     console.log(data);
 
@@ -82,7 +83,7 @@ window.onload = () => {
         let strHtml = ``;
 
         const creationID = localStorage.getItem("id");
-        const response = await fetch("http://localhost:80/api/creations/users/" + "4")
+        const response = await fetch("http://localhost:80/api/creations/users/" + "23")
         const drawings = await response.json()
         let i = 1;
 

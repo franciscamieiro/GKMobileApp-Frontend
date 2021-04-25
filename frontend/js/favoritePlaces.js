@@ -44,6 +44,10 @@ function geocodeLatLng(geocoder) {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
         };
+
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+
         
         geocoder.geocode({ location: pos }, (results, status) => {
             if (status === "OK") {
@@ -82,6 +86,7 @@ function geocodeLatLng(geocoder) {
                         }
                         else {
 
+                            document.getElementById("favPlaces").innerHTML = "";
                             fetch("http://localhost:80/api/favorite_places/users/" + "3")
                             .then((response) => response.json())
                             .then((out) => {
