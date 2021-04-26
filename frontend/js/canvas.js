@@ -23,6 +23,8 @@ let hide3 = document.getElementsByClassName("resizer_tr");
 let hide4 = document.getElementsByClassName("resizer_bl");
 let hide5 = document.getElementsByClassName("resizer_br");
 
+const id = localStorage.userloggedin;
+
 
 if(screen.availHeight > screen.availWidth){
 
@@ -761,20 +763,22 @@ function printCriation(){
         onrendered: function (canvasprint) {
             document.getElementById('canvas').appendChild(canvasprint);
 
-            let drawing_array = [];
-            drawing_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+            var dataURI = canvas.toDataURL('image/jpeg');
 
-            console.log(drawing_array);
+            var blob = dataURLtoBlob(dataURI);
+            image = new FormData();
+            image.append("file", blob);
 
             let data = {};
             data.city = null;
             data.coordinates = null;
-            data.userID = "2"; //buscar o id do user q está logged in
-            data.dateCreation = new Date();
-            data.datePublished = null;
+            data.userID = id; 
+            data.date_creation = new Date();
+            let date = data.date_creation;
+            console.log(date);
+            data.date_published = null;
             data.evaluation = 0;
             data.published = 0;
-            data.image = drawing_array;
 
             if(saved == false){
             
@@ -796,7 +800,53 @@ function printCriation(){
                         }
                     }
                     else {
+
+                        response.text().then(function (text) {
+                            let see = text.split("objectId");
+                            console.log(see[1]);
+                            var regex = /\d+/g;
+                            var string = see[1].toString();
+                            var matches = string.match(regex);
+            
+                            console.log(text);
+                            console.log(matches[0]);
+        
+                            let id = matches[0];
+                        
+                            console.log(image);
+                            
+                            fetch('http://localhost:80/api/creations/' + id + "/image", {
+                                mode: 'cors',
+                                method: 'PUT',
+                                body: image,
+                                credentials: 'include'
+                            }).then(function (response) {
+                                //console.log(response.headers.get('Set-Cookie'));
+                                console.log(response);
+
+                                if (!response.ok) {
+                                    throw new Error(response.statusText);
+                                }
+                                return response.json();
+                            }).catch(function (err) {
+                                //swal.showValidationError('Pedido falhado: ' + err);
+                                console.log(err); 
+                            }).then(async function (result) {
+                                console.log(result);
+                                if (result) {
+
+                                    //sucess
+
+                                }
+                                else {
+                                    swal("Erro!", "Erro!", "error")
+                                    .then(() => {
+                                    })
+                                }
+                            });
+
                         saved = true;
+
                         swal({
                             icon: 'images/v254_5.png',
                             title: 'Guardada',
@@ -830,7 +880,9 @@ function printCriation(){
                             });
                     
                         });
+                        });
                     }
+                    
                 }).then(function(result) {
                     console.log(result);
                 }).catch(function(err) {
@@ -845,6 +897,7 @@ function printCriation(){
                     console.error(err);
                     showresize();
                 });
+
             }else{
                 //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
             }
@@ -938,3 +991,15 @@ profile.addEventListener("click", function(){
         });
     }
 });
+
+function dataURLtoBlob(dataurl) {
+    
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new Blob([u8arr], { type: mime });
+}

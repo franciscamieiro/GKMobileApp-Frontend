@@ -12,6 +12,7 @@ wrapperAudio.innerHTML = '<span class="titleaudio">Gravar dúvida por voz</span>
 
 wrapperWritten.innerHTML = '<span class="title">Escrever dúvida</span><input id="input" type="text" placeholder="Escreve a tua dúvida..."></input><div id="btnDeleteT" onclick="deleteText();">Apagar</div><div id="btnSendT" onclick="sendText();">Enviar</div>';
 
+const id = localStorage.userloggedin;
 
 window.onload = function() {
   let reloaded = localStorage.getItem("reloaded");
@@ -131,7 +132,7 @@ function sendAudio() {
   // api/doubts/DoubtAudio
   
   let data = {};
-  data.userID = "2"; //buscar o id do user q está logged in
+  data.userID = id; //buscar o id do user q está logged in
   data.audio = new Audio();
   data.audio.src = audiosrc;
 
@@ -208,7 +209,7 @@ function sendText() {
 
     // api/doubts/DoubtTxt
     let data = {};
-    data.userID = "2"; //buscar o id do user q está logged in
+    data.userID = id; //buscar o id do user q está logged in
     data.description = input.value;
 
     fetch("http://localhost:80/api/doubts/DoubtTxt", {

@@ -1,5 +1,8 @@
+const id = localStorage.userloggedin;
+
 window.onload = function(){
-    fetch("http://localhost:80/api/favorite_places/users/" + "3")
+    const id = localStorage.userloggedin;
+    fetch("http://localhost:80/api/favorite_places/users/" + id)
     .then((response) => response.json())
     .then((out) => {
         
@@ -57,7 +60,7 @@ function geocodeLatLng(geocoder) {
                     let data = {};
                     data.address = results[0].formatted_address;
                     data.coordinates = lat + ',' + long;
-                    data.userID = "3";
+                    data.userID = id;
 
                     fetch("http://localhost:80/api/favorite_places", {
                         headers: { 'Content-Type': 'application/json' },
@@ -87,7 +90,7 @@ function geocodeLatLng(geocoder) {
                         else {
 
                             document.getElementById("favPlaces").innerHTML = "";
-                            fetch("http://localhost:80/api/favorite_places/users/" + "3")
+                            fetch("http://localhost:80/api/favorite_places/users/" + id)
                             .then((response) => response.json())
                             .then((out) => {
                                 

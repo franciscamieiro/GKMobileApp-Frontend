@@ -91,10 +91,21 @@ btnLogin.addEventListener("click", function() {
                 }
             }
             else {
-                /* GET DO USERID POR EMAIL 
-                DECLARAR ID = USER.USERID
-                localStorage.setItem("userloggedin", id); */
-                window.location.replace("inicialPage.html");
+                response.text().then(function (text) {
+                    let see = text.split("objectId");
+                    console.log(see[1]);
+                    var regex = /\d+/g;
+                    var string = see[1].toString();
+                    var matches = string.match(regex);
+    
+                    console.log(text);
+                    console.log(matches[0]);
+
+                    let id = matches[0];
+                    localStorage.setItem("userloggedin", id);
+                    window.location.replace("inicialPage.html");
+                });
+                
             }
         }).then(function(result) {
             console.log(result);

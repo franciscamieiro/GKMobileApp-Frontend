@@ -26,6 +26,7 @@ let avatarsrow2 = document.getElementById("avatarsrow2");
 let avatarsrow3 = document.getElementById("avatarsrow3");
 let navatar = null;
 let changepass = true;
+const id = localStorage.userloggedin;
 
 //validate Email
 function validateEmail(email) {
@@ -124,7 +125,7 @@ btnEdit.addEventListener("click", function() {
                 changepass = false;
                 
             }
-            fetch("http://localhost:80/api/users/" + "2")
+            fetch("http://localhost:80/api/users/" + id)
             .then((response) => response.json())
             .then((user) => {
                    
@@ -134,18 +135,56 @@ btnEdit.addEventListener("click", function() {
                 data.birthDate = user.birthDate;
                 data.city = city.value;
                 data.avatarID = parseFloat(navatar);
-                data.userID = parseFloat(2);
+                data.userID = parseFloat(id);
 
-                if(changepass == false){
-                    data.password = user.password;
-                }else{
-                    data.password = pass.value;
+                if(changepass == true){
+                    //fazer o put da password
+
+                    let datapass = {};
+                    datapass.newPassword = pass.value;
+                    datapass.email = user.email;
+
+                    console.log(datapass);
+                    
+                    ///{userID}/password
+
+                    fetch("http://localhost:80/api/users/" + id + "/password", {
+                    headers: { Accept: "application/json","Content-type": "application/json; charset=UTF-8" },
+                    method: 'PUT',
+                    body: JSON.stringify(datapass)
+                    }).then(function(response) {
+
+                        if (!response.ok) {
+                            console.log(response.status); //=> number 100–599
+                            console.log(response.statusText); //=> String
+                            console.log(response.headers); //=> Headers
+                            console.log(response.url); //=> String
+                            if (response.status === 409) {
+                            }
+                            else {
+                                throw Error(response.statusText);
+                            }
+                        }
+                        else {
+                        }
+                    }).then(function(result) {
+                        console.log(result);
+                    }).catch(function(err) {
+                        swal({
+                            icon: 'images/v237_21.png',
+                            title: 'Erro',
+                            text: 'Ocorreu um erro',
+                            button: 'OK',
+                            className: "swalAlert"
+                        });
+                    console.error(err);
+                    });
                 }
                 
                 console.log(data);
                 
                    
-                fetch("http://localhost:80/api/users/" + "2", {
+                fetch("http://localhost:80/api/users/" + id, {
                     headers: { Accept: "application/json","Content-type": "application/json; charset=UTF-8" },
                     method: 'PUT',
                     body: JSON.stringify(data)
@@ -296,8 +335,7 @@ avatar0.addEventListener("click", function(){
 });
 
 window.onload = async() => {
-    const id = localStorage.userloggedin;
-    const response = await fetch("http://localhost:80/api/users/" + "2");
+    const response = await fetch("http://localhost:80/api/users/" + id);
     const user = await response.json();
 
     console.log(user);
@@ -308,7 +346,7 @@ window.onload = async() => {
     let avatar = user.avatar;
     navatar = avatar;
 
-    console.log(name, email, birthDate, avatar);
+    console.log(name, email, city, birthDate, avatar);
 
     document.getElementById('inputFullName').value = name;
     document.getElementById('inputEmail').value = email;

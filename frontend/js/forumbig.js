@@ -1,3 +1,5 @@
+const id = localStorage.userloggedin;
+
 const wrapperAudio = document.createElement('div');
 
 const wrapperWritten = document.createElement('div');
@@ -124,7 +126,7 @@ function sendAudio() {
     let data = {};
     data.creationID = IDcreation;
     data.date = new Date();
-    data.userID = "2"; //buscar o id do user q está logged in
+    data.userID = id;
     data.description = null;
     data.audio = new Audio();
     data.audio.src = audiosrc;
@@ -265,7 +267,7 @@ function publishText() {
             let data = {};
             data.creationID = IDcreation;
             data.date = new Date();
-            data.userID = "2"; //buscar o id do user q está logged in
+            data.userID = id; //buscar o id do user q está logged in
             data.description = input.value;
 
             fetch("http://localhost:80/api/comments/txt", {
@@ -369,7 +371,7 @@ function publishFile(){
 
                     data.creationID = IDcreation;
                     data.date = new Date();
-                    data.userID = "2"; //buscar o id do user q está logged in
+                    data.userID = id; 
                     data.description = null;
                     data.image = img;
 
@@ -448,8 +450,8 @@ function reportpub() {
             var today = new Date();
 
             let data = {};
-            data.userC = "4";
-            data.userD = creationID; //buscar o user à publicação
+            data.userC = id;
+            data.userD = creationID; 
             data.date =  today;
             data.state = 0;
             data.type = null;
@@ -512,6 +514,8 @@ let IDcreation = null;
 
 window.onload = () => {
 
+    const id = localStorage.userloggedin;
+    
     const forumcreations = document.getElementById("forum");
     const forumComments = document.getElementById("comment");
 
@@ -633,36 +637,15 @@ window.onload = () => {
         let strHtml = ``;
 
         const creationID = localStorage.getItem("idClickedPub");
-        const response = await fetch(`http://localhost:80/api/evaluation/evaluationUser/` + "2")
-        const comments = await response.json()
-        let i = 1;
-        console.log(comments);
-        for (const comment of comments) {
-
-            strHtml += `
-            <li class="comment user-comment">
-
-            <div class="info">
-                <a href="#">${comment.userID.name}</a>
-                <span>${comment.date}</span>
-            </div>
-
-            <a class="avatar" href="#">
-                <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
-            </a>
-
-            <p class="noscroll">${comment.description}</p>
-
-            </li>
-            `;
-            i++
-        }
-        forumComments.innerHTML = strHtml;
-
+        const response = await fetch(`http://localhost:80/api/evaluation/` + creationID + `/users/` + id)
+        const evaluation = await response.json()
+        console.log(evaluation);
+        //buscar a avaliação que o user logged in fez da pub q está a ver//se for null n fazer nada
     }
 
     renderCreations();
     renderComments();
+   // renderEvaluation();
 }
 
 let star1 = document.getElementById("star1");
@@ -712,9 +695,9 @@ function evaluate(star){
     let data = {};
     data.evaluation = nstar;
     data.creationID = Number(IDcreation);
-    data.userID = 2; //buscar o id do user q está logged in
+    data.userID = id; //buscar o id do user q está logged in
 
-    fetch("http://localhost:80/api/evaluation/" + IDcreation + "/users/" + "2", {
+    fetch("http://localhost:80/api/evaluation/" + IDcreation + "/users/" + id, {
         headers: { 'Content-Type': 'application/json' },
         method: 'PUT',
         body: JSON.stringify(data)

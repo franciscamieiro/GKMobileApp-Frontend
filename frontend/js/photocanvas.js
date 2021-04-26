@@ -18,6 +18,7 @@ let initialPage = document.getElementById("initialPage");
 let settings = document.getElementById("settings");
 let profile = document.getElementById("profile");
 let saved = false;
+const id = localStorage.userloggedin;
 
 toolsbar.addEventListener("click", function() {
 
@@ -752,7 +753,7 @@ function printCriation(){
             let data = {};
             data.city = null;
             data.coordinates = null;
-            data.userID = "2"; //buscar o id do user q está logged in
+            data.userID = id; //buscar o id do user q está logged in
             data.dateCreation = new Date();
             data.datePublished = null;
             data.evaluation = 0;

@@ -2,6 +2,8 @@ function goBack() {
     window.history.back();
 }
 
+const id = localStorage.userloggedin;
+
 window.onload = () => {
 
     const answeredQuestionsTxt = document.getElementById("doubtsText");
@@ -11,7 +13,7 @@ window.onload = () => {
 
         let strHtml = ``;
 
-        const response = await fetch(`http://localhost:80/api/doubts/users/`+ "3")
+        const response = await fetch(`http://localhost:80/api/doubts/users/`+ id)
         const doubts = await response.json()
         let i = 1;
         for (const doubt of doubts) {
@@ -41,7 +43,7 @@ window.onload = () => {
 
         let strHtml = ``;
 
-        const response = await fetch(`http://localhost:80/api/doubts/users/`+ "3")
+        const response = await fetch(`http://localhost:80/api/doubts/users/`+ id)
         const doubts = await response.json()
         let i = 1;
         for (const doubt of doubts) {

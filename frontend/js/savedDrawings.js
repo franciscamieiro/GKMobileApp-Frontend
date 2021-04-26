@@ -1,6 +1,7 @@
 let btnEdit = document.getElementById("btnEdit");
 let btnDelete = document.getElementById("btnDelete");
 let btnPublish = document.getElementById("btnPublish");
+const id = localStorage.userloggedin;
 
 function goBack() {
 
@@ -76,6 +77,8 @@ function pub(element){
 
 window.onload = () => {
 
+    const id = localStorage.userloggedin;
+
     const savedDrawings = document.getElementById("drawings");
 
     const renderDrawings = async() => {
@@ -83,7 +86,7 @@ window.onload = () => {
         let strHtml = ``;
 
         const creationID = localStorage.getItem("id");
-        const response = await fetch("http://localhost:80/api/creations/users/" + "23")
+        const response = await fetch("http://localhost:80/api/creations/users/" + id)
         const drawings = await response.json()
         let i = 1;
 

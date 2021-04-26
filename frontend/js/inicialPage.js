@@ -1,5 +1,5 @@
 let logout = document.getElementById("logout");
-
+const id = localStorage.userloggedin;
 
 logout.addEventListener("click", function(){
 
