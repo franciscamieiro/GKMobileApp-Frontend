@@ -773,8 +773,18 @@ function printCriation(){
             data.city = null;
             data.coordinates = null;
             data.userID = id; 
-            data.date_creation = new Date();
-            let date = data.date_creation;
+            let date = new Date();
+            month = date.getMonth();
+            if(month < 10){
+                month = "0" + month;
+            }
+            day = date.getDate();
+            if(day < 10){
+                day = "0" + day;
+            }
+            date = date.getFullYear() + "-" + month + "-" + day + " " + date.getHours()
+            + ":" + date.getMinutes() + ":" + date.getSeconds() + date.getMilliseconds();
+            data.date_creation = date;
             console.log(date);
             data.date_published = null;
             data.evaluation = 0;

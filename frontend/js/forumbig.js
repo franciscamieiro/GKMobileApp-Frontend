@@ -451,7 +451,7 @@ function reportpub() {
 
             let data = {};
             data.userC = id;
-            data.userD = creationID; 
+            data.creationID = creationID; 
             data.date =  today;
             data.state = 0;
             data.type = null;
