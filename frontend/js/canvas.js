@@ -777,11 +777,11 @@ function printCriation(){
             data.date_published = null;
             data.evaluation = 0;
             data.published = 0;
+            data.image = image;
 
             if(saved == false){
             
                 fetch("http://localhost:80/api/creations", {
-                    headers: { 'Content-Type': 'multipart/form-data' },
                     method: 'POST',
                     body: JSON.stringify(data)
                 }).then(function(response) {
@@ -798,50 +798,6 @@ function printCriation(){
                         }
                     }
                     else {
-
-                        response.text().then(function (text) {
-                            let see = text.split("objectId");
-                            console.log(see[1]);
-                            var regex = /\d+/g;
-                            var string = see[1].toString();
-                            var matches = string.match(regex);
-            
-                            console.log(text);
-                            console.log(matches[0]);
-        
-                            let id = matches[0];
-                        
-                            console.log(image);
-                            
-                            fetch('http://localhost:80/api/creations/' + id + "/image", {
-                                mode: 'cors',
-                                method: 'PUT',
-                                body: image,
-                                credentials: 'include'
-                            }).then(function (response) {
-                                console.log(response);
-
-                                if (!response.ok) {
-                                    throw new Error(response.statusText);
-                                }
-                                return response.json();
-                            }).catch(function (err) {
-                                //swal.showValidationError('Pedido falhado: ' + err);
-                                console.log(err); 
-                            }).then(async function (result) {
-                                console.log(result);
-                                if (result) {
-
-                                    //sucess
-
-                                }
-                                else {
-                                    swal("Erro!", "Erro!", "error")
-                                    .then(() => {
-                                    })
-                                }
-                            });
-
                         saved = true;
 
                         swal({
@@ -876,7 +832,6 @@ function printCriation(){
                         
                             });
                     
-                        });
                         });
                     }
                     
