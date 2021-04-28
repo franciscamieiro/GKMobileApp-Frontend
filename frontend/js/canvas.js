@@ -773,15 +773,15 @@ function printCriation(){
             data.city = null;
             data.coordinates = null;
             data.userID = parseFloat(id);
-            data.dateCreation = new Date();
-            data.datePublished = null;
+            data.date_creation = new Date();
+            data.date_published = null;
             data.evaluation = 0;
             data.published = 0;
 
             if(saved == false){
             
                 fetch("http://localhost:80/api/creations", {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'multipart/form-data' },
                     method: 'POST',
                     body: JSON.stringify(data)
                 }).then(function(response) {
