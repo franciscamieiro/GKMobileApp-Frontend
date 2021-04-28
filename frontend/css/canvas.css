@@ -589,3 +589,8 @@ a{
   overflow-y: hidden;
   border-radius: 12px;
 }
+
+.output{
+  top: 0;
+  position: absolute;
+}

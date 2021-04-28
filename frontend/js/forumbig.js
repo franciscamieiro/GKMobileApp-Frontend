@@ -693,13 +693,13 @@ function evaluate(star){
     // api/evaluation
 
     let data = {};
+    data.creationID = IDcreation;
     data.evaluation = nstar;
-    data.creationID = Number(IDcreation);
-    data.userID = id; //buscar o id do user q está logged in
+    
 
-    fetch("http://localhost:80/api/evaluation/" + IDcreation + "/users/" + id, {
+    fetch("http://localhost:80/api/evaluation/", {
         headers: { 'Content-Type': 'application/json' },
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify(data)
     }).then(function(response) {
         console.log(data);

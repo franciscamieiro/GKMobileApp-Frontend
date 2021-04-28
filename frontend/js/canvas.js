@@ -402,6 +402,16 @@ let sticker7 = document.getElementById("placesticker7");
 let sticker8 = document.getElementById("placesticker8");
 let sticker9 = document.getElementById("placesticker9");
 let sticker10 = document.getElementById("placesticker10");
+let sticker1shown = false;
+let sticker2shown = false;
+let sticker3shown = false;
+let sticker4shown = false;
+let sticker5shown = false;
+let sticker6shown = false;
+let sticker7shown = false;
+let sticker8shown = false;
+let sticker9shown = false;
+let sticker10shown = false;
 
 sticker1.addEventListener("click", function(){
 
@@ -409,6 +419,8 @@ sticker1.addEventListener("click", function(){
 
     div.className = 'item sticker1';
 
+    div.id = 'sticker1shown'
+
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
@@ -420,6 +432,8 @@ sticker1.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+
+    sticker1shown = true;
 
 });
 sticker2.addEventListener("click", function(){
@@ -427,6 +441,7 @@ sticker2.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker2';
+    div.id = 'sticker2shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -440,6 +455,7 @@ sticker2.addEventListener("click", function(){
 
     closeAll();
 
+    sticker2shown = true;
 });
 
 sticker3.addEventListener("click", function(){
@@ -447,6 +463,7 @@ sticker3.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker3';
+    div.id = 'sticker3shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -459,6 +476,7 @@ sticker3.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker3shown = true;
 
 });
 
@@ -467,6 +485,7 @@ sticker4.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker4';
+    div.id = 'sticker4shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -479,6 +498,7 @@ sticker4.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker4shown = true;
 
 });
 
@@ -487,6 +507,7 @@ sticker5.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker5';
+    div.id = 'sticker5shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -499,6 +520,7 @@ sticker5.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker5shown = true;
 
 });
 
@@ -507,6 +529,7 @@ sticker6.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker6';
+    div.id = 'sticker6shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -519,6 +542,7 @@ sticker6.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker6shown = true;
 
 });
 
@@ -527,6 +551,7 @@ sticker7.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker7';
+    div.id = 'sticker7shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -539,7 +564,7 @@ sticker7.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
-
+    sticker7shown = true;
 });
 
 sticker8.addEventListener("click", function(){
@@ -547,6 +572,7 @@ sticker8.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker8';
+    div.id = 'sticker8shown'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -559,6 +585,7 @@ sticker8.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker8shown = true;
 });
 
 sticker9.addEventListener("click", function(){
@@ -566,7 +593,7 @@ sticker9.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker9';
-
+    div.id = 'sticker9shown'
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
@@ -578,6 +605,7 @@ sticker9.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker9shown = true;
 
 });
 
@@ -586,6 +614,7 @@ sticker10.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker10';
+    div.id = 'sticker10shown'
 
     div.innerHTML = `
         <div class="delete-handle"></div>
@@ -599,6 +628,7 @@ sticker10.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+    sticker10shown = true;
 
 });
 
@@ -754,14 +784,198 @@ function showresize() {
 
 }
 
+function findPos(obj) {
+	var curleft = curtop = 0;
+
+    if (obj.offsetParent) {
+        
+        do {
+                curleft += obj.offsetLeft;
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+        
+        return [curleft,curtop];
+    }
+}
+
 function printCriation(){
 
-    hideresize();
-    closeAll();
+    if(sticker1shown == true){
 
-    html2canvas([document.getElementById('capture')], {
-        onrendered: function (canvasprint) {
-            document.getElementById('canvas').appendChild(canvasprint);
+        let sticker1shown = document.getElementById("sticker1shown");
+        let posx = sticker1shown.getAttribute("data-x");
+        let posy = sticker1shown.getAttribute("data-y");
+        let height = sticker1shown.style.height;
+        let width = sticker1shown.style.width;
+
+        findPos(sticker1shown);
+        console.log(findPos(sticker1shown));
+
+        let imgsticker1 = document.createElement('img');
+        imgsticker1.setAttribute("src", "images/sticker1.png");
+        imgsticker1.setAttribute("width", height-150 + "px");
+        imgsticker1.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker1, posx,posy+190);
+
+    }
+
+    if(sticker2shown == true){
+
+        let sticker2shown = document.getElementById("sticker2shown");
+        let posx = sticker2shown.getAttribute("data-x");
+        let posy = sticker2shown.getAttribute("data-y");
+        let height = sticker2shown.style.height;
+        let width = sticker2shown.style.width;
+
+        findPos(sticker2shown);
+        console.log(findPos(sticker1shown));
+
+        let imgsticker2 = document.createElement('img');
+        imgsticker2.setAttribute("src", "images/sticker2.png");
+        imgsticker2.setAttribute("width", height-150 + "px");
+        imgsticker2.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker2, posx,posy+190);
+
+    }
+    if(sticker3shown == true){
+
+        let sticker3shown = document.getElementById("sticker3shown");
+        let posx = sticker3shown.getAttribute("data-x");
+        let posy = sticker3shown.getAttribute("data-y");
+        let height = sticker3shown.style.height;
+        let width = sticker3shown.style.width;
+
+        findPos(sticker3shown);
+        console.log(findPos(sticker3shown));
+
+        let imgsticker3 = document.createElement('img');
+        imgsticker3.setAttribute("src", "images/sticker3.png");
+        imgsticker3.setAttribute("width", height-150 + "px");
+        imgsticker3.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker3, posx,posy+190);
+
+    }
+    if(sticker4shown == true){
+
+        let sticker4shown = document.getElementById("sticker4shown");
+        let posx = sticker4shown.getAttribute("data-x");
+        let posy = sticker4shown.getAttribute("data-y");
+        let height = sticker4shown.style.height;
+        let width = sticker4shown.style.width;
+
+        findPos(sticker4shown);
+        console.log(findPos(sticker4shown));
+
+        let imgsticker4 = document.createElement('img');
+        imgsticker4.setAttribute("src", "images/sticker4.png");
+        imgsticker4.setAttribute("width", height-150 + "px");
+        imgsticker4.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker4, posx,posy+190);
+
+    }
+
+    if(sticker5shown == true){
+
+        let sticker5shown = document.getElementById("sticker5shown");
+        let posx = sticker5shown.getAttribute("data-x");
+        let posy = sticker5shown.getAttribute("data-y");
+        let height = sticker5shown.style.height;
+        let width = sticker5shown.style.width;
+
+        findPos(sticker5shown);
+        console.log(findPos(sticker5shown));
+
+        let imgsticker5 = document.createElement('img');
+        imgsticker5.setAttribute("src", "images/sticker5.png");
+        imgsticker5.setAttribute("width", height-150 + "px");
+        imgsticker5.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker5, posx,posy+190);
+
+    }
+
+    if(sticker6shown == true){
+
+        let sticker6shown = document.getElementById("sticker6shown");
+        let posx = sticker6shown.getAttribute("data-x");
+        let posy = sticker6shown.getAttribute("data-y");
+        let height = sticker6shown.style.height;
+        let width = sticker6shown.style.width;
+
+        findPos(sticker6shown);
+        console.log(findPos(sticker6shown));
+
+        let imgsticker6 = document.createElement('img');
+        imgsticker6.setAttribute("src", "images/sticker6.png");
+        imgsticker6.setAttribute("width", height-150 + "px");
+        imgsticker6.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker6, posx,posy+190);
+
+    }
+
+    if(sticker7shown == true){
+
+        let sticker7shown = document.getElementById("sticker7shown");
+        let posx = sticker7shown.getAttribute("data-x");
+        let posy = sticker7shown.getAttribute("data-y");
+        let height = sticker7shown.style.height;
+        let width = sticker7shown.style.width;
+
+        let imgsticker7 = document.createElement('img');
+        imgsticker7.setAttribute("src", "images/sticker7.png");
+        imgsticker7.setAttribute("width", height-150 + "px");
+        imgsticker7.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker7, posx,posy+190);
+
+    }
+
+    if(sticker8shown == true){
+
+        let sticker8shown = document.getElementById("sticker8shown");
+        let posx = sticker8shown.getAttribute("data-x");
+        let posy = sticker8shown.getAttribute("data-y");
+        let height = sticker8shown.style.height;
+        let width = sticker8shown.style.width;
+
+        let imgsticker8 = document.createElement('img');
+        imgsticker8.setAttribute("src", "images/sticker8.png");
+        imgsticker8.setAttribute("width", height-150);
+        imgsticker8.setAttribute("height", width-150);
+        context.drawImage(imgsticker8, posx,posy+190);
+
+    }
+    if(sticker9shown == true){
+
+        let sticker9shown = document.getElementById("sticker9shown");
+        let posx = sticker9shown.getAttribute("data-x");
+        let posy = sticker9shown.getAttribute("data-y");
+        let height = sticker9shown.style.height;
+        let width = sticker9shown.style.width;
+
+        let imgsticker9 = document.createElement('img');
+        imgsticker9.setAttribute("src", "images/sticker9.png");
+        imgsticker9.setAttribute("width", height-150 + "px");
+        imgsticker9.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker9, posx,posy+190);
+
+    }
+    if(sticker10shown == true){
+
+        let sticker10shown = document.getElementById("sticker10shown");
+        let posx = sticker10shown.getAttribute("data-x");
+        let posy = sticker10shown.getAttribute("data-y");
+        let height = sticker10shown.style.height;
+        let width = sticker10shown.style.width;
+
+        let imgsticker10 = document.createElement('img');
+        imgsticker10.setAttribute("src", "images/sticker10.png");
+        imgsticker10.setAttribute("width", height-150 + "px");
+        imgsticker10.setAttribute("height", width-150 + "px" );
+        context.drawImage(imgsticker7, posx,posy+190);
+
+    }
+
+            hideresize();
+            closeAll();
 
             var dataURI = canvas.toDataURL('image/jpeg');
 
@@ -769,94 +983,163 @@ function printCriation(){
             image = new FormData();
             image.append("file", blob);
 
-            let data = {};
-            data.city = null;
-            data.coordinates = null;
-            data.userID = parseFloat(id);
-            data.date_creation = new Date();
-            data.date_published = null;
-            data.evaluation = 0;
-            data.published = 0;
-            data.image = image;
-
-            if(saved == false){
+            swal({
+                icon: 'images/Usure_icon.png',
+                text: 'Qual é a cidade onde queres ver a tua criação?',
+                content: {
+                    element: "input",
+                },
+                button: 'OK',
+                className: "swalAlert1",
+                closeOnClickOutside: false,
+                closeOnClick: false,
+            }).then(function(inputValue) {
+                if (inputValue === false) return false;
             
-                fetch("http://localhost:80/api/creations", {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                }).then(function(response) {
-                    console.log(data);
-                    if (!response.ok) {
-                        console.log(response.status); //=> number 100–599
-                        console.log(response.statusText); //=> String
-                        console.log(response.headers); //=> Headers
-                        console.log(response.url); //=> String
-                        if (response.status === 409) {
-                        }
-                        else {
-                            throw Error(response.statusText);
-                        }
-                    }
-                    else {
-                        saved = true;
-
-                        swal({
-                            icon: 'images/v254_5.png',
-                            title: 'Guardada',
-                            text: 'A tua criação foi guardada!',
-                            className: "swalAlert",
-                            button: 'Ok',
-                        }).then((value) => {
-                            
-                            swal({
-                                icon: 'images/Usure_icon.png',
-                                title: 'Sair?',
-                                text: 'Queres sair ou continuar a editar?',
-                                className: "swalAlert",
-                                buttons: {
-                                catch: {
-                                text: "Sair",
-                                value: "catch",
-                                },
-                                cancel: "Editar",
-                            },
-                            }).then((value) => {
-                                switch (value) {
-                            
-                                    case "catch":
-                                        window.location.replace("mydrawings.html");
-                                
-                                    default:
-                                        showresize();
-                                }
-                        
-                            });
+                else if (inputValue === "") {
                     
-                        });
-                    }
-                    
-                }).then(function(result) {
-                    console.log(result);
-                }).catch(function(err) {
                     swal({
-                        icon: 'images/v237_21.png',
-                        title: 'Erro',
-                        text: 'Erro ao guardar.',
-                        button: 'OK',
-                        className: "swalAlert"
-                        
-                    })
-                    console.error(err);
-                    showresize();
-                });
+                        icon: 'images/warning.png',
+                        text: 'Escreve uma cidade!',
+                    }).then(function(isConfirm) {
+                        printCriation();
+                    });
+                
+                    
+                }else{
 
-            }else{
-                //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
-            }
+                    let data = {};
+                    data.city = inputValue;
+                    data.coordinates = null;
+                    data.userID = parseFloat(id);
+                    data.date_creation = new Date();
+                    data.date_published = null;
+                    data.evaluation = 0;
+                    data.published = 0;
 
-        }
-        
-    });
+                    if(saved == false){
+                    
+                        fetch("http://localhost:80/api/creations", {
+                            headers: { 'Content-Type': 'application/json' },
+                            method: 'POST',
+                            body: JSON.stringify(data)
+                        }).then(function(response) {
+                            console.log(data);
+                            if (!response.ok) {
+                                console.log(response.status); //=> number 100–599
+                                console.log(response.statusText); //=> String
+                                console.log(response.headers); //=> Headers
+                                console.log(response.url); //=> String
+                                if (response.status === 409) {
+                                }
+                                else {
+                                    throw Error(response.statusText);
+                                }
+                            }
+                            else {
+                                response.text().then(function (text) {
+                                    let see = text.split("objectId");
+                                    console.log(see[1]);
+                                    var regex = /\d+/g;
+                                    var string = see[1].toString();
+                                    var matches = string.match(regex);
+                    
+                                    console.log(text);
+                                    console.log(matches[0]);
+                
+                                    let idcreation = matches[0];
+
+                                fetch('http://localhost:80/api/creations/' + idcreation + "/image"  , {
+                                    mode: 'cors',
+                                    method: 'PUT',
+                                    body: image,
+                                    credentials: 'include'
+                                })
+                                .then(function (response) {
+                                    //console.log(response.headers.get('Set-Cookie'));
+                                    console.log(response);
+                                    if (!response.ok) {
+                                        throw new Error(response.statusText);
+                                    }
+                                    return response.json();
+                                })
+                                .catch(function (err) {
+                                    console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+                                })
+                                .then(async function (result) {
+                                    console.log(result);
+                                    if (result) {
+
+                                        ///
+                                        saved = true;
+
+                                        swal({
+                                            icon: 'images/v254_5.png',
+                                            title: 'Guardada',
+                                            text: 'A tua criação foi guardada!',
+                                            className: "swalAlert",
+                                            button: 'Ok',
+                                        }).then((value) => {
+                                            
+                                            swal({
+                                                icon: 'images/Usure_icon.png',
+                                                title: 'Sair?',
+                                                text: 'Queres sair ou continuar a editar?',
+                                                className: "swalAlert",
+                                                buttons: {
+                                                catch: {
+                                                text: "Sair",
+                                                value: "catch",
+                                                },
+                                                cancel: "Editar",
+                                            },
+                                            }).then((value) => {
+                                                switch (value) {
+                                            
+                                                    case "catch":
+                                                        window.location.replace("mydrawings.html");
+                                                
+                                                    default:
+                                                        showresize();
+                                                }
+                                        
+                                            });
+                                    
+                                        });
+
+                                    }
+                                    else {
+                                        swal("Erro!", "Erro!", "error")
+                                        .then(() => {
+                                            //location.reload();
+                                        })
+
+                                    }
+                                });
+                            });
+                            }
+                            
+                        }).then(function(result) {
+                            console.log(result);
+                        }).catch(function(err) {
+                            swal({
+                                icon: 'images/v237_21.png',
+                                title: 'Erro',
+                                text: 'Erro ao guardar.',
+                                button: 'OK',
+                                className: "swalAlert"
+                                
+                            })
+                            console.error(err);
+                            showresize();
+                        });
+
+                    }else{
+                        //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
+                    }
+
+                }
+            });
 }
 
 
