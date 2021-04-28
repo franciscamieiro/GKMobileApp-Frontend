@@ -772,21 +772,9 @@ function printCriation(){
             let data = {};
             data.city = null;
             data.coordinates = null;
-            data.userID = id; 
-            let date = new Date();
-            month = date.getMonth();
-            if(month < 10){
-                month = "0" + month;
-            }
-            day = date.getDate();
-            if(day < 10){
-                day = "0" + day;
-            }
-            date = date.getFullYear() + "-" + month + "-" + day + " " + date.getHours()
-            + ":" + date.getMinutes() + ":" + date.getSeconds() + date.getMilliseconds();
-            data.date_creation = date;
-            console.log(date);
-            data.date_published = null;
+            data.userID = parseFloat(id);
+            data.dateCreation = new Date();
+            data.datePublished = null;
             data.evaluation = 0;
             data.published = 0;
 
@@ -831,7 +819,6 @@ function printCriation(){
                                 body: image,
                                 credentials: 'include'
                             }).then(function (response) {
-                                //console.log(response.headers.get('Set-Cookie'));
                                 console.log(response);
 
                                 if (!response.ok) {
