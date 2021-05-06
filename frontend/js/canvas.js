@@ -419,7 +419,7 @@ sticker1.addEventListener("click", function(){
 
     div.className = 'item sticker1';
 
-    div.id = 'sticker1shown'
+    div.id = 'sticker1shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -441,7 +441,7 @@ sticker2.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker2';
-    div.id = 'sticker2shown'
+    div.id = 'sticker2shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -463,7 +463,7 @@ sticker3.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker3';
-    div.id = 'sticker3shown'
+    div.id = 'sticker3shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -485,7 +485,7 @@ sticker4.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker4';
-    div.id = 'sticker4shown'
+    div.id = 'sticker4shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -507,7 +507,7 @@ sticker5.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker5';
-    div.id = 'sticker5shown'
+    div.id = 'sticker5shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -529,7 +529,7 @@ sticker6.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker6';
-    div.id = 'sticker6shown'
+    div.id = 'sticker6shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -551,7 +551,7 @@ sticker7.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker7';
-    div.id = 'sticker7shown'
+    div.id = 'sticker7shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -572,7 +572,7 @@ sticker8.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker8';
-    div.id = 'sticker8shown'
+    div.id = 'sticker8shownn'
 
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
@@ -593,7 +593,7 @@ sticker9.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker9';
-    div.id = 'sticker9shown'
+    div.id = 'sticker9shownn'
     div.innerHTML = `
         <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
@@ -614,7 +614,7 @@ sticker10.addEventListener("click", function(){
     const div = document.createElement('div');
 
     div.className = 'item sticker10';
-    div.id = 'sticker10shown'
+    div.id = 'sticker10shownn'
 
     div.innerHTML = `
         <div class="delete-handle"></div>
@@ -945,32 +945,33 @@ function printCriation(){
     }
     if(sticker9shown == true){
 
-        let sticker9shown = document.getElementById("sticker9shown");
-        let posx = sticker9shown.getAttribute("data-x");
-        let posy = sticker9shown.getAttribute("data-y");
-        let height = sticker9shown.style.height;
-        let width = sticker9shown.style.width;
-
+        let sticker9shownn = document.getElementsByClassName("sticker9");
+        let width = sticker9shownn[0].offsetWidth;
+        let posx = sticker9shownn[0].getAttribute("data-x");
+        let posy = sticker9shownn[0].getAttribute("data-y");
+        let height = sticker9shownn[0].style.hei;
+        alert(width);
+        alert(height);
         let imgsticker9 = document.createElement('img');
         imgsticker9.setAttribute("src", "images/sticker9.png");
-        imgsticker9.setAttribute("width", height-150 + "px");
-        imgsticker9.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker9, posx,posy+190);
+        imgsticker9.setAttribute("width", width + "px"); 
+        imgsticker9.setAttribute("height", height + "px" );
+        context.drawImage(imgsticker9, posx,posy);
 
     }
     if(sticker10shown == true){
 
-        let sticker10shown = document.getElementById("sticker10shown");
-        let posx = sticker10shown.getAttribute("data-x");
-        let posy = sticker10shown.getAttribute("data-y");
-        let height = sticker10shown.style.height;
-        let width = sticker10shown.style.width;
+        let posx = sticker10.getAttribute("data-x");
+        let posy = sticker10.getAttribute("data-y");
+        let height = sticker10.style.height;
+        let width = sticker10.offsetWidth;
+        console.log(width);
 
         let imgsticker10 = document.createElement('img');
         imgsticker10.setAttribute("src", "images/sticker10.png");
         imgsticker10.setAttribute("width", height-150 + "px");
         imgsticker10.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker7, posx,posy+190);
+        context.drawImage(imgsticker10, posx, posy+190, width, height, 0, 0, width, height);
 
     }
 
