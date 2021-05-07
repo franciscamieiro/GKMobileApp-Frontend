@@ -96,7 +96,7 @@ window.onload = () => {
 
             strHtml += `
                 <div id="drawingwrapper">
-                <img class="drawing" src="../frontend/images/avatar1.png"></img>
+                <img class="drawing" src=""></img>
                 <div class="buttonsPlane">
                     <ul>
                         <li id="btnEdit" name=${drawing.creationID} onclick="edit(this);">
@@ -115,6 +115,7 @@ window.onload = () => {
             `;
             i++
         }
+        
         savedDrawings.innerHTML = strHtml;
 
     }

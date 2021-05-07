@@ -930,52 +930,60 @@ function printCriation(){
 
     if(sticker8shown == true){
 
-        let sticker8shown = document.getElementById("sticker8shown");
-        let posx = sticker8shown.getAttribute("data-x");
-        let posy = sticker8shown.getAttribute("data-y");
-        let height = sticker8shown.style.height;
-        let width = sticker8shown.style.width;
-
+        let sticker8shownn = document.getElementsByClassName("sticker8");
+        var viewportOffset = sticker8shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker8shownn[0].offsetWidth;
+        let height = sticker8shownn[0].clientHeight;
+        let posx = left + (0.08*width);
+        let posy = top;
         let imgsticker8 = document.createElement('img');
         imgsticker8.setAttribute("src", "images/sticker8.png");
-        imgsticker8.setAttribute("width", height-150);
-        imgsticker8.setAttribute("height", width-150);
-        context.drawImage(imgsticker8, posx,posy+190);
+        imgsticker8.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker8.setAttribute("height", ((90*height)/100) + "px" );
+        context.drawImage(imgsticker8, posx, posy, ((85*width)/100), ((90*height)/100));
 
     }
     if(sticker9shown == true){
 
         let sticker9shownn = document.getElementsByClassName("sticker9");
+        var viewportOffset = sticker9shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
         let width = sticker9shownn[0].offsetWidth;
-        let posx = sticker9shownn[0].getAttribute("data-x");
-        let posy = sticker9shownn[0].getAttribute("data-y");
-        let height = sticker9shownn[0].style.hei;
-        alert(width);
-        alert(height);
+        let height = sticker9shownn[0].clientHeight;
+        let posx = left + (0.15*width);
+        let posy = top + (0.15*height);
         let imgsticker9 = document.createElement('img');
         imgsticker9.setAttribute("src", "images/sticker9.png");
-        imgsticker9.setAttribute("width", width + "px"); 
-        imgsticker9.setAttribute("height", height + "px" );
-        context.drawImage(imgsticker9, posx,posy);
+        imgsticker9.setAttribute("width", ((70*width)/100) + "px");
+        imgsticker9.setAttribute("height", ((70*height)/100) + "px" );
+        context.drawImage(imgsticker9, posx, posy, ((70*width)/100), ((70*height)/100));
 
     }
     if(sticker10shown == true){
 
-        let posx = sticker10.getAttribute("data-x");
-        let posy = sticker10.getAttribute("data-y");
-        let height = sticker10.style.height;
-        let width = sticker10.offsetWidth;
-        console.log(width);
-
+        let sticker10shownn = document.getElementsByClassName("sticker10");
+        var viewportOffset = sticker10shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker10shownn[0].offsetWidth;
+        let height = sticker10shownn[0].clientHeight;
+        let posx = left + (0.175*width);
+        let posy = top + (0.15*height);
         let imgsticker10 = document.createElement('img');
         imgsticker10.setAttribute("src", "images/sticker10.png");
-        imgsticker10.setAttribute("width", height-150 + "px");
-        imgsticker10.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker10, posx, posy+190, width, height, 0, 0, width, height);
+        imgsticker10.setAttribute("width", ((65*width)/100) + "px");
+        imgsticker10.setAttribute("height", ((70*height)/100) + "px" );
+        context.drawImage(imgsticker10, posx, posy, ((65*width)/100), ((70*height)/100));
 
     }
 
-            hideresize();
+         hideresize();
             closeAll();
 
             var dataURI = canvas.toDataURL('image/jpeg');
@@ -1140,7 +1148,7 @@ function printCriation(){
                     }
 
                 }
-            });
+            }); 
 }
 
 
