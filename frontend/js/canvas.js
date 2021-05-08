@@ -981,8 +981,37 @@ function printCriation(){
         let imgsticker10 = document.createElement('img');
         imgsticker10.setAttribute("src", "images/sticker10.png");
         imgsticker10.setAttribute("width", ((65*width)/100) + "px");
-        imgsticker10.setAttribute("height", ((70*height)/100) + "px" );
-        context.drawImage(imgsticker10, posx, posy, ((65*width)/100), ((70*height)/100));
+        imgsticker10.setAttribute("height", ((70*height)/100) + "px");
+
+        let angle = getRotationAngle(sticker10shownn[0]);
+
+        var TO_RADIANS = Math.PI/180; 
+        function drawRotatedImage(image, x, y, angle, width, height) { 
+ 
+            // save the current co-ordinate system 
+            // before we screw with it
+            context.save(); 
+         
+            // move to the middle of where we want to draw our image
+            context.translate(x, y);
+         
+            // rotate around that point, converting our 
+            // angle from degrees to radians 
+            context.rotate(angle * TO_RADIANS);
+         
+            // draw it up and to the left by half the width
+            // and height of the image 
+            context.drawImage(image, -((image.width/2)), -(image.height/2), width, height);
+         
+            // and restore the co-ords to how they were when we began
+            context.restore(); 
+        }
+
+        drawRotatedImage(imgsticker10, posx, posy, angle, ((65*width)/100), ((70*height)/100));
+
+        
+        
+        //context.drawImage(imgsticker10, posx, posy, ((65*width)/100), ((70*height)/100));
 
     }
 
@@ -1253,4 +1282,24 @@ function dataURLtoBlob(dataurl) {
     }
 
     return new Blob([u8arr], { type: mime });
+}
+
+function getRotationAngle(target){
+    const obj = window.getComputedStyle(target, null);
+    const matrix = obj.getPropertyValue('-webkit-transform') || 
+    obj.getPropertyValue('-moz-transform') ||
+    obj.getPropertyValue('-ms-transform') ||
+    obj.getPropertyValue('-o-transform') ||
+    obj.getPropertyValue('transform');
+  
+    let angle = 0; 
+  
+    if (matrix !== 'none'){
+      const values = matrix.split('(')[1].split(')')[0].split(',');
+      const a = values[0];
+      const b = values[1];
+      angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+    } 
+  
+    return (angle < 0) ? angle +=360 : angle;
 }
