@@ -802,129 +802,132 @@ function printCriation(){
 
     if(sticker1shown == true){
 
-        let sticker1shown = document.getElementById("sticker1shown");
-        let posx = sticker1shown.getAttribute("data-x");
-        let posy = sticker1shown.getAttribute("data-y");
-        let height = sticker1shown.style.height;
-        let width = sticker1shown.style.width;
-
-        findPos(sticker1shown);
-        console.log(findPos(sticker1shown));
-
+        let sticker1shownn = document.getElementsByClassName("sticker1");
+        var viewportOffset = sticker1shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker1shownn[0].offsetWidth;
+        let height = sticker1shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
         let imgsticker1 = document.createElement('img');
         imgsticker1.setAttribute("src", "images/sticker1.png");
-        imgsticker1.setAttribute("width", height-150 + "px");
-        imgsticker1.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker1, posx,posy+190);
+        imgsticker1.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker1.setAttribute("height", ((65*height)/100) + "px");
+        context.drawImage(imgsticker1, posx, posy, ((85*width)/100), ((65*height)/100));
 
     }
 
     if(sticker2shown == true){
 
-        let sticker2shown = document.getElementById("sticker2shown");
-        let posx = sticker2shown.getAttribute("data-x");
-        let posy = sticker2shown.getAttribute("data-y");
-        let height = sticker2shown.style.height;
-        let width = sticker2shown.style.width;
-
-        findPos(sticker2shown);
-        console.log(findPos(sticker1shown));
-
+        let sticker2shownn = document.getElementsByClassName("sticker2");
+        var viewportOffset = sticker2shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker2shownn[0].offsetWidth;
+        let height = sticker2shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
         let imgsticker2 = document.createElement('img');
         imgsticker2.setAttribute("src", "images/sticker2.png");
-        imgsticker2.setAttribute("width", height-150 + "px");
-        imgsticker2.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker2, posx,posy+190);
+        imgsticker2.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker2.setAttribute("height", ((60*height)/100) + "px");
+        context.drawImage(imgsticker2, posx, posy, ((85*width)/100), ((60*height)/100));
 
     }
     if(sticker3shown == true){
 
-        let sticker3shown = document.getElementById("sticker3shown");
-        let posx = sticker3shown.getAttribute("data-x");
-        let posy = sticker3shown.getAttribute("data-y");
-        let height = sticker3shown.style.height;
-        let width = sticker3shown.style.width;
-
-        findPos(sticker3shown);
-        console.log(findPos(sticker3shown));
-
+        let sticker3shownn = document.getElementsByClassName("sticker3");
+        var viewportOffset = sticker3shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker3shownn[0].offsetWidth;
+        let height = sticker3shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
         let imgsticker3 = document.createElement('img');
         imgsticker3.setAttribute("src", "images/sticker3.png");
-        imgsticker3.setAttribute("width", height-150 + "px");
-        imgsticker3.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker3, posx,posy+190);
+        imgsticker3.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker3.setAttribute("height", ((80*height)/100) + "px");
+        context.drawImage(imgsticker3, posx, posy, ((85*width)/100), ((80*height)/100));
 
     }
     if(sticker4shown == true){
 
-        let sticker4shown = document.getElementById("sticker4shown");
-        let posx = sticker4shown.getAttribute("data-x");
-        let posy = sticker4shown.getAttribute("data-y");
-        let height = sticker4shown.style.height;
-        let width = sticker4shown.style.width;
-
-        findPos(sticker4shown);
-        console.log(findPos(sticker4shown));
-
+        let sticker4shownn = document.getElementsByClassName("sticker4");
+        var viewportOffset = sticker4shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker4shownn[0].offsetWidth;
+        let height = sticker4shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
         let imgsticker4 = document.createElement('img');
         imgsticker4.setAttribute("src", "images/sticker4.png");
-        imgsticker4.setAttribute("width", height-150 + "px");
-        imgsticker4.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker4, posx,posy+190);
+        imgsticker4.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker4.setAttribute("height", ((70*height)/100) + "px");
+        context.drawImage(imgsticker4, posx, posy, ((85*width)/100), ((70*height)/100));
 
     }
 
     if(sticker5shown == true){
 
-        let sticker5shown = document.getElementById("sticker5shown");
-        let posx = sticker5shown.getAttribute("data-x");
-        let posy = sticker5shown.getAttribute("data-y");
-        let height = sticker5shown.style.height;
-        let width = sticker5shown.style.width;
-
-        findPos(sticker5shown);
-        console.log(findPos(sticker5shown));
-
+        let sticker5shownn = document.getElementsByClassName("sticker5");
+        var viewportOffset = sticker5shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker5shownn[0].offsetWidth;
+        let height = sticker5shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
         let imgsticker5 = document.createElement('img');
         imgsticker5.setAttribute("src", "images/sticker5.png");
-        imgsticker5.setAttribute("width", height-150 + "px");
-        imgsticker5.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker5, posx,posy+190);
+        imgsticker5.setAttribute("width", ((95*width)/100) + "px");
+        imgsticker5.setAttribute("height", ((45*height)/100) + "px");
+        context.drawImage(imgsticker5, posx, posy, ((95*width)/100), ((45*height)/100));
 
     }
 
     if(sticker6shown == true){
 
-        let sticker6shown = document.getElementById("sticker6shown");
-        let posx = sticker6shown.getAttribute("data-x");
-        let posy = sticker6shown.getAttribute("data-y");
-        let height = sticker6shown.style.height;
-        let width = sticker6shown.style.width;
-
-        findPos(sticker6shown);
-        console.log(findPos(sticker6shown));
-
+        let sticker6shownn = document.getElementsByClassName("sticker6");
+        var viewportOffset = sticker6shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker6shownn[0].offsetWidth;
+        let height = sticker6shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
         let imgsticker6 = document.createElement('img');
         imgsticker6.setAttribute("src", "images/sticker6.png");
-        imgsticker6.setAttribute("width", height-150 + "px");
-        imgsticker6.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker6, posx,posy+190);
+        imgsticker6.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker6.setAttribute("height", ((45*height)/100) + "px" );
+        context.drawImage(imgsticker6, posx, posy, ((85*width)/100), ((45*height)/100));
 
     }
 
     if(sticker7shown == true){
 
-        let sticker7shown = document.getElementById("sticker7shown");
-        let posx = sticker7shown.getAttribute("data-x");
-        let posy = sticker7shown.getAttribute("data-y");
-        let height = sticker7shown.style.height;
-        let width = sticker7shown.style.width;
-
+        let sticker7shownn = document.getElementsByClassName("sticker7");
+        var viewportOffset = sticker7shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker7shownn[0].offsetWidth;
+        let height = sticker7shownn[0].clientHeight;
+        let posx = left + (0.08*width);
+        let posy = top;
         let imgsticker7 = document.createElement('img');
         imgsticker7.setAttribute("src", "images/sticker7.png");
-        imgsticker7.setAttribute("width", height-150 + "px");
-        imgsticker7.setAttribute("height", width-150 + "px" );
-        context.drawImage(imgsticker7, posx,posy+190);
+        imgsticker7.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker7.setAttribute("height", ((65*height)/100) + "px" );
+        context.drawImage(imgsticker7, posx, posy, ((85*width)/100), ((65*height)/100));
 
     }
 
@@ -983,7 +986,7 @@ function printCriation(){
 
     }
 
-         hideresize();
+        /*    hideresize();
             closeAll();
 
             var dataURI = canvas.toDataURL('image/jpeg');
@@ -1118,9 +1121,13 @@ function printCriation(){
 
                                     }
                                     else {
-                                        swal("Erro!", "Erro!", "error")
-                                        .then(() => {
-                                            //location.reload();
+                                        swal({
+                                            icon: 'images/v237_21.png',
+                                            title: 'Erro',
+                                            text: 'Erro ao guardar.',
+                                            button: 'OK',
+                                            className: "swalAlert"
+                                            
                                         })
 
                                     }
@@ -1148,7 +1155,7 @@ function printCriation(){
                     }
 
                 }
-            }); 
+        }); */
 }
 
 

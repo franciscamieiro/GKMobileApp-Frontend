@@ -78,6 +78,7 @@ function pub(element){
 window.onload = () => {
 
     const id = localStorage.userloggedin;
+    console.log(id);
 
     const savedDrawings = document.getElementById("drawings");
 
@@ -89,14 +90,16 @@ window.onload = () => {
         const response = await fetch("http://localhost:80/api/creations/users/" + id)
         const drawings = await response.json()
         let i = 1;
-
-        console.log(drawings);
         
         for (const drawing of drawings) {
 
+            let img = document.createElement("img");
+
+            let src = img.src = "data:image/png;base64," + drawing.image;
+
             strHtml += `
                 <div id="drawingwrapper">
-                <img class="drawing" src=""></img>
+                <img class="drawing" src="${src}"></img>
                 <div class="buttonsPlane">
                     <ul>
                         <li id="btnEdit" name=${drawing.creationID} onclick="edit(this);">
@@ -115,7 +118,7 @@ window.onload = () => {
             `;
             i++
         }
-        
+
         savedDrawings.innerHTML = strHtml;
 
     }
