@@ -145,11 +145,17 @@ let is_drawing = false;
 let restore_array = [];
 let index = -1;
 
-window.onload = function(){
+let thisIsEditing = false;
+let editDrawingid = localStorage.getItem("editDrawingid");
+
+window.onload = function () {
 
     let dataURL = localStorage.getItem("takenpicture");
+    
+    console.log(dataURL);
+    console.log(editDrawingid);
 
-    if(dataURL != null){
+    if (dataURL != null) {
 
         var img = new Image;
         img.src = dataURL;
@@ -158,7 +164,33 @@ window.onload = function(){
         };
 
         localStorage.removeItem('takenpicture');
-        
+
+    } else if (editDrawingid != null) {
+
+        thisIsEditing = true;
+
+        const renderCreations = async () => {
+    
+            const response = await fetch(`http://localhost:80/api/creations/` + editDrawingid)
+            const creation = await response.json()
+
+            console.log(creation);
+    
+            if (creation != null) {
+
+                let img = document.createElement("img");
+
+                img.src = "data:image/jpeg;base64," + creation.image;
+
+                img.onload = function () {
+                    context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+                };
+
+            }
+        }
+
+        renderCreations();
+
     }
 
 }
@@ -784,20 +816,6 @@ function showresize() {
 
 }
 
-function findPos(obj) {
-	var curleft = curtop = 0;
-
-    if (obj.offsetParent) {
-        
-        do {
-                curleft += obj.offsetLeft;
-                curtop += obj.offsetTop;
-            } while (obj = obj.offsetParent);
-        
-        return [curleft,curtop];
-    }
-}
-
 function printCriation(){
 
     if(sticker1shown == true){
@@ -983,7 +1001,7 @@ function printCriation(){
         imgsticker10.setAttribute("width", ((65*width)/100) + "px");
         imgsticker10.setAttribute("height", ((70*height)/100) + "px");
 
-        let angle = getRotationAngle(sticker10shownn[0]);
+        /*let angle = getRotationAngle(sticker10shownn[0]);
 
         var TO_RADIANS = Math.PI/180; 
         function drawRotatedImage(image, x, y, angle, width, height) { 
@@ -1007,16 +1025,18 @@ function printCriation(){
             context.restore(); 
         }
 
-        drawRotatedImage(imgsticker10, posx, posy, angle, ((65*width)/100), ((70*height)/100));
+        drawRotatedImage(imgsticker10, posx, posy, angle, ((65*width)/100), ((70*height)/100)); */
 
         
         
-        //context.drawImage(imgsticker10, posx, posy, ((65*width)/100), ((70*height)/100));
+        context.drawImage(imgsticker10, posx, posy, ((65*width)/100), ((70*height)/100));
 
     }
 
-        /*    hideresize();
-            closeAll();
+        hideresize();
+        closeAll();
+
+        if(thisIsEditing == false){
 
             var dataURI = canvas.toDataURL('image/jpeg');
 
@@ -1184,7 +1204,88 @@ function printCriation(){
                     }
 
                 }
-        }); */
+            });
+    } else {
+
+        var dataURI = canvas.toDataURL('image/jpeg');
+
+        var blob = dataURLtoBlob(dataURI);
+        image = new FormData();
+        image.append("file", blob);
+
+        fetch('http://localhost:80/api/creations/' + editDrawingid + "/image", {
+            mode: 'cors',
+            method: 'PUT',
+            body: image,
+            credentials: 'include'
+        })
+            .then(function (response) {
+                //console.log(response.headers.get('Set-Cookie'));
+                console.log(response);
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            .catch(function (err) {
+                console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+            })
+            .then(async function (result) {
+                console.log(result);
+                if (result) {
+
+                    ///
+                    saved = true;
+
+                    swal({
+                        icon: 'images/v254_5.png',
+                        title: 'Guardada',
+                        text: 'A tua criação foi guardada!',
+                        className: "swalAlert",
+                        button: 'Ok',
+                    }).then((value) => {
+
+                        swal({
+                            icon: 'images/Usure_icon.png',
+                            title: 'Sair?',
+                            text: 'Queres sair ou continuar a editar?',
+                            className: "swalAlert",
+                            buttons: {
+                                catch: {
+                                    text: "Sair",
+                                    value: "catch",
+                                },
+                                cancel: "Editar",
+                            },
+                        }).then((value) => {
+                            switch (value) {
+
+                                case "catch":
+                                    window.location.replace("mydrawings.html");
+
+                                default:
+                                    showresize();
+                            }
+
+                        });
+
+                    });
+
+                }
+                else {
+                    swal({
+                        icon: 'images/v237_21.png',
+                        title: 'Erro',
+                        text: 'Erro ao guardar.',
+                        button: 'OK',
+                        className: "swalAlert"
+
+                    })
+
+                }
+            });
+
+    }
 }
 
 
@@ -1263,6 +1364,46 @@ profile.addEventListener("click", function(){
          
                 case "catch":
                     window.location.replace("perfil.html");
+            
+                default:
+                    showresize();
+            }
+    
+        });
+    }
+});
+
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", function(){
+
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o desenho!',
+            text: 'Queres sair na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    swal({
+                        icon: 'images/v254_5.png',
+                        title: 'Sucesso',
+                        text: 'Sessão terminada',
+                        button: 'OK',
+                        className: "swalAlert"
+                    }).then((isConfirm) => {
+                        localStorage.clear();
+                        window.location.replace("login.html");
+                    });
             
                 default:
                     showresize();

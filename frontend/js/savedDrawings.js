@@ -2,6 +2,7 @@ let btnEdit = document.getElementById("btnEdit");
 let btnDelete = document.getElementById("btnDelete");
 let btnPublish = document.getElementById("btnPublish");
 const id = localStorage.userloggedin;
+const savedDrawings = document.getElementById("drawings");
 
 function goBack() {
 
@@ -12,6 +13,7 @@ function goBack() {
 function edit(element){
     let drawingsEditid = element.getAttribute("name");
     localStorage.setItem("editDrawingid", drawingsEditid);
+    window.location.replace("canvas.html");
 }
 
 function del(element){
@@ -22,6 +24,52 @@ function del(element){
         })
         .then(res => res.text()) // or res.json()
         .then(res => console.log(res))
+        .then(function(response) {
+
+            savedDrawings.innerHTML = "";
+
+            const renderDrawings = async() => {
+
+                let strHtml = ``;
+        
+                const response = await fetch("http://localhost:80/api/creations/users/" + id)
+                const drawings = await response.json()
+                let i = 1;
+                
+                for (const drawing of drawings) {
+        
+                    let img = document.createElement("img");
+        
+                    let src = img.src = "data:image/png;base64," + drawing.image;
+        
+                    strHtml += `
+                        <div id="drawingwrapper">
+                        <img class="drawing" src="${src}"></img>
+                        <div class="buttonsPlane">
+                            <ul>
+                                <li id="btnEdit" name=${drawing.creationID} onclick="edit(this);">
+                                    <div id="btnEditicon"></div>
+                                </li>
+                                <li id="btnDelete" name=${drawing.creationID} onclick="del(this);">
+                                    <div id="btnDelicon"></div>
+                                </li>
+                                <li id="btnPublish" name=${drawing.creationID} onclick="pub(this);">
+                                    <div id="btnPubliicon"></div>
+                                </li>
+                            </ul>
+                    
+                        </div>
+                    </div>
+                    `;
+                    i++
+                }
+        
+                savedDrawings.innerHTML = strHtml;
+        
+            }
+            renderDrawings();
+
+        });
 }
 
 function pub(element){
@@ -77,11 +125,6 @@ function pub(element){
 
 window.onload = () => {
 
-    const id = localStorage.userloggedin;
-    console.log(id);
-
-    const savedDrawings = document.getElementById("drawings");
-
     const renderDrawings = async() => {
 
         let strHtml = ``;
@@ -124,3 +167,20 @@ window.onload = () => {
     }
     renderDrawings();
 }
+
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", function(){
+    
+
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Sessão terminada',
+        button: 'OK',
+        className: "swalAlert"
+    }).then((isConfirm) => {
+        localStorage.clear();
+        window.location.replace("login.html");
+    });
+});

@@ -2,7 +2,7 @@ window.onload = () => {
 
     const forumcreations = document.getElementById("forum");
 
-    const renderCreations = async() => {
+    const renderCreations = async () => {
 
         let strHtml = ``;
 
@@ -10,12 +10,16 @@ window.onload = () => {
         const creations = await response.json()
         let i = 1;
 
-        if(creations.length != 0){
-        for (const creation of creations) {
-            console.log(creations);
-            strHtml += `
+        if (creations.length != 0) {
+            for (const creation of creations) {
+
+                let img = document.createElement("img");
+
+                let src = img.src = "data:image/jpeg;base64," + creation.image;
+
+                strHtml += `
             <div class="card mb-4">
-                <a href="forumbig.html" id=${creation.creationID} onclick="reply_click(this.id)" ><img src="./images/v549_72.png" class="criacoesimg img-responsive" id="popupimg"></a>
+                <a href="forumbig.html" id=${creation.creationID} onclick="reply_click(this.id)" ><img src="${src}" class="criacoesimg img-responsive" id="popupimg"></a>
                 <div class="card-footer text-left">
                     <img src="./images/v549_68.png" class="img-fluid v549_186" alt="">
                     <i class="mr-1"></i> ${creation.city}
@@ -23,10 +27,10 @@ window.onload = () => {
             </div>
             `;
 
-            i++;
+                i++;
+            }
+            forumcreations.innerHTML = strHtml;
         }
-        forumcreations.innerHTML = strHtml;
-    }
     }
 
     renderCreations()
@@ -35,3 +39,19 @@ window.onload = () => {
 function reply_click(clicked_id) {
     localStorage.setItem("idClickedPub", clicked_id);
 }
+
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", function(){
+    
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Sessão terminada',
+        button: 'OK',
+        className: "swalAlert"
+    }).then((isConfirm) => {
+        localStorage.clear();
+        window.location.replace("login.html");
+    });
+});

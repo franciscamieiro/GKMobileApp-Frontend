@@ -93,6 +93,7 @@ function loadCanvasWithInputFile(cns){
             reader.onload = function(evt){
                 if( evt.target.readyState == FileReader.DONE) {
                     img.src = evt.target.result;
+                    img.style.overflow = "hidden";
                     if(img.width < img.height){
                         img.onload = () => context.drawImage(img, 0, 0, img.width, img.height, 0, 0, cns.width, cns.height);
                         cns.style.display = "block";
@@ -381,6 +382,16 @@ let sticker7 = document.getElementById("placesticker7");
 let sticker8 = document.getElementById("placesticker8");
 let sticker9 = document.getElementById("placesticker9");
 let sticker10 = document.getElementById("placesticker10");
+let sticker1shown = false;
+let sticker2shown = false;
+let sticker3shown = false;
+let sticker4shown = false;
+let sticker5shown = false;
+let sticker6shown = false;
+let sticker7shown = false;
+let sticker8shown = false;
+let sticker9shown = false;
+let sticker10shown = false;
 
 sticker1.addEventListener("click", function(){
 
@@ -400,6 +411,8 @@ sticker1.addEventListener("click", function(){
 
     closeAll();
 
+    sticker1shown = true;
+
 });
 sticker2.addEventListener("click", function(){
 
@@ -418,6 +431,8 @@ sticker2.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+
+    sticker2shown = true;
 
 });
 
@@ -439,6 +454,8 @@ sticker3.addEventListener("click", function(){
 
     closeAll();
 
+    sticker3shown = true;
+
 });
 
 sticker4.addEventListener("click", function(){
@@ -458,6 +475,8 @@ sticker4.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+
+    sticker4shown = true;
 
 });
 
@@ -479,6 +498,8 @@ sticker5.addEventListener("click", function(){
 
     closeAll();
 
+    sticker5shown = true;
+
 });
 
 sticker6.addEventListener("click", function(){
@@ -498,6 +519,8 @@ sticker6.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+
+    sticker6shown = true;
 
 });
 
@@ -519,6 +542,8 @@ sticker7.addEventListener("click", function(){
 
     closeAll();
 
+    sticker7shown = true;
+
 });
 
 sticker8.addEventListener("click", function(){
@@ -538,6 +563,8 @@ sticker8.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+
+    sticker8shown = true;
 });
 
 sticker9.addEventListener("click", function(){
@@ -558,6 +585,8 @@ sticker9.addEventListener("click", function(){
 
     closeAll();
 
+    sticker9shown = true;
+
 });
 
 sticker10.addEventListener("click", function(){
@@ -577,6 +606,8 @@ sticker10.addEventListener("click", function(){
     document.getElementById('capture').appendChild(div);
 
     closeAll();
+
+    sticker10shown = true;
 
 });
 
@@ -738,103 +769,390 @@ function showresize() {
 
 function printCriation(){
 
-    hideresize();
-    closeAll();
+    if(sticker1shown == true){
 
-    html2canvas([document.getElementById('capture')], {
-        onrendered: function (canvasprint) {
-            document.getElementById('canvas').appendChild(canvasprint);
+        let sticker1shownn = document.getElementsByClassName("sticker1");
+        var viewportOffset = sticker1shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker1shownn[0].offsetWidth;
+        let height = sticker1shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
+        let imgsticker1 = document.createElement('img');
+        imgsticker1.setAttribute("src", "images/sticker1.png");
+        imgsticker1.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker1.setAttribute("height", ((65*height)/100) + "px");
+        context.drawImage(imgsticker1, posx, posy, ((85*width)/100), ((65*height)/100));
 
-            let drawing_array = [];
-            drawing_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
+    }
 
-            console.log(drawing_array);
+    if(sticker2shown == true){
 
-            let data = {};
-            data.city = null;
-            data.coordinates = null;
-            data.userID = id; //buscar o id do user q está logged in
-            data.dateCreation = new Date();
-            data.datePublished = null;
-            data.evaluation = 0;
-            data.published = 0;
-            data.image = drawing_array;
+        let sticker2shownn = document.getElementsByClassName("sticker2");
+        var viewportOffset = sticker2shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker2shownn[0].offsetWidth;
+        let height = sticker2shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
+        let imgsticker2 = document.createElement('img');
+        imgsticker2.setAttribute("src", "images/sticker2.png");
+        imgsticker2.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker2.setAttribute("height", ((60*height)/100) + "px");
+        context.drawImage(imgsticker2, posx, posy, ((85*width)/100), ((60*height)/100));
 
-            if(saved == false){
+    }
+    if(sticker3shown == true){
+
+        let sticker3shownn = document.getElementsByClassName("sticker3");
+        var viewportOffset = sticker3shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker3shownn[0].offsetWidth;
+        let height = sticker3shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
+        let imgsticker3 = document.createElement('img');
+        imgsticker3.setAttribute("src", "images/sticker3.png");
+        imgsticker3.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker3.setAttribute("height", ((80*height)/100) + "px");
+        context.drawImage(imgsticker3, posx, posy, ((85*width)/100), ((80*height)/100));
+
+    }
+    if(sticker4shown == true){
+
+        let sticker4shownn = document.getElementsByClassName("sticker4");
+        var viewportOffset = sticker4shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker4shownn[0].offsetWidth;
+        let height = sticker4shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
+        let imgsticker4 = document.createElement('img');
+        imgsticker4.setAttribute("src", "images/sticker4.png");
+        imgsticker4.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker4.setAttribute("height", ((70*height)/100) + "px");
+        context.drawImage(imgsticker4, posx, posy, ((85*width)/100), ((70*height)/100));
+
+    }
+
+    if(sticker5shown == true){
+
+        let sticker5shownn = document.getElementsByClassName("sticker5");
+        var viewportOffset = sticker5shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker5shownn[0].offsetWidth;
+        let height = sticker5shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
+        let imgsticker5 = document.createElement('img');
+        imgsticker5.setAttribute("src", "images/sticker5.png");
+        imgsticker5.setAttribute("width", ((95*width)/100) + "px");
+        imgsticker5.setAttribute("height", ((45*height)/100) + "px");
+        context.drawImage(imgsticker5, posx, posy, ((95*width)/100), ((45*height)/100));
+
+    }
+
+    if(sticker6shown == true){
+
+        let sticker6shownn = document.getElementsByClassName("sticker6");
+        var viewportOffset = sticker6shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker6shownn[0].offsetWidth;
+        let height = sticker6shownn[0].clientHeight;
+        let posx = left + (0.072*width);
+        let posy = top;
+        let imgsticker6 = document.createElement('img');
+        imgsticker6.setAttribute("src", "images/sticker6.png");
+        imgsticker6.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker6.setAttribute("height", ((45*height)/100) + "px" );
+        context.drawImage(imgsticker6, posx, posy, ((85*width)/100), ((45*height)/100));
+
+    }
+
+    if(sticker7shown == true){
+
+        let sticker7shownn = document.getElementsByClassName("sticker7");
+        var viewportOffset = sticker7shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker7shownn[0].offsetWidth;
+        let height = sticker7shownn[0].clientHeight;
+        let posx = left + (0.08*width);
+        let posy = top;
+        let imgsticker7 = document.createElement('img');
+        imgsticker7.setAttribute("src", "images/sticker7.png");
+        imgsticker7.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker7.setAttribute("height", ((65*height)/100) + "px" );
+        context.drawImage(imgsticker7, posx, posy, ((85*width)/100), ((65*height)/100));
+
+    }
+
+    if(sticker8shown == true){
+
+        let sticker8shownn = document.getElementsByClassName("sticker8");
+        var viewportOffset = sticker8shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker8shownn[0].offsetWidth;
+        let height = sticker8shownn[0].clientHeight;
+        let posx = left + (0.08*width);
+        let posy = top;
+        let imgsticker8 = document.createElement('img');
+        imgsticker8.setAttribute("src", "images/sticker8.png");
+        imgsticker8.setAttribute("width", ((85*width)/100) + "px");
+        imgsticker8.setAttribute("height", ((90*height)/100) + "px" );
+        context.drawImage(imgsticker8, posx, posy, ((85*width)/100), ((90*height)/100));
+
+    }
+    if(sticker9shown == true){
+
+        let sticker9shownn = document.getElementsByClassName("sticker9");
+        var viewportOffset = sticker9shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker9shownn[0].offsetWidth;
+        let height = sticker9shownn[0].clientHeight;
+        let posx = left + (0.15*width);
+        let posy = top + (0.15*height);
+        let imgsticker9 = document.createElement('img');
+        imgsticker9.setAttribute("src", "images/sticker9.png");
+        imgsticker9.setAttribute("width", ((70*width)/100) + "px");
+        imgsticker9.setAttribute("height", ((70*height)/100) + "px" );
+        context.drawImage(imgsticker9, posx, posy, ((70*width)/100), ((70*height)/100));
+
+    }
+    if(sticker10shown == true){
+
+        let sticker10shownn = document.getElementsByClassName("sticker10");
+        var viewportOffset = sticker10shownn[0].getBoundingClientRect();
+        // these are relative to the viewport, i.e. the window
+        var top = viewportOffset.top;
+        var left = viewportOffset.left;
+        let width = sticker10shownn[0].offsetWidth;
+        let height = sticker10shownn[0].clientHeight;
+        let posx = left + (0.175*width);
+        let posy = top + (0.15*height);
+        let imgsticker10 = document.createElement('img');
+        imgsticker10.setAttribute("src", "images/sticker10.png");
+        imgsticker10.setAttribute("width", ((65*width)/100) + "px");
+        imgsticker10.setAttribute("height", ((70*height)/100) + "px");
+
+        /*let angle = getRotationAngle(sticker10shownn[0]);
+
+        var TO_RADIANS = Math.PI/180; 
+        function drawRotatedImage(image, x, y, angle, width, height) { 
+ 
+            // save the current co-ordinate system 
+            // before we screw with it
+            context.save(); 
+         
+            // move to the middle of where we want to draw our image
+            context.translate(x, y);
+         
+            // rotate around that point, converting our 
+            // angle from degrees to radians 
+            context.rotate(angle * TO_RADIANS);
+         
+            // draw it up and to the left by half the width
+            // and height of the image 
+            context.drawImage(image, -((image.width/2)), -(image.height/2), width, height);
+         
+            // and restore the co-ords to how they were when we began
+            context.restore(); 
+        }
+
+        drawRotatedImage(imgsticker10, posx, posy, angle, ((65*width)/100), ((70*height)/100)); */
+
+        
+        
+        context.drawImage(imgsticker10, posx, posy, ((65*width)/100), ((70*height)/100));
+
+    }
+
+        hideresize();
+        closeAll();
+
+        var dataURI = canvas.toDataURL('image/jpeg');
+
+        var blob = dataURLtoBlob(dataURI);
+        image = new FormData();
+        image.append("file", blob);
+
+        swal({
+            icon: 'images/Usure_icon.png',
+            text: 'Qual é a cidade onde queres ver a tua criação?',
+            content: {
+                element: "input",
+            },
+            button: 'OK',
+            className: "swalAlert1",
+            closeOnClickOutside: false,
+            closeOnClick: false,
+        }).then(function(inputValue) {
+            if (inputValue === false) return false;
+        
+            else if (inputValue === "") {
+                
+                swal({
+                    icon: 'images/warning.png',
+                    text: 'Escreve uma cidade!',
+                }).then(function(isConfirm) {
+                    printCriation();
+                });
             
-                fetch("http://localhost:80/api/creations", {
-                    headers: { 'Content-Type': 'application/json' },
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                }).then(function(response) {
-                    console.log(data);
-                    if (!response.ok) {
-                        console.log(response.status); //=> number 100–599
-                        console.log(response.statusText); //=> String
-                        console.log(response.headers); //=> Headers
-                        console.log(response.url); //=> String
-                        if (response.status === 409) {
+                
+            }else{
+
+                let data = {};
+                data.city = inputValue;
+                data.coordinates = null;
+                data.userID = parseFloat(id);
+                data.date_creation = new Date();
+                data.date_published = null;
+                data.evaluation = 0;
+                data.published = 0;
+
+                if(saved == false){
+                
+                    fetch("http://localhost:80/api/creations", {
+                        headers: { 'Content-Type': 'application/json' },
+                        method: 'POST',
+                        body: JSON.stringify(data)
+                    }).then(function(response) {
+                        console.log(data);
+                        if (!response.ok) {
+                            console.log(response.status); //=> number 100–599
+                            console.log(response.statusText); //=> String
+                            console.log(response.headers); //=> Headers
+                            console.log(response.url); //=> String
+                            if (response.status === 409) {
+                            }
+                            else {
+                                throw Error(response.statusText);
+                            }
                         }
                         else {
-                            throw Error(response.statusText);
-                        }
-                    }
-                    else {
-                        saved = true;
-                        swal({
-                            icon: 'images/v254_5.png',
-                            title: 'Guardada',
-                            text: 'A tua criação foi guardada!',
-                            className: "swalAlert",
-                            button: 'Ok',
-                        }).then((value) => {
-                            
-                            swal({
-                                icon: 'images/Usure_icon.png',
-                                title: 'Sair?',
-                                text: 'Queres sair ou continuar a editar?',
-                                className: "swalAlert",
-                                buttons: {
-                                catch: {
-                                text: "Sair",
-                                value: "catch",
-                                },
-                                cancel: "Editar",
-                            },
-                            }).then((value) => {
-                                switch (value) {
-                            
-                                    case "catch":
-                                        window.location.replace("mydrawings.html");
-                                
-                                    default:
-                                        showresize();
-                                }
-                        
-                            });
-                    
-                        });
-                    }
-                }).then(function(result) {
-                    console.log(result);
-                }).catch(function(err) {
-                    swal({
-                        icon: 'images/v237_21.png',
-                        title: 'Erro',
-                        text: 'Erro ao guardar.',
-                        button: 'OK',
-                        className: "swalAlert"
-                        
-                    })
-                    console.error(err);
-                    showresize();
-                });
-            }else{
-                //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
-            }
+                            response.text().then(function (text) {
+                                let see = text.split("objectId");
+                                console.log(see[1]);
+                                var regex = /\d+/g;
+                                var string = see[1].toString();
+                                var matches = string.match(regex);
+                
+                                console.log(text);
+                                console.log(matches[0]);
+            
+                                let idcreation = matches[0];
 
-        }
-        
+                            fetch('http://localhost:80/api/creations/' + idcreation + "/image"  , {
+                                mode: 'cors',
+                                method: 'PUT',
+                                body: image,
+                                credentials: 'include'
+                            })
+                            .then(function (response) {
+                                //console.log(response.headers.get('Set-Cookie'));
+                                console.log(response);
+                                if (!response.ok) {
+                                    throw new Error(response.statusText);
+                                }
+                                return response.json();
+                            })
+                            .catch(function (err) {
+                                console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+                            })
+                            .then(async function (result) {
+                                console.log(result);
+                                if (result) {
+
+                                    ///
+                                    saved = true;
+
+                                    swal({
+                                        icon: 'images/v254_5.png',
+                                        title: 'Guardada',
+                                        text: 'A tua criação foi guardada!',
+                                        className: "swalAlert",
+                                        button: 'Ok',
+                                    }).then((value) => {
+                                        
+                                        swal({
+                                            icon: 'images/Usure_icon.png',
+                                            title: 'Sair?',
+                                            text: 'Queres sair ou continuar a editar?',
+                                            className: "swalAlert",
+                                            buttons: {
+                                            catch: {
+                                            text: "Sair",
+                                            value: "catch",
+                                            },
+                                            cancel: "Editar",
+                                        },
+                                        }).then((value) => {
+                                            switch (value) {
+                                        
+                                                case "catch":
+                                                    window.location.replace("mydrawings.html");
+                                            
+                                                default:
+                                                    showresize();
+                                            }
+                                    
+                                        });
+                                
+                                    });
+
+                                }
+                                else {
+                                    swal({
+                                        icon: 'images/v237_21.png',
+                                        title: 'Erro',
+                                        text: 'Erro ao guardar.',
+                                        button: 'OK',
+                                        className: "swalAlert"
+                                        
+                                    })
+
+                                }
+                            });
+                        });
+                        }
+                        
+                    }).then(function(result) {
+                        console.log(result);
+                    }).catch(function(err) {
+                        swal({
+                            icon: 'images/v237_21.png',
+                            title: 'Erro',
+                            text: 'Erro ao guardar.',
+                            button: 'OK',
+                            className: "swalAlert"
+                            
+                        })
+                        console.error(err);
+                        showresize();
+                    });
+
+                }else{
+                    //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
+                }
+
+            }
     });
 }
 
@@ -899,6 +1217,7 @@ settings.addEventListener("click", function(){
 });
 
 profile.addEventListener("click", function(){
+    
     if(saved == false){
         swal({
             icon: 'images/Usure_icon.png',
@@ -924,5 +1243,34 @@ profile.addEventListener("click", function(){
     
         });
     }
+
 });
-  
+
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", function(){
+    
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Sessão terminada',
+        button: 'OK',
+        className: "swalAlert"
+    }).then((isConfirm) => {
+        storage.clear();
+        window.location.replace("login.html");
+    });
+
+});
+
+function dataURLtoBlob(dataurl) {
+    
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new Blob([u8arr], { type: mime });
+}

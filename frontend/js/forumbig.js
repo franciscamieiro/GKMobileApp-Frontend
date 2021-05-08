@@ -1,7 +1,5 @@
 const id = localStorage.userloggedin;
 
-const wrapperAudio = document.createElement('div');
-
 const wrapperWritten = document.createElement('div');
 
 const wrapperFile = document.createElement('div');
@@ -9,8 +7,6 @@ const wrapperFile = document.createElement('div');
 wrapperWritten.className = "wrapperWritten";
 
 wrapperFile.className = "wrapperFile";
-
-wrapperAudio.innerHTML = '<span class="titleaudio">Gravar comentário</span><div class="audio" id="audio"></div><div id="Progress_Status"><div id="myprogressBar"></div></div><div id="btnRecord" onclick="record();">Gravar</div><div id="btnStop" onclick="stopRecording();">Parar</div><div id="btnDelete" onclick="deleteAudio();">Apagar</div><div id="btnSend" onclick="sendAudio();">Publicar</div>';
 
 wrapperWritten.innerHTML = '<span class="title">Escrever comentário</span><input id="input" type="text" placeholder="Escreve o teu comentário..."></input><div id="btnDeleteT" onclick="deleteText();">Apagar</div><div id="btnPubliT" onclick="publishText();">Publicar</div>';
 
@@ -34,148 +30,6 @@ function goBack() {
     window.history.back();
 }
 
-let recorded = false;
-let audiosrc = null;
-
-function record() {
-
-    recorded = true;
-
-    var i = 0;
-
-    function move() {
-        if (i == 0) {
-
-            i = 1;
-            var elem = document.getElementById("myprogressBar");
-            var width = 1;
-            var id = setInterval(frame, 900);
-            interval = id;
-
-            function frame() {
-                if (width >= 100) {
-                    clearInterval(id);
-                    i = 0;
-                } else {
-                    width++;
-                    elem.style.width = width + "%";
-                }
-            }
-        }
-    }
-
-    move();
-
-    var device = navigator.mediaDevices.getUserMedia({ audio: true });
-    var items = [];
-    device.then(stream => {
-        var recorder = new MediaRecorder(stream);
-        mainRecorder = recorder;
-        items.length = 0;
-        recorder.ondataavailable = e => {
-            items.push(e.data);
-            if (recorder.state == 'inactive') {
-                var blob = new Blob(items, { type: 'audio/mp3' });
-                var audio = document.getElementById("audio");
-                var mainaudio = document.createElement("audio");
-                mainaudio.setAttribute('controls', 'controls');
-                audio.appendChild(mainaudio);
-                mainaudio.innerHTML = '<source src="' + URL.createObjectURL(blob) + '" type="audio/mp3"/>';
-                audiosrc = URL.createObjectURL(blob);
-            }
-        }
-
-        recorder.start();
-        setTimeout(() => {
-            recorder.stop();
-        }, 60000);
-    });
-
-}
-
-function stopRecording() {
-    if (recorded) {
-        stop();
-    }
-}
-
-function stop() {
-    let btnRecord = document.getElementById("btnRecord");
-    let btnStop = document.getElementById("btnStop");
-    let btnDelete = document.getElementById("btnDelete");
-    let btnSend = document.getElementById("btnSend");
-    let Progress_Status = document.getElementById("Progress_Status");
-    let myprogressBar = document.getElementById("myprogressBar");
-    myprogressBar.style.display = "none";
-    Progress_Status.style.display = "none";
-    mainRecorder.stop();
-    clearInterval(interval);
-    btnRecord.style.display = "none";
-    btnStop.style.display = "none";
-    btnDelete.style.display = "inline-block";
-    btnSend.style.display = "inline-block";
-}
-
-function deleteAudio() {
-    window.location.reload();
-    localStorage.setItem("reloaded", "sim");
-}
-
-function sendAudio() {
-
-    let data = {};
-    data.creationID = IDcreation;
-    data.date = new Date();
-    data.userID = id;
-    data.description = null;
-    data.audio = new Audio();
-    data.audio.src = audiosrc;
-
-    fetch("http://localhost:80/api/comments/audio", {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: JSON.stringify(data)
-    }).then(function(response) {
-        console.log(data);
-        if (!response.ok) {
-            console.log(response.status); //=> number 100–599
-            console.log(response.statusText); //=> String
-            console.log(response.headers); //=> Headers
-            console.log(response.url); //=> String
-            if (response.status === 409) {
-            }
-            else {
-                throw Error(response.statusText);
-            }
-        }
-        else {
-            swal({
-                icon: 'images/v254_5.png',
-                title: 'Sucesso',
-                text: 'Áudio publicado!',
-                buttons: false,
-                className: "swalAlertSucess"
-        
-            }).then(function(isConfirm) {
-                window.location.reload();
-            });
-        }
-    }).then(function(result) {
-        console.log(result);
-    }).catch(function(err) {
-        swal({
-            icon: 'images/v237_21.png',
-            title: 'Erro',
-            text: 'Erro ao publicar áudio.',
-            button: 'OK',
-            className: "swalAlert"
-            
-        });
-        console.error(err);
-    });
-
-
-}
 
 function coment() {
 
@@ -196,13 +50,6 @@ function coment() {
                 className: "blue",
                 closeModal: true
             },
-            hello: {
-                text: "Gravar aúdio",
-                value: "recordAudio",
-                visible: true,
-                className: "green",
-                closeModal: true
-            },
 
         },
     }).then((value) => {
@@ -211,13 +58,6 @@ function coment() {
             case "coment":
                 swal({
                     content: wrapperWritten,
-                    buttons: false
-                });
-                break;
-
-            case "recordAudio":
-                swal({
-                    content: wrapperAudio,
                     buttons: false
                 });
                 break;
@@ -270,7 +110,7 @@ function publishText() {
             data.userID = id; //buscar o id do user q está logged in
             data.description = input.value;
 
-            fetch("http://localhost:80/api/comments/txt", {
+            fetch("http://localhost:80/api/comments", {
                 headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
                 body: JSON.stringify(data)
@@ -299,7 +139,7 @@ function publishText() {
             
                         input.value = "";
                         
-                        const renderComments = async() => {
+                       const renderComments = async() => {
 
                             let strHtml = ``;
                     
@@ -332,7 +172,7 @@ function publishText() {
                     
                         }
 
-                        renderComments();
+                        //renderComments();
             
                     });
                 }
@@ -528,6 +368,11 @@ window.onload = () => {
         const creation = await response.json()
         let i = 1;
         console.log(creation);
+
+        let img = document.createElement("img");
+
+        let src = img.src = "data:image/jpeg;base64," + creation.image;
+
         strHtml += `
             <div class="card">
             <div class="card-header">
@@ -535,7 +380,7 @@ window.onload = () => {
                 <i class="mr-1"></i>${creation.city}
                 <a class="mt-1 fa fa-bars fa-lg noscroll" style="float: right; color: black;" onclick="reportpub()"></a>
             </div>
-            <img src="./images/v549_72.png" class="criacoesimg img-responsive" id="popupimg">
+            <img src="${src}" class="criacoesimg img-responsive" id="popupimg">
             <div class="card-footer">
                 <img src="./images/avatar1.png" class="img-fluid smallkidimg">
                 <i class="mr-1"></i> Autor: ${creation.user.name}
@@ -644,7 +489,7 @@ window.onload = () => {
     }
 
     renderCreations();
-    renderComments();
+  //  renderComments();
    // renderEvaluation();
 }
 
@@ -693,11 +538,11 @@ function evaluate(star){
     // api/evaluation
 
     let data = {};
-    data.creationID = IDcreation;
-    data.evaluation = nstar;
+    data.creationID = parseFloat(IDcreation);
+    data.evaluation = parseInt(nstar);
     
 
-    fetch("http://localhost:80/api/evaluation/", {
+    fetch("http://localhost:80/api/evaluation", {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(data)
@@ -738,3 +583,19 @@ function evaluate(star){
         console.error(err);
     });
 }
+
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", function(){
+    
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Sessão terminada',
+        button: 'OK',
+        className: "swalAlert"
+    }).then((isConfirm) => {
+        localStorage.clear();
+        window.location.replace("login.html");
+    });
+});

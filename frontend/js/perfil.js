@@ -28,6 +28,8 @@ let navatar = null;
 let changepass = true;
 const id = localStorage.userloggedin;
 
+let saved = null;
+
 //validate Email
 function validateEmail(email) {
     
@@ -42,7 +44,7 @@ function validateEmail(email) {
 btnEdit.addEventListener("click", function() {
 
     if(fullname.disabled == true){
-    
+        saved = false;
         btnEdit.innerHTML = 'Guardar';
         fullname.disabled = false;
         email.disabled = false;
@@ -209,6 +211,7 @@ btnEdit.addEventListener("click", function() {
                         }
                     }
                     else {
+
                         swal({
                             icon: 'images/v254_5.png',
                             title: 'Sucesso',
@@ -217,7 +220,8 @@ btnEdit.addEventListener("click", function() {
                             className: "swalAlertSucess"
                             
                         }).then(function(isConfirm) {
-            
+                            
+                            saved = true;
                             btnEdit.innerHTML = 'Editar';
                             fullname.disabled = true;
                             email.disabled = true;
@@ -386,6 +390,148 @@ window.onload = async() => {
     
 };           
 
+
+let initialPage = document.getElementById("initialPage");
+let settings = document.getElementById("settings");
+let profile = document.getElementById("profile");
+let logout = document.getElementById("logout");
+
+initialPage.addEventListener("click", function(){
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o teu perfil!',
+            text: 'Queres sair na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("inicialPage.html");
+            
+                default:
+            }
+    
+        });
+    }else{
+        window.location.replace("inicialPage.html");
+    }
+});
+
+settings.addEventListener("click", function(){
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o teu perfil!',
+            text: 'Queres sair na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("settings.html");
+            
+                default:
+            }
+    
+        });
+    }else{
+        window.location.replace("settings.html");
+    }
+});
+
+profile.addEventListener("click", function(){
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o teu perfil!',
+            text: 'Queres recarregar na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sim",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    window.location.replace("perfil.html");
+            
+                default:
+            }
+    
+        });
+    }else{
+        window.location.replace("perfil.html");
+    }
+});
+
+
+
+logout.addEventListener("click", function(){
+
+    if(saved == false){
+        swal({
+            icon: 'images/Usure_icon.png',
+            title: 'Não guardaste o teu perfil!',
+            text: 'Queres sair na mesma?',
+            className: "swalAlert",
+            buttons: {
+            catch: {
+              text: "Sair",
+              value: "catch",
+            },
+            cancel: "Cancelar",
+          },
+        }).then((value) => {
+            switch (value) {
+         
+                case "catch":
+                    swal({
+                        icon: 'images/v254_5.png',
+                        title: 'Sucesso',
+                        text: 'Sessão terminada',
+                        button: 'OK',
+                        className: "swalAlert"
+                    }).then((isConfirm) => {
+                        localStorage.clear();
+                        window.location.replace("login.html");
+                    });
+            
+                default:
+            }
+    
+        });
+    }else{
+        swal({
+            icon: 'images/v254_5.png',
+            title: 'Sucesso',
+            text: 'Sessão terminada',
+            button: 'OK',
+            className: "swalAlert"
+        }).then((isConfirm) => {
+            localStorage.clear();
+            window.location.replace("login.html");
+        });
+    }
+});
 
         
             

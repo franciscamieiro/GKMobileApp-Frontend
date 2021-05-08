@@ -10,7 +10,7 @@ logout.addEventListener("click", function(){
         button: 'OK',
         className: "swalAlert"
     }).then((isConfirm) => {
-        storage.clear();
+        localStorage.clear();
         window.location.replace("login.html");
     });
 });

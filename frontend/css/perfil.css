@@ -376,3 +376,14 @@ input:focus{
   opacity: 1;
   text-align: center;
 }
+
+
+.swalAlert {
+  background-color: #fff;
+  font-family: 'Open Sans';
+  height: 260px;
+  width: 70%;
+  overflow-y: hidden;
+  border-radius: 12px;
+}
+
