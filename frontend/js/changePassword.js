@@ -22,8 +22,8 @@ changePass.addEventListener("click", function(){
     else {
 
         fetch("http://localhost:80/api/users/email/" + inputemail.value)
-            .then((response) => response.json())
-            .then((user) => {
+            .then((user) => user.json())
+            .then(function (user) {
 
                 console.log(user);
 
@@ -113,6 +113,17 @@ changePass.addEventListener("click", function(){
                     });
                 }
 
+            }).then(function (result) {
+                console.log(result);
+            }).catch(function (err) {
+                swal({
+                    icon: 'images/v237_21.png',
+                    title: 'Erro',
+                    text: 'Erro ao reenviar email.',
+                    button: 'OK',
+                    className: "swalAlert"
+                });
+                console.error(err);
             });
 
 
