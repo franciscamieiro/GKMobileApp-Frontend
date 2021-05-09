@@ -191,6 +191,7 @@ btnSubmit.addEventListener("click", function() {
                     className: "swalAlert"
                     
                 }).then(function(isConfirm) {
+                    localStorage.setItem("registedEmail", email.value);
                     window.location.replace("registDone.html");
                 });
             }

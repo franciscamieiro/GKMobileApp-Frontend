@@ -30,42 +30,86 @@ window.onload = function() {
 }
 
 let btnSendEmail = document.getElementById("btnSendEmail");
+let registedEmail = localStorage.registedEmail;
+
+console.log(registedEmail);
 
 btnSendEmail.addEventListener("click", function() {
 
-    const countdownEl = document.getElementById("countDown");
+    fetch("http://localhost:80/api/registration/resend/" + registedEmail)
+        .then((response) => response.json())
+        .then(function(response) {
 
-    if(btnSendEmail.style.color == "white"){
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                console.log(response.url); //=> String
+                if (response.status === 409) {
+                    
+                }
+                else {
+                    throw Error(response.statusText);
+                }
+            }else {
 
-        //codigo para mandar um email
+                swal({
+                    icon: 'images/v254_5.png',
+                    title: 'Sucesso',
+                    text: 'Email reenviado com sucesso.',
+                    button: 'OK',
+                    className: "swalAlert"
+                    
+                });
 
-        btnSendEmail.style.backgroundColor = "rgba(108,80,120,0.550000011920929)";
-        btnSendEmail.style.color = "rgb(197, 197, 197)";
+                const countdownEl = document.getElementById("countDown");
 
-        const startingMinutes = 5;
+                if(btnSendEmail.style.color == "white"){
 
-        let time = startingMinutes * 60;
+                    //codigo para mandar um email
 
-        let timer = setInterval(updateCountdown, 1000);
+                    btnSendEmail.style.backgroundColor = "rgba(108,80,120,0.550000011920929)";
+                    btnSendEmail.style.color = "rgb(197, 197, 197)";
 
-        function updateCountdown() {
+                    const startingMinutes = 5;
 
-            const minutes = Math.floor(time / 60);
-            let seconds = time % 60;
+                    let time = startingMinutes * 60;
 
-            seconds = seconds < 10 ? '0'+ seconds : seconds; 
+                    let timer = setInterval(updateCountdown, 1000);
 
-            countdownEl.innerHTML = `${minutes}:${seconds}`;
-            time--;
+                    function updateCountdown() {
 
-            if(minutes == 0){
+                        const minutes = Math.floor(time / 60);
+                        let seconds = time % 60;
 
-                btnSendEmail.style.backgroundColor = "rgba(167,114,190,1)";
-                btnSendEmail.style.color = "white";
-                countdownEl.innerHTML = "0:00";
-                clearInterval(timer);
-            }
-        } 
-    }    
+                        seconds = seconds < 10 ? '0'+ seconds : seconds; 
+
+                        countdownEl.innerHTML = `${minutes}:${seconds}`;
+                        time--;
+
+                        if(minutes == 0){
+
+                            btnSendEmail.style.backgroundColor = "rgba(167,114,190,1)";
+                            btnSendEmail.style.color = "white";
+                            countdownEl.innerHTML = "0:00";
+                            clearInterval(timer);
+                        }
+                    } 
+                }   
+            } 
+
+        }).then(function(result) {
+            console.log(result);
+        }).catch(function(err) {
+            swal({
+                icon: 'images/v237_21.png',
+                title: 'Erro',
+                text: 'Erro ao reenviar email.',
+                button: 'OK',
+                className: "swalAlert"
+            });
+            console.error(err);
+        });
+ 
 });
 
