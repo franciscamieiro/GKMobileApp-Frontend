@@ -172,7 +172,7 @@ function publishText() {
                     
                         }
 
-                        //renderComments();
+                        renderComments();
             
                     });
                 }
@@ -489,7 +489,7 @@ window.onload = () => {
     }
 
     renderCreations();
-  //  renderComments();
+    renderComments();
    // renderEvaluation();
 }
 

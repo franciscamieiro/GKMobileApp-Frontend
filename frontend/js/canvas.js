@@ -190,6 +190,7 @@ window.onload = function () {
         }
 
         renderCreations();
+        localStorage.removeItem('editDrawingid');
 
     }
 
