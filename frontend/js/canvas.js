@@ -25,9 +25,6 @@ let hide5 = document.getElementsByClassName("resizer_br");
 
 const id = localStorage.userloggedin;
 
-
-if(screen.availHeight > screen.availWidth){
-
 toolsbar.addEventListener("click", function() {
 
     if(tools.style.transform == "translate(-62px)"){
@@ -64,47 +61,6 @@ toolsbar.addEventListener("click", function() {
     }
 })
 
-}else{
-    toolsbar.addEventListener("click", function() {
-
-        toolsbar.style.transform = "rotate(-270deg);"
-
-    if(toolsbar.style.top == "-21.5px"){
-
-        tools.style.top = "50px";
-        toolsbar.style.top = "81px";
-        header.style.transform = "translate(0px,0px)";
-        headerimg.style.transform = "translate(0px,0px)";
-        saveCancas.style.transform = "translate(0px,0px)";
-        app_footer.style.transform = "translate(0px,0px)";
-        
-
-    }else{
-
-        tools.style.top = "-70px";
-        toolsbar.style.top = "-21.5px"
-        header.style.transform = "translate(0px,-55px)";
-        headerimg.style.transform = "translate(0px,-55px)";
-        saveCancas.style.transform = "translate(0px,-55px)";
-        app_footer.style.transform = "translate(0px,55px)";
-        
-    }
-
-    if(colors.style.display == "block"){
-        colors.style.display = "none";
-    }
-
-    if(pen_range.style.display == "block"){
-        pen_range.style.display = "none";
-    }
-
-    if(stickers.style.display == "block"){
-        stickers.style.display = "none";
-    }
-
-});
-
-}
 
 showcolors.addEventListener("click", function() {
 

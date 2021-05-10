@@ -517,7 +517,7 @@ star5.addEventListener("click", function() {
 
 
 function evaluate(star){
-    let nstar = null;
+  /*  let nstar = null;
 
     if(star == "star1"){
         nstar = parseInt(1);
@@ -582,6 +582,17 @@ function evaluate(star){
         })
         console.error(err);
     });
+
+    */
+
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Publicação avaliada!',
+        buttons: false,
+        className: "swalAlert1"
+
+    })
 }
 
 let logout = document.getElementById("logout");
