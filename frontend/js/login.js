@@ -125,10 +125,11 @@ btnLogin.addEventListener("click", function () {
 
                             }
 
+                            window.location.replace("inicialPage.html");
 
                         });
 
-                    window.location.replace("inicialPage.html");
+                    
                 });
 
             }

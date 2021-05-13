@@ -1,8 +1,16 @@
 
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 const id = localStorage.userloggedin;
-
 let theme = localStorage.getItem('theme');
+
+if(theme == "dark"){
+
+    toggleSwitch.checked = true;
+
+}else{
+    toggleSwitch.checked = false;
+}
+
 document.documentElement.setAttribute('data-theme', `${theme}`);
 
 function switchTheme(e) {
