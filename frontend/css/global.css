@@ -17,6 +17,7 @@
   }
   
   .container {
+    height: 100vh;
     background-color: var(--brand-basic);
   }
 * {
