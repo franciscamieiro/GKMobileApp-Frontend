@@ -116,4 +116,9 @@ video {
     border-collapse: collapse;
     appearance: none;
     outline: none;
+}
+
+  .container {
+    height: 100vh;
+    background-color: var(--brand-basic);
   }
