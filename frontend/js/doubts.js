@@ -1,4 +1,3 @@
-
 let writtenQuestion = document.getElementById("writtenQuestion");
 
 const wrapperWritten = document.createElement('div');

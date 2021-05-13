@@ -17,7 +17,7 @@ body {
 
 .v549_66 {
     width: 133px;
-    color: rgba(72, 72, 72, 1);
+    color: var(--text-color);
     font-family: Roboto;
     font-weight: Regular;
     font-size: 13px;
@@ -27,7 +27,7 @@ body {
 
 .v549_69 {
     width: 100%;
-    color: rgba(72, 72, 72, 1);
+    color: var(--text-color);
     position: absolute;
     top: 536px;
     font-family: Roboto;
@@ -94,11 +94,14 @@ body {
 }
 
 .v272_438 {
-    margin-top: 100px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 100px;
     width: 100%;
     color: rgba(167, 114, 190, 1);
+    background-color: var(--brand-basic);
     font-family: Londrina Solid;
-    font-weight: Black;
+    font-weight: var(--text-color);
     font-size: 27px;
     opacity: 1;
     text-align: center;

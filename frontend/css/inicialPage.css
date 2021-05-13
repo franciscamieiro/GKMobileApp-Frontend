@@ -73,7 +73,7 @@
 .v103_280 {
   max-width: 100%;
   min-width: 190px;
-  background: rgba(255,255,255,1);
+  background: var(--brand-basic);
   opacity: 1;
   position: relative;
   top: 0px;
@@ -82,7 +82,7 @@
 
 .v110_2 {
   width: 110px;
-  color: rgba(67,74,84,1);
+  color: var(--text-color);
   font-family: Londrina Solid;
   font-weight: Regular;
   font-size: 16px;
@@ -92,7 +92,7 @@
 }
 .v109_1 {
   width: 126px;
-  color: rgba(67,74,84,1);
+  color: var(--text-color);
   font-family: Londrina Solid;
   font-weight: Regular;
   font-size: 16px;
@@ -102,7 +102,7 @@
 }
 .v114_2 {
   width: 115px;
-  color: rgba(67,74,84,1);
+  color: var(--text-color);
   font-family: Londrina Solid;
   font-weight: Regular;
   font-size: 16px;
@@ -127,7 +127,7 @@
 }
 .v115_1 {
   width: 110px;
-  color: rgba(67,74,84,1);
+  color: var(--text-color);
   font-family: Londrina Solid;
   font-weight: Regular;
   font-size: 16px;

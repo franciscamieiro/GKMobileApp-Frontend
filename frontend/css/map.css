@@ -4,7 +4,7 @@ a{
 }
 html,
 body{
-    background: rgba(255,255,255,1);
+    background: var(--brand-basic);
     height: 100%;
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@ body{
 }
 
 .v268_32 {
-    background: rgba(255,255,255,1);
+    background: var(--brand-basic);
     opacity: 1;
 }
 .swal-button {
@@ -42,7 +42,7 @@ body{
 .v104_15 {
     width: 100%;
     height: 46px;
-    background: rgba(255,255,255,1);
+    background: var(--brand-basic);
     opacity: 1;
     position: fixed;
     top: 0px;
@@ -71,7 +71,7 @@ body{
 #app-footer {
     width: 100%;
     height: 50px;
-    background: rgba(255,255,255,1);
+    background: var(--brand-basic);
     opacity: 1;
     position: fixed;
     left: 0px;

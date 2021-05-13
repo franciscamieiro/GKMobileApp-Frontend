@@ -39,7 +39,7 @@
   background-position: center left;
   background-size: 32px, 32px;
   background-position-x: 20px;
-  color: rgba(28,28,28,1);
+  color: var(--text-color);
   font-family: Open Sans;
   font-weight: Bold;
   font-size: 16px;
@@ -59,7 +59,7 @@
   background-position: center left;
   background-size: 32px, 32px;
   background-position-x: 20px;
-  color: rgba(28,28,28,1);
+  color: var(--text-color);
   font-family: Open Sans;
   font-weight: Bold;
   font-size: 16px;
@@ -79,7 +79,7 @@
   background-position: center left;
   background-size: 32px, 32px;
   background-position-x: 20px;
-  color: rgba(28,28,28,1);
+  color: var(--text-color);
   font-family: Open Sans;
   font-weight: Bold;
   font-size: 16px;
@@ -93,7 +93,7 @@
 }
 .v124_211 {
   width: 100%;
-  color: rgba(20,19,20,1);
+  color: var(--text-color);
   position: relative;
   font-family: Open Sans;
   font-weight: 1000;

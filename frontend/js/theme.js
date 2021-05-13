@@ -15,7 +15,7 @@ function goBack() {
   window.history.back();
 }
 
-let color = document.getElementById("btnThemecolor");
+/*let color = document.getElementById("btnThemecolor");
 let btnTheme = document.getElementById("btnTheme");
 
 btnTheme.addEventListener("click", function() {
@@ -31,4 +31,4 @@ btnTheme.addEventListener("click", function() {
 }
 
 });
-
+*/

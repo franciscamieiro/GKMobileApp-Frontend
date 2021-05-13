@@ -35,7 +35,7 @@ a{
 .v124_45 {
   width: 100%;
   min-height: 600px;
-  background: rgba(255,255,255,1);
+  background: var(--brand-basic);
   opacity: 1;
   position: relative;
   top: 0px;
@@ -75,7 +75,7 @@ a{
 .v124_103 {
   display: inline-block;
   width: 182px;
-  color: rgba(53,53,53,1);
+  color: var(--text-color);
   position: relative;
   font-family: Open Sans;
   font-weight: Regular;

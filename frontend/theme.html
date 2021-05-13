@@ -22,7 +22,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link id="theme" href="./css/theme.css" rel="stylesheet" />
     <link id="theme" href="./css/global.css" rel="stylesheet" />
-
     <title>Tema</title>
 
 </head>
@@ -43,8 +42,13 @@
         <span class="v124_340">Definir tema</span>
         <span class="v124_341">Modo escuro</span>
         <span class="v124_346">Pré-visualização do modo escuro</span>
-        <div class="v124_342" id="btnThemecolor"></div>
-        <div class="v124_343" id="btnTheme"></div>
+       
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+          </label>
+        </div>
         <div class="v124_449"></div>
         <div class="v124_450"></div>
         <div class="v124_452"></div>
@@ -81,6 +85,7 @@
         </div>
 
         <script src="js/theme.js"></script>
+        <script src="js/theme-toggle.js"></script>
     </div>
 </body>
 

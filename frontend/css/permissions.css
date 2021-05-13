@@ -32,7 +32,7 @@
 
 .v124_341 {
     width: 150px;
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     position: relative;
     top: 102px;
     left: -80px;

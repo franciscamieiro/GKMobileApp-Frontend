@@ -78,7 +78,7 @@ body{
 }
 .v124_205 {
   width: 48px;
-  color: rgba(255,255,255,1);
+  color: var(--text-color);
   position: absolute;
   top: 242px;
   left: 71px;

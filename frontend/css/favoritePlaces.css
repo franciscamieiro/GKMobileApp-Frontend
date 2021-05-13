@@ -1,6 +1,6 @@
 body{
     overflow-y: visible;
-    background: rgba(255,255,255,1);
+    background: var(--brand-basic);
     margin: 0;
     padding: 0;
 }
@@ -192,7 +192,7 @@ td{
 .v104_15 {
     width: 100%;
     height: 46px;
-    background: rgba(255,255,255,1);
+    background: var(--brand-basic);
     opacity: 1;
     position: fixed;
     top: 0px;

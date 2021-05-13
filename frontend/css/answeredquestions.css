@@ -8,11 +8,13 @@
 }
 
 .v272_438 {
-    margin-top: 100px;
+    padding-top: 100px;
+    margin-bottom: 0px;
     width: 100%;
+    background-color: var(--brand-basic);
     color: rgba(167, 114, 190, 1);
     font-family: Londrina Solid;
-    font-weight: Black;
+    font-weight: var(--brand-basic);
     font-size: 27px;
     opacity: 1;
     text-align: center;
@@ -21,7 +23,7 @@
 
 .v549_66 {
     width: 133px;
-    color: rgba(72, 72, 72, 1);
+    color: var(--text-color);
     font-family: Roboto;
     font-weight: Regular;
     font-size: 13px;

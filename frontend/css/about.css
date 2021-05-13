@@ -58,7 +58,7 @@ a {
 }
 
 .v168_0 {
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     margin-top: 92px;
     font-family: Open Sans;
     font-size: 16px;
@@ -70,12 +70,12 @@ a {
 
 .v168_0bold {
     font-weight: Bold;
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     margin-left: 40px;
 }
 
 .v168_02 {
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     margin-top: 4px;
     margin-left: 7px;
     font-family: Open Sans;
@@ -87,7 +87,7 @@ a {
 }
 
 .v168_03 {
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     margin-top: 15px;
     margin-left: 23px;
     margin-right: 23px;
@@ -100,7 +100,7 @@ a {
 }
 
 .v168_1 {
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     margin-top: 20px;
     font-family: Open Sans;
     font-size: 16px;
@@ -110,7 +110,7 @@ a {
 }
 
 .v168_13 {
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     margin-top: 15px;
     margin-left: 23px;
     margin-right: 23px;
@@ -152,7 +152,7 @@ a {
 
 .v314_2 {
     width: 138px;
-    color: rgba(28, 28, 28, 1);
+    color: var(--text-color);
     position: absolute;
     top: 232px;
     left: 36px;
