@@ -109,12 +109,12 @@ li {
     margin: 90px auto;
 }
 .drawing {
-    width:70%;
+    width:200px;
     height: 350px;
     background-repeat: no-repeat;
     background-position: left;
     margin: 0 auto;
-    margin-left: 20%;
+    margin-left: 23%;
 }
 
 #drawingwrapper{

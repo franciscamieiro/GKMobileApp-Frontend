@@ -1,21 +1,21 @@
-let state= false;
+let state = false;
 
 //function reveal password
-function toggle(){
+function toggle() {
 
-    if(state){
+    if (state) {
         document.getElementById("inputPassword").setAttribute("type", "password");
-        state= false;
+        state = false;
     }
-    else{
+    else {
         document.getElementById("inputPassword").setAttribute("type", "text");
-        state= true;
+        state = true;
     }
 };
 
 let createAccount = document.getElementById("createAccount");
 
-createAccount.addEventListener("click", function() {
+createAccount.addEventListener("click", function () {
 
     window.location.replace("regist.html");
 
@@ -23,7 +23,7 @@ createAccount.addEventListener("click", function() {
 
 
 function validateEmail(email) {
-    
+
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 
@@ -33,38 +33,38 @@ function validateEmail(email) {
 //function login user
 let btnLogin = document.getElementById("LogIn");
 
-btnLogin.addEventListener("click", function() {
+btnLogin.addEventListener("click", function () {
 
     let email = document.getElementById("inputEmail");
     let password = document.getElementById("inputPassword");
 
-    if(email.value == ""){
+    if (email.value == "") {
         swal({
             icon: 'images/warning.png',
             title: 'Atenção',
             text: 'Preenche o teu Email!',
             button: 'OK',
             className: "swalAlert"
-            
-        }).then(function(isConfirm) {
+
+        }).then(function (isConfirm) {
             email.focus();
         });
     }
 
-    else if(password.value == ""){
+    else if (password.value == "") {
         swal({
             icon: 'images/warning.png',
             title: 'Atenção',
             text: 'Preenche a tua Palavra-Passe!',
             button: 'OK',
             className: "swalAlert"
-            
-        }).then(function(isConfirm) {
+
+        }).then(function (isConfirm) {
             password.focus();
         });
     }
 
-    else{
+    else {
 
         // /api/auth/signin POST
 
@@ -77,7 +77,7 @@ btnLogin.addEventListener("click", function() {
             headers: { 'Content-Type': 'application/json' },
             method: 'POST',
             body: JSON.stringify(data)
-        }).then(function(response) {
+        }).then(function (response) {
 
             if (!response.ok) {
                 console.log(response.status); //=> number 100–599
@@ -91,38 +91,63 @@ btnLogin.addEventListener("click", function() {
                 }
             }
             else {
+
                 response.text().then(function (text) {
+
                     let see = text.split("objectId");
                     console.log(see[1]);
                     var regex = /\d+/g;
                     var string = see[1].toString();
                     var matches = string.match(regex);
-    
+
                     console.log(text);
                     console.log(matches[0]);
 
                     let id = matches[0];
                     localStorage.setItem("userloggedin", id);
+
+
+                    fetch("http://localhost:80/api/users/" + id)
+                        .then((response) => response.json())
+                        .then((user) => {
+
+                            console.log(user.theme);
+
+                            let theme = user.theme;
+
+                            if (theme == "light") {
+
+                                localStorage.setItem('theme', 'light');
+
+                            } else if (theme == "dark") {
+
+                                localStorage.setItem('theme', 'dark');
+
+                            }
+
+
+                        });
+
                     window.location.replace("inicialPage.html");
                 });
-                
+
             }
-        }).then(function(result) {
+        }).then(function (result) {
             console.log(result);
-        }).catch(function(err) {
+        }).catch(function (err) {
             swal({
                 icon: 'images/v237_21.png',
                 title: 'Erro',
                 text: 'Dados incorretos',
                 button: 'OK',
                 className: "swalAlert"
-                
-            }).then(function(isConfirm) {
+
+            }).then(function (isConfirm) {
                 email.focus();
             });
             console.error(err);
         });
-        
+
     }
 
 });
