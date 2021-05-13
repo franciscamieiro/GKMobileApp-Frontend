@@ -26,7 +26,6 @@ window.onload = function() {
             clearInterval(timer);
         }
     }
-
 }
 
 let btnSendEmail = document.getElementById("btnSendEmail");
