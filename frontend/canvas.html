@@ -35,8 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
-    
-    
+
     <!-- sweetAlert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -70,16 +69,21 @@
 
     <div class="colors" id="colors">
         <div class="colorswrap">
-            <div onclick="change_color(this)" class="color-field" style="background: rgb(221, 10, 126);" id="cpink"></div>
+            <div onclick="change_color(this)" class="color-field" style="background: rgb(221, 10, 126);" id="cpink">
+            </div>
             <div onclick="change_color(this)" class="color-field" style="background: red;" id="cred"></div>
             <div onclick="change_color(this)" class="color-field" style="background: #f86b0e;" id="corange"></div>
             <div onclick="change_color(this)" class="color-field" style="background: yellow;" cid="cyellow"></div>
             <div onclick="change_color(this)" class="color-field" style="background: rgb(6, 141, 6);" id="cgreen"></div>
-            <div onclick="change_color(this)" class="color-field" style="background: rgb(3, 173, 240);" id="clblue"></div>
-            <div onclick="change_color(this)" class="color-field" style="background: rgb(0, 65, 185);" id="cdblue"></div>
-            <div onclick="change_color(this)" class="color-field" style="background: rgb(143, 2, 172);" id="cpurple"></div>
+            <div onclick="change_color(this)" class="color-field" style="background: rgb(3, 173, 240);" id="clblue">
+            </div>
+            <div onclick="change_color(this)" class="color-field" style="background: rgb(0, 65, 185);" id="cdblue">
+            </div>
+            <div onclick="change_color(this)" class="color-field" style="background: rgb(143, 2, 172);" id="cpurple">
+            </div>
             <div onclick="change_color(this)" class="color-field" style="background: rgb(0, 0, 0);" id="cblack"></div>
-            <div onclick="change_color(this)" class="color-field" style="background: rgb(255, 255, 255);" id="cwhite"></div>
+            <div onclick="change_color(this)" class="color-field" style="background: rgb(255, 255, 255);" id="cwhite">
+            </div>
         </div>
     </div>
 
@@ -98,7 +102,8 @@
         </div>
     </div>
 
-    <input type="range" min="1" max="30" id="pen_range" class="pen-range" value="2" onInput="draw_width = this.value"></input>
+    <input type="range" min="1" max="30" id="pen_range" class="pen-range" value="2"
+        onInput="draw_width = this.value"></input>
 
     <div class="v270_4" id="tools">
 
@@ -120,7 +125,9 @@
             <li><a id="initialPage" class="button"><svg class="v124_17"></svg></a></li>
             <li><a id="settings" class="button"><svg class="v294_0"></svg></a></li>
             <li><a id="profile" class="button"><svg class="v124_22"></svg></a></li>
-            <li><div id="logout" class="button"><svg class="v294_3"></svg></div></li>
+            <li>
+                <div id="logout" class="button"><svg class="v294_3"></svg></div>
+            </li>
         </ul>
     </div>
 

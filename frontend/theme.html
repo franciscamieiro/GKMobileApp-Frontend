@@ -18,6 +18,9 @@
     <!-- Adapt special characteres -->
     <meta charset="UTF-8">
 
+    <!-- sweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link id="theme" href="./css/theme.css" rel="stylesheet" />
@@ -42,12 +45,12 @@
         <span class="v124_340">Definir tema</span>
         <span class="v124_341">Modo escuro</span>
         <span class="v124_346">Pré-visualização do modo escuro</span>
-       
+
         <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
                 <input type="checkbox" id="checkbox" />
                 <div class="slider round"></div>
-          </label>
+            </label>
         </div>
         <div class="v124_449"></div>
         <div class="v124_450"></div>
@@ -79,7 +82,7 @@
                 <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
                 <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
                 <li>
-                    <div id="logout" class="button"><svg class="v294_3"></svg></div>
+                    <div id="logout" class="button" onclick="logout();"><svg class="v294_3"></svg></div>
                 </li>
             </ul>
         </div>
