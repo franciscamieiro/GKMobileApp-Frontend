@@ -366,11 +366,44 @@ window.onload = () => {
         const response = await fetch(`http://localhost:80/api/creations/` + creationID)
         const creation = await response.json()
         let i = 1;
-        console.log(creation);
 
         let img = document.createElement("img");
 
         let src = img.src = "data:image/jpeg;base64," + creation.image;
+
+        let avatar = creation.user.avatar;
+
+        let profilesrc = null;
+
+        if (avatar == 1) {
+            profilesrc = "images/default-user-image.png"
+        } else if (avatar == 2) {
+            profilesrc = "images/avatar1.png"
+        }
+        else if (avatar == 3) {
+            profilesrc = "images/avatar2.png"
+        }
+        else if (avatar == 4) {
+            profilesrc = "images/avatar3.png"
+        } else if (avatar == 5) {
+            profilesrc = "images/avatar4.png"
+        } else if (avatar == 6) {
+            profilesrc = "images/avatar5.png"
+        } else if (avatar == 7) {
+            profilesrc = "images/avatar6.png"
+        } else if (avatar == 8) {
+            profilesrc = "images/avatar7.png"
+        } else if (avatar == 9) {
+            profilesrc = "images/avatar8.png"
+        } else if (avatar == 10) {
+            profilesrc = "images/avatar9.png"
+        } else if (avatar == 11) {
+            profilesrc = "images/avatar10.png"
+        } else if (avatar == 12) {
+            profilesrc = "images/avatar11.png"
+        } else if (avatar == 13) {
+            profilesrc = "images/avatar12.png"
+        }
 
         strHtml += `
             <div class="card">
@@ -381,7 +414,7 @@ window.onload = () => {
             </div>
             <img src="${src}" class="criacoesimg img-responsive" id="popupimg">
             <div class="card-footer">
-                <img src="./images/avatar1.png" class="img-fluid smallkidimg">
+                <img src="${profilesrc}" class="img-fluid smallkidimg">
                 <i class="mr-1"></i> Autor: ${creation.user.name}
             </div>
         </div>
@@ -391,7 +424,7 @@ window.onload = () => {
         IDcreation = creationID;
     }
 
-    const renderComments = async () => {
+    const renderImageComments = async () => {
 
         let strHtml = ``;
 
@@ -399,7 +432,6 @@ window.onload = () => {
         const response = await fetch(`http://localhost:80/api/image/comments/` + creationID)
         const comments = await response.json()
         let i = 1;
-        console.log(comments);
         for (const comment of comments) {
 
             let date = comment.published.split("T");
@@ -408,7 +440,37 @@ window.onload = () => {
 
             let avatar = comment.userID.avatar;
 
-            console.log(avatar);
+            let profilesrc = null;
+
+            if (avatar == 1) {
+                profilesrc = "images/default-user-image.png"
+            } else if (avatar == 2) {
+                profilesrc = "images/avatar1.png"
+            }
+            else if (avatar == 3) {
+                profilesrc = "images/avatar2.png"
+            }
+            else if (avatar == 4) {
+                profilesrc = "images/avatar3.png"
+            } else if (avatar == 5) {
+                profilesrc = "images/avatar4.png"
+            } else if (avatar == 6) {
+                profilesrc = "images/avatar5.png"
+            } else if (avatar == 7) {
+                profilesrc = "images/avatar6.png"
+            } else if (avatar == 8) {
+                profilesrc = "images/avatar7.png"
+            } else if (avatar == 9) {
+                profilesrc = "images/avatar8.png"
+            } else if (avatar == 10) {
+                profilesrc = "images/avatar9.png"
+            } else if (avatar == 11) {
+                profilesrc = "images/avatar10.png"
+            } else if (avatar == 12) {
+                profilesrc = "images/avatar11.png"
+            } else if (avatar == 13) {
+                profilesrc = "images/avatar12.png"
+            }
 
             console.log(comment.user);
 
@@ -425,7 +487,7 @@ window.onload = () => {
                  </div>
  
                  <a class="avatar" href="#">
-                     <img src="images/avatar${avatar}.jpeg" width="35" alt="Profile Avatar"/>
+                     <img src="${profilesrc}" width="35" alt="Profile Avatar"/>
                  </a>
  
                  <p class="noscroll"><img src="${src}" width="150"></img></p>
@@ -436,7 +498,73 @@ window.onload = () => {
 
             i++
         }
-        forumComments.innerHTML = strHtml;
+        forumComments.innerHTML += strHtml;
+
+    }
+
+    const renderTextComments = async () => {
+
+        let strHtml = ``;
+
+        const creationID = localStorage.getItem("idClickedPub");
+        const response = await fetch(`http://localhost:80/api/comments/creations/` + creationID)
+        const comments = await response.json()
+        let i = 1;
+        for (const comment of comments) {
+
+            let avatar = comment.userID.avatar;
+
+            let profilesrc = null;
+
+            if (avatar == 1) {
+                profilesrc = "images/default-user-image.png"
+            } else if (avatar == 2) {
+                profilesrc = "images/avatar1.png"
+            }
+            else if (avatar == 3) {
+                profilesrc = "images/avatar2.png"
+            }
+            else if (avatar == 4) {
+                profilesrc = "images/avatar3.png"
+            } else if (avatar == 5) {
+                profilesrc = "images/avatar4.png"
+            } else if (avatar == 6) {
+                profilesrc = "images/avatar5.png"
+            } else if (avatar == 7) {
+                profilesrc = "images/avatar6.png"
+            } else if (avatar == 8) {
+                profilesrc = "images/avatar7.png"
+            } else if (avatar == 9) {
+                profilesrc = "images/avatar8.png"
+            } else if (avatar == 10) {
+                profilesrc = "images/avatar9.png"
+            } else if (avatar == 11) {
+                profilesrc = "images/avatar10.png"
+            } else if (avatar == 12) {
+                profilesrc = "images/avatar11.png"
+            } else if (avatar == 13) {
+                profilesrc = "images/avatar12.png"
+            }
+
+            strHtml += `
+                <li class="comment user-comment">
+    
+                <div class="info">
+                    <a href="#">${comment.userID.name}</a>
+                    <span>${comment.date}</span>
+                </div>
+    
+                <a class="avatar" href="#">
+                <img src="${profilesrc}" width="35" alt="Profile Avatar"/>
+                </a>
+    
+                <p class="noscroll">${comment.description}</p>
+    
+                </li>
+                `;
+            i++
+        }
+        forumComments.innerHTML += strHtml;
 
     }
 
@@ -444,16 +572,35 @@ window.onload = () => {
 
         let strHtml = ``;
 
+        ///api/evaluation/{creationID}/users/{userID}
+
         const creationID = localStorage.getItem("idClickedPub");
         const response = await fetch(`http://localhost:80/api/evaluation/` + creationID + `/users/` + id)
-        const evaluation = await response.json()
-        console.log(evaluation);
+        const evaluation = await response.json();
+        
+        console.log(evaluation.evaluation);
+
+        let nstar = evaluation.evaluation;
+
+        if (nstar = 1) {
+            document.getElementById("star1").checked = true;
+        } else if (nstar = 2) {
+            document.getElementById("star2").checked = true;
+        } else if (nstar = 3) {
+            document.getElementById("star3").checked = true;
+        } else if (nstar = 4) {
+            document.getElementById("star4").checked = true;
+        } else {
+            document.getElementById("star5").checked = true;
+
+        }
         //buscar a avaliação que o user logged in fez da pub q está a ver//se for null n fazer nada
     }
 
     renderCreations();
-    renderComments();
-    // renderEvaluation();
+    renderImageComments();
+    renderTextComments();
+    renderEvaluation();
 }
 
 let star1 = document.getElementById("star1");
