@@ -95,7 +95,6 @@ function geocodeLatLng(geocoder) {
                             .then((out) => {
                                 
                                 for(let i = 0; i<out.length; i++){
-                                console.log(out[i]);
                                 var row = document.getElementById("favPlaces").insertRow(i);
                                 
                                 row.innerHTML =
@@ -121,7 +120,6 @@ function geocodeLatLng(geocoder) {
                         }
 
                     }).then(function(result) {
-                        console.log(result);
                     }).catch(function(err) {
                         swal({
                             icon: 'images/v237_21.png',
@@ -225,7 +223,6 @@ function deleteMarker(element) {
         method: 'DELETE',
         })
         .then(res => res.text()) // or res.json()
-        .then(res => console.log(res))
     
     
     element.closest('tr').remove();

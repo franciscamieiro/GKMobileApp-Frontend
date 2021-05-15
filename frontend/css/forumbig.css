@@ -820,3 +820,6 @@ input[type="file"] {
     margin-left: -51.5px;
 }
 
+b{
+    color: var(--text-color);
+}

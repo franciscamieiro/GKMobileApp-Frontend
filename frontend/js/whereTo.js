@@ -67,7 +67,6 @@ let close = document.getElementById("close");
 let isShowing = false;
 
 info.addEventListener("click", function () {
-  console.log(isShowing)
 
   if (isShowing == false) {
     box.style.display = "block";

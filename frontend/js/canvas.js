@@ -793,6 +793,8 @@ function showresize() {
 
 }
 
+let justsavedID = null;
+
 function printCriation() {
 
     if (sticker1shown == true) {
@@ -978,34 +980,6 @@ function printCriation() {
         imgsticker10.setAttribute("width", ((65 * width) / 100) + "px");
         imgsticker10.setAttribute("height", ((70 * height) / 100) + "px");
 
-        /*let angle = getRotationAngle(sticker10shownn[0]);
-
-        var TO_RADIANS = Math.PI/180; 
-        function drawRotatedImage(image, x, y, angle, width, height) { 
- 
-            // save the current co-ordinate system 
-            // before we screw with it
-            context.save(); 
-         
-            // move to the middle of where we want to draw our image
-            context.translate(x, y);
-         
-            // rotate around that point, converting our 
-            // angle from degrees to radians 
-            context.rotate(angle * TO_RADIANS);
-         
-            // draw it up and to the left by half the width
-            // and height of the image 
-            context.drawImage(image, -((image.width/2)), -(image.height/2), width, height);
-         
-            // and restore the co-ords to how they were when we began
-            context.restore(); 
-        }
-
-        drawRotatedImage(imgsticker10, posx, posy, angle, ((65*width)/100), ((70*height)/100)); */
-
-
-
         context.drawImage(imgsticker10, posx, posy, ((65 * width) / 100), ((70 * height) / 100));
 
     }
@@ -1081,6 +1055,8 @@ function printCriation() {
 
                                 let idcreation = matches[0];
 
+                                justsavedID = idcreation;
+
                                 let data = {};
                                 data.city = inputValue;
                                 data.coordinates = null;
@@ -1139,7 +1115,14 @@ function printCriation() {
                                                             window.location.replace("mydrawings.html");
 
                                                         default:
-                                                            showresize();
+                                                            if (restore_array.length == 0) {
+                                                                clear_canvas();
+                                                                showresize();
+                                                            } else {
+                                                                context.putImageData(restore_array[index], 0, 0);
+                                                                showresize();
+                                                            }
+
                                                     }
 
                                                 });
@@ -1178,7 +1161,82 @@ function printCriation() {
                     });
 
                 } else {
+                    console.log(justsavedID);
                     //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
+                    var dataURI = canvas.toDataURL('image/jpeg');
+
+                    var blob = dataURLtoBlob(dataURI);
+                    image = new FormData();
+                    image.append("file", blob);
+
+                    fetch('http://localhost:80/api/creations/' + justsavedID + "/image", {
+                        mode: 'cors',
+                        method: 'PUT',
+                        body: image,
+                        credentials: 'include'
+                    }).then(function (response) {
+                        //console.log(response.headers.get('Set-Cookie'));
+                        console.log(response);
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        return response.json();
+                    }).catch(function (err) {
+                        console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+                    }).then(async function (result) {
+                        console.log(result);
+                        if (result) {
+
+                            ///
+                            saved = true;
+
+                            swal({
+                                icon: 'images/v254_5.png',
+                                title: 'Guardada',
+                                text: 'A tua criação foi guardada!',
+                                className: "swalAlert",
+                                button: 'Ok',
+                            }).then((value) => {
+
+                                swal({
+                                    icon: 'images/Usure_icon.png',
+                                    title: 'Sair?',
+                                    text: 'Queres sair ou continuar a editar?',
+                                    className: "swalAlert",
+                                    buttons: {
+                                        catch: {
+                                            text: "Sair",
+                                            value: "catch",
+                                        },
+                                        cancel: "Editar",
+                                    },
+                                }).then((value) => {
+                                    switch (value) {
+
+                                        case "catch":
+                                            window.location.replace("mydrawings.html");
+
+                                        default:
+                                            showresize();
+                                    }
+
+                                });
+
+                            });
+
+                        }
+                        else {
+                            swal({
+                                icon: 'images/v237_21.png',
+                                title: 'Erro',
+                                text: 'Erro ao guardar.',
+                                button: 'OK',
+                                className: "swalAlert"
+
+                            })
+
+                        }
+                    });
                 }
 
             }
@@ -1196,72 +1254,69 @@ function printCriation() {
             method: 'PUT',
             body: image,
             credentials: 'include'
-        })
-            .then(function (response) {
-                //console.log(response.headers.get('Set-Cookie'));
-                console.log(response);
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
-            })
-            .catch(function (err) {
-                console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
-            })
-            .then(async function (result) {
-                console.log(result);
-                if (result) {
+        }).then(function (response) {
+            //console.log(response.headers.get('Set-Cookie'));
+            console.log(response);
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            return response.json();
+        }).catch(function (err) {
+            console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+        }).then(async function (result) {
+            console.log(result);
+            if (result) {
 
-                    ///
-                    saved = true;
+                ///
+                saved = true;
+
+                swal({
+                    icon: 'images/v254_5.png',
+                    title: 'Guardada',
+                    text: 'A tua criação foi guardada!',
+                    className: "swalAlert",
+                    button: 'Ok',
+                }).then((value) => {
 
                     swal({
-                        icon: 'images/v254_5.png',
-                        title: 'Guardada',
-                        text: 'A tua criação foi guardada!',
+                        icon: 'images/Usure_icon.png',
+                        title: 'Sair?',
+                        text: 'Queres sair ou continuar a editar?',
                         className: "swalAlert",
-                        button: 'Ok',
-                    }).then((value) => {
-
-                        swal({
-                            icon: 'images/Usure_icon.png',
-                            title: 'Sair?',
-                            text: 'Queres sair ou continuar a editar?',
-                            className: "swalAlert",
-                            buttons: {
-                                catch: {
-                                    text: "Sair",
-                                    value: "catch",
-                                },
-                                cancel: "Editar",
+                        buttons: {
+                            catch: {
+                                text: "Sair",
+                                value: "catch",
                             },
-                        }).then((value) => {
-                            switch (value) {
+                            cancel: "Editar",
+                        },
+                    }).then((value) => {
+                        switch (value) {
 
-                                case "catch":
-                                    window.location.replace("mydrawings.html");
+                            case "catch":
+                                window.location.replace("mydrawings.html");
 
-                                default:
-                                    showresize();
-                            }
-
-                        });
+                            default:
+                                showresize();
+                        }
 
                     });
 
-                }
-                else {
-                    swal({
-                        icon: 'images/v237_21.png',
-                        title: 'Erro',
-                        text: 'Erro ao guardar.',
-                        button: 'OK',
-                        className: "swalAlert"
+                });
 
-                    })
+            }
+            else {
+                swal({
+                    icon: 'images/v237_21.png',
+                    title: 'Erro',
+                    text: 'Erro ao guardar.',
+                    button: 'OK',
+                    className: "swalAlert"
 
-                }
-            });
+                })
+
+            }
+        });
 
     }
 }

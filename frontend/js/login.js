@@ -95,13 +95,10 @@ btnLogin.addEventListener("click", function () {
                 response.text().then(function (text) {
 
                     let see = text.split("objectId");
-                    console.log(see[1]);
+
                     var regex = /\d+/g;
                     var string = see[1].toString();
                     var matches = string.match(regex);
-
-                    console.log(text);
-                    console.log(matches[0]);
 
                     let id = matches[0];
                     localStorage.setItem("userloggedin", id);
@@ -110,8 +107,6 @@ btnLogin.addEventListener("click", function () {
                     fetch("http://localhost:80/api/users/" + id)
                         .then((response) => response.json())
                         .then((user) => {
-
-                            console.log(user.theme);
 
                             let theme = user.theme;
 
@@ -129,7 +124,7 @@ btnLogin.addEventListener("click", function () {
 
                         });
 
-                    
+
                 });
 
             }
