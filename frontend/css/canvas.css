@@ -190,23 +190,6 @@ a{
   box-sizing: border-box;
 }
 
-.rotation-handle {
-  padding: 3px 4px;
-  display: table;
-  position: absolute;
-  left: 46%;
-  right: 50%;
-  bottom: 0px;
-  border-radius: 10rem;
-  line-height: 1;
-  text-align: center;
-  font-weight: bold;
-  color: #000;
-  cursor: move;
-  background-color: white;
-  border: 0.5px solid  #000;
-}
-
 .resizer_tl{
   position: absolute;
   width: 8px;
