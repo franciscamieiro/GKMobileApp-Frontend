@@ -17,7 +17,6 @@ let initialPage = document.getElementById("initialPage");
 let settings = document.getElementById("settings");
 let profile = document.getElementById("profile");
 
-let hide1 = document.getElementsByClassName("rotation-handle");
 let hide2 = document.getElementsByClassName("resizer_tl");
 let hide3 = document.getElementsByClassName("resizer_tr");
 let hide4 = document.getElementsByClassName("resizer_bl");
@@ -411,7 +410,6 @@ sticker1.addEventListener("click", function () {
     div.id = 'sticker1shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -433,7 +431,6 @@ sticker2.addEventListener("click", function () {
     div.id = 'sticker2shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -455,7 +452,6 @@ sticker3.addEventListener("click", function () {
     div.id = 'sticker3shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -477,7 +473,6 @@ sticker4.addEventListener("click", function () {
     div.id = 'sticker4shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -499,7 +494,6 @@ sticker5.addEventListener("click", function () {
     div.id = 'sticker5shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -521,7 +515,6 @@ sticker6.addEventListener("click", function () {
     div.id = 'sticker6shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -543,7 +536,6 @@ sticker7.addEventListener("click", function () {
     div.id = 'sticker7shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -564,7 +556,6 @@ sticker8.addEventListener("click", function () {
     div.id = 'sticker8shownn'
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -584,7 +575,6 @@ sticker9.addEventListener("click", function () {
     div.className = 'item sticker9';
     div.id = 'sticker9shownn'
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -606,8 +596,6 @@ sticker10.addEventListener("click", function () {
     div.id = 'sticker10shownn'
 
     div.innerHTML = `
-        <div class="delete-handle"></div>
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -620,9 +608,6 @@ sticker10.addEventListener("click", function () {
     sticker10shown = true;
 
 });
-
-let angleNow = 0;
-
 
 interact('.item')
     .draggable({
@@ -648,7 +633,7 @@ interact('.item')
         y += event.deltaRect.top;
 
         target.style.webkitTransform = target.style.transform =
-            'translate(' + x + 'px, ' + y + 'px) rotate(' + angleNow + 'rad' + ')';
+            'translate(' + x + 'px, ' + y + 'px)';
 
         target.setAttribute('data-x', x);
         target.setAttribute('data-y', y);
@@ -666,72 +651,14 @@ function dragMoveListener(event) {
     // translate the element
     target.style.webkitTransform =
         target.style.transform =
-        'translate(' + x + 'px, ' + y + 'px) rotate(' + angleNow + 'rad' + ')';
+        'translate(' + x + 'px, ' + y + 'px)';
 
     // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
 }
 
-
-
-interact('.rotation-handle')
-    .draggable({
-        onstart: function (event) {
-            var box = event.target.parentElement;
-            var rect = box.getBoundingClientRect();
-
-            // store the center as the element has css `transform-origin: center center`
-            box.setAttribute('data-center-x', rect.left + rect.width / 2);
-            box.setAttribute('data-center-y', rect.top + rect.height / 2);
-            // get the angle of the element when the drag starts
-            box.setAttribute('data-angle', getDragAngle(event));
-        },
-        onmove: function (event) {
-            var box = event.target.parentElement;
-
-            var pos = {
-                x: parseFloat(box.getAttribute('data-x')) || 0,
-                y: parseFloat(box.getAttribute('data-y')) || 0
-            };
-
-            var angle = getDragAngle(event);
-
-            // update transform style on dragmove
-            box.style.transform = 'translate(' + pos.x + 'px, ' + pos.y + 'px) rotate(' + angle + 'rad' + ')';
-        },
-        onend: function (event) {
-            var box = event.target.parentElement;
-
-            // save the angle on dragend
-            box.setAttribute('data-angle', getDragAngle(event));
-        },
-    })
-
-function getDragAngle(event) {
-
-    var box = event.target.parentElement;
-    var startAngle = parseFloat(box.getAttribute('data-angle')) || 0;
-    var center = {
-        x: parseFloat(box.getAttribute('data-center-x')) || 0,
-        y: parseFloat(box.getAttribute('data-center-y')) || 0
-    };
-
-    var angle = Math.atan2(center.y - event.clientY, center.x - event.clientX);
-
-    angleNow = angle - startAngle;
-
-    return angle - startAngle;
-}
-
 function hideresize() {
-
-
-    if (hide1 != null) {
-        for (let i = 0; i < hide1.length; i++) {
-            hide1[i].style.display = "none";
-        }
-    }
 
     if (hide2 != null) {
         for (let i = 0; i < hide2.length; i++) {
@@ -760,12 +687,6 @@ function hideresize() {
 }
 
 function showresize() {
-
-    if (hide1 != null) {
-        for (let i = 0; i < hide1.length; i++) {
-            hide1[i].style.display = "table";
-        }
-    }
 
     if (hide2 != null) {
         for (let i = 0; i < hide2.length; i++) {

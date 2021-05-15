@@ -404,7 +404,6 @@ sticker1.addEventListener("click", function () {
     div.className = 'item sticker1';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -425,7 +424,6 @@ sticker2.addEventListener("click", function () {
     div.className = 'item sticker2';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -447,7 +445,6 @@ sticker3.addEventListener("click", function () {
     div.className = 'item sticker3';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -469,7 +466,6 @@ sticker4.addEventListener("click", function () {
     div.className = 'item sticker4';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -491,7 +487,6 @@ sticker5.addEventListener("click", function () {
     div.className = 'item sticker5';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -513,7 +508,6 @@ sticker6.addEventListener("click", function () {
     div.className = 'item sticker6';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -535,7 +529,6 @@ sticker7.addEventListener("click", function () {
     div.className = 'item sticker7';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -557,7 +550,6 @@ sticker8.addEventListener("click", function () {
     div.className = 'item sticker8';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -578,7 +570,6 @@ sticker9.addEventListener("click", function () {
     div.className = 'item sticker9';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -600,7 +591,6 @@ sticker10.addEventListener("click", function () {
     div.className = 'item sticker10';
 
     div.innerHTML = `
-        <div class="rotation-handle">&circlearrowright;</div>
         <div class="resizer_tl"></div>
         <div class="resizer_tr"></div>
         <div class="resizer_bl"></div>
@@ -665,65 +655,12 @@ function dragMoveListener(event) {
 
 
 
-interact('.rotation-handle')
-    .draggable({
-        onstart: function (event) {
-            var box = event.target.parentElement;
-            var rect = box.getBoundingClientRect();
-
-            // store the center as the element has css `transform-origin: center center`
-            box.setAttribute('data-center-x', rect.left + rect.width / 2);
-            box.setAttribute('data-center-y', rect.top + rect.height / 2);
-            // get the angle of the element when the drag starts
-            box.setAttribute('data-angle', getDragAngle(event));
-        },
-        onmove: function (event) {
-            var box = event.target.parentElement;
-
-            var pos = {
-                x: parseFloat(box.getAttribute('data-x')) || 0,
-                y: parseFloat(box.getAttribute('data-y')) || 0
-            };
-
-            var angle = getDragAngle(event);
-
-            // update transform style on dragmove
-            box.style.transform = 'translate(' + pos.x + 'px, ' + pos.y + 'px) rotate(' + angle + 'rad' + ')';
-        },
-        onend: function (event) {
-            var box = event.target.parentElement;
-
-            // save the angle on dragend
-            box.setAttribute('data-angle', getDragAngle(event));
-        },
-    })
-
-function getDragAngle(event) {
-    var box = event.target.parentElement;
-    var startAngle = parseFloat(box.getAttribute('data-angle')) || 0;
-    var center = {
-        x: parseFloat(box.getAttribute('data-center-x')) || 0,
-        y: parseFloat(box.getAttribute('data-center-y')) || 0
-    };
-    var angle = Math.atan2(center.y - event.clientY,
-        center.x - event.clientX);
-
-    return angle - startAngle;
-}
-
 function hideresize() {
 
-    let hide1 = document.getElementsByClassName("rotation-handle");
     let hide2 = document.getElementsByClassName("resizer_tl");
     let hide3 = document.getElementsByClassName("resizer_tr");
     let hide4 = document.getElementsByClassName("resizer_bl");
     let hide5 = document.getElementsByClassName("resizer_br");
-
-    if (hide1 != null) {
-        for (let i = 0; i < hide1.length; i++) {
-            hide1[i].style.display = "none";
-        }
-    }
 
     if (hide2 != null) {
         for (let i = 0; i < hide2.length; i++) {
@@ -753,17 +690,11 @@ function hideresize() {
 
 function showresize() {
 
-    let hide1 = document.getElementsByClassName("rotation-handle");
     let hide2 = document.getElementsByClassName("resizer_tl");
     let hide3 = document.getElementsByClassName("resizer_tr");
     let hide4 = document.getElementsByClassName("resizer_bl");
     let hide5 = document.getElementsByClassName("resizer_br");
 
-    if (hide1 != null) {
-        for (let i = 0; i < hide1.length; i++) {
-            hide1[i].style.display = "table";
-        }
-    }
 
     if (hide2 != null) {
         for (let i = 0; i < hide2.length; i++) {
@@ -976,34 +907,6 @@ function printCriation() {
         imgsticker10.setAttribute("src", "images/sticker10.png");
         imgsticker10.setAttribute("width", ((65 * width) / 100) + "px");
         imgsticker10.setAttribute("height", ((70 * height) / 100) + "px");
-
-        /*let angle = getRotationAngle(sticker10shownn[0]);
-
-        var TO_RADIANS = Math.PI/180; 
-        function drawRotatedImage(image, x, y, angle, width, height) { 
- 
-            // save the current co-ordinate system 
-            // before we screw with it
-            context.save(); 
-         
-            // move to the middle of where we want to draw our image
-            context.translate(x, y);
-         
-            // rotate around that point, converting our 
-            // angle from degrees to radians 
-            context.rotate(angle * TO_RADIANS);
-         
-            // draw it up and to the left by half the width
-            // and height of the image 
-            context.drawImage(image, -((image.width/2)), -(image.height/2), width, height);
-         
-            // and restore the co-ords to how they were when we began
-            context.restore(); 
-        }
-
-        drawRotatedImage(imgsticker10, posx, posy, angle, ((65*width)/100), ((70*height)/100)); */
-
-
 
         context.drawImage(imgsticker10, posx, posy, ((65 * width) / 100), ((70 * height) / 100));
 
