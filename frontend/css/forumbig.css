@@ -114,6 +114,7 @@ main {
     position: relative;
     top: 0px;
     left: 0px;
+    background-color: var(--brand-basic);
 }
 
 
@@ -223,12 +224,14 @@ main {
     overflow: hidden;
     white-space: nowrap;
     padding: 10px 0 3px 0;
+    color: var(--text-color);
 }
 
 .comment .info span {
     /* Time */
     font-size: 11px;
     color: #9ca7af;
+    color: var(--text-color);
 }
 
 
@@ -268,7 +271,7 @@ main {
 }
 
 .comment.user-comment p {
-    background-color: rgba(0, 0, 0, .03);
+    background-color: rgb(245, 245, 245);
 }
 
 .comment.author-comment p {
@@ -282,7 +285,7 @@ main {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: var(--brand-basic);
     border: 2px solid #f3f3f3;
     left: -8px;
     top: 18px;
@@ -816,3 +819,4 @@ input[type="file"] {
     left: 50%;
     margin-left: -51.5px;
 }
+

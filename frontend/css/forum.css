@@ -137,3 +137,24 @@ body {
 .fa-angle-down{
     overflow: hidden;
 }
+
+.col{
+    margin-bottom: 3rem;
+}
+
+.col1{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.container{
+    background-color: var(--brand-basic);
+}
+

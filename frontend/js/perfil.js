@@ -32,7 +32,7 @@ let saved = null;
 
 //validate Email
 function validateEmail(email) {
-    
+
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 
@@ -41,9 +41,9 @@ function validateEmail(email) {
 //edit profile
 
 //make's inputs editables
-btnEdit.addEventListener("click", function() {
+btnEdit.addEventListener("click", function () {
 
-    if(fullname.disabled == true){
+    if (fullname.disabled == true) {
         saved = false;
         btnEdit.innerHTML = 'Guardar';
         fullname.disabled = false;
@@ -55,13 +55,13 @@ btnEdit.addEventListener("click", function() {
         city.disabled = false;
         allowphotoEdit.style.display = "block";
 
-    }else{
+    } else {
 
-        if(avatars.style.display == "block"){
+        if (avatars.style.display == "block") {
             avatars.style.display = "none";
         }
 
-        if(fullname.value == ""){
+        if (fullname.value == "") {
 
             swal({
                 icon: 'images/warning.png',
@@ -69,14 +69,14 @@ btnEdit.addEventListener("click", function() {
                 text: 'Preenche o teu Nome!',
                 button: 'OK',
                 className: "swalAlert"
-                
-            }).then(function(isConfirm) {
+
+            }).then(function (isConfirm) {
                 fullname.focus();
             });
-            
+
         }
 
-        else if(email.value == ""){
+        else if (email.value == "") {
 
             swal({
                 icon: 'images/warning.png',
@@ -84,14 +84,14 @@ btnEdit.addEventListener("click", function() {
                 text: 'Preenche o teu email!',
                 button: 'OK',
                 className: "swalAlert"
-                
-            }).then(function(isConfirm) {
+
+            }).then(function (isConfirm) {
                 email.focus();
             });
-            
+
         }
-        
-        else if(city.value == ""){
+
+        else if (city.value == "") {
 
             swal({
                 icon: 'images/warning.png',
@@ -99,13 +99,13 @@ btnEdit.addEventListener("click", function() {
                 text: 'Preenche a tua cidade!',
                 button: 'OK',
                 className: "swalAlert"
-                
-            }).then(function(isConfirm) {
+
+            }).then(function (isConfirm) {
                 city.focus();
             });
-            
+
         }
-        else if(validateEmail(email.value) == false){
+        else if (validateEmail(email.value) == false) {
 
             swal({
                 icon: 'images/v237_21.png',
@@ -113,48 +113,82 @@ btnEdit.addEventListener("click", function() {
                 text: 'O email não é válido.',
                 button: 'OK',
                 className: "swalAlert"
-                
-            }).then(function(isConfirm) {
+
+            }).then(function (isConfirm) {
                 email.focus();
             });
-    
-        }
-        
-        else{
 
-            if(pass.value == ""){
+        }
+
+        else {
+
+            if (pass.value == "") {
 
                 changepass = false;
-                
+
             }
             fetch("http://localhost:80/api/users/" + id)
-            .then((response) => response.json())
-            .then((user) => {
-                   
-                let data = {};
-                data.name = fullname.value;
-                data.email = email.value;
-                data.birthDate = user.birthDate;
-                data.city = city.value;
-                data.avatarID = parseFloat(navatar);
-                data.userID = parseFloat(id);
+                .then((response) => response.json())
+                .then((user) => {
 
-                if(changepass == true){
-                    //fazer o put da password
+                    let data = {};
+                    data.name = fullname.value;
+                    data.email = email.value;
+                    data.birthDate = user.birthDate;
+                    data.city = city.value;
+                    data.avatarID = parseFloat(navatar);
+                    data.userID = parseFloat(id);
 
-                    let datapass = {};
-                    datapass.newPassword = pass.value;
-                    datapass.email = user.email;
+                    if (changepass == true) {
+                        //fazer o put da password
 
-                    console.log(datapass);
-                    
-                    ///{userID}/password
+                        let datapass = {};
+                        datapass.newPassword = pass.value;
+                        datapass.email = user.email;
 
-                    fetch("http://localhost:80/api/users/" + id + "/password", {
-                    headers: { Accept: "application/json","Content-type": "application/json; charset=UTF-8" },
-                    method: 'PUT',
-                    body: JSON.stringify(datapass)
-                    }).then(function(response) {
+                        console.log(datapass);
+
+                        ///{userID}/password
+
+                        fetch("http://localhost:80/api/users/" + id + "/password", {
+                            headers: { Accept: "application/json", "Content-type": "application/json; charset=UTF-8" },
+                            method: 'PUT',
+                            body: JSON.stringify(datapass)
+                        }).then(function (response) {
+
+                            if (!response.ok) {
+                                console.log(response.status); //=> number 100–599
+                                console.log(response.statusText); //=> String
+                                console.log(response.headers); //=> Headers
+                                console.log(response.url); //=> String
+                                if (response.status === 409) {
+                                }
+                                else {
+                                    throw Error(response.statusText);
+                                }
+                            }
+                            else {
+                            }
+                        }).then(function (result) {
+                            console.log(result);
+                        }).catch(function (err) {
+                            swal({
+                                icon: 'images/v237_21.png',
+                                title: 'Erro',
+                                text: 'Ocorreu um erro',
+                                button: 'OK',
+                                className: "swalAlert"
+                            });
+                            console.error(err);
+                        });
+                    }
+
+
+                    fetch("http://localhost:80/api/users/" + id, {
+                        headers: { Accept: "application/json", "Content-type": "application/json; charset=UTF-8" },
+                        method: 'PUT',
+                        body: JSON.stringify(data)
+                    }).then(function (response) {
 
                         if (!response.ok) {
                             console.log(response.status); //=> number 100–599
@@ -162,16 +196,40 @@ btnEdit.addEventListener("click", function() {
                             console.log(response.headers); //=> Headers
                             console.log(response.url); //=> String
                             if (response.status === 409) {
+                                swal({
+                                    icon: 'images/v237_21.png',
+                                    title: 'Erro',
+                                    text: 'Dados incorretos!',
+                                    button: 'OK',
+                                    className: "swalAlert"
+                                });
                             }
                             else {
                                 throw Error(response.statusText);
                             }
                         }
                         else {
+
+                            swal({
+                                icon: 'images/v254_5.png',
+                                title: 'Sucesso',
+                                text: 'Dados Guardados!',
+                                buttons: false,
+                                className: "swalAlertSucess"
+
+                            }).then(function (isConfirm) {
+
+                                saved = true;
+                                btnEdit.innerHTML = 'Editar';
+                                fullname.disabled = true;
+                                email.disabled = true;
+                                pass.disabled = true;
+                                allowphotoEdit.style.display = "none";
+
+                            });
                         }
-                    }).then(function(result) {
-                        console.log(result);
-                    }).catch(function(err) {
+                    }).then(function (result) {
+                    }).catch(function (err) {
                         swal({
                             icon: 'images/v237_21.png',
                             title: 'Erro',
@@ -179,170 +237,108 @@ btnEdit.addEventListener("click", function() {
                             button: 'OK',
                             className: "swalAlert"
                         });
-                    console.error(err);
+                        console.error(err);
                     });
-                }
-                
-                console.log(data);
-                
-                   
-                fetch("http://localhost:80/api/users/" + id, {
-                    headers: { Accept: "application/json","Content-type": "application/json; charset=UTF-8" },
-                    method: 'PUT',
-                    body: JSON.stringify(data)
-                }).then(function(response) {
 
-                    if (!response.ok) {
-                        console.log(response.status); //=> number 100–599
-                        console.log(response.statusText); //=> String
-                        console.log(response.headers); //=> Headers
-                        console.log(response.url); //=> String
-                        if (response.status === 409) {
-                            swal({
-                                icon: 'images/v237_21.png',
-                                title: 'Erro',
-                                text: 'Dados incorretos!',
-                                button: 'OK',
-                                className: "swalAlert"
-                            });
-                        }
-                        else {
-                            throw Error(response.statusText);
-                        }
-                    }
-                    else {
-
-                        swal({
-                            icon: 'images/v254_5.png',
-                            title: 'Sucesso',
-                            text: 'Dados Guardados!',
-                            buttons: false,
-                            className: "swalAlertSucess"
-                            
-                        }).then(function(isConfirm) {
-                            
-                            saved = true;
-                            btnEdit.innerHTML = 'Editar';
-                            fullname.disabled = true;
-                            email.disabled = true;
-                            pass.disabled = true;
-                            allowphotoEdit.style.display = "none";
-            
-                        });
-                    }
-                }).then(function(result) {
-                    console.log(result);
-                }).catch(function(err) {
-                    swal({
-                        icon: 'images/v237_21.png',
-                        title: 'Erro',
-                        text: 'Ocorreu um erro',
-                        button: 'OK',
-                        className: "swalAlert"
-                    });
-                    console.error(err);
                 });
-                  
-            });
 
-            
+
         }
     }
-    
+
 });
 
-changephoto.addEventListener("click", function() {
+changephoto.addEventListener("click", function () {
 
     avatars.style.display = "block";
 
 });
 
-avatar1.addEventListener("click", function(){
+avatar1.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar1.png");
     avatars.style.display = "none";
     navatar = 2;
 });
 
-avatar2.addEventListener("click", function(){
+avatar2.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar2.png");
     avatars.style.display = "none";
     navatar = 3;
 });
-avatar3.addEventListener("click", function(){
+avatar3.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar3.png");
     avatars.style.display = "none";
     navatar = 4;
 });
-avatar4.addEventListener("click", function(){
+avatar4.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar4.png");
     avatars.style.display = "none";
     navatar = 5;
 });
-avatar5.addEventListener("click", function(){
+avatar5.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar5.png");
     avatars.style.display = "none";
     navatar = 6;
 });
-avatar6.addEventListener("click", function(){
+avatar6.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar6.png");
     avatars.style.display = "none";
     navatar = 7;
 });
-avatar7.addEventListener("click", function(){
+avatar7.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar7.png");
     avatars.style.display = "none";
     navatar = 8;
 });
-avatar8.addEventListener("click", function(){
+avatar8.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar8.png");
     avatars.style.display = "none";
     navatar = 9;
 });
-avatar9.addEventListener("click", function(){
+avatar9.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar9.png");
     avatars.style.display = "none";
     navatar = 10;
 });
 
-avatar10.addEventListener("click", function(){
+avatar10.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar10.png");
     avatars.style.display = "none";
     navatar = 11;
 });
-avatar11.addEventListener("click", function(){
+avatar11.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar11.png");
     avatars.style.display = "none";
     navatar = 12;
 });
-avatar12.addEventListener("click", function(){
+avatar12.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/avatar12.png");
     avatars.style.display = "none";
     navatar = 13;
 });
-avatar0.addEventListener("click", function(){
+avatar0.addEventListener("click", function () {
 
     profilePhoto.setAttribute('src', "../frontend/images/default-user-image.png");
     avatars.style.display = "none";
     navatar = 1;
 });
 
-window.onload = async() => {
+window.onload = async () => {
     const response = await fetch("http://localhost:80/api/users/" + id);
     const user = await response.json();
 
-    console.log(user);
     let name = user.name;
     let email = user.email;
     let city = user.city;
@@ -350,45 +346,43 @@ window.onload = async() => {
     let avatar = user.avatar;
     navatar = avatar;
 
-    console.log(name, email, city, birthDate, avatar);
-
     document.getElementById('inputFullName').value = name;
     document.getElementById('inputEmail').value = email;
     document.getElementById('inputBirth').value = birthDate;
     document.getElementById('inputCity').value = city;
 
-    if(avatar == 1){
+    if (avatar == 1) {
         document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";
-    }else if(avatar == 2){
+    } else if (avatar == 2) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar1.png";
-    }else if(avatar == 3){
+    } else if (avatar == 3) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar2.png";
-    }else if(avatar == 4){
+    } else if (avatar == 4) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar3.png";
-    }else if(avatar == 5){
+    } else if (avatar == 5) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar4.png";
-    }else if(avatar == 6){
+    } else if (avatar == 6) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar5.png";
-    }else if(avatar == 7){
+    } else if (avatar == 7) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar6.png";
-    }else if(avatar == 8){
+    } else if (avatar == 8) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar7.png";
-    }else if(avatar == 9){
+    } else if (avatar == 9) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar8.png";
-    }else if(avatar == 10){
+    } else if (avatar == 10) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar9.png";
-    }else if(avatar == 11){
+    } else if (avatar == 11) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar10.png";
-    }else if(avatar == 12){
+    } else if (avatar == 12) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar11.png";
-    }else if(avatar == 13){
+    } else if (avatar == 13) {
         document.getElementById('profilePhoto').src = "../frontend/images/avatar12.png";
-    }else{
+    } else {
         document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";
     }
-    
-    
-};           
+
+
+};
 
 
 let initialPage = document.getElementById("initialPage");
@@ -396,113 +390,113 @@ let settings = document.getElementById("settings");
 let profile = document.getElementById("profile");
 let logout = document.getElementById("logout");
 
-initialPage.addEventListener("click", function(){
-    if(saved == false){
+initialPage.addEventListener("click", function () {
+    if (saved == false) {
         swal({
             icon: 'images/Usure_icon.png',
             title: 'Não guardaste o teu perfil!',
             text: 'Queres sair na mesma?',
             className: "swalAlert",
             buttons: {
-            catch: {
-              text: "Sair",
-              value: "catch",
+                catch: {
+                    text: "Sair",
+                    value: "catch",
+                },
+                cancel: "Cancelar",
             },
-            cancel: "Cancelar",
-          },
         }).then((value) => {
             switch (value) {
-         
+
                 case "catch":
                     window.location.replace("inicialPage.html");
-            
+
                 default:
             }
-    
+
         });
-    }else{
+    } else {
         window.location.replace("inicialPage.html");
     }
 });
 
-settings.addEventListener("click", function(){
-    if(saved == false){
+settings.addEventListener("click", function () {
+    if (saved == false) {
         swal({
             icon: 'images/Usure_icon.png',
             title: 'Não guardaste o teu perfil!',
             text: 'Queres sair na mesma?',
             className: "swalAlert",
             buttons: {
-            catch: {
-              text: "Sair",
-              value: "catch",
+                catch: {
+                    text: "Sair",
+                    value: "catch",
+                },
+                cancel: "Cancelar",
             },
-            cancel: "Cancelar",
-          },
         }).then((value) => {
             switch (value) {
-         
+
                 case "catch":
                     window.location.replace("settings.html");
-            
+
                 default:
             }
-    
+
         });
-    }else{
+    } else {
         window.location.replace("settings.html");
     }
 });
 
-profile.addEventListener("click", function(){
-    if(saved == false){
+profile.addEventListener("click", function () {
+    if (saved == false) {
         swal({
             icon: 'images/Usure_icon.png',
             title: 'Não guardaste o teu perfil!',
             text: 'Queres recarregar na mesma?',
             className: "swalAlert",
             buttons: {
-            catch: {
-              text: "Sim",
-              value: "catch",
+                catch: {
+                    text: "Sim",
+                    value: "catch",
+                },
+                cancel: "Cancelar",
             },
-            cancel: "Cancelar",
-          },
         }).then((value) => {
             switch (value) {
-         
+
                 case "catch":
                     window.location.replace("perfil.html");
-            
+
                 default:
             }
-    
+
         });
-    }else{
+    } else {
         window.location.replace("perfil.html");
     }
 });
 
 
 
-logout.addEventListener("click", function(){
+logout.addEventListener("click", function () {
 
-    if(saved == false){
+    if (saved == false) {
         swal({
             icon: 'images/Usure_icon.png',
             title: 'Não guardaste o teu perfil!',
             text: 'Queres sair na mesma?',
             className: "swalAlert",
             buttons: {
-            catch: {
-              text: "Sair",
-              value: "catch",
+                catch: {
+                    text: "Sair",
+                    value: "catch",
+                },
+                cancel: "Cancelar",
             },
-            cancel: "Cancelar",
-          },
         }).then((value) => {
             switch (value) {
-         
+
                 case "catch":
                     swal({
                         icon: 'images/v254_5.png',
@@ -514,12 +508,12 @@ logout.addEventListener("click", function(){
                         localStorage.clear();
                         window.location.replace("login.html");
                     });
-            
+
                 default:
             }
-    
+
         });
-    }else{
+    } else {
         swal({
             icon: 'images/v254_5.png',
             title: 'Sucesso',
@@ -533,5 +527,5 @@ logout.addEventListener("click", function(){
     }
 });
 
-        
-            
+
+

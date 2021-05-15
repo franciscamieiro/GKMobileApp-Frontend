@@ -102,7 +102,6 @@ function publishText() {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(function (response) {
-            console.log(data);
             if (!response.ok) {
                 console.log(response.status); //=> number 100–599
                 console.log(response.statusText); //=> String
@@ -126,7 +125,83 @@ function publishText() {
 
                     input.value = "";
 
-                    const renderComments = async () => {
+                    const renderImageComments = async () => {
+
+                        let strHtml = ``;
+
+                        const creationID = localStorage.getItem("idClickedPub");
+                        const response = await fetch(`http://localhost:80/api/image/comments/` + creationID)
+                        const comments = await response.json()
+                        let i = 1;
+                        for (const comment of comments) {
+
+                            let date = comment.published.split("T");
+
+                            let hours = date[1].split(".");
+
+                            let avatar = comment.userID.avatar;
+
+                            let profilesrc = null;
+
+                            if (avatar == 1) {
+                                profilesrc = "images/default-user-image.png"
+                            } else if (avatar == 2) {
+                                profilesrc = "images/avatar1.png"
+                            }
+                            else if (avatar == 3) {
+                                profilesrc = "images/avatar2.png"
+                            }
+                            else if (avatar == 4) {
+                                profilesrc = "images/avatar3.png"
+                            } else if (avatar == 5) {
+                                profilesrc = "images/avatar4.png"
+                            } else if (avatar == 6) {
+                                profilesrc = "images/avatar5.png"
+                            } else if (avatar == 7) {
+                                profilesrc = "images/avatar6.png"
+                            } else if (avatar == 8) {
+                                profilesrc = "images/avatar7.png"
+                            } else if (avatar == 9) {
+                                profilesrc = "images/avatar8.png"
+                            } else if (avatar == 10) {
+                                profilesrc = "images/avatar9.png"
+                            } else if (avatar == 11) {
+                                profilesrc = "images/avatar10.png"
+                            } else if (avatar == 12) {
+                                profilesrc = "images/avatar11.png"
+                            } else if (avatar == 13) {
+                                profilesrc = "images/avatar12.png"
+                            }
+
+                            let img = document.createElement("img");
+
+                            let src = img.src = "data:image/jpeg;base64," + comment.image;
+
+                            strHtml += `
+                                 <li class="comment user-comment">
+                 
+                                 <div class="info">
+                                     <a href="#">${comment.userID.name}</a>
+                                     <span>${date[0] + " " + hours[0]}</span>
+                                 </div>
+                 
+                                 <a class="avatar" href="#">
+                                     <img src="${profilesrc}" width="35" alt="Profile Avatar"/>
+                                 </a>
+                 
+                                 <p class="noscroll"><img src="${src}" width="150"></img></p>
+                 
+                                 </li>
+                                 `;
+
+
+                            i++
+                        }
+                        forumComments.innerHTML += strHtml;
+
+                    }
+
+                    const renderTextComments = async () => {
 
                         let strHtml = ``;
 
@@ -134,8 +209,41 @@ function publishText() {
                         const response = await fetch(`http://localhost:80/api/comments/creations/` + creationID)
                         const comments = await response.json()
                         let i = 1;
-                        console.log(comments);
                         for (const comment of comments) {
+
+                            let avatar = comment.userID.avatar;
+
+                            let profilesrc = null;
+
+                            if (avatar == 1) {
+                                profilesrc = "images/default-user-image.png"
+                            } else if (avatar == 2) {
+                                profilesrc = "images/avatar1.png"
+                            }
+                            else if (avatar == 3) {
+                                profilesrc = "images/avatar2.png"
+                            }
+                            else if (avatar == 4) {
+                                profilesrc = "images/avatar3.png"
+                            } else if (avatar == 5) {
+                                profilesrc = "images/avatar4.png"
+                            } else if (avatar == 6) {
+                                profilesrc = "images/avatar5.png"
+                            } else if (avatar == 7) {
+                                profilesrc = "images/avatar6.png"
+                            } else if (avatar == 8) {
+                                profilesrc = "images/avatar7.png"
+                            } else if (avatar == 9) {
+                                profilesrc = "images/avatar8.png"
+                            } else if (avatar == 10) {
+                                profilesrc = "images/avatar9.png"
+                            } else if (avatar == 11) {
+                                profilesrc = "images/avatar10.png"
+                            } else if (avatar == 12) {
+                                profilesrc = "images/avatar11.png"
+                            } else if (avatar == 13) {
+                                profilesrc = "images/avatar12.png"
+                            }
 
                             strHtml += `
                                 <li class="comment user-comment">
@@ -146,7 +254,7 @@ function publishText() {
                                 </div>
                     
                                 <a class="avatar" href="#">
-                                    <img src="images/avatar4.jpeg" width="35" alt="Profile Avatar" title=${comment.userID.name} />
+                                <img src="${profilesrc}" width="35" alt="Profile Avatar"/>
                                 </a>
                     
                                 <p class="noscroll">${comment.description}</p>
@@ -155,16 +263,16 @@ function publishText() {
                                 `;
                             i++
                         }
-                        forumComments.innerHTML = strHtml;
+                        forumComments.innerHTML += strHtml;
 
                     }
 
-                    renderComments();
+                    renderImageComments();
+                    renderTextComments();
 
                 });
             }
         }).then(function (result) {
-            console.log(result);
         }).catch(function (err) {
             swal({
                 icon: 'images/v237_21.png',
@@ -222,7 +330,6 @@ function publishFile() {
                     body: image,
                     credentials: 'include'
                 }).then(function (response) {
-                    console.log(image);
                     if (!response.ok) {
                         console.log(response.status); //=> number 100–599
                         console.log(response.statusText); //=> String
@@ -244,10 +351,155 @@ function publishFile() {
 
                         }).then(function (isConfirm) {
 
+                            const forumComments = document.getElementById("comment");
+
+                            const renderImageComments = async () => {
+
+                                let strHtml = ``;
+
+                                const creationID = localStorage.getItem("idClickedPub");
+                                const response = await fetch(`http://localhost:80/api/image/comments/` + creationID)
+                                const comments = await response.json()
+                                let i = 1;
+                                for (const comment of comments) {
+
+                                    let date = comment.published.split("T");
+
+                                    let hours = date[1].split(".");
+
+                                    let avatar = comment.userID.avatar;
+
+                                    let profilesrc = null;
+
+                                    if (avatar == 1) {
+                                        profilesrc = "images/default-user-image.png"
+                                    } else if (avatar == 2) {
+                                        profilesrc = "images/avatar1.png"
+                                    }
+                                    else if (avatar == 3) {
+                                        profilesrc = "images/avatar2.png"
+                                    }
+                                    else if (avatar == 4) {
+                                        profilesrc = "images/avatar3.png"
+                                    } else if (avatar == 5) {
+                                        profilesrc = "images/avatar4.png"
+                                    } else if (avatar == 6) {
+                                        profilesrc = "images/avatar5.png"
+                                    } else if (avatar == 7) {
+                                        profilesrc = "images/avatar6.png"
+                                    } else if (avatar == 8) {
+                                        profilesrc = "images/avatar7.png"
+                                    } else if (avatar == 9) {
+                                        profilesrc = "images/avatar8.png"
+                                    } else if (avatar == 10) {
+                                        profilesrc = "images/avatar9.png"
+                                    } else if (avatar == 11) {
+                                        profilesrc = "images/avatar10.png"
+                                    } else if (avatar == 12) {
+                                        profilesrc = "images/avatar11.png"
+                                    } else if (avatar == 13) {
+                                        profilesrc = "images/avatar12.png"
+                                    }
+
+                                    let img = document.createElement("img");
+
+                                    let src = img.src = "data:image/jpeg;base64," + comment.image;
+
+                                    strHtml += `
+                                         <li class="comment user-comment">
+                         
+                                         <div class="info">
+                                             <a href="#">${comment.userID.name}</a>
+                                             <span>${date[0] + " " + hours[0]}</span>
+                                         </div>
+                         
+                                         <a class="avatar" href="#">
+                                             <img src="${profilesrc}" width="35" alt="Profile Avatar"/>
+                                         </a>
+                         
+                                         <p class="noscroll"><img src="${src}" width="150"></img></p>
+                         
+                                         </li>
+                                         `;
+
+
+                                    i++
+                                }
+                                forumComments.innerHTML += strHtml;
+
+                            }
+
+                            const renderTextComments = async () => {
+
+                                let strHtml = ``;
+
+                                const creationID = localStorage.getItem("idClickedPub");
+                                const response = await fetch(`http://localhost:80/api/comments/creations/` + creationID)
+                                const comments = await response.json()
+                                let i = 1;
+                                for (const comment of comments) {
+
+                                    let avatar = comment.userID.avatar;
+
+                                    let profilesrc = null;
+
+                                    if (avatar == 1) {
+                                        profilesrc = "images/default-user-image.png"
+                                    } else if (avatar == 2) {
+                                        profilesrc = "images/avatar1.png"
+                                    }
+                                    else if (avatar == 3) {
+                                        profilesrc = "images/avatar2.png"
+                                    }
+                                    else if (avatar == 4) {
+                                        profilesrc = "images/avatar3.png"
+                                    } else if (avatar == 5) {
+                                        profilesrc = "images/avatar4.png"
+                                    } else if (avatar == 6) {
+                                        profilesrc = "images/avatar5.png"
+                                    } else if (avatar == 7) {
+                                        profilesrc = "images/avatar6.png"
+                                    } else if (avatar == 8) {
+                                        profilesrc = "images/avatar7.png"
+                                    } else if (avatar == 9) {
+                                        profilesrc = "images/avatar8.png"
+                                    } else if (avatar == 10) {
+                                        profilesrc = "images/avatar9.png"
+                                    } else if (avatar == 11) {
+                                        profilesrc = "images/avatar10.png"
+                                    } else if (avatar == 12) {
+                                        profilesrc = "images/avatar11.png"
+                                    } else if (avatar == 13) {
+                                        profilesrc = "images/avatar12.png"
+                                    }
+
+                                    strHtml += `
+                                        <li class="comment user-comment">
+                            
+                                        <div class="info">
+                                            <a href="#">${comment.userID.name}</a>
+                                            <span>${comment.date}</span>
+                                        </div>
+                            
+                                        <a class="avatar" href="#">
+                                        <img src="${profilesrc}" width="35" alt="Profile Avatar"/>
+                                        </a>
+                            
+                                        <p class="noscroll">${comment.description}</p>
+                            
+                                        </li>
+                                        `;
+                                    i++
+                                }
+                                forumComments.innerHTML += strHtml;
+
+                            }
+
+                            renderImageComments();
+                            renderTextComments();
                         });
                     }
                 }).then(function (result) {
-                    console.log(result);
                 }).catch(function (err) {
                     swal({
                         icon: 'images/v237_21.png',
@@ -331,7 +583,6 @@ function reportpub() {
                     });
                 }
             }).then(function (result) {
-                console.log(result);
             }).catch(function (err) {
                 swal({
                     icon: 'images/v237_21.png',
@@ -472,8 +723,6 @@ window.onload = () => {
                 profilesrc = "images/avatar12.png"
             }
 
-            console.log(comment.user);
-
             let img = document.createElement("img");
 
             let src = img.src = "data:image/jpeg;base64," + comment.image;
@@ -575,25 +824,39 @@ window.onload = () => {
         ///api/evaluation/{creationID}/users/{userID}
 
         const creationID = localStorage.getItem("idClickedPub");
-        const response = await fetch(`http://localhost:80/api/evaluation/` + creationID + `/users/` + id)
-        const evaluation = await response.json();
-        
-        console.log(evaluation.evaluation);
+        const response = await fetch(`http://localhost:80/api/evaluation/creation/` + creationID)
+        const evaluations = await response.json();
 
-        let nstar = evaluation.evaluation;
+        if (evaluations.length == 0) {
 
-        if (nstar = 1) {
-            document.getElementById("star1").checked = true;
-        } else if (nstar = 2) {
-            document.getElementById("star2").checked = true;
-        } else if (nstar = 3) {
-            document.getElementById("star3").checked = true;
-        } else if (nstar = 4) {
-            document.getElementById("star4").checked = true;
+            document.getElementById("star1").checked = false;
+            document.getElementById("star2").checked = false;
+            document.getElementById("star3").checked = false;
+            document.getElementById("star4").checked = false;
+            document.getElementById("star5").checked = false;
+
         } else {
-            document.getElementById("star5").checked = true;
+            for (const evaluation of evaluations) {
 
+                if (evaluation.userID.userID == id) {
+
+                    let nstar = evaluation.evaluation;
+
+                    if (nstar == 1) {
+                        document.getElementById("star1").checked = true;
+                    } else if (nstar == 2) {
+                        document.getElementById("star2").checked = true;
+                    } else if (nstar == 3) {
+                        document.getElementById("star3").checked = true;
+                    } else if (nstar == 4) {
+                        document.getElementById("star4").checked = true;
+                    } else {
+                        document.getElementById("star5").checked = true;
+                    }
+                }
+            }
         }
+
         //buscar a avaliação que o user logged in fez da pub q está a ver//se for null n fazer nada
     }
 
@@ -646,7 +909,6 @@ function evaluate(star) {
     }
 
     // api/evaluation
-    console.log(nstar)
 
     let data = {};
     data.creationID = IDcreation;
@@ -680,7 +942,6 @@ function evaluate(star) {
             })
         }
     }).then(function (result) {
-        console.log(result);
     }).catch(function (err) {
         swal({
             icon: 'images/v237_21.png',

@@ -7,7 +7,7 @@ window.onload = function(){
     .then((out) => {
         
         for(let i = 0; i<out.length; i++){
-        console.log(out[i]);
+
         var row = document.getElementById("favPlaces").insertRow(i);
         
         row.innerHTML =
