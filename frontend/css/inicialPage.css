@@ -281,3 +281,15 @@
   float: left;
   text-align: left;
 }
+
+.info {
+  background: url("../images/info_icon.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin-top: -24.2px;
+  margin-right: 13px;
+}

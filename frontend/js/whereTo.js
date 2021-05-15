@@ -58,3 +58,50 @@ if(input1 != "" && input2 != ""){
   var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
 }
+
+let info = document.getElementById("info");
+let box = document.getElementById("box");
+let box1 = document.getElementById("box1");
+let helptxt = document.getElementById("helptxt");
+let nextBtn = document.getElementById("next");
+let click = 1;
+let isShowing = false;
+
+info.addEventListener("click", function () {
+
+  if (isShowing == false) {
+      box.style.display = "block";
+      helptxt.style.display = "block";
+      nextBtn.style.display = "block";
+      isShowing = true;
+  }
+
+});
+
+function next() {
+
+  if (click == 1) {
+      box.style.display = "none";
+      box1.style.display = "block";
+      helptxt.style.height = "12%";
+      nextBtn.style.marginTop = "485px";
+      helptxt.innerHTML = "Clica no icon amarelo para ver o forúm com publicações de criações, comentar e avaliar!"
+      nextBtn.style.display = "block";
+      click++;
+  }else{
+      box.style.display = "none";
+      box1.style.display = "none";
+      helptxt.style.display = "none";
+      nextBtn.style.display = "none";
+      helptxt.innerHTML = "Clica no icon laranja para veres um caminho de um sítio para o outro!";
+      box1.style.marginTop = "220px";
+      box.style.marginTop = "190px";
+      helptxt.style.marginTop = "345px";
+      helptxt.style.height = "10%";
+      nextBtn.innerHTML = "Próxima";
+      nextBtn.style.marginTop = "472px";
+      click = 1;
+      isShowing = false;
+  }
+
+}
