@@ -1046,18 +1046,15 @@ function printCriation() {
 
             } else {
 
-                let data = {};
-                data.city = inputValue;
-
                 if (saved == false) {
 
                     fetch("http://localhost:80/api/creations/" + id, {
                         mode: 'cors',
                         method: 'POST',
-                        body: data,
+                        body: image,
                         credentials: 'include'
                     }).then(function (response) {
-                        console.log(data);
+                        console.log(image);
                         if (!response.ok) {
                             console.log(response.status); //=> number 100–599
                             console.log(response.statusText); //=> String
@@ -1071,7 +1068,9 @@ function printCriation() {
                         }
                         else {
                             response.text().then(function (text) {
-                                let see = text.split("objectId");
+                                console.log("see id:");
+                                console.log(text);
+                                let see = text.split("id:");
                                 console.log(see[1]);
                                 var regex = /\d+/g;
                                 var string = see[1].toString();
@@ -1082,11 +1081,18 @@ function printCriation() {
 
                                 let idcreation = matches[0];
 
-                                fetch('http://localhost:80/api/creations/' + idcreation + "/image", {
-                                    mode: 'cors',
+                                let data = {};
+                                data.city = inputValue;
+                                data.coordinates = null;
+                                data.date_published = null;
+                                data.published = 0;
+                                data.evaluation = 0;
+
+
+                                fetch('http://localhost:80/api/creations/' + idcreation + "/data", {
+                                    headers: { 'Content-Type': 'application/json' },
                                     method: 'PUT',
-                                    body: image,
-                                    credentials: 'include'
+                                    body: JSON.stringify(data)
                                 })
                                     .then(function (response) {
                                         //console.log(response.headers.get('Set-Cookie'));

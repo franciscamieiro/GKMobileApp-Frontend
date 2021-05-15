@@ -200,7 +200,6 @@ function getfileinput(evt) {
 
 function publishFile() {
 
-
     var img = new Image();
 
     if (file.type.match('image.*')) {
@@ -403,28 +402,37 @@ window.onload = () => {
         console.log(comments);
         for (const comment of comments) {
 
-            console.log(comment.url);
+            let date = comment.published.split("T");
+
+            let hours = date[1].split(".");
+
+            let avatar = comment.userID.avatar;
+
+            console.log(avatar);
+
+            console.log(comment.user);
 
             let img = document.createElement("img");
 
-            let src = img.src = "data:image/jpeg;base64," + comment.url;
+            let src = img.src = "data:image/jpeg;base64," + comment.image;
 
             strHtml += `
                  <li class="comment user-comment">
  
                  <div class="info">
-                     <a href="#">${comment.userid.name}</a>
-                     <span>${comment.published}</span>
+                     <a href="#">${comment.userID.name}</a>
+                     <span>${date[0] + " " + hours[0]}</span>
                  </div>
  
                  <a class="avatar" href="#">
-                     <img src="${src}" width="35" alt="Profile Avatar" title=${comment.userid.name} />
+                     <img src="images/avatar${avatar}.jpeg" width="35" alt="Profile Avatar"/>
                  </a>
  
-                 <p class="noscroll">${comment.description}</p>
+                 <p class="noscroll"><img src="${src}" width="150"></img></p>
  
                  </li>
                  `;
+
 
             i++
         }
@@ -472,82 +480,71 @@ star5.addEventListener("click", function () {
 
 
 function evaluate(star) {
-    /*  let nstar = null;
-  
-      if(star == "star1"){
-          nstar = parseInt(1);
-      }
-      else if(star == "star2"){
-          nstar = parseInt(2);
-      }
-      else if(star == "star3"){
-          nstar = parseInt(3);
-      }
-      else if(star == "star4"){
-          nstar = parseInt(4);
-      }
-      else if(star == "star5"){
-          nstar = parseInt(5);
-      }
-  
-      // api/evaluation
-  
-      let data = {};
-      data.creationID = parseFloat(IDcreation);
-      data.evaluation = parseInt(nstar);
-      
-  
-      fetch("http://localhost:80/api/evaluation", {
-          headers: { 'Content-Type': 'application/json' },
-          method: 'POST',
-          body: JSON.stringify(data)
-      }).then(function(response) {
-          console.log(data);
-          if (!response.ok) {
-              console.log(response.status); //=> number 100–599
-              console.log(response.statusText); //=> String
-              console.log(response.headers); //=> Headers
-              console.log(response.url); //=> String
-              if (response.status === 409) {
-              }
-              else {
-                  throw Error(response.statusText);
-              }
-          }
-          else {
-              swal({
-                  icon: 'images/v254_5.png',
-                  title: 'Sucesso',
-                  text: 'Publicação avaliada!',
-                  buttons: false,
-                  className: "swalAlert1"
-  
-              })
-          }
-      }).then(function(result) {
-          console.log(result);
-      }).catch(function(err) {
-          swal({
-              icon: 'images/v237_21.png',
-              title: 'Erro',
-              text: 'Erro ao avaliar.',
-              button: 'OK',
-              className: "swalAlert"
-              
-          })
-          console.error(err);
-      });
-  
-      */
+    let nstar = null;
 
-    swal({
-        icon: 'images/v254_5.png',
-        title: 'Sucesso',
-        text: 'Publicação avaliada!',
-        buttons: false,
-        className: "swalAlert1"
+    if (star == "star1") {
+        nstar = parseInt(1);
+    }
+    else if (star == "star2") {
+        nstar = parseInt(2);
+    }
+    else if (star == "star3") {
+        nstar = parseInt(3);
+    }
+    else if (star == "star4") {
+        nstar = parseInt(4);
+    }
+    else if (star == "star5") {
+        nstar = parseInt(5);
+    }
 
-    })
+    // api/evaluation
+    console.log(nstar)
+
+    let data = {};
+    data.creationID = IDcreation;
+    data.userID = id;
+    data.evaluation = nstar;
+
+    fetch("http://localhost:80/api/evaluation", {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(function (response) {
+        if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            console.log(response.url); //=> String
+            if (response.status === 409) {
+            }
+            else {
+                throw Error(response.statusText);
+            }
+        }
+        else {
+            swal({
+                icon: 'images/v254_5.png',
+                title: 'Sucesso',
+                text: 'Publicação avaliada!',
+                buttons: false,
+                className: "swalAlert1"
+
+            })
+        }
+    }).then(function (result) {
+        console.log(result);
+    }).catch(function (err) {
+        swal({
+            icon: 'images/v237_21.png',
+            title: 'Erro',
+            text: 'Erro ao avaliar.',
+            button: 'OK',
+            className: "swalAlert"
+
+        })
+        console.error(err);
+    });
 }
 
 let logout = document.getElementById("logout");

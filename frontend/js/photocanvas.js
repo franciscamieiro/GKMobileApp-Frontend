@@ -1018,23 +1018,15 @@ function printCriation(){
                 
             }else{
 
-                let data = {};
-                data.city = inputValue;
-                data.coordinates = null;
-                data.userID = parseFloat(id);
-                data.date_creation = new Date();
-                data.date_published = null;
-                data.evaluation = 0;
-                data.published = 0;
+                if (saved == false) {
 
-                if(saved == false){
-                
-                    fetch("http://localhost:80/api/creations", {
-                        headers: { 'Content-Type': 'application/json' },
+                    fetch("http://localhost:80/api/creations/" + id, {
+                        mode: 'cors',
                         method: 'POST',
-                        body: JSON.stringify(data)
-                    }).then(function(response) {
-                        console.log(data);
+                        body: image,
+                        credentials: 'include'
+                    }).then(function (response) {
+                        console.log(image);
                         if (!response.ok) {
                             console.log(response.status); //=> number 100–599
                             console.log(response.statusText); //=> String
@@ -1048,107 +1040,116 @@ function printCriation(){
                         }
                         else {
                             response.text().then(function (text) {
-                                let see = text.split("objectId");
+                                console.log("see id:");
+                                console.log(text);
+                                let see = text.split("id:");
                                 console.log(see[1]);
                                 var regex = /\d+/g;
                                 var string = see[1].toString();
                                 var matches = string.match(regex);
-                
+
                                 console.log(text);
                                 console.log(matches[0]);
-            
+
                                 let idcreation = matches[0];
 
-                            fetch('http://localhost:80/api/creations/' + idcreation + "/image"  , {
-                                mode: 'cors',
-                                method: 'PUT',
-                                body: image,
-                                credentials: 'include'
-                            })
-                            .then(function (response) {
-                                //console.log(response.headers.get('Set-Cookie'));
-                                console.log(response);
-                                if (!response.ok) {
-                                    throw new Error(response.statusText);
-                                }
-                                return response.json();
-                            })
-                            .catch(function (err) {
-                                console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
-                            })
-                            .then(async function (result) {
-                                console.log(result);
-                                if (result) {
+                                let data = {};
+                                data.city = inputValue;
+                                data.coordinates = null;
+                                data.date_published = null;
+                                data.published = 0;
+                                data.evaluation = 0;
 
-                                    ///
-                                    saved = true;
 
-                                    swal({
-                                        icon: 'images/v254_5.png',
-                                        title: 'Guardada',
-                                        text: 'A tua criação foi guardada!',
-                                        className: "swalAlert",
-                                        button: 'Ok',
-                                    }).then((value) => {
-                                        
-                                        swal({
-                                            icon: 'images/Usure_icon.png',
-                                            title: 'Sair?',
-                                            text: 'Queres sair ou continuar a editar?',
-                                            className: "swalAlert",
-                                            buttons: {
-                                            catch: {
-                                            text: "Sair",
-                                            value: "catch",
-                                            },
-                                            cancel: "Editar",
-                                        },
-                                        }).then((value) => {
-                                            switch (value) {
-                                        
-                                                case "catch":
-                                                    window.location.replace("mydrawings.html");
-                                            
-                                                default:
-                                                    showresize();
-                                            }
-                                    
-                                        });
-                                
-                                    });
-
-                                }
-                                else {
-                                    swal({
-                                        icon: 'images/v237_21.png',
-                                        title: 'Erro',
-                                        text: 'Erro ao guardar.',
-                                        button: 'OK',
-                                        className: "swalAlert"
-                                        
+                                fetch('http://localhost:80/api/creations/' + idcreation + "/data", {
+                                    headers: { 'Content-Type': 'application/json' },
+                                    method: 'PUT',
+                                    body: JSON.stringify(data)
+                                })
+                                    .then(function (response) {
+                                        //console.log(response.headers.get('Set-Cookie'));
+                                        console.log(response);
+                                        if (!response.ok) {
+                                            throw new Error(response.statusText);
+                                        }
+                                        return response.json();
                                     })
+                                    .catch(function (err) {
+                                        console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+                                    })
+                                    .then(async function (result) {
+                                        console.log(result);
+                                        if (result) {
 
-                                }
+                                            ///
+                                            saved = true;
+
+                                            swal({
+                                                icon: 'images/v254_5.png',
+                                                title: 'Guardada',
+                                                text: 'A tua criação foi guardada!',
+                                                className: "swalAlert",
+                                                button: 'Ok',
+                                            }).then((value) => {
+
+                                                swal({
+                                                    icon: 'images/Usure_icon.png',
+                                                    title: 'Sair?',
+                                                    text: 'Queres sair ou continuar a editar?',
+                                                    className: "swalAlert",
+                                                    buttons: {
+                                                        catch: {
+                                                            text: "Sair",
+                                                            value: "catch",
+                                                        },
+                                                        cancel: "Editar",
+                                                    },
+                                                }).then((value) => {
+                                                    switch (value) {
+
+                                                        case "catch":
+                                                            window.location.replace("mydrawings.html");
+
+                                                        default:
+                                                            showresize();
+                                                    }
+
+                                                });
+
+                                            });
+
+                                        }
+                                        else {
+                                            swal({
+                                                icon: 'images/v237_21.png',
+                                                title: 'Erro',
+                                                text: 'Erro ao guardar.',
+                                                button: 'OK',
+                                                className: "swalAlert"
+
+                                            })
+
+                                        }
+                                    });
                             });
-                        });
                         }
-                        
-                    }).then(function(result) {
+
+                    }).then(function (result) {
                         console.log(result);
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         swal({
                             icon: 'images/v237_21.png',
                             title: 'Erro',
                             text: 'Erro ao guardar.',
                             button: 'OK',
                             className: "swalAlert"
-                            
+
                         })
                         console.error(err);
                         showresize();
                     });
 
-                }else{
+                } else {
                     //saved == true, logo já foi guardado uma vez e portanto agora aqui é para fazer um PUT
                 }
 

@@ -266,25 +266,25 @@ avatar1.addEventListener("click", function(){
 
 avatar2.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar2.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar2.png");
     avatars.style.display = "none";
     navatar = 3;
 });
 avatar3.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar3.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar3.png");
     avatars.style.display = "none";
     navatar = 4;
 });
 avatar4.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar4.jpeg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar4.png");
     avatars.style.display = "none";
     navatar = 5;
 });
 avatar5.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar5.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar5.png");
     avatars.style.display = "none";
     navatar = 6;
 });
@@ -296,13 +296,13 @@ avatar6.addEventListener("click", function(){
 });
 avatar7.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar7.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar7.png");
     avatars.style.display = "none";
     navatar = 8;
 });
 avatar8.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar8.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar8.png");
     avatars.style.display = "none";
     navatar = 9;
 });
@@ -315,19 +315,19 @@ avatar9.addEventListener("click", function(){
 
 avatar10.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar10.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar10.png");
     avatars.style.display = "none";
     navatar = 11;
 });
 avatar11.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar11.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar11.png");
     avatars.style.display = "none";
     navatar = 12;
 });
 avatar12.addEventListener("click", function(){
 
-    profilePhoto.setAttribute('src', "../frontend/images/avatar12.jpg");
+    profilePhoto.setAttribute('src', "../frontend/images/avatar12.png");
     avatars.style.display = "none";
     navatar = 13;
 });
@@ -362,27 +362,27 @@ window.onload = async() => {
     }else if(avatar == 2){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar1.png";
     }else if(avatar == 3){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar2.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar2.png";
     }else if(avatar == 4){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar3.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar3.png";
     }else if(avatar == 5){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar4.jpeg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar4.png";
     }else if(avatar == 6){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar5.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar5.png";
     }else if(avatar == 7){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar6.png";
     }else if(avatar == 8){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar7.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar7.png";
     }else if(avatar == 9){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar8.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar8.png";
     }else if(avatar == 10){
         document.getElementById('profilePhoto').src = "../frontend/images/avatar9.png";
     }else if(avatar == 11){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar10.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar10.png";
     }else if(avatar == 12){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar11.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar11.png";
     }else if(avatar == 13){
-        document.getElementById('profilePhoto').src = "../frontend/images/avatar12.jpg";
+        document.getElementById('profilePhoto').src = "../frontend/images/avatar12.png";
     }else{
         document.getElementById('profilePhoto').src = "../frontend/images/default-user-image.png";
     }
