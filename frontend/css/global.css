@@ -3,6 +3,8 @@
     --font-color: #ffffff;
     --text-color: #000000;
     --border-top: #D7D7D7;
+    --border-profile: #C7C6C6;
+    --profile-input: #F5F5F5;
 }
   
 [data-theme="dark"] {
@@ -10,6 +12,8 @@
     --font-color: #1B1818;
     --text-color: #f7f7f7;
     --border-top: #000000;
+    --border-profile: #393939;
+    --profile-input: #474141;
 }
   
 body {
@@ -140,8 +144,7 @@ body{
     background-size: cover;
 }
 
-.swalAlert {
-    background-color: var(--brand-basic);
+.swalAlert {  
     font-family: 'Open Sans';
     height: 225px;
     width: 70%;
@@ -170,7 +173,6 @@ body{
 }
   
 .swalAlertSucess{
-    background-color: var(--brand-basic);
     font-family: 'Open Sans';
     height: 190px;
     width: 70%;

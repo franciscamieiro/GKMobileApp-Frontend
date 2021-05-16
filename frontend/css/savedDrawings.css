@@ -118,7 +118,7 @@ li {
 }
 
 #drawingwrapper{
-    border-top: 3px solid rgb(236, 236, 236);
+    border-top: 3px solid var(--brand-basic);
 }
 
 
