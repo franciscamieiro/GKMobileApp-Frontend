@@ -56,7 +56,7 @@ async function faz() {
               return;
             } else {
               tentativa = 0;
-              Swal.fire(
+              swal(
                 'Cara não reconhecida!',
                 '',
                 'warning'
@@ -125,9 +125,6 @@ async function loadLabeledImages() {
       }
       return new faceapi.LabeledFaceDescriptors(label.user.username + " " + label.secret, descriptions)
     })
-
-
-
   )
 }
 
