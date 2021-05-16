@@ -69,6 +69,7 @@ function startVideo() {
 
 function endVideo() {
 
+  alert("oi");
   const stream = video.srcObject;
   const tracks = stream.getTracks();
   const canvas = document.getElementsByTagName("CANVAS")[1];
