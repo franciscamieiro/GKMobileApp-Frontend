@@ -29,7 +29,77 @@
 
     <!-- Sweetalert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+
+    <style>
+        select {
+            -webkit-appearance: none;
+        }
+
+        #divVideo {
+            position: absolute;
+            top: 55px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+            height: 40%;
+            width: 70%;
+            background-color: #f8f9fc;
+            text-align: center;
+            border-radius: 20px;
+            border: 2px solid #c7c7c7;
+        }
+
+        video {
+            max-width: 720px;
+        }
+
+        canvas {
+            position: absolute;
+            top: 55px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .btn-secondary {
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: rgb(3 3 65);
+            outline: none;
+            appearance: none;
+            border: 0.5px solid #2d014b;
+            color: #fff;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: rgb(117 61 141);
+            outline: none;
+            appearance: none;
+            border: 0.5px solid rgb(77, 39, 95);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .cancel {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .regist {
+            display: none;
+        }
+    </style>
+
     <title>Permissões</title>
 
 </head>
@@ -67,17 +137,22 @@
             <canvas id="canvas" width="134px" height="100px" style="display:none;"></canvas>
 
         </div>
-        <img style="width: 100%; height: auto;" src="" id="FtRecFac">
-
-        <div class="row">
+        <div style="text-align: center; margin: 0 auto; width: 80%; "><img
+                style="width: 100%; height: auto; border-radius: 10px;" src="" id="FtRecFac"></div>
+        <span id="span"
+            style="font-size: 16px; color: rgb(133, 133, 133); padding-left: 25px; padding-top: 15px; padding-bottom: 12px;text-align: center; display: none;">Introduz
+            a tua palavra-passe para ativar o registo:</span>
+        <div class="row" id="input">
             <label class="costum-field">
                 <input class="v103_163" type="password" id="Pass" required><span class="v121_2">Palavra-passe</span>
                 <div class="v103_168" onclick="toggle()"></div></input>
             </label>
         </div>
 
-        <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-primary regist" id="RegistarReconhecimento">Registar</button>
+        <div style="text-align: center; margin-bottom: 80px;">
+            <button class="btn btn-secondary cancel" type="button" data-dismiss="modal" id="cancel">Cancelar</button>
+            <button class="btn btn-primary regist" id="RegistarReconhecimento">Registar</button>
+        </div>
 
         <!-- footer -->
         <div id="app-footer">

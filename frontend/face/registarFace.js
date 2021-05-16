@@ -69,7 +69,6 @@ function startVideo() {
 
 function endVideo() {
 
-  alert("oi");
   const stream = video.srcObject;
   const tracks = stream.getTracks();
   const canvas = document.getElementsByTagName("CANVAS")[1];
@@ -100,6 +99,10 @@ document.getElementById("btnTakePhoto").addEventListener("click", () => {
     var dataURI = canvas.toDataURL('image/jpeg');
     endVideo();
     document.getElementById("FtRecFac").src = dataURI;
+    document.getElementById("input").style.display = "flex";
+    document.getElementById("span").style.display = "block";
+    document.getElementById("RegistarReconhecimento").style.display = "inline-block";
+    document.getElementById("cancel").style.display = "inline-block";
 
 
     var blob = dataURLtoBlob(dataURI);
@@ -187,7 +190,7 @@ document.getElementById("RegistarReconhecimento").addEventListener("click", () =
     }
   } else {
     swal(
-      'Inserir palavra-passe e verificar se a foto aparece!',
+      'Insere a palavra-passe',
       '',
       'warning'
     )
@@ -220,3 +223,12 @@ function toggle() {
       state = true;
   }
 };
+
+
+document.getElementById("cancel").addEventListener("click", function(){
+  document.getElementById("FtRecFac").src = "";
+  document.getElementById("input").style.display = "none";
+  document.getElementById("span").style.display = "none";
+  document.getElementById("RegistarReconhecimento").style.display = "none";
+  document.getElementById("cancel").style.display = "none"
+});
