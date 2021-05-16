@@ -108,7 +108,6 @@ document.getElementById("btnTakePhoto").addEventListener("click", () => {
     var blob = dataURLtoBlob(dataURI);
     ola = new FormData();
     ola.append("file", blob);
-    ola.append("passwordInserted", "pass")
 
   } else {
     swal(
@@ -133,8 +132,7 @@ document.getElementById("RegistarReconhecimento").addEventListener("click", () =
   if (!(password == "" || ft == "")) {
     if (eValido) {
 
-      ola.set("passwordInserted", password);
-
+      console.log(ola);
       //facial-recognition/upload/{userID}
 
       fetch('http://localhost:80/api/facial-recognition/upload/' + id, {
@@ -159,20 +157,71 @@ document.getElementById("RegistarReconhecimento").addEventListener("click", () =
           console.log(result);
           if (result) {
 
-            swal(
-              'Reconhecimento facial registado com sucesso!',
-              '',
-              'success'
-            ).then(() => {
-              location.reload();
-            })
+              let idfacial = result.objectId;
 
-          }
-          else {
-            swal("Erro!", "Erro!", "error")
-              .then(() => {
-                //location.reload();
+              let data = {};
+              data.passwordInserted = password;
+
+              ///api/facial-recognition/{id} 
+              fetch('http://localhost:80/api/facial-recognition/' + idfacial, {
+                headers: { 'Content-Type': 'application/json' },
+                method: 'PUT',
+                body: JSON.stringify(data)
               })
+                .then(function (response) {
+                  //console.log(response.headers.get('Set-Cookie'));
+                  console.log(response);
+                  if (!response.ok) {
+                    throw new Error(response.statusText);
+                  }
+                  return response.json();
+                })
+                .catch(function (err) {
+                  console.log(err); // estava alert(err); coloquei console log para não estar sempre a aparecer pop-up ao utilizador
+                })
+                .then(async function (result) {
+                  console.log(result);
+                  if (result) {
+
+                    swal({
+                      icon: 'images/v254_5.png',
+                      title: 'Sucesso',
+                      text: 'Reconhecimento facial registado com sucesso!',
+                      className: "swalAlert",
+                      button: 'Ok',
+                    }).then((value) => {
+
+                      document.getElementById("FtRecFac").src = "";
+                      document.getElementById("input").style.display = "none";
+                      document.getElementById("span").style.display = "none";
+                      document.getElementById("RegistarReconhecimento").style.display = "none";
+                      document.getElementById("cancel").style.display = "none"
+
+                    });
+
+                  } else {
+                    swal({
+                      icon: 'images/v237_21.png',
+                      title: 'Erro',
+                      text: 'Erro ao guardar.',
+                      button: 'OK',
+                      className: "swalAlert"
+
+                    })
+
+                  }
+                });
+            
+
+          } else {
+            swal({
+              icon: 'images/v237_21.png',
+              title: 'Erro',
+              text: 'Erro ao guardar.',
+              button: 'OK',
+              className: "swalAlert"
+
+            })
 
             //swal({ title: `${result.value.userMessage.message.pt}` });
           }
@@ -228,6 +277,7 @@ function toggle() {
 document.getElementById("cancel").addEventListener("click", function(){
   document.getElementById("FtRecFac").src = "";
   document.getElementById("input").style.display = "none";
+  document.getElementById("Pass").value = "";
   document.getElementById("span").style.display = "none";
   document.getElementById("RegistarReconhecimento").style.display = "none";
   document.getElementById("cancel").style.display = "none"

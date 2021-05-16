@@ -207,3 +207,12 @@ input{
 input:focus{
     outline: none;
 }
+
+.swalAlert {
+    background-color: #fff;
+    font-family: 'Open Sans';
+    height: 250px;
+    width: 70%;
+    overflow-y: hidden;
+    border-radius: 12px;
+  }
