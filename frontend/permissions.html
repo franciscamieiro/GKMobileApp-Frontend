@@ -24,7 +24,47 @@
     <link id="theme" href="./css/permissions.css" rel="stylesheet" />
     <link id="theme" href="./css/global.css" rel="stylesheet" />
 
-    <title>Tema</title>
+    <script defer src="./face/face-api.min.js"></script>
+    <script defer src="./face/registarFace.js"></script>
+
+    <!-- Sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <style>
+        select {
+            -webkit-appearance: none;
+        }
+
+        #divVideo {
+            position: absolute;
+            top: 55px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+            height: 60%;
+            width: 70%;
+            background-color: #f8f9fc;
+            text-align: center;
+        }
+
+        video {
+            max-width: 720px;
+        }
+
+        canvas {
+            position: absolute;
+            top: 55px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+
+    <title>Permissões</title>
 
 </head>
 
@@ -43,7 +83,30 @@
         <div class="v124_339" onclick="goBack()"></div>
         <span class="v124_340">Permissões</span>
         <span class="v124_341">Reconhecimento Facial</span>
-        <span id="ativar">Ativar</span>
+
+
+        <button onclick="startVideo()" style="border: none; background-color: transparent; display: inline;"><img
+                style="height: 30px; width: 30px;" src="./images/reconhecimento.png"></button>
+
+        <!-- Registar reconhecimento facial -->
+        <div id="divVideo" style="display: none;">
+
+            <video style="z-index: 3; width: 720px; height: 540px;" id="video" autoplay muted></video>
+            <div class="w-100">
+                <button class="btn btn-secondary mx-auto" type="button" id="btnVideo"
+                    onclick="endVideo()">Cancelar</button>
+                <button class="btn btn-primary mx-auto" id="btnTakePhoto" data-toggle="modal"
+                    data-target="#FaceModal">Take Photo</button>
+            </div>
+
+            <canvas id="canvas" width="134px" height="100px" style="display:none;"></canvas>
+
+        </div>
+        <img style="width: 100%; height: auto;" src="" id="FtRecFac">
+        <input type="password" id="Pass"></input>
+
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" id="RegistarReconhecimento">Registar</button>
 
         <!-- footer -->
         <div id="app-footer">

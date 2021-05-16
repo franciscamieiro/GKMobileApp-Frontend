@@ -24,6 +24,9 @@
     <link href="./css/global.css" rel="stylesheet" />
     <link href="./css/login.css" rel="stylesheet" />
 
+    <script defer src="./face/face-api.min.js"></script>
+    <script defer src="./face/script.js"></script>
+
     <title>Login</title>
 
 </head>
@@ -39,12 +42,15 @@
         <form class="row" method="POST" id="login_form">
 
             <label class="costum-field">
-                <input class="v103_161" type="text" id="inputEmail" required><span class="v103_162">Endereço Eletrónico</span></input>
-                
+                <input class="v103_161" type="text" id="inputEmail" required><span class="v103_162">Endereço
+                    Eletrónico</span></input>
+
             </label>
 
             <label class="costum-field">
-                    <input class="v103_163" type="password" id="inputPassword" required><span class="v121_2">Palavra-passe</span><div class="v103_168" onclick="toggle()"></div></input>
+                <input class="v103_163" type="password" id="inputPassword" required><span
+                    class="v121_2">Palavra-passe</span>
+                <div class="v103_168" onclick="toggle()"></div></input>
             </label>
 
             <a href="changePassword.html" class="v103_165">Esqueceu-se da palavra-passe?</a>
@@ -53,16 +59,28 @@
 
         </form>
 
+        <span data-toggle="modal" id="span" data-target="#logoutModal" onclick="startVideo()"
+            style="width: 48px; height: 48px;">
+            <img src="images/reconhecimento.png" style="width: 48px;height:48px;margin-left: 42.5%; margin-top: 30px;">
+        </span>
+
         <div id="app-footer">
             <span class="v106_6" id="createAccount">Criar Conta</span>
         </div>
 
     </div>
+
+    <video
+        style="display: none; z-index: 3; width: 75%; height: 180px; position: absolute; margin-top: -352px; margin-left: 13%;"
+        id="video" autoplay muted></video>
+    <button class="mx-auto" style="display: none; position: absolute; margin-left: 40%; margin-top: -160px;" id="btnVideo"
+        onclick="endVideo()">Cancelar</button>
     <!-- Main JS-->
     <script src="js/login.js"></script>
 
     <!-- SweetAlert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 
 </body>
 

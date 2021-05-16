@@ -69,8 +69,8 @@ btnLogin.addEventListener("click", function () {
         // /api/auth/signin POST
 
         let data = {};
-        data.email = email.value;
-        data.password = password.value;
+        data.email = email.value.trim();
+        data.password = password.value.trim();
 
         fetch("http://localhost:80/api/auth/signin", {
             credentials: 'include',

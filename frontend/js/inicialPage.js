@@ -15,7 +15,6 @@ var viewportOffset = yellow.getBoundingClientRect();
 // these are relative to the viewport, i.e. the window
 var top = viewportOffset.top;
 var left = viewportOffset.left;
-console.log(top);
 
 box.style.display = "none";
 box1.style.marginTop = top + 20 + "px";

@@ -151,8 +151,8 @@ btnSubmit.addEventListener("click", function() {
         
         let data = {};
         data.name = name.value;
-        data.email = email.value;
-        data.password = password.value;
+        data.email = email.value.trim();
+        data.password = password.value.trim();
         data.dateOfBirth = birth.value.split('-').reverse().join('-');
         data.role = "CHILD";
         console.log(data);
