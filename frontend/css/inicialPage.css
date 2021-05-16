@@ -150,6 +150,31 @@
   background-color: rgba(122,142,217,1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.lightext{
+  width: 110px;
+  color: var(--text-color);
+  font-family: Londrina Solid;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+  float: left;
+  margin-bottom: 30px;
+}
+.light {
+  width: 116px;
+  height: 109px;
+  opacity: 1;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-image: url("../images/v138_64.png");
+  background-repeat: no-repeat;
+  background-position: center 15px;
+  background-size: 70% 75%;
+  background-color: #5BC4DB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .v124_42 {
   background-image: url("../images/v138_65.png");
   background-repeat: no-repeat;

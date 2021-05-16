@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Pex.Js Engine by Ahmad Faisal Jawed">
+    <meta name="author" content="Ahmad Faisal Jawed">
+
+    <link href="./css/coronavirusGame.css" rel="stylesheet" />
+
+    <title>Coronavirus Shooting Game</title>
+</head>
+
+<body onresize='_pexresize()'>
+
+    <div class="v132_120" onclick="goBack()"></div>
+
+    <div class="score" id="bestscore">Melhor Pontuação: </div>
+    
+    <canvas id='canvas' width='1280' height='720'></canvas>
+
+    <script src="js/theme-script.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/coronavirusGame.js"></script>
+</body>
+
+</html>

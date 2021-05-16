@@ -1,0 +1,121 @@
+
+.row{
+  display: flex;
+  margin-top: 150px;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.container{
+  margin-bottom: 60px;
+  margin-right: 20px;
+  margin-left: 30px;
+}
+
+
+/* responsive media queries*/
+
+@media screen and (max-width:1000px) {
+  .v124_42{
+    width: 40%;
+  }
+}
+
+@media screen and (max-width:620px) {
+  .v103_280{
+    width: 100%;
+  }
+  .v124_42{
+    width: 80%;
+  }
+}
+
+.v103_280 {
+  max-width: 100%;
+  min-width: 190px;
+  background: var(--brand-basic);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+}
+
+.v109_1 {
+  width: 126px;
+  color: var(--text-color);
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+  float: left;
+  padding-left: -20px;
+}
+
+.v124_42 {
+  background-image: url("../images/virus.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 116px;
+  height: 109px;
+  opacity: 1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+  margin-left: 6px;
+  border-radius: 6px;
+}
+
+/* FAZER CODE FOR SCROLL BAR v120_0 é como quero a scroll bar*/ 
+
+.v121_9 {
+  width: 100%;
+  color: rgba(167,114,190,1);
+  position: relative;
+  margin-top: 100px;
+  font-family: Londrina Solid;
+  font-weight: Black;
+  font-size: 27px;
+  opacity: 1;
+  text-align: center;
+  float: left;
+}
+
+.fa-question-circle{
+  color: var(--text-color);
+  font-family: FontAwesome;
+  margin-left: 5px;
+}
+
+.instructions{
+  opacity: 1;
+  position: relative;
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding-left:25px;
+  padding-right:25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--brand-basic);
+  border: 1px solid rgb(192, 192, 192);
+  position: absolute;
+  top: 50%;
+  margin-top: -172.5px;
+  height: 345px;
+  width:60%;
+  border-radius: 30px;
+  align-items: center;
+  margin-left: 13.2%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#close{
+  color:rgb(26, 83, 224)
+}
+
+.score{
+  color: var(--text-color);
+  padding-top: 30px;
+}

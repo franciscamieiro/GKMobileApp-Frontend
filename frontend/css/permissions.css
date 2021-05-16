@@ -19,9 +19,9 @@
 .v124_340 {
     width: 172px;
     color: rgba(142, 80, 168, 1);
-    position: relative;
-    top: 35px;
-    left: 68px;
+    position: absolute;
+    top: 67px;
+    left: 50px;
     font-family: Londrina Solid;
     font-weight: Regular;
     font-size: 24px;
@@ -31,16 +31,16 @@
 }
 
 .v124_341 {
-    width: 150px;
+    width: 100%;
     color: var(--text-color);
-    position: relative;
-    top: 102px;
-    left: -80px;
+    position: absolute;
+    left: 45px;
+    top: 140px;
     font-family: Open Sans;
     font-weight: Bold;
     font-size: 16px;
     opacity: 1;
-    text-align: center;
+    text-align: left;
 }
 
 
@@ -88,7 +88,7 @@ input.apple-switch:checked:after {
 .activate{
     border: none; background-color: transparent; display: inline;
     position: relative;
-    margin-top: 125px;
+    margin-top: 145px;
     margin-left: 40px;
     padding-bottom: 15px;
     font-size: 14px;
@@ -103,7 +103,7 @@ input.apple-switch:checked:after {
     background-color: rgb(231, 231, 231);
     border: 1px solid #c7c7c7;
     border-radius: 20px;
-    width: 250px;
+    width: 70%;
     margin-bottom: 20px;
     color: rgb(77, 77, 77);
     

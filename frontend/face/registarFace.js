@@ -161,9 +161,11 @@ document.getElementById("RegistarReconhecimento").addEventListener("click", () =
 
               let data = {};
               data.passwordInserted = password;
+              data.userID = id;
+              data.id = idfacial;
 
               ///api/facial-recognition/{id} 
-              fetch('http://localhost:80/api/facial-recognition/' + idfacial, {
+              fetch('http://localhost:80/api/facial-recognition/password', {
                 headers: { 'Content-Type': 'application/json' },
                 method: 'PUT',
                 body: JSON.stringify(data)

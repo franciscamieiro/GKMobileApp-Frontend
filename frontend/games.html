@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Gokids">
+    <meta name="apple-mobile-web-app-title" content="Gokids">
+    <meta name="theme-color" content="#a772be">
+    <meta name="msapplication-navbutton-color" content="#a772be">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Adapt screen to any mobile device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+    <!-- Adapt special characteres -->
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
+    <link href="./css/games.css" rel="stylesheet" />
+    <link href="./css/global.css" rel="stylesheet" />
+    <link href="./css/animationTryout.css" rel="stylesheet" />
+
+    <!-- Sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Jogar</title>
+
+</head>
+
+<body>
+
+    <div class="v103_280">
+
+
+        <header>
+
+            <div class="v104_15">
+                <div class="v190_34"></div>
+            </div>
+
+
+        </header>
+
+        <span class="v121_9">Jogar</span>
+
+        <div class="row">
+
+            <div class="container">
+                <a href="coronavirusGame.html" class="container">
+                    <div class="v124_42" id="coronavirusgame"></div>
+                </a>
+                <label class="v109_1">Jogo de tiro ao Corona Virus<i class="fas fa-question-circle fa-lg"
+                        onclick="instructionsCorona()"></i></label>
+                <p><div class="score" id="bestscore">Melhor Pontuação: </div></p>
+            </div>
+
+        </div>
+
+
+        <div class="instructions" style="display: none;" id="instructions">Instruções: <p>Como podes matar os vírus? <br>- Para matares os vírus só tens de pressionar o ecrã e
+            arrastar a mira para onde estão os vírus.<p>Como podes ganhar saúde? <br>- Apanha os corações e restauras a
+                saúde toda!</p>
+            <p>Apanha a proteção amarela para matares os vírus vermelhos de uma vez!</p><div id="close">Fechar</div>
+        </div>
+
+
+        <footer>
+
+            <div id="app-footer">
+                <ul>
+                    <li><a href="inicialPage.html" class="button"><svg class="v124_17"></svg></a></li>
+                    <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
+                    <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
+                    <li><a id="logout" class="button"><svg class="v294_3"></svg></a></li>
+                </ul>
+            </div>
+
+        </footer>
+        <script src="js/theme-script.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/games.js"></script>
+
+    </div>
+
+</body>
+
+</html>
