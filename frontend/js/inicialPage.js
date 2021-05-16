@@ -49,11 +49,35 @@ info.addEventListener("click", function () {
 
 });
 
+function playSound(soundfile_ogg, soundfile_mp, soundfile_ma) {
+    if ("Audio" in window) {
+        var a = new Audio();
+        if (!!(a.canPlayType && a.canPlayType('audio/ogg; codecs="vorbis"')
+                .replace(/no/, '')))
+            a.src = soundfile_ogg;
+        else if (!!(a.canPlayType && a.canPlayType('audio/mpeg;').replace(/no/,
+                '')))
+            a.src = soundfile_mp;
+        else if (!!(a.canPlayType && a.canPlayType(
+                'audio/mp4; codecs="mp4a.40.2"').replace(/no/, '')))
+            a.src = soundfile_ma;
+        else
+            a.src = soundfile_mp;
+
+        a.autoplay = true;
+        return;
+    }
+}
+
 function start(){
     var viewportOffset = yellow.getBoundingClientRect();
     // these are relative to the viewport, i.e. the window
     var top = viewportOffset.top;
     var left = viewportOffset.left;
+
+    audioObj = new Audio("../frontend/audio/audio1.mp3");
+
+    
 
     box.style.display = "none";
     box1.style.marginTop = top + 20 + "px";
