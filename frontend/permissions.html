@@ -29,41 +29,7 @@
 
     <!-- Sweetalert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <style>
-        select {
-            -webkit-appearance: none;
-        }
-
-        #divVideo {
-            position: absolute;
-            top: 55px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin-right: auto;
-            margin-left: auto;
-            height: 60%;
-            width: 70%;
-            background-color: #f8f9fc;
-            text-align: center;
-        }
-
-        video {
-            max-width: 720px;
-        }
-
-        canvas {
-            position: absolute;
-            top: 55px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin-right: auto;
-            margin-left: auto;
-        }
-    </style>
-
+    
     <title>Permissões</title>
 
 </head>
@@ -85,8 +51,7 @@
         <span class="v124_341">Reconhecimento Facial</span>
 
 
-        <button onclick="startVideo()" style="border: none; background-color: transparent; display: inline;"><img
-                style="height: 30px; width: 30px;" src="./images/reconhecimento.png"></button>
+        <button onclick="startVideo()" class="activate">Ativar Reconhecimento Facial</button>
 
         <!-- Registar reconhecimento facial -->
         <div id="divVideo" style="display: none;">
@@ -96,17 +61,23 @@
                 <button class="btn btn-secondary mx-auto" type="button" id="btnVideo"
                     onclick="endVideo()">Cancelar</button>
                 <button class="btn btn-primary mx-auto" id="btnTakePhoto" data-toggle="modal"
-                    data-target="#FaceModal">Take Photo</button>
+                    data-target="#FaceModal">Tirar Foto</button>
             </div>
 
             <canvas id="canvas" width="134px" height="100px" style="display:none;"></canvas>
 
         </div>
         <img style="width: 100%; height: auto;" src="" id="FtRecFac">
-        <input type="password" id="Pass"></input>
 
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-primary" id="RegistarReconhecimento">Registar</button>
+        <div class="row">
+            <label class="costum-field">
+                <input class="v103_163" type="password" id="Pass" required><span class="v121_2">Palavra-passe</span>
+                <div class="v103_168" onclick="toggle()"></div></input>
+            </label>
+        </div>
+
+        <button class="btn btn-secondary cancel" type="button" data-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary regist" id="RegistarReconhecimento">Registar</button>
 
         <!-- footer -->
         <div id="app-footer">

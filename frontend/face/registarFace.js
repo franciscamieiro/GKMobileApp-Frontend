@@ -205,3 +205,17 @@ function dataURLtoBlob(dataurl) {
   }
   return new Blob([u8arr], { type: mime });
 }
+
+let state = false;
+
+function toggle() {
+
+  if (state) {
+      document.getElementById("Pass").setAttribute("type", "password");
+      state = false;
+  }
+  else {
+      document.getElementById("Pass").setAttribute("type", "text");
+      state = true;
+  }
+};
