@@ -14,13 +14,12 @@ async function faz() {
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
 
   const canvas = faceapi.createCanvasFromMedia(video);
-  document.body.append(canvas);
-
-  video.style.width = "200px";
-  video.style.height = "auto";
 
   var largura = document.getElementById("video").offsetWidth;
   var altura = document.getElementById("video").offsetHeight;
+  
+  video.style.width = largura + "px";
+  video.style.height = altura + "px";
 
   const displaySize = { width: largura, height: altura }
 
@@ -77,7 +76,6 @@ async function faz() {
     } else {
       tentativa = 0;
     }
-    console.log(tentativa)
 
     results.forEach((result, i) => {
       const bottomRight = {
@@ -104,7 +102,6 @@ async function loadLabeledImages() {
     method: 'GET',
   });
   var users = await response.json();
-  //console.log(users);
 
   for (var user of users) {
     labels.push(user)
