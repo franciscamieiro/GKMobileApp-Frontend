@@ -161,7 +161,7 @@
                 <li><a href="settings.html" class="button"><svg class="v294_0"></svg></a></li>
                 <li><a href="perfil.html" class="button"><svg class="v124_22"></svg></a></li>
                 <li>
-                    <div id="logout" class="button"><svg class="v294_3"></svg></div>
+                    <div id="logout" class="button" onclick="logout();"><svg class="v294_3"></svg></div>
                 </li>
             </ul>
         </div>
@@ -184,23 +184,6 @@
         }
 
         setInterval(isConnected, 5000);
-
-        let logout = document.getElementById("logout");
-
-        logout.addEventListener("click", function () {
-
-
-            swal({
-                icon: 'images/v254_5.png',
-                title: 'Sucesso',
-                text: 'Sessão terminada',
-                button: 'OK',
-                className: "swalAlert"
-            }).then((isConfirm) => {
-                localStorage.clear();
-                window.location.replace("login.html");
-            });
-        });
 
     </script>
 

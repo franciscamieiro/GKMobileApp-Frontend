@@ -1,4 +1,4 @@
-function isConnected(){
+function isConnected() {
     var ifConnected = window.navigator.onLine;
 
     if (ifConnected == false) {
@@ -19,41 +19,41 @@ const savedDrawings = document.getElementById("drawings");
 function goBack() {
 
     window.history.back();
-        
+
 }
 
-function edit(element){
+function edit(element) {
     let drawingsEditid = element.getAttribute("name");
     localStorage.setItem("editDrawingid", drawingsEditid);
     window.location.replace("canvas.html");
 }
 
-function del(element){
+function del(element) {
     let drawingid = element.getAttribute("name");
     console.log(drawingid);
     fetch('http://localhost:80/api/creations/' + drawingid, {
         method: 'DELETE',
-        })
+    })
         .then(res => res.text()) // or res.json()
         .then(res => console.log(res))
-        .then(function(response) {
+        .then(function (response) {
 
             savedDrawings.innerHTML = "";
 
-            const renderDrawings = async() => {
+            const renderDrawings = async () => {
 
                 let strHtml = ``;
-        
+
                 const response = await fetch("http://localhost:80/api/creations/users/" + id)
                 const drawings = await response.json()
                 let i = 1;
-                
+
                 for (const drawing of drawings) {
-        
+
                     let img = document.createElement("img");
-        
+
                     let src = img.src = "data:image/png;base64," + drawing.image;
-        
+
                     strHtml += `
                         <div id="drawingwrapper">
                         <img class="drawing" src="${src}"></img>
@@ -75,16 +75,16 @@ function del(element){
                     `;
                     i++
                 }
-        
+
                 savedDrawings.innerHTML = strHtml;
-        
+
             }
             renderDrawings();
 
         });
 }
 
-function pub(element){
+function pub(element) {
     let drawingid = element.getAttribute("name");
 
     let data = {};
@@ -98,7 +98,7 @@ function pub(element){
         headers: { 'Content-Type': 'application/json' },
         method: 'PUT',
         body: JSON.stringify(data)
-    }).then(function(response) {
+    }).then(function (response) {
 
         if (!response.ok) {
             console.log(response.status); //=> number 100–599
@@ -118,12 +118,12 @@ function pub(element){
                 text: 'Desenho publicado!',
                 buttons: false,
                 className: "swalAlertSucess"
-                
+
             });
         }
-    }).then(function(result) {
+    }).then(function (result) {
         console.log(result);
-    }).catch(function(err) {
+    }).catch(function (err) {
         swal({
             icon: 'images/v237_21.png',
             title: 'Erro',
@@ -137,7 +137,7 @@ function pub(element){
 
 window.onload = () => {
 
-    const renderDrawings = async() => {
+    const renderDrawings = async () => {
 
         let strHtml = ``;
 
@@ -145,7 +145,7 @@ window.onload = () => {
         const response = await fetch("http://localhost:80/api/creations/users/" + id)
         const drawings = await response.json()
         let i = 1;
-        
+
         for (const drawing of drawings) {
 
             let img = document.createElement("img");
@@ -182,8 +182,8 @@ window.onload = () => {
 
 let logout = document.getElementById("logout");
 
-logout.addEventListener("click", function(){
-    
+logout.addEventListener("click", function () {
+
 
     swal({
         icon: 'images/v254_5.png',
@@ -198,22 +198,22 @@ logout.addEventListener("click", function(){
 });
 
 let info = document.getElementById("info");
-        let helptxt = document.getElementById("helptxt");
-        let close = document.getElementById("close");
-        let isShowing = false;
+let helptxt = document.getElementById("helptxt");
+let close = document.getElementById("close");
+let isShowing = false;
 
-        info.addEventListener("click", function () {
+info.addEventListener("click", function () {
 
-            if (isShowing == false) {
-                helptxt.style.display = "block";
-                isShowing = true;
-            }
+    if (isShowing == false) {
+        helptxt.style.display = "block";
+        isShowing = true;
+    }
 
-        });
+});
 
-        close.addEventListener("click", function () {
-            if (isShowing == true) {
-                helptxt.style.display = "none";
-                isShowing = false;
-            }
-        });
+close.addEventListener("click", function () {
+    if (isShowing == true) {
+        helptxt.style.display = "none";
+        isShowing = false;
+    }
+});

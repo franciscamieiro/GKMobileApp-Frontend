@@ -12,6 +12,7 @@ function logout(){
         window.location.replace("login.html");
     });
 }
+
 function isConnected(){
     var ifConnected = window.navigator.onLine;
 

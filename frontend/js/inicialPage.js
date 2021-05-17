@@ -138,11 +138,20 @@ function close3() {
         helptxt.style.height = "22%"
     }
     box1.style.display = "block";
-    helptxt.innerHTML = `Clica no icon azul para ver o mapa da tua cidade, marcar locais favoritos e tirar fotos!<div class="close" onclick="close4()">Fechar</div>`
+    helptxt.innerHTML = `Clica no icon azul escuro para ver o mapa da tua cidade, marcar locais favoritos e tirar fotos!<div class="close" onclick="close4()">Fechar</div>`
 
 }
 
 function close4() {
+    box.style.display = "none";
+    box1.style.display = "none";
+    helptxt.style.display = "block";
+    helptxt.style.height = "13%"
+    helptxt.innerHTML = `Clica no icon azul claro para jogares um jogo<div class="close" onclick="close5()">Próxima</div>`;
+    helptxt.style.marginTop = "300px";
+}
+
+function close5() {
     box.style.display = "none";
     box1.style.display = "none";
     helptxt.style.display = "none";

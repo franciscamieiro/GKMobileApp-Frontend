@@ -81,7 +81,7 @@ body{
     position: fixed;
     left: 0px;
     overflow:hidden;
-    border-top: 2.4px solid var(--font-color);
+    border-top: 2.4px solid var(--border-top);
     z-index: 12;
     bottom: 0;
     transition: 0.3s;

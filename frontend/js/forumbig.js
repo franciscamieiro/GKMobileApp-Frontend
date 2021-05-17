@@ -994,3 +994,24 @@ function dataURLtoBlob(dataurl) {
 
     return new Blob([u8arr], { type: mime });
 }
+
+let info = document.getElementById("info");
+let helptxt = document.getElementById("helptxt");
+let close = document.getElementById("close");
+let isShowing = false;
+
+info.addEventListener("click", function () {
+
+    if (isShowing == false) {
+        helptxt.style.display = "block";
+        isShowing = true;
+    }
+
+});
+
+close.addEventListener("click", function () {
+    if (isShowing == true) {
+        helptxt.style.display = "none";
+        isShowing = false;
+    }
+});

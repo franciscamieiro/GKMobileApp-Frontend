@@ -275,3 +275,24 @@ logout.addEventListener("click", function(){
         window.location.replace("login.html");
     });
 });
+
+let info = document.getElementById("info");
+let helptxt = document.getElementById("helptxt");
+let close = document.getElementById("close");
+let isShowing = false;
+
+info.addEventListener("click", function () {
+
+    if (isShowing == false) {
+        helptxt.style.display = "block";
+        isShowing = true;
+    }
+
+});
+
+close.addEventListener("click", function () {
+    if (isShowing == true) {
+        helptxt.style.display = "none";
+        isShowing = false;
+    }
+});
