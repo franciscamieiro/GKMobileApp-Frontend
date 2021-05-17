@@ -12,10 +12,18 @@ function logout(){
         window.location.replace("login.html");
     });
 }
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
 
-<<<<<<< HEAD
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "settings.html")
+        window.location.replace("no_connection.html");
+    }
 
-=======
+}
+
+setInterval(isConnected, 5000);
+
 let tema = localStorage.getItem('theme');
 
 function changebgimg(){
@@ -31,4 +39,3 @@ function changebgimg(){
         document.getElementById('f3').className = 'v124_222';
     }
 }
->>>>>>> 6230f3c5a3923f13d2dd9bbd9f0d567c278876b9
