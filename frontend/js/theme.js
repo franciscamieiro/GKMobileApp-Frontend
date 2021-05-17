@@ -2,26 +2,26 @@ function goBack() {
   window.history.back();
 }
 
-function logout(){
+function logout() {
 
   swal({
-      icon: 'images/v254_5.png',
-      title: 'Sucesso',
-      text: 'Sessão terminada',
-      button: 'OK',
-      className: "swalAlert"
+    icon: 'images/v254_5.png',
+    title: 'Sucesso',
+    text: 'Sessão terminada',
+    button: 'OK',
+    className: "swalAlert"
   }).then((isConfirm) => {
-      localStorage.clear();
-      window.location.replace("login.html");
+    localStorage.clear();
+    window.location.replace("login.html");
   });
 }
 
-function isConnected(){
+function isConnected() {
   var ifConnected = window.navigator.onLine;
 
   if (ifConnected == false) {
-    localStorage.setItem("lastWindow", "theme.html")
-      window.location.replace("no_connection.html");
+    localStorage.lastWindow = "theme.html";
+    window.location.replace("no_connection.html");
   }
 
 }

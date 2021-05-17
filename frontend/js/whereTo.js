@@ -5,7 +5,7 @@ function isConnected() {
   var ifConnected = window.navigator.onLine;
 
   if (ifConnected == false) {
-    localStorage.setItem("lastWindow", "whereTo.html")
+    localStorage.lastWindow = "whereTo.html";
     window.location.replace("no_connection.html");
   }
 
