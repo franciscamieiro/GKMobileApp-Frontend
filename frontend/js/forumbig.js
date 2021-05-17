@@ -335,8 +335,9 @@ function publishFile() {
                 image = new FormData();
                 image.append("file", blob);
 
+                ///upload/{creationID}/users/{userID}
                 //api/image/comments/upload/{creationID}/{userID}
-                fetch("http://localhost:80/api/image/comments/upload/" + IDcreation + "/" + id, {
+                fetch("http://localhost:80/api/image/comments/upload/" + IDcreation + "/users/" + id, {
                     mode: 'cors',
                     method: 'POST',
                     body: image,
@@ -368,21 +369,21 @@ function publishFile() {
                             const renderImageComments = async () => {
 
                                 let strHtml = ``;
-
+                        
                                 const creationID = localStorage.getItem("idClickedPub");
                                 const response = await fetch(`http://localhost:80/api/image/comments/` + creationID)
                                 const comments = await response.json()
                                 let i = 1;
                                 for (const comment of comments) {
-
+                        
                                     let date = comment.published.split("T");
-
+                        
                                     let hours = date[1].split(".");
-
+                        
                                     let avatar = comment.userID.avatar;
-
+                        
                                     let profilesrc = null;
-
+                        
                                     if (avatar == 1) {
                                         profilesrc = "images/default-user-image.png"
                                     } else if (avatar == 2) {
@@ -412,11 +413,11 @@ function publishFile() {
                                     } else if (avatar == 13) {
                                         profilesrc = "images/avatar12.png"
                                     }
-
+                        
                                     let img = document.createElement("img");
-
+                        
                                     let src = img.src = "data:image/jpeg;base64," + comment.image;
-
+                        
                                     strHtml += `
                                          <li class="comment user-comment">
                          
@@ -433,12 +434,10 @@ function publishFile() {
                          
                                          </li>
                                          `;
-
-
                                     i++
                                 }
                                 forumComments.innerHTML += strHtml;
-
+                        
                             }
 
                             const renderTextComments = async () => {

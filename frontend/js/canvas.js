@@ -2,7 +2,7 @@ function isConnected(){
     var ifConnected = window.navigator.onLine;
 
     if (ifConnected == false) {
-        localStorage.setItem("lastWindow", "canvas.html")
+        localStorage.lastWindow = "canvas.html";
         window.location.replace("no_connection.html");
     }
 

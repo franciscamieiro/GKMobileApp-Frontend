@@ -1,9 +1,9 @@
-function isConnected(){
+function isConnected() {
   var ifConnected = window.navigator.onLine;
 
   if (ifConnected == false) {
-    localStorage.setItem("lastWindow", "doubts.html")
-      window.location.replace("no_connection.html");
+    localStorage.lastWindow = "doubts.html";
+    window.location.replace("no_connection.html");
   }
 
 }
@@ -20,9 +20,9 @@ wrapperWritten.innerHTML = '<span class="title">Escrever dúvida</span><input id
 
 const id = localStorage.userloggedin;
 
-window.onload = function() {
+window.onload = function () {
   let reloaded = localStorage.getItem("reloaded");
-  if(reloaded == "sim"){
+  if (reloaded == "sim") {
     swal({
       content: wrapperAudio,
       buttons: false
@@ -35,7 +35,7 @@ function goBack() {
   window.history.back();
 }
 
-writtenQuestion.addEventListener("click", function(){
+writtenQuestion.addEventListener("click", function () {
   swal({
     content: wrapperWritten,
     buttons: false
@@ -50,14 +50,14 @@ function deleteText() {
 
 function sendText() {
   let input = document.getElementById("input");
-  if(input.value == ""){
+  if (input.value == "") {
     swal({
       icon: 'images/warning.png',
-            title: 'Atenção',
-            text: 'Escreve a tua dúvida!',
-            button: 'OK',
-            className: "swalAlert"
-    }).then(function(isConfirm) {
+      title: 'Atenção',
+      text: 'Escreve a tua dúvida!',
+      button: 'OK',
+      className: "swalAlert"
+    }).then(function (isConfirm) {
 
       input.focus();
       swal({
@@ -66,7 +66,7 @@ function sendText() {
       });
     });
 
-  }else{
+  } else {
 
     // api/doubts/DoubtTxt
     let data = {};
@@ -74,66 +74,66 @@ function sendText() {
     data.description = input.value;
 
     fetch("http://localhost:80/api/doubts/DoubtTxt", {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: JSON.stringify(data)
-    }).then(function(response) {
-        console.log(data);
-        if (!response.ok) {
-            console.log(response.status); //=> number 100–599
-            console.log(response.statusText); //=> String
-            console.log(response.headers); //=> Headers
-            console.log(response.url); //=> String
-            if (response.status === 409) {
-            }
-            else {
-                throw Error(response.statusText);
-            }
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(function (response) {
+      console.log(data);
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+        console.log(response.url); //=> String
+        if (response.status === 409) {
         }
         else {
-          swal({
-            icon: 'images/v254_5.png',
-            title: 'Sucesso',
-            text: 'Dúvida Enviada!',
-            buttons: false,
-            className: "swalAlertSucess"
-            
-          }).then(function(isConfirm) {
-          
-            input.value = "";
-          });
+          throw Error(response.statusText);
         }
-    }).then(function(result) {
-        console.log(result);
-    }).catch(function(err) {
+      }
+      else {
         swal({
-            icon: 'images/v237_21.png',
-            title: 'Erro',
-            text: 'Erro ao enviar.',
-            button: 'OK',
-            className: "swalAlert"
-            
-        })
-        console.error(err);
+          icon: 'images/v254_5.png',
+          title: 'Sucesso',
+          text: 'Dúvida Enviada!',
+          buttons: false,
+          className: "swalAlertSucess"
+
+        }).then(function (isConfirm) {
+
+          input.value = "";
+        });
+      }
+    }).then(function (result) {
+      console.log(result);
+    }).catch(function (err) {
+      swal({
+        icon: 'images/v237_21.png',
+        title: 'Erro',
+        text: 'Erro ao enviar.',
+        button: 'OK',
+        className: "swalAlert"
+
+      })
+      console.error(err);
     });
-      
-    }
+
+  }
 }
 
 let logout = document.getElementById("logout");
 
-logout.addEventListener("click", function(){
-    
-    swal({
-        icon: 'images/v254_5.png',
-        title: 'Sucesso',
-        text: 'Sessão terminada',
-        button: 'OK',
-        className: "swalAlert"
-    }).then((isConfirm) => {
-        localStorage.clear();
-        window.location.replace("login.html");
-    });
+logout.addEventListener("click", function () {
+
+  swal({
+    icon: 'images/v254_5.png',
+    title: 'Sucesso',
+    text: 'Sessão terminada',
+    button: 'OK',
+    className: "swalAlert"
+  }).then((isConfirm) => {
+    localStorage.clear();
+    window.location.replace("login.html");
+  });
 });
 
 let info = document.getElementById("info");

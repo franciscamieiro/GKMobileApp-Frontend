@@ -2,7 +2,7 @@ function isConnected(){
     var ifConnected = window.navigator.onLine;
 
     if (ifConnected == false) {
-        localStorage.setItem("lastWindow", "favoritePlaces.html")
+        localStorage.lastWindow = "favoritePlaces.html";
         window.location.replace("no_connection.html");
     }
 
