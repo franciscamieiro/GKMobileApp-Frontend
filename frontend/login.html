@@ -18,14 +18,15 @@
 
     <meta charset="UTF-8">
 
+    <script defer src="./face/face-api.min.js"></script>
+    <script defer src="./face/script.js"></script>
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet" />
     <link href="./css/global.css" rel="stylesheet" />
     <link href="./css/login.css" rel="stylesheet" />
 
-    <script defer src="./face/face-api.min.js"></script>
-    <script defer src="./face/script.js"></script>
+    
 
     <title>Login</title>
 
@@ -59,11 +60,13 @@
 
         </form>
 
-        <span data-toggle="modal" id="span" data-target="#logoutModal" onclick="startVideo()"
-            style="width: 48px; height: 48px;">
-            <img src="images/reconhecimento.png" style="width: 48px;height:48px;margin-left: 42.5%; margin-top: 30px;">
-        </span>
-
+        <div class="card-body p-0" id="sizeVideo">
+            <span data-toggle="modal" id="span" data-target="#logoutModal" onclick="startVideo()"
+                style="width: 48px; height: 48px;">
+                <img src="images/reconhecimento.png"
+                    style="width: 48px;height:48px;margin-left: 42.5%; margin-top: 30px;">
+            </span>
+        </div>
         <div id="app-footer">
             <span class="v106_6" id="createAccount">Criar Conta</span>
         </div>
@@ -73,14 +76,14 @@
     <video
         style="display: none; z-index: 3; width: 75%; height: 180px; position: absolute; margin-top: -352px; margin-left: 13%;"
         id="video" autoplay muted></video>
-    <button class="mx-auto" style="display: none; position: absolute; margin-left: 40%; margin-top: -160px;" id="btnVideo"
-        onclick="endVideo()">Cancelar</button>
+    <button class="mx-auto" style="display: none; position: absolute; margin-left: 40%; margin-top: -160px;"
+        id="btnVideo" onclick="endVideo()">Cancelar</button>
     <!-- Main JS-->
     <script src="js/login.js"></script>
 
     <!-- SweetAlert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+
 
 </body>
 

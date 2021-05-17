@@ -12,3 +12,15 @@ function logout(){
         window.location.replace("login.html");
     });
 }
+
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "settings.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);

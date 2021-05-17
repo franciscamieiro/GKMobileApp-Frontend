@@ -1,6 +1,18 @@
 //IR BUSCAR AS COORDENADAS DA CIDADE DO PUTO À BD E PÔR AQUI
 //qnd se for buscar as coordenadas deve ter q se fazer um parseFloat() delas.
 
+function isConnected() {
+  var ifConnected = window.navigator.onLine;
+
+  if (ifConnected == false) {
+    localStorage.setItem("lastWindow", "whereTo.html")
+    window.location.replace("no_connection.html");
+  }
+
+}
+
+setInterval(isConnected, 5000);
+
 let latc = 41.5518;
 let longc = -8.4229;
 
@@ -82,4 +94,21 @@ close.addEventListener("click", function () {
     helptxt.style.display = "none";
     isShowing = false;
   }
+});
+
+let logout = document.getElementById("logout");
+
+logout.addEventListener("click", function(){
+    
+
+    swal({
+        icon: 'images/v254_5.png',
+        title: 'Sucesso',
+        text: 'Sessão terminada',
+        button: 'OK',
+        className: "swalAlert"
+    }).then((isConfirm) => {
+        localStorage.clear();
+        window.location.replace("login.html");
+    });
 });

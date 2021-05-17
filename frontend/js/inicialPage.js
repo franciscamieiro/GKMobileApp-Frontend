@@ -1,3 +1,15 @@
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "inicialPage.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
 let logout = document.getElementById("logout");
 let info = document.getElementById("info");
 let box = document.getElementById("box");

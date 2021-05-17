@@ -36,6 +36,7 @@
 
             <div class="v104_15">
                 <div class="v190_34"></div>
+                <span id="info" class="info"></span>
             </div>
 
 
@@ -55,6 +56,12 @@
 
         </div>
 
+        <div class="boxTXT" id="helptxt">Para desenhares numa fotografia que tens no teu telemóvel, carrega no botão <span class="laranja">laranja</span> e escolhe a foto!
+            <p>Para desenhares numa tela em branco carrega no botão <span class="amarelo">amarelo!</span></p>
+            <p>Para veres os desenhos que já desenhaste e depois guardaste carrega no botão <span class="verde">verde</span></p>
+            <div class="close" id="close">Fechar</div>
+        </div>
+
         <footer>
 
             <div id="app-footer">
@@ -68,6 +75,41 @@
 
         </footer>
     </div>
+
+    <script>
+        function isConnected() {
+            var ifConnected = window.navigator.onLine;
+
+            if (ifConnected == false) {
+                localStorage.setItem("lastWindow", "mydrawings.html")
+                window.location.replace("no_connection.html");
+            }
+
+        }
+
+        setInterval(isConnected, 5000);
+
+        let info = document.getElementById("info");
+        let helptxt = document.getElementById("helptxt");
+        let close = document.getElementById("close");
+        let isShowing = false;
+
+        info.addEventListener("click", function () {
+
+            if (isShowing == false) {
+                helptxt.style.display = "block";
+                isShowing = true;
+            }
+
+        });
+
+        close.addEventListener("click", function () {
+            if (isShowing == true) {
+                helptxt.style.display = "none";
+                isShowing = false;
+            }
+        });
+    </script>
 </body>
 
 <script src="js/theme-script.js"></script>

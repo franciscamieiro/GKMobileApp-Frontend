@@ -1,3 +1,15 @@
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "changePassword.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
 let state= false;
 const inputemail = document.getElementById("inputEmail");
 const changePass = document.getElementById("changePass");

@@ -121,4 +121,70 @@ li {
     border-top: 3px solid var(--brand-basic);
 }
 
+.info {
+    background: url("../images/info_icon.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin-top: -24.2px;
+    margin-right: 13px;
+  }
+  
+  .boxTXT{
+    position: absolute;
+    width: 66%;
+    margin-left: -37%;
+    left: 50%;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 50%);
+    background-color: rgb(243, 243, 243);
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    border-radius: 30px;
+    padding: 15px;
+    border: 2px solid rgba(196, 196, 196, 0.616);
+    display: none;
+    top: 20%;
+  }
+  
+  .close{
+    padding-top: 15px;
+    color:rgb(26, 83, 224)
+  }
+  
+  .lápis{
+    height: 20px;
+    width: 20px;
+    background-image: url("../images/edit_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    float: left;
+    overflow: none;
+    overflow: hidden;
+  }
+  
+  .lixo{
+    height: 24px;
+    width: 24px;
+    background-image: url("../images/icon_trash.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    float: left;
+  }
+  
+  .verde{
+    height:22px;
+    width: 22px;
+    background-image: url("../images/add_icon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    float: left;
+  }
+
 

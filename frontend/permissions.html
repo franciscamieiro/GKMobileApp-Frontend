@@ -170,6 +170,40 @@
         <script src="js/theme-script.js"></script>
         <script src="js/app.js"></script>
     </div>
+
+    <script>
+        
+        function isConnected() {
+            var ifConnected = window.navigator.onLine;
+
+            if (ifConnected == false) {
+                localStorage.setItem("lastWindow", "permissions.html")
+                window.location.replace("no_connection.html");
+            }
+
+        }
+
+        setInterval(isConnected, 5000);
+
+        let logout = document.getElementById("logout");
+
+        logout.addEventListener("click", function () {
+
+
+            swal({
+                icon: 'images/v254_5.png',
+                title: 'Sucesso',
+                text: 'Sessão terminada',
+                button: 'OK',
+                className: "swalAlert"
+            }).then((isConfirm) => {
+                localStorage.clear();
+                window.location.replace("login.html");
+            });
+        });
+
+    </script>
+
 </body>
 
 </html>

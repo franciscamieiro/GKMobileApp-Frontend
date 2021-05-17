@@ -1,3 +1,15 @@
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "forumbig.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
 const id = localStorage.userloggedin;
 
 const wrapperWritten = document.createElement('div');

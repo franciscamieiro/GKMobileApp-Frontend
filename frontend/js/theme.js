@@ -16,3 +16,14 @@ function logout(){
   });
 }
 
+function isConnected(){
+  var ifConnected = window.navigator.onLine;
+
+  if (ifConnected == false) {
+    localStorage.setItem("lastWindow", "theme.html")
+      window.location.replace("no_connection.html");
+  }
+
+}
+
+setInterval(isConnected, 5000);

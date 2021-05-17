@@ -1,3 +1,15 @@
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "savedDrawings.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
 let btnEdit = document.getElementById("btnEdit");
 let btnDelete = document.getElementById("btnDelete");
 let btnPublish = document.getElementById("btnPublish");
@@ -184,3 +196,24 @@ logout.addEventListener("click", function(){
         window.location.replace("login.html");
     });
 });
+
+let info = document.getElementById("info");
+        let helptxt = document.getElementById("helptxt");
+        let close = document.getElementById("close");
+        let isShowing = false;
+
+        info.addEventListener("click", function () {
+
+            if (isShowing == false) {
+                helptxt.style.display = "block";
+                isShowing = true;
+            }
+
+        });
+
+        close.addEventListener("click", function () {
+            if (isShowing == true) {
+                helptxt.style.display = "none";
+                isShowing = false;
+            }
+        });

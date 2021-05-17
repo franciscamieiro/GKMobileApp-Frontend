@@ -1,3 +1,15 @@
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "games.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
 function instructionsCorona(){
     document.getElementById("instructions").style.display = "block";
 }

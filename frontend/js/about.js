@@ -1,5 +1,14 @@
-window.onload = function(){
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "about.html")
+        window.location.replace("no_connection.html");
+    }
+
 }
+
+setInterval(isConnected, 5000);
 
 var x1 = document.getElementById("myDIV");
 var x2 = document.getElementById("myDIV2");

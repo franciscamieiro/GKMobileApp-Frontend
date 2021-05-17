@@ -9,21 +9,22 @@ Promise.all([
 ])
 
 
-
 async function faz() {
+  const labeledFaceDescriptors = await loadLabeledImages();
+  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
 
-  const labeledFaceDescriptors = await loadLabeledImages()
-  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
-
-  const canvas = faceapi.createCanvasFromMedia(video)
-  document.body.append(canvas)
+  const canvas = faceapi.createCanvasFromMedia(video);
+  document.body.append(canvas);
 
   video.style.width = "200px";
-  video.style.height = "100px";
+  video.style.height = "auto";
 
-  const displaySize = { width: "200px", height: "100px" }
+  var largura = document.getElementById("video").offsetWidth;
+  var altura = document.getElementById("video").offsetHeight;
 
-  faceapi.matchDimensions(canvas, displaySize)
+  const displaySize = { width: largura, height: altura }
+
+  faceapi.matchDimensions(video, displaySize)
   canvas.style.zIndex = "3";
   var tentativa = 0;
   var pessoa = "";
@@ -171,59 +172,38 @@ function endVideo() {
 }
 
 
-
 //-------------------------------------------------------------------LOGN FUNCTION------------------------------------------------------
 
 async function entrar(username, secret) {
   var data = {};
 
   data.username = username;
-  data.password = secret;
 
-  fetch('http://localhost:80/api/auth/signin/facial-recognition', {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    mode: 'cors',
-    method: 'POST',
-    body: JSON.stringify(data),
-    credentials: 'include'
-  })
-    .then(function (response) {
+  fetch('http://localhost:80/api/auth/byEmail/' + username)
+    .then((response) => response.json())
+    .then((userid) => {
 
-      console.log(response);
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .catch(function (err) {
-      console.log(err);
-    })
-    .then(async function (result) {
-      if (result) {
-        console.log(result);
-        localStorage.setItem("userLogado", result.userId);
-        localStorage.setItem("RoleLogado", result.role);
+      localStorage.setItem("userloggedin", userid);
+      fetch("http://localhost:80/api/users/" + userid)
+        .then((response) => response.json())
+        .then((user) => {
 
+          let theme = user.theme;
 
-        if (result.role !== "ROLE_GUARD") {
-          window.location.replace("./dashboard.html");
-        } else {
-          window.location.replace("./avisos.html");
-        }
+          if (theme == "light") {
 
-      } else {
-        Swal.fire(
-          'Os dados que inseriu não estão corretos!',
-          '',
-          'warning'
-        )
-        console.log(result);
+            localStorage.setItem('theme', 'light');
 
-      }
+          } else if (theme == "dark") {
 
+            localStorage.setItem('theme', 'dark');
+
+          }
+
+          window.location.replace("inicialPage.html");
+
+        });
     });
+
 
 };

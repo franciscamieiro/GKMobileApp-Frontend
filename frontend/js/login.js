@@ -1,3 +1,15 @@
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
+
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "login.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
 let state = false;
 
 //function reveal password
@@ -72,7 +84,7 @@ btnLogin.addEventListener("click", function () {
         data.email = email.value.trim();
         data.password = password.value.trim();
 
-        fetch("http://localhost:80/api/auth/signin", {
+        fetch("http://localhost:80/api/auth/signin/mobile", {
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             method: 'POST',
@@ -118,6 +130,12 @@ btnLogin.addEventListener("click", function () {
 
                                 localStorage.setItem('theme', 'dark');
 
+                            }
+
+                            const email = localStorage.registedEmail;
+
+                            if(email != null){
+                                localStorage.registedEmail = null;
                             }
 
                             window.location.replace("inicialPage.html");

@@ -2,7 +2,9 @@ function isConnected(){
     var ifConnected = window.navigator.onLine;
 
     if (ifConnected) {
-        window.location.replace("start.html");
+        const window1 = localStorage.lastWindow;
+        console.log(window1);
+        window.location.replace(window1);
     }
 
 }

@@ -1,5 +1,16 @@
-let btnEdit = document.getElementById("btnEdit");
+function isConnected(){
+    var ifConnected = window.navigator.onLine;
 
+    if (ifConnected == false) {
+        localStorage.setItem("lastWindow", "perfil.html")
+        window.location.replace("no_connection.html");
+    }
+
+}
+
+setInterval(isConnected, 5000);
+
+let btnEdit = document.getElementById("btnEdit");
 let fullname = document.getElementById("inputFullName");
 let birth = document.getElementById("inputBirth");
 let email = document.getElementById("inputEmail");
